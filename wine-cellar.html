@@ -42,13 +42,20 @@ filter:brightness(0) invert(1);
 font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.18em;
 text-transform:uppercase; color:var(--parchment-2); margin:10px 0 0;
 }
-#lagotto-wine-boh-root .lg-tools-nav{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;}
+#lagotto-wine-boh-root .lg-tools-nav{display:flex; flex-direction:column; gap:10px; margin-top:18px;}
+#lagotto-wine-boh-root .lg-nav-row{display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+#lagotto-wine-boh-root .lg-nav-label{
+font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em;
+text-transform:uppercase; color:var(--parchment); opacity:.55; white-space:nowrap; margin-right:2px;
+}
 #lagotto-wine-boh-root .lg-tools-nav a{
 font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em;
 text-transform:uppercase; text-decoration:none; color:var(--parchment);
 border:1px solid rgba(239,231,216,.35); border-radius:999px; padding:7px 15px;
 }
 #lagotto-wine-boh-root .lg-tools-nav a.active{background:var(--rust); border-color:var(--rust);}
+#lagotto-wine-boh-root .lg-nav-row.lg-nav-editing a{border-color:rgba(165,74,42,.7); background:rgba(165,74,42,.18);}
+#lagotto-wine-boh-root .lg-nav-row.lg-nav-editing a.active{background:var(--rust); border-color:var(--rust);}
 #lagotto-wine-boh-root .lg-bar{
 display:flex; align-items:center; justify-content:space-between; gap:16px;
 flex-wrap:wrap; margin-bottom:16px;
@@ -218,12 +225,21 @@ background:var(--parchment); color:var(--ink);
 <img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
 <p class="lg-sub">Wine Cellar &mdash; Back of House</p>
 <div class="lg-tools-nav">
-<a href="wine">Wine List</a>
-<a href="wine-quiz">Wine Quiz</a>
-<a href="dish-library">Dish Library</a>
+<div class="lg-nav-row">
+<span class="lg-nav-label">Staff pages</span>
+<a href="wine" target="_blank" rel="noopener">Wine List</a>
+<a href="wine-quiz" target="_blank" rel="noopener">Wine Quiz</a>
+<a href="menu" target="_blank" rel="noopener">Menu Reference</a>
+<a href="dietary" target="_blank" rel="noopener">Dietary Matrix</a>
+<a href="menu-quiz" target="_blank" rel="noopener">Staff Quiz</a>
+<a href="cocktails" target="_blank" rel="noopener">Cocktail Reference</a>
+</div>
+<div class="lg-nav-row lg-nav-editing">
+<span class="lg-nav-label">Editing</span>
 <a href="wine-cellar" class="active w--current">Wine Cellar</a>
-<a href="cocktails">Cocktails</a>
+<a href="dish-library">Dish Library</a>
 <a href="cocktail-library">Cocktail Library</a>
+</div>
 </div>
 </div>
 </div>
