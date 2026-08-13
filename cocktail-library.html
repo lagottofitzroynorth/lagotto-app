@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cocktail Library</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-cocktail-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-cocktail-180.png">
+<meta name="apple-mobile-web-app-title" content="Cocktail Library">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script>
+// Set these once a Gist + Google Apps Script deployment exist for cocktails
+// (matching the wine/food setup). Until then Publish stays disabled and
+// Copy JSON is the way to get changes into cocktails.json by hand.
+// window.LAGOTTO_COCKTAIL_PUBLISH_URL = 'your apps script web app url';
+// window.LAGOTTO_COCKTAIL_PUBLISH_SECRET = 'your shared secret';
+</script>
+</head>
+<body>
+<div id="ckl-root">
+<style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+--ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+--rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+--radius:10px;
+}
+#ckl-root *{box-sizing:border-box;}
+#ckl-root{
+background:var(--parchment); color:var(--ink);
+font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
+-webkit-font-smoothing:antialiased;
+}
+#ckl-root .lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
+#ckl-root .lg-header{background:var(--ink); color:var(--parchment); padding:34px 20px 26px; margin-bottom:28px;}
+#ckl-root .lg-header-inner{max-width:920px; margin:0 auto;}
+#ckl-root .lg-logo{display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%; margin:0; filter:brightness(0) invert(1);}
+#ckl-root .lg-sub{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--parchment-2); margin:10px 0 0;}
+#ckl-root .lg-tools-nav{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;}
+#ckl-root .lg-tools-nav a{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; color:var(--parchment); border:1px solid rgba(239,231,216,.35); border-radius:999px; padding:7px 15px;}
+#ckl-root .lg-tools-nav a.active{background:var(--rust); border-color:var(--rust);}
+
+#ckl-root .lg-bar{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:16px;}
+#ckl-root .lg-count{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-soft);}
+#ckl-root .lg-filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+#ckl-root .lg-chip{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em; background:transparent; color:var(--ink); border:1px solid var(--parchment-2); border-radius:999px; padding:6px 14px; cursor:pointer;}
+#ckl-root .lg-chip.active{background:var(--ink); color:var(--parchment); border-color:var(--ink);}
+#ckl-root .lg-btn{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; background:var(--rust); color:var(--parchment); border:none; border-radius:var(--radius); padding:10px 18px; cursor:pointer;}
+#ckl-root .lg-btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--parchment-2);}
+#ckl-root .lg-btn:disabled{opacity:.4; cursor:not-allowed;}
+
+#ckl-root .lg-row{display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid var(--parchment-2); cursor:pointer;}
+#ckl-root .lg-row.off{opacity:.5;}
+#ckl-root .lg-thumb{width:44px; height:44px; border-radius:6px; object-fit:cover; flex-shrink:0; background:var(--parchment-2);}
+#ckl-root .lg-info{flex:1; min-width:0;}
+#ckl-root .lg-name{font-family:'Fraunces',serif; font-size:15px; font-weight:600;}
+#ckl-root .lg-meta{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pending); margin-top:2px;}
+#ckl-root .lg-toggle{width:44px; height:26px; border-radius:13px; background:var(--pending); border:none; position:relative; cursor:pointer; flex-shrink:0; padding:0;}
+#ckl-root .lg-toggle.on{background:var(--sage);}
+#ckl-root .lg-knob{position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%; background:var(--parchment); transition:left .15s;}
+#ckl-root .lg-toggle.on .lg-knob{left:21px;}
+#ckl-root .lg-cat{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); margin:26px 0 6px; border-bottom:1px solid var(--parchment-2); padding-bottom:6px;}
+
+#ckl-root .lg-panel{background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius); padding:16px; margin-top:22px;}
+#ckl-root .lg-panel h3{font-family:'Fraunces',serif; font-size:16px; margin:0 0 8px;}
+#ckl-root .lg-panel p{font-size:14px; margin:0 0 12px; color:var(--ink-soft);}
+#ckl-root textarea{width:100%; height:150px; font-family:'IBM Plex Mono',monospace; font-size:11px; border:1px solid var(--parchment-2); border-radius:6px; padding:10px; resize:vertical; background:var(--parchment); color:var(--ink);}
+#ckl-root .lg-status{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--sage); margin-left:10px;}
+#ckl-root .lg-note{background:#F3EFE4; border-left:3px solid var(--pending); padding:10px 14px; border-radius:0 6px 6px 0; font-size:13px; color:var(--ink-soft); margin-bottom:14px;}
+#ckl-root .lg-warn{background:#F6E4DE; border-left:3px solid var(--rust); padding:12px 14px; border-radius:0 6px 6px 0; font-size:14px; margin-bottom:18px;}
+
+#ckl-root .lg-edit{background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius); padding:16px; margin:0 0 14px 58px;}
+#ckl-root .lg-edit label{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--pending); margin:12px 0 4px;}
+#ckl-root .lg-edit label:first-child{margin-top:0;}
+#ckl-root .lg-edit-hint{font-size:12.5px; line-height:1.5; color:var(--ink-soft); margin:4px 0 0;}
+#ckl-root .lg-edit input, #ckl-root .lg-edit select, #ckl-root .lg-edit textarea{
+width:100%; font-family:'Work Sans',sans-serif; font-size:14px; border:1px solid var(--parchment-2); border-radius:6px; padding:8px 10px; background:var(--parchment); color:var(--ink);
+}
+#ckl-root .lg-edit textarea{min-height:70px; resize:vertical; font-family:'Work Sans',sans-serif; font-size:14px;}
+#ckl-root .lg-edit textarea.mono{font-family:'IBM Plex Mono',monospace; font-size:12.5px;}
+#ckl-root .lg-edit .lg-two{display:flex; gap:12px;}
+#ckl-root .lg-edit .lg-two > div{flex:1;}
+#ckl-root .lg-drop{border:2px dashed var(--parchment-2); border-radius:8px; padding:18px; text-align:center; font-size:13px; color:var(--pending); cursor:pointer; background:var(--parchment);}
+#ckl-root .lg-drop.over{border-color:var(--rust); color:var(--rust);}
+#ckl-root .lg-drop img{max-height:110px; border-radius:6px; display:block; margin:0 auto 8px;}
+#ckl-root .lg-edit-foot{display:flex; justify-content:space-between; align-items:center; margin-top:16px;}
+#ckl-root .lg-del{background:none; border:1px solid var(--rust); color:var(--rust); font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; border-radius:999px; padding:6px 14px; cursor:pointer;}
+
+#ckl-root .lg-add{background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius); padding:16px; margin-bottom:18px;}
+#ckl-root .lg-add label{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--pending); margin:0 0 4px;}
+#ckl-root .lg-add-hint{font-size:13px; line-height:1.55; color:var(--ink-soft); margin:0 0 14px;}
+#ckl-root .lg-add input, #ckl-root .lg-add select{width:100%; font-family:'Work Sans',sans-serif; font-size:14px; border:1px solid var(--parchment-2); border-radius:6px; padding:8px 10px; background:var(--parchment); color:var(--ink);}
+#ckl-root .lg-add-row{display:flex; gap:12px; align-items:flex-end;}
+#ckl-root .lg-add-row > div:first-child{flex:1;}
+#ckl-root .lg-add-err{color:var(--rust); font-size:13px; margin-top:8px;}
+
+@media (max-width:560px){
+#ckl-root .lg-add-row{display:block;}
+#ckl-root .lg-add-row > div{margin-bottom:10px;}
+#ckl-root .lg-edit{margin-left:0;}
+#ckl-root .lg-edit .lg-two{display:block;}
+#ckl-root .lg-name{font-size:14px;}
+}
+</style>
+
+<div class="lg-header">
+<div class="lg-header-inner">
+<img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+<p class="lg-sub">Cocktail Library — Back of House</p>
+<div class="lg-tools-nav">
+<a href="wine">Wine List</a>
+<a href="wine-quiz">Wine Quiz</a>
+<a href="wine-cellar">Wine Cellar</a>
+<a href="cocktails">Cocktail Reference</a>
+<a href="cocktail-library" class="active">Cocktail Library</a>
+</div>
+</div>
+</div>
+
+<div class="lg-wrap">
+
+<div class="lg-bar">
+<div class="lg-count" id="lg-count">Loading…</div>
+<div>
+<button class="lg-btn ghost" id="lg-reset">Reset changes</button>
+<button class="lg-btn ghost" id="lg-copy">Copy JSON</button>
+<button class="lg-btn" id="lg-publish">Publish</button>
+<span class="lg-status" id="lg-status"></span>
+</div>
+</div>
+
+<div style="margin-bottom:14px;">
+<button class="lg-btn" id="lg-add">+ Add a cocktail</button>
+</div>
+<div id="lg-add-panel"></div>
+
+<div class="lg-filters" id="lg-filters">
+<button class="lg-chip active" data-f="all">All</button>
+<button class="lg-chip" data-f="on">Active</button>
+<button class="lg-chip" data-f="off">Retired</button>
+</div>
+
+<div id="lg-list"></div>
+
+<div class="lg-panel">
+<h3>Publishing changes</h3>
+<p>Toggling changes nothing until you press <strong>Publish</strong>. The
+staff pages pick up the change on their next load. If publishing fails
+(or isn't set up yet), use <strong>Copy JSON</strong> and paste it into
+<code>cocktails.json</code> by hand.</p>
+<textarea id="lg-out" readonly placeholder="Only needed if publishing fails."></textarea>
+</div>
+
+</div>
+
+<script>
+(function(){
+const DATA_URL = 'cocktails.json';
+
+function publishUrl(){ return window.LAGOTTO_COCKTAIL_PUBLISH_URL || 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE'; }
+function publishSecret(){ return window.LAGOTTO_COCKTAIL_PUBLISH_SECRET || 'PASTE_YOUR_SHARED_SECRET_HERE'; }
+function publishReady(){ return publishUrl().indexOf('PASTE_') !== 0; }
+
+let DATA = null;
+let pristine = '';
+let filter = 'all';
+let openId = null;
+
+const list = document.getElementById('lg-list');
+const countEl = document.getElementById('lg-count');
+const statusEl = document.getElementById('lg-status');
+const outEl = document.getElementById('lg-out');
+
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function matches(c){
+  if(filter === 'on') return c.active !== false;
+  if(filter === 'off') return c.active === false;
+  return true;
+}
+
+function ingredientsToText(arr){ return (arr || []).join('\n'); }
+function textToIngredients(text){
+  return String(text || '').split('\n').map(s => s.trim()).filter(Boolean);
+}
+
+function variantsToText(arr){
+  return (arr || []).map(function(v){
+    if(v.ingredients) return v.name + ': ' + v.ingredients.join(', ') + (v.garnish ? ' | ' + v.garnish : '');
+    return v.name + ': ' + (v.note || '');
+  }).join('\n');
+}
+function textToVariants(text){
+  return String(text || '').split('\n').map(s => s.trim()).filter(Boolean).map(function(line){
+    const colon = line.indexOf(':');
+    if(colon === -1) return { name: line, note: '' };
+    const name = line.slice(0, colon).trim();
+    const rest = line.slice(colon + 1).trim();
+    const pipe = rest.indexOf('|');
+    if(pipe === -1){
+      // No ingredients marker found — treat as a short note-style variant
+      // (e.g. Gimlet's "Southside: add mint").
+      if(rest.indexOf(',') === -1 && rest.toLowerCase().indexOf('oz') === -1) {
+        return { name: name, note: rest };
+      }
+      return { name: name, ingredients: rest.split(',').map(s => s.trim()).filter(Boolean) };
+    }
+    const ingredients = rest.slice(0, pipe).split(',').map(s => s.trim()).filter(Boolean);
+    const garnish = rest.slice(pipe + 1).trim();
+    return { name: name, ingredients: ingredients, garnish: garnish };
+  });
+}
+
+function editorHTML(c){
+  const sectionOpts = DATA.sections.map(s =>
+    '<option value="' + esc(s.id) + '"' + (s.id === c.section ? ' selected' : '') + '>' + esc(s.name) + '</option>').join('');
+  const preview = c.image
+    ? '<img src="' + esc(c.image) + '" alt="">Drop a new photo, or click to choose'
+    : 'Drop a photo here, or click to choose';
+  return '<div class="lg-edit" data-edit="' + esc(c.id) + '">'
+    + '<label>Cocktail name</label>'
+    + '<input data-f="name" value="' + esc(c.name) + '">'
+    + '<div class="lg-two">'
+    +   '<div><label>Glass</label><input data-f="glass" value="' + esc(c.glass || '') + '"></div>'
+    +   '<div><label>Section</label><select data-f="section">' + sectionOpts + '</select></div>'
+    + '</div>'
+    + '<label>Photo</label>'
+    + '<div class="lg-drop" data-drop>' + preview + '</div>'
+    + '<input type="file" accept="image/*" style="display:none" data-file>'
+    + '<label>Ingredients — one per line</label>'
+    + '<textarea class="mono" data-f="ingredients">' + esc(ingredientsToText(c.ingredients)) + '</textarea>'
+    + '<label>Method</label>'
+    + '<textarea data-f="method">' + esc(c.method) + '</textarea>'
+    + '<label>Garnish</label>'
+    + '<input data-f="garnish" value="' + esc(c.garnish || '') + '">'
+    + '<label>Variants — one per line: <code>Name: ingredient, ingredient | garnish</code></label>'
+    + '<textarea class="mono" data-f="variants">' + esc(variantsToText(c.variants)) + '</textarea>'
+    + '<p class="lg-edit-hint">Leave blank if this cocktail has no variants. For a note-only '
+    +   'variant (like Gimlet’s Southside/Eastside), skip the ingredient list: <code>Southside: add mint</code>.</p>'
+    + '<div class="lg-edit-foot">'
+    +   '<span style="font-size:12px;color:var(--pending);">Changes save when you press Publish.</span>'
+    +   '<button class="lg-del" data-del>Delete cocktail</button>'
+    + '</div>'
+    + '</div>';
+}
+
+function shrink(file, maxPx){
+  return new Promise(function(resolve, reject){
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = function(){
+      const img = new Image();
+      img.onerror = reject;
+      img.onload = function(){
+        let w = img.width, h = img.height;
+        const scale = Math.min(1, maxPx / Math.max(w, h));
+        w = Math.round(w * scale); h = Math.round(h * scale);
+        const c = document.createElement('canvas');
+        c.width = w; c.height = h;
+        c.getContext('2d').drawImage(img, 0, 0, w, h);
+        const dataUrl = c.toDataURL('image/jpeg', 0.85);
+        resolve({ base64: dataUrl.split(',')[1], mime: 'image/jpeg' });
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function uploadPhoto(c, file){
+  const drop = list.querySelector('[data-edit="' + c.id + '"] [data-drop]');
+  if(!publishReady()){
+    if(drop) drop.textContent = 'Photo upload not configured yet — set up a cocktail Apps Script deployment first';
+    return;
+  }
+  if(drop) drop.textContent = 'Resizing…';
+  shrink(file, 1600).then(function(img){
+    if(drop) drop.textContent = 'Uploading…';
+    return callPublisher({action: 'upload', image: img.base64, mime: img.mime, cocktailId: c.id});
+  }).then(function(res){
+    if(res && res.ok && res.url){
+      c.image = res.url;
+      render();
+      statusEl.textContent = 'Photo uploaded — press Publish to save';
+    } else if(drop) {
+      drop.textContent = 'Upload failed: ' + ((res && res.message) || 'unknown');
+    }
+  }).catch(function(err){
+    if(drop) drop.textContent = 'Upload failed — ' + (err.message || err);
+  });
+}
+
+function dirty(){ return pristine !== JSON.stringify(DATA); }
+function updateStatus(){ statusEl.textContent = dirty() ? 'Unpublished changes' : ''; }
+
+function render(){
+  const cocktails = DATA.cocktails;
+  const on = cocktails.filter(c => c.active !== false).length;
+  countEl.textContent = cocktails.length + ' cocktails · ' + on + ' active · ' + (cocktails.length - on) + ' retired';
+  updateStatus();
+
+  const order = DATA.sections.map(s => s.id);
+  const shown = cocktails.filter(matches).slice().sort(function(a, b){
+    const ra = order.indexOf(a.section), rb = order.indexOf(b.section);
+    if(ra !== rb) return (ra === -1 ? 99 : ra) - (rb === -1 ? 99 : rb);
+    return cocktails.indexOf(a) - cocktails.indexOf(b);
+  });
+
+  let html = '';
+  if(!shown.length) html += '<p style="color:var(--pending);">Nothing matches that filter.</p>';
+
+  let lastSection = null;
+  const sectionName = {};
+  DATA.sections.forEach(s => { sectionName[s.id] = s.name; });
+
+  shown.forEach(function(c){
+    if(c.section !== lastSection){
+      html += '<div class="lg-cat">' + esc(sectionName[c.section] || c.section) + '</div>';
+      lastSection = c.section;
+    }
+    const active = c.active !== false;
+    html += '<div class="lg-row' + (active ? '' : ' off') + '" data-open="' + esc(c.id) + '">'
+      + (c.image ? '<img class="lg-thumb" src="' + esc(c.image) + '" loading="lazy" alt="">' : '<div class="lg-thumb"></div>')
+      + '<div class="lg-info"><div class="lg-name">' + esc(c.name) + '</div>'
+      + '<div class="lg-meta">' + esc(c.glass || '') + '</div></div>'
+      + '<button class="lg-toggle' + (active ? ' on' : '') + '" data-id="' + esc(c.id) + '" '
+      + 'role="switch" aria-checked="' + active + '" '
+      + 'aria-label="' + (active ? 'Retire' : 'Reactivate') + '">'
+      + '<span class="lg-knob"></span></button></div>';
+    if(openId === c.id) html += editorHTML(c);
+  });
+  list.innerHTML = html;
+}
+
+function cocktailFromEvent(e){
+  const panel = e.target.closest('[data-edit]');
+  if(panel) return DATA.cocktails.find(x => x.id === panel.dataset.edit);
+  return null;
+}
+
+list.addEventListener('input', function(e){
+  const f = e.target.dataset && e.target.dataset.f;
+  if(!f) return;
+  const c = cocktailFromEvent(e);
+  if(!c) return;
+  if(f === 'ingredients') c.ingredients = textToIngredients(e.target.value);
+  else if(f === 'variants') c.variants = textToVariants(e.target.value);
+  else c[f] = e.target.value;
+  if(f === 'name'){
+    const row = list.querySelector('[data-open="' + c.id + '"]');
+    const nameEl = row && row.querySelector('.lg-name');
+    if(nameEl) nameEl.textContent = e.target.value;
+  }
+  updateStatus();
+});
+
+list.addEventListener('change', function(e){
+  if(e.target.dataset && e.target.dataset.f === 'section'){
+    const c = cocktailFromEvent(e);
+    if(c){ c.section = e.target.value; render(); }
+  }
+  if(e.target.dataset && 'file' in e.target.dataset && e.target.files[0]){
+    const c = cocktailFromEvent(e);
+    if(c) uploadPhoto(c, e.target.files[0]);
+  }
+});
+
+list.addEventListener('dragover', function(e){
+  const drop = e.target.closest('[data-drop]');
+  if(!drop) return;
+  e.preventDefault();
+  drop.classList.add('over');
+});
+list.addEventListener('dragleave', function(e){
+  const drop = e.target.closest('[data-drop]');
+  if(drop) drop.classList.remove('over');
+});
+list.addEventListener('drop', function(e){
+  const drop = e.target.closest('[data-drop]');
+  if(!drop) return;
+  e.preventDefault();
+  drop.classList.remove('over');
+  const c = cocktailFromEvent(e);
+  const file = e.dataTransfer.files[0];
+  if(c && file && file.type.indexOf('image') === 0) uploadPhoto(c, file);
+});
+
+list.addEventListener('click', function(e){
+  if(e.target.closest('[data-drop]')){
+    const panel = e.target.closest('[data-edit]');
+    panel.querySelector('[data-file]').click();
+    return;
+  }
+  if(e.target.closest('[data-del]')){
+    const c = cocktailFromEvent(e);
+    if(!c) return;
+    if(!confirm('Delete "' + c.name + '" from the library for good?\n\n'
+      + 'To retire it but keep it for later, close this and use the toggle instead.')) return;
+    DATA.cocktails = DATA.cocktails.filter(x => x.id !== c.id);
+    openId = null;
+    render();
+    return;
+  }
+  if(e.target.closest('.lg-edit')) return;
+  const row = e.target.closest('.lg-row');
+  if(row && !e.target.closest('.lg-toggle')){
+    const id = row.dataset.open;
+    openId = (openId === id) ? null : id;
+    render();
+    return;
+  }
+  const btn = e.target.closest('.lg-toggle');
+  if(!btn) return;
+  const c = DATA.cocktails.find(x => x.id === btn.dataset.id);
+  c.active = !(c.active !== false);
+  render();
+});
+
+document.getElementById('lg-filters').addEventListener('click', function(e){
+  const btn = e.target.closest('.lg-chip');
+  if(!btn) return;
+  document.querySelectorAll('#lg-filters .lg-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filter = btn.dataset.f;
+  render();
+});
+
+document.getElementById('lg-reset').addEventListener('click', function(){
+  if(dirty() && !confirm('Discard every unpublished change?')) return;
+  DATA = JSON.parse(pristine);
+  openId = null;
+  render();
+  outEl.value = '';
+});
+
+function callPublisher(payload){
+  return fetch(publishUrl(), {
+    method: 'POST',
+    headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify(Object.assign({secret: publishSecret()}, payload))
+  }).then(function(r){
+    return r.text().then(function(body){
+      try { return JSON.parse(body); }
+      catch (err) {
+        if(/accounts\.google\.com|signin|Sign in/i.test(body)){
+          throw new Error('the web app is asking for a Google sign-in. In Deploy → Manage deployments, set "Who has access" to Anyone.');
+        }
+        if(r.status === 404){
+          throw new Error('404 — that deployment no longer exists.');
+        }
+        const snippet = body.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120);
+        throw new Error('HTTP ' + r.status + ', and the reply was not JSON: ' + (snippet || '(empty)'));
+      }
+    });
+  });
+}
+
+document.getElementById('lg-publish').addEventListener('click', function(){
+  const btn = this;
+  if(!publishReady()){
+    statusEl.textContent = 'Publishing not configured yet — set up a cocktail Apps Script deployment, then add LAGOTTO_COCKTAIL_PUBLISH_URL to the page head';
+    return;
+  }
+  if(!dirty()){ statusEl.textContent = 'Nothing to publish'; return; }
+  btn.disabled = true;
+  statusEl.textContent = 'Publishing…';
+  callPublisher({data: DATA})
+    .then(function(res){
+      btn.disabled = false;
+      if(res.ok){
+        pristine = JSON.stringify(DATA);
+        render();
+        statusEl.textContent = 'Published — live on the staff pages';
+      } else {
+        statusEl.textContent = 'Failed: ' + res.message + ' — use Copy JSON';
+      }
+    })
+    .catch(function(err){
+      btn.disabled = false;
+      statusEl.textContent = 'Publish failed — ' + err.message;
+      console.error('publish failed', err);
+    });
+});
+
+document.getElementById('lg-copy').addEventListener('click', function(){
+  const text = JSON.stringify(DATA, null, 2);
+  outEl.value = text;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){
+      statusEl.textContent = 'Copied — paste into cocktails.json';
+    }, function(){
+      statusEl.textContent = 'Copy from the box below';
+    });
+  } else {
+    outEl.select();
+    statusEl.textContent = 'Copy from the box below';
+  }
+});
+
+function slugifyName(name){
+  return String(name).split(/[,(]/)[0].toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'cocktail';
+}
+function freeId(base){
+  const taken = {};
+  DATA.cocktails.forEach(c => { taken[c.id] = true; });
+  if(!taken[base]) return base;
+  let n = 2;
+  while(taken[base + '-' + n]) n++;
+  return base + '-' + n;
+}
+
+const addPanel = document.getElementById('lg-add-panel');
+
+function showAddPanel(){
+  const sectionOpts = DATA.sections.map(s => '<option value="' + esc(s.id) + '">' + esc(s.name) + '</option>').join('');
+  addPanel.innerHTML = '<div class="lg-add">'
+    + '<p class="lg-add-hint">Starts retired. Open it below to fill in ingredients, method and garnish, then switch it on and Publish.</p>'
+    + '<div class="lg-add-row">'
+    +   '<div><label>Cocktail name</label><input id="lg-add-name" placeholder="e.g. Amalfi Spritz"></div>'
+    +   '<div style="width:200px;"><label>Section</label><select id="lg-add-section">' + sectionOpts + '</select></div>'
+    + '</div>'
+    + '<div class="lg-add-err" id="lg-add-err"></div>'
+    + '<div class="lg-edit-foot">'
+    +   '<span></span>'
+    +   '<span><button class="lg-btn ghost" id="lg-add-cancel">Cancel</button> <button class="lg-btn" id="lg-add-create">Create</button></span>'
+    + '</div></div>';
+  const nameEl = document.getElementById('lg-add-name');
+  nameEl.focus();
+  nameEl.addEventListener('keydown', e => { if(e.key === 'Enter') createCocktail(); });
+  document.getElementById('lg-add-cancel').addEventListener('click', hideAddPanel);
+  document.getElementById('lg-add-create').addEventListener('click', createCocktail);
+}
+function hideAddPanel(){ addPanel.innerHTML = ''; }
+
+function createCocktail(){
+  const name = document.getElementById('lg-add-name').value.trim();
+  const section = document.getElementById('lg-add-section').value;
+  const err = document.getElementById('lg-add-err');
+  if(!name){ err.textContent = 'Give it a name first.'; return; }
+  const clash = DATA.cocktails.find(c => c.name.trim().toLowerCase() === name.toLowerCase());
+  if(clash){
+    err.innerHTML = 'There is already a cocktail called "' + esc(clash.name) + '". Edit that one instead, or use a different name.';
+    return;
+  }
+  const cocktail = {
+    id: freeId(slugifyName(name)),
+    section: section,
+    name: name,
+    glass: '',
+    ingredients: [],
+    method: '',
+    garnish: '',
+    variants: [],
+    active: false,
+    image: ''
+  };
+  DATA.cocktails.push(cocktail);
+  hideAddPanel();
+  openId = cocktail.id;
+  render();
+  const row = list.querySelector('[data-open="' + cocktail.id + '"]');
+  if(row && row.scrollIntoView) row.scrollIntoView({block: 'center'});
+  statusEl.textContent = 'Cocktail added — press Publish when you\'re done';
+}
+
+document.getElementById('lg-add').addEventListener('click', function(){
+  if(addPanel.innerHTML) hideAddPanel(); else showAddPanel();
+});
+
+function checkPublisher(){
+  if(!publishReady()){
+    const el = document.createElement('div');
+    el.className = 'lg-note';
+    el.innerHTML = '<strong>Publishing is not set up on this page yet.</strong> Everything else works: edit, then press Copy JSON and paste the result into cocktails.json. To enable the Publish button, deploy a Google Apps Script web app for cocktails (mirroring the wine/food ones) and add LAGOTTO_COCKTAIL_PUBLISH_URL to the page head.';
+    list.parentNode.insertBefore(el, list);
+    return;
+  }
+  callPublisher({action: 'ping'})
+    .then(function(res){
+      if(!res.ok){
+        const el = document.createElement('div');
+        el.className = 'lg-warn';
+        el.innerHTML = 'The publisher rejected this page: ' + esc(res.message || 'unknown') + '.';
+        list.parentNode.insertBefore(el, list);
+      }
+    })
+    .catch(function(err){
+      const el = document.createElement('div');
+      el.className = 'lg-warn';
+      el.innerHTML = '<strong>Can\'t reach the publisher.</strong> ' + esc(err.message);
+      list.parentNode.insertBefore(el, list);
+    });
+}
+
+fetch(DATA_URL + '?t=' + Date.now())
+  .then(r => r.json())
+  .then(function(json){
+    DATA = json;
+    pristine = JSON.stringify(DATA);
+    render();
+    checkPublisher();
+  })
+  .catch(function(){
+    countEl.textContent = "Couldn't load cocktails.json.";
+  });
+})();
+</script>
+</div>
+</body>
+</html>

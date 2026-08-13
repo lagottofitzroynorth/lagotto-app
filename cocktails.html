@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cocktails</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-cocktail-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-cocktail-180.png">
+<meta name="apple-mobile-web-app-title" content="Cocktails">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+html,body{margin:0; padding:0;}
+#ck,#ck *{box-sizing:border-box;}
+#ck{
+  --ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+  --rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+  --radius:10px;
+  font-family:'Georgia',serif; color:var(--ink); background:var(--parchment);
+  padding-bottom:64px;
+}
+.ck-header{background:var(--ink); color:var(--parchment); padding:40px 20px 32px;}
+.ck-header-inner{max-width:920px; margin:0 auto; padding:0 20px;}
+.ck-logo{height:38px; display:block; margin-bottom:14px; filter:brightness(0) invert(1);}
+.ck-sub{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--parchment); opacity:.8; margin:0;}
+.ck-wrap{max-width:920px; margin:0 auto; padding:0 20px;}
+
+.ck-section-tabs{display:flex; gap:8px; flex-wrap:wrap; margin:28px 0 20px; padding-top:24px;}
+.ck-tab{
+  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+  border:1px solid var(--parchment-2); background:#fff; color:var(--ink-soft);
+  padding:7px 14px; border-radius:20px; cursor:pointer; transition:.15s;
+}
+.ck-tab.active, .ck-tab:hover{background:var(--rust); border-color:var(--rust); color:#fff;}
+
+.ck-search{
+  width:100%; font-family:'IBM Plex Mono',monospace; font-size:13px; padding:11px 14px;
+  border:1px solid var(--parchment-2); border-radius:8px; background:#fff; margin-bottom:20px;
+}
+
+.ck-section-title{
+  font-family:'Fraunces',serif; font-size:13px; text-transform:uppercase; letter-spacing:.14em;
+  color:var(--rust); margin:32px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--parchment-2);
+}
+.ck-section-title:first-of-type{margin-top:8px;}
+
+.ck-card{background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius); margin-bottom:10px; overflow:hidden;}
+.ck-card-head{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 18px; cursor:pointer; user-select:none;}
+.ck-card-head:hover{background:var(--parchment);}
+.ck-name{font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; flex:1;}
+.ck-glass{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pending); white-space:nowrap;}
+.ck-chev{font-size:18px; color:#ccc; transition:transform .2s; flex-shrink:0;}
+.ck-card.open .ck-chev{transform:rotate(90deg);}
+.ck-card-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+.ck-card.open .ck-card-body{max-height:2000px;}
+.ck-card-body-inner{padding:0 18px 20px;}
+
+.ck-label{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:var(--pending); margin:14px 0 6px;}
+.ck-label:first-child{margin-top:2px;}
+.ck-ingredients{list-style:none; margin:0; padding:0; font-size:14.5px; line-height:1.7; color:var(--ink-soft);}
+.ck-method{font-size:14.5px; line-height:1.7; color:var(--ink-soft); margin:0;}
+.ck-garnish{font-size:14px; color:var(--rust-dim); margin:0;}
+.ck-variant{border-top:1px solid var(--parchment-2); padding-top:10px; margin-top:12px;}
+.ck-variant-name{font-family:'Fraunces',serif; font-weight:600; font-size:14px; color:var(--ink);}
+.ck-variant-note{font-size:13.5px; color:var(--ink-soft); margin-top:2px;}
+
+.ck-loading{text-align:center; padding:3rem; font-family:sans-serif; color:var(--pending); font-size:14px;}
+.ck-empty{text-align:center; padding:2rem; color:var(--pending); font-size:14px; font-family:sans-serif;}
+
+@media (max-width:560px){
+  .ck-name{font-size:15px;}
+}
+</style>
+</head>
+<body>
+<div id="ck">
+  <div class="ck-header">
+    <div class="ck-header-inner">
+      <img class="ck-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+      <p class="ck-sub">Staff Cocktail Reference</p>
+    </div>
+  </div>
+  <div class="ck-wrap">
+    <div id="ck-content"><div class="ck-loading">Loading cocktails&hellip;</div></div>
+  </div>
+</div>
+<script>
+var CK_DATA_URL = 'cocktails.json';
+var CK_DATA = null;
+var CK_FILTER = 'all';
+var CK_QUERY = '';
+
+fetch(CK_DATA_URL)
+  .then(function(r){ return r.json(); })
+  .then(function(data){ CK_DATA = data; render(); })
+  .catch(function(e){ document.getElementById('ck-content').innerHTML = '<div class="ck-loading">Failed to load. Please refresh.</div>'; });
+
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; });
+}
+
+function cardHtml(c){
+  var ingredientsHtml = (c.ingredients || []).map(function(i){ return '<li>' + esc(i) + '</li>'; }).join('');
+  var variantsHtml = (c.variants || []).map(function(v){
+    if (v.ingredients) {
+      return '<div class="ck-variant"><div class="ck-variant-name">' + esc(v.name) + '</div>' +
+        '<ul class="ck-ingredients">' + v.ingredients.map(function(i){ return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' +
+        (v.garnish ? '<div class="ck-variant-note">Garnish: ' + esc(v.garnish) + '</div>' : '') +
+        '</div>';
+    }
+    return '<div class="ck-variant"><div class="ck-variant-name">' + esc(v.name) + '</div><div class="ck-variant-note">' + esc(v.note) + '</div></div>';
+  }).join('');
+
+  return '<div class="ck-card" data-id="' + esc(c.id) + '">' +
+    '<div class="ck-card-head" onclick="this.parentNode.classList.toggle(\'open\')">' +
+      '<div class="ck-name">' + esc(c.name) + '</div>' +
+      '<div class="ck-glass">' + esc(c.glass || '') + '</div>' +
+      '<span class="ck-chev">&#8250;</span>' +
+    '</div>' +
+    '<div class="ck-card-body"><div class="ck-card-body-inner">' +
+      (ingredientsHtml ? '<div class="ck-label">Ingredients</div><ul class="ck-ingredients">' + ingredientsHtml + '</ul>' : '') +
+      '<div class="ck-label">Method</div><p class="ck-method">' + esc(c.method) + '</p>' +
+      (c.garnish ? '<div class="ck-label">Garnish</div><p class="ck-garnish">' + esc(c.garnish) + '</p>' : '') +
+      (variantsHtml ? '<div class="ck-label">Variants</div>' + variantsHtml : '') +
+    '</div></div>' +
+  '</div>';
+}
+
+function render(){
+  if (!CK_DATA) return;
+  var q = CK_QUERY.trim().toLowerCase();
+  var cocktails = CK_DATA.cocktails.filter(function(c){
+    if (CK_FILTER !== 'all' && c.section !== CK_FILTER) return false;
+    if (q && c.name.toLowerCase().indexOf(q) === -1) return false;
+    return true;
+  });
+
+  var tabsHtml = '<div class="ck-section-tabs">' +
+    '<div class="ck-tab' + (CK_FILTER === 'all' ? ' active' : '') + '" onclick="setFilter(\'all\')">All</div>' +
+    CK_DATA.sections.map(function(s){
+      return '<div class="ck-tab' + (CK_FILTER === s.id ? ' active' : '') + '" onclick="setFilter(\'' + s.id + '\')">' + esc(s.name) + '</div>';
+    }).join('') +
+  '</div>';
+
+  var searchHtml = '<input class="ck-search" id="ck-search-input" type="text" placeholder="Search cocktails…" value="' + esc(CK_QUERY) + '">';
+
+  var bySection = {};
+  cocktails.forEach(function(c){ (bySection[c.section] = bySection[c.section] || []).push(c); });
+
+  var listHtml = '';
+  CK_DATA.sections.forEach(function(s){
+    var items = bySection[s.id];
+    if (!items || !items.length) return;
+    listHtml += '<div class="ck-section-title">' + esc(s.name) + '</div>';
+    listHtml += items.map(cardHtml).join('');
+  });
+  if (!listHtml) listHtml = '<div class="ck-empty">No cocktails match.</div>';
+
+  document.getElementById('ck-content').innerHTML = tabsHtml + searchHtml + listHtml;
+  document.getElementById('ck-search-input').addEventListener('input', function(e){ CK_QUERY = e.target.value; render(); });
+  document.getElementById('ck-search-input').focus();
+  document.getElementById('ck-search-input').selectionStart = document.getElementById('ck-search-input').selectionEnd = CK_QUERY.length;
+}
+
+function setFilter(id){ CK_FILTER = id; render(); }
+</script>
+</body>
+</html>

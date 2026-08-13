@@ -1,0 +1,659 @@
+{
+  "restaurant": "Lagotto",
+  "generated": "2026-08-13",
+  "source_note": "Transcribed from Cocktail Specs.pdf",
+  "sections": [
+    { "id": "lagotto", "name": "Lagotto Cocktails" },
+    { "id": "non-alcoholic", "name": "Lagotto Non-Alcoholic" },
+    { "id": "classic", "name": "Classic Cocktails" },
+    { "id": "retired", "name": "Retired Cocktails" }
+  ],
+  "cocktails": [
+    {
+      "id": "martini",
+      "section": "lagotto",
+      "name": "Martini",
+      "glass": "Nick & Norah",
+      "ingredients": [],
+      "method": "All stirred down with ice until ice cold, poured straight into nick & norah.",
+      "garnish": "",
+      "variants": [
+        { "name": "Dry", "ingredients": ["2 ½ oz Martini batch"], "garnish": "Lemon twist" },
+        { "name": "Dirty", "ingredients": ["2 oz Martini batch", "½ oz Olive brine"], "garnish": "Olive" },
+        { "name": "Filthy", "ingredients": ["1 ¾ oz Martini batch", "¾ oz Olive brine"], "garnish": "Olive" },
+        { "name": "Gibson", "ingredients": ["2 ½ oz Martini batch"], "garnish": "Pickled onion" },
+        { "name": "Vodka", "ingredients": ["2 oz Ketel 1 Vodka", "½ oz Dolin dry vermouth"], "garnish": "" }
+      ],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "bello-cello",
+      "section": "lagotto",
+      "name": "Bello Cello",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "2 Slice cucumber",
+        "2 Wedge lime",
+        "½ oz Lime juice",
+        "½ oz Simple syrup",
+        "2 Dash hot sauce",
+        "2 oz Bello Cello pre-batch"
+      ],
+      "method": "Muddle all ingredients in small tin, hard shake with ice, dump contents of tin into rocks glass. Garnish with large diagonal slice of cucumber, salt and pepper.",
+      "garnish": "Large diagonal slice of cucumber, salt and pepper",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "negroni-mora",
+      "section": "lagotto",
+      "name": "Negroni Mora",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "2.5 oz Negroni Mora pre-batch",
+        "1 x Blackberry to muddle",
+        "1 x Blackberry to garnish"
+      ],
+      "method": "Pour pre-batch into mixing glass, muddle with 1 x blackberry, double strain into rocks glass, add ice, garnish with blackberry.",
+      "garnish": "Blackberry",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "fig-spritz",
+      "section": "lagotto",
+      "name": "Fig Spritz",
+      "glass": "Large wine glass",
+      "ingredients": [
+        "1 ½ oz Fig liqueur",
+        "½ oz Lemon juice",
+        "1 oz Soda",
+        "3 oz Prosecco"
+      ],
+      "method": "Pour all ingredients into large wine glass, fill with ice, garnish with lime wedge and straw.",
+      "garnish": "Fig slice or lemon wedge",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "tommy-dibaldo-sour",
+      "section": "lagotto",
+      "name": "Tommy Dibaldo Sour",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "1 ½ oz Tommy Dibaldo pre-batch",
+        "¾ oz Lemon",
+        "¾ oz Simple syrup",
+        "1 oz Egg white"
+      ],
+      "method": "Pour all ingredients except angostura into tin, dry shake, then add ice and wet shake, double strain into nick & norah, garnish with angostura line.",
+      "garnish": "Angostura bitters line",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "pasubio-manhattan",
+      "section": "lagotto",
+      "name": "Pasubio Manhattan",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "2 ½ oz Pasubio Manhattan pre-batch",
+        "2 x dash orange bitters"
+      ],
+      "method": "Pour pre-batch and orange bitters into mixing glass, stir down with ice, strain into cold nick & norah glass. Garnish with cherry on skewer.",
+      "garnish": "Cherry on skewer",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "lucas-espresso-martini",
+      "section": "lagotto",
+      "name": "Luca's Espresso Martini (House)",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "1 oz Espresso",
+        "1 ½ oz Walcher hazelnut liqueur",
+        "½ oz Alpino amaro",
+        "½ oz Simple syrup"
+      ],
+      "method": "Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah, garnish with 2 x coffee beans.",
+      "garnish": "2 x coffee beans",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "crodino-biondo",
+      "section": "non-alcoholic",
+      "name": "Crodino Biondo",
+      "glass": "Wine glass",
+      "ingredients": [
+        "1 bottle Crodino biondo"
+      ],
+      "method": "Pour bottle of crodino into wine glass, add ice and garnish with orange slice.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "house-soda",
+      "section": "non-alcoholic",
+      "name": "House Soda",
+      "glass": "Wine glass",
+      "ingredients": [
+        "1 oz Lime juice",
+        "½ oz Simple syrup",
+        "2 oz Kombucha",
+        "Top soda to top of 'Lagotto'"
+      ],
+      "method": "Build all ingredients into wine glass, top with soda and fill with ice. Garnish with lime wedge.",
+      "garnish": "Lime wedge",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "spiced-jalapeno-mojito",
+      "section": "non-alcoholic",
+      "name": "Spiced Jalapeno Mojito",
+      "glass": "Collins glass",
+      "ingredients": [
+        "½ oz Lime juice",
+        "2 Lime wedge",
+        "6-7 Mint leaves",
+        "¾ oz Simple syrup",
+        "Strangelove lime and jalapeno soda"
+      ],
+      "method": "Muddle all ingredients except soda in a collins glass, add ice then top up with Strangelove soda, stir in glass. Place lime wedge on top, sprinkle wedge with chilli salt. Serve with straw.",
+      "garnish": "Lime wedge and mint sprig, chilli salt",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "bergamot-basil-gimlet",
+      "section": "non-alcoholic",
+      "name": "Bergamot & Basil Gimlet",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "1 ½ oz Banks non-alc spirit",
+        "¾ oz Bergamot simple",
+        "¾ oz Lemon juice",
+        "4 x Basil leaves"
+      ],
+      "method": "Shake all ingredients apart from basil oil, double strain into nick & norah glass. Garnish with 2 x drops of basil oil.",
+      "garnish": "2 x drops basil oil",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "yuzu-collins",
+      "section": "non-alcoholic",
+      "name": "Yuzu Collins",
+      "glass": "Collins glass",
+      "ingredients": [
+        "½ oz Yuzu juice",
+        "½ oz Simple syrup",
+        "Top with Strangelove yuzu soda"
+      ],
+      "method": "Build all ingredients into collins glass, garnish with rosemary sprig, lemon wedge and straw.",
+      "garnish": "Rosemary sprig & lemon wedge",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "chinotto",
+      "section": "non-alcoholic",
+      "name": "Chinotto",
+      "glass": "Collins glass",
+      "ingredients": [
+        "1 can San Pellegrino Chinotto"
+      ],
+      "method": "Pour can of chinotto into collins glass full of ice, garnish with orange slice. Serve with straw.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "americano",
+      "section": "classic",
+      "name": "Americano",
+      "glass": "Collins glass",
+      "ingredients": [
+        "¾ oz Sweet vermouth",
+        "¾ oz Campari",
+        "3 oz Soda"
+      ],
+      "method": "Build in collins glass, fill with ice, top with soda, quick stir, garnish with orange slice.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "amaretto-whiskey-sour",
+      "section": "classic",
+      "name": "Amaretto/Whiskey Sour",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "1 oz Lemon",
+        "1 ½ oz Amaretto/whiskey",
+        "½ oz Simple",
+        "½ oz Egg white"
+      ],
+      "method": "Build ingredients in small tin, put egg white in large tin. Dry shake, then add ice, shake with ice. Double strain into Nick & Norah glass. Garnish with angostura stripe.",
+      "garnish": "Angostura stripe",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "aperol-campari-spritz",
+      "section": "classic",
+      "name": "Aperol/Campari Spritz",
+      "glass": "Wine glass",
+      "ingredients": [
+        "1 ½ oz Aperol/Campari",
+        "2 oz Prosecco",
+        "1 oz Soda"
+      ],
+      "method": "Build in wine glass, fill with ice, garnish with orange slice.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "long-island-ice-tea",
+      "section": "classic",
+      "name": "Long Island Ice Tea",
+      "glass": "Collins glass",
+      "ingredients": [
+        "½ oz Gin",
+        "½ oz Vodka",
+        "½ oz Tequila",
+        "½ oz White rum",
+        "½ oz Cointreau",
+        "¾ oz Lemon juice",
+        "Top with Capi Cola"
+      ],
+      "method": "Build all ingredients into cold collins glass, fill with ice and top with cola, stir and garnish with lemon wedge.",
+      "garnish": "Lemon wedge",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "house-espresso-martini",
+      "section": "classic",
+      "name": "House Espresso Martini",
+      "glass": "Small rocks glass",
+      "ingredients": [
+        "Double espresso",
+        "¾ oz Simple",
+        "½ oz Kahlua",
+        "1 ½ oz Vodka"
+      ],
+      "method": "Pour all ingredients into tin, shake hard, double strain into small rocks glass. Garnish with beans.",
+      "garnish": "2 coffee beans",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "manhattan",
+      "section": "classic",
+      "name": "Manhattan",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "½ oz Sweet vermouth",
+        "2 oz Rye whiskey"
+      ],
+      "method": "Build in mixing glass, stir until cold and slightly diluted. Strain into Nick & Norah glass. Orange twist to garnish.",
+      "garnish": "Orange twist",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "margarita-classic",
+      "section": "classic",
+      "name": "Margarita (Classic)",
+      "glass": "Nick & Norah (salt rim)",
+      "ingredients": [
+        "1 oz Lime juice",
+        "¾ oz Cointreau",
+        "1 ½ oz Tequila"
+      ],
+      "method": "Salt rim of glass and put back into fridge whilst making drink. Build ingredients into small tin, shake with ice. Double strain into prepared Nick & Norah. Add tabasco to make it spicy.",
+      "garnish": "Salt rim",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "tommys",
+      "section": "classic",
+      "name": "Tommy's",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "1 oz Lime juice",
+        "½ oz Agave",
+        "1 ½ oz Tequila"
+      ],
+      "method": "Build into small tin, shake with ice, strain into rocks glass, top with ice. Garnish with lime wedge.",
+      "garnish": "Lime wedge",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "old-fashioned",
+      "section": "classic",
+      "name": "Old Fashioned",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "Bar spoon Simple",
+        "3 dash Angostura",
+        "2 oz Bourbon"
+      ],
+      "method": "Build in rocks glass, fill with ice, quick stir. Garnish with orange twist.",
+      "garnish": "Orange twist",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "bees-knees",
+      "section": "classic",
+      "name": "Bees Knees",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "¾ oz Lemon juice",
+        "¾ oz Honey",
+        "1 ½ oz Gin/Vodka"
+      ],
+      "method": "Build in small tin, shake hard with ice, double strain into Nick & Norah glass (can add strawberries).",
+      "garnish": "Strawberries (optional)",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "boulevardier",
+      "section": "classic",
+      "name": "Boulevardier",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "¾ oz Sweet vermouth",
+        "¾ oz Campari",
+        "¾ oz Bourbon"
+      ],
+      "method": "Build in rocks glass, fill with ice, quick stir, garnish with orange slice.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "french-75",
+      "section": "classic",
+      "name": "French 75",
+      "glass": "Flute",
+      "ingredients": [
+        "½ oz Lemon juice",
+        "½ oz Simple",
+        "1 oz Gin",
+        "Top w/ Prosecco"
+      ],
+      "method": "Pour lemon, simple and gin into tin, short hard shake, double strain into flute, top with prosecco, lemon discard.",
+      "garnish": "",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "gimlet",
+      "section": "classic",
+      "name": "Gimlet",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "1 oz Lime juice",
+        "½ oz Simple",
+        "1 ½ oz Gin"
+      ],
+      "method": "Build all ingredients into small tin, shake with ice, double strain into Nick & Norah glass, garnish with lime wedge.",
+      "garnish": "Lime wedge",
+      "variants": [
+        { "name": "Southside", "note": "Add mint" },
+        { "name": "Eastside", "note": "Add mint and cucumber" },
+        { "name": "Daiquiri", "note": "Use white rum instead of gin" }
+      ],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "negroni",
+      "section": "classic",
+      "name": "Negroni",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "¾ oz Sweet vermouth",
+        "¾ oz Campari",
+        "¾ oz Beefeater"
+      ],
+      "method": "Build into rocks glass, fill with ice, quick stir. Garnish with orange slice.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "negroni-sbagliato",
+      "section": "classic",
+      "name": "Negroni Sbagliato",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "¾ oz Sweet vermouth",
+        "¾ oz Campari",
+        "1 oz Prosecco"
+      ],
+      "method": "Build vermouth and campari into rocks glass, fill with ice, quick stir. Top with prosecco. Garnish with orange slice.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "tom-collins",
+      "section": "classic",
+      "name": "Tom Collins",
+      "glass": "Collins glass",
+      "ingredients": [
+        "¾ oz Lemon",
+        "¾ oz Simple",
+        "1 ½ oz Gin/Vodka",
+        "Top with soda"
+      ],
+      "method": "Build all but soda into small tin, shake with ice, hawthorn strain into collins glass. Add ice, top with soda. Garnish with lemon slice.",
+      "garnish": "Lemon slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "troublemaker",
+      "section": "classic",
+      "name": "Troublemaker",
+      "glass": "Collins glass",
+      "ingredients": [
+        "¾ oz Lemon",
+        "¾ oz Simple",
+        "1 oz Sweet vermouth",
+        "1 oz Gin",
+        "1 Strawberry",
+        "1 Cucumber slice",
+        "Top with soda"
+      ],
+      "method": "Build into small tin, lightly muddle the fruit, shake hard with ice. Hawthorne strain into collins glass, top halfway with soda, add ice. Cucumber coin to garnish.",
+      "garnish": "Cucumber coin",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "mr-meletti",
+      "section": "retired",
+      "name": "Mr Meletti",
+      "glass": "Flute",
+      "ingredients": [
+        "2 Dash Angostura bitters",
+        "½ oz Lemon juice",
+        "½ oz Simple syrup",
+        "1 oz Meletti amaro",
+        "Top with Pippa pet nat"
+      ],
+      "method": "Pour all ingredients apart from pet nat into tin, shake hard with ice, double strain into flute, top up with pet nat.",
+      "garnish": "",
+      "variants": [],
+      "active": false,
+      "image": ""
+    },
+    {
+      "id": "lily-fusilli",
+      "section": "retired",
+      "name": "Lily Fusilli",
+      "glass": "Collins glass",
+      "ingredients": [
+        "¾ oz Lemon juice",
+        "½ oz Simple syrup",
+        "3 Mint leaves",
+        "1 ½ oz Lily Fusilli pre-batch",
+        "Soda"
+      ],
+      "method": "Pour all ingredients except soda and garnish into tin, shake hard, single strain into collins glass, add ice and top up with soda. Stir well and garnish rim with half strawberry and lemon balm sprig.",
+      "garnish": "Half strawberry on rim, sprig of lemon balm",
+      "variants": [],
+      "active": false,
+      "image": ""
+    },
+    {
+      "id": "the-dibaldo-gin-tonic",
+      "section": "retired",
+      "name": "The Dibaldo Gin & Tonic",
+      "glass": "Lagotto wine glass",
+      "ingredients": [
+        "1 oz Dibaldo Nostradamus Gin",
+        "2 oz Strangelove light tonic"
+      ],
+      "method": "Add gin and tonic into Lagotto wine glass, add ice and garnish with lemon.",
+      "garnish": "Lemon slice",
+      "variants": [],
+      "active": false,
+      "image": ""
+    },
+    {
+      "id": "jerez-sour",
+      "section": "retired",
+      "name": "Jerez Sour",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "2 ¼ oz Fiore Di Jerez",
+        "¾ oz Lemon juice",
+        "½ oz Simple syrup",
+        "4 Drops Wonderfoam",
+        "1 dash Angostura"
+      ],
+      "method": "Dry shake all ingredients, then wet shake, double strain into nick and norah. Garnish with line of angostura bitters.",
+      "garnish": "Angostura bitters line",
+      "variants": [],
+      "active": false,
+      "image": ""
+    },
+    {
+      "id": "sicilian-cowboy",
+      "section": "retired",
+      "name": "Sicilian Cowboy",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "3 oz Sicilian Cowboy pre-batch"
+      ],
+      "method": "Pour pre-batch into rocks glass, add ice, stir down and leave for 30 seconds. Then add more ice, garnish with orange slice.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": false,
+      "image": ""
+    },
+    {
+      "id": "tepache-margarita",
+      "section": "retired",
+      "name": "Tepache Margarita",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "3 oz Tepache",
+        "1 oz Lime juice",
+        "½ oz Agave"
+      ],
+      "method": "Shake all ingredients, dump into rocks glass, garnish with lime wedge on rim of glass.",
+      "garnish": "Lime wedge",
+      "variants": [],
+      "active": false,
+      "image": ""
+    },
+    {
+      "id": "the-corleone",
+      "section": "retired",
+      "name": "The Corleone",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "3 dash Orange bitters",
+        "2 ¼ oz Corleone pre-batch"
+      ],
+      "method": "Pour corleone pre-batch into rocks glass, add ice and stir down and leave for 30 seconds. Then add more ice and garnish with a cherry on a metal skewer.",
+      "garnish": "Cherry on metal skewer",
+      "variants": [],
+      "active": false,
+      "image": ""
+    },
+    {
+      "id": "melaquiri",
+      "section": "retired",
+      "name": "Melaquiri",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "2 oz Melaquiri pre-batch",
+        "¾ oz Lime juice",
+        "¾ oz Simple syrup"
+      ],
+      "method": "Pour all ingredients into tin, shake hard with ice, double strain into nick & norah, garnish with lime wedge on rim.",
+      "garnish": "Lime wedge on rim",
+      "variants": [],
+      "active": false,
+      "image": ""
+    },
+    {
+      "id": "negroni-bianco",
+      "section": "retired",
+      "name": "Negroni Bianco",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "3 oz Negroni bianco pre-batch"
+      ],
+      "method": "Pour pre-batch into rocks glass, add ice and stir down and leave for 30 seconds. Then add more ice and garnish with lemon slice.",
+      "garnish": "Lemon slice",
+      "variants": [],
+      "active": false,
+      "image": ""
+    }
+  ]
+}
