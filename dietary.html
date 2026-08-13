@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dietary Matrix</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-food-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-food-180.png">
+<meta name="apple-mobile-web-app-title" content="Dietary">
+<meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+<div id="lagotto-dietary-root">
+<style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+  --rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+  --radius:10px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--parchment); color:var(--ink);
+  font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
+.lg-header{
+  background:var(--ink); color:var(--parchment); padding:40px 20px 32px;
+  position:relative; overflow:hidden;
+}
+.lg-header::before{
+  content:''; position:absolute; inset:0; opacity:.35; pointer-events:none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 10% 20%, var(--gold) 0, transparent 60%),
+    radial-gradient(1px 1px at 25% 65%, var(--parchment-2) 0, transparent 60%),
+    radial-gradient(2px 2px at 40% 15%, var(--gold) 0, transparent 60%),
+    radial-gradient(1px 1px at 60% 80%, var(--parchment-2) 0, transparent 60%),
+    radial-gradient(1.5px 1.5px at 78% 35%, var(--gold) 0, transparent 60%),
+    radial-gradient(1px 1px at 88% 70%, var(--parchment-2) 0, transparent 60%),
+    radial-gradient(1.5px 1.5px at 95% 12%, var(--gold) 0, transparent 60%),
+    radial-gradient(1px 1px at 15% 90%, var(--gold) 0, transparent 60%);
+  background-size:100% 100%;
+}
+.lg-header-inner{position:relative; max-width:920px; margin:0 auto;}
+.lg-logo{
+display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%;
+margin:0;
+/* The supplied logo is black artwork on transparency, which is invisible on the
+   dark header. brightness(0) flattens it to solid black whatever the source
+   colour, then invert(1) flips that to white, leaving the alpha channel alone.
+   Swap this whole filter out for a plain reversed asset if the brand kit has one. */
+filter:brightness(0) invert(1);
+}
+.lg-sub{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--parchment-2); margin:8px 0 0;
+}
+.lg-tools-nav{display:flex; gap:8px; margin-top:24px; flex-wrap:wrap;}
+.lg-tools-nav a{
+  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+  color:var(--parchment); text-decoration:none; border:1px solid rgba(239,231,216,.35);
+  padding:6px 12px; border-radius:20px; text-transform:uppercase; transition:.15s;
+}
+.lg-tools-nav a:hover, .lg-tools-nav a.active{background:var(--rust); border-color:var(--rust);}
+
+.lg-tabs{display:flex; gap:0; margin:28px 0 8px; border-bottom:2px solid var(--parchment-2);}
+.lg-tab{
+  font-family:'Fraunces',serif; font-weight:600; font-size:16px; background:none; border:none;
+  padding:12px 18px 14px; cursor:pointer; color:var(--pending); border-bottom:3px solid transparent;
+  margin-bottom:-2px; transition:.15s;
+}
+.lg-tab.active{color:var(--rust); border-bottom-color:var(--rust);}
+.lg-tab:hover{color:var(--rust-dim);}
+
+.lg-filters{display:flex; gap:8px; flex-wrap:wrap; margin:20px 0;}
+.lg-chip{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.03em;
+  background:var(--parchment); border:1px solid var(--ink); color:var(--ink);
+  padding:7px 14px; border-radius:20px; cursor:pointer; transition:.15s;
+}
+.lg-chip.active{background:var(--ink); color:var(--parchment);}
+.lg-chip:hover{border-color:var(--rust);}
+
+.lg-note-banner{
+  background:var(--parchment-2); border-left:3px solid var(--rust); padding:14px 16px;
+  font-size:13.5px; color:var(--ink-soft); margin:24px 0; border-radius:0 6px 6px 0;
+}
+
+.lg-card{
+  background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius);
+  margin-bottom:10px; overflow:hidden; transition:.15s;
+}
+.lg-card-head{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  padding:16px 18px; cursor:pointer; user-select:none;
+}
+.lg-card-head:hover{background:var(--parchment);}
+.lg-dish-name{font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; flex:1;}
+.lg-dish-price{font-family:'IBM Plex Mono',monospace; color:var(--gold); font-weight:500; white-space:nowrap;}
+.lg-course-idx{
+  font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--rust); margin-right:10px;
+}
+.lg-card-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+.lg-card-body-inner{padding:0 18px 18px;}
+.lg-card.open .lg-card-body{max-height:1000px;}
+.lg-tn{font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin:4px 0 14px;}
+.lg-tn.pending{color:var(--pending); font-style:italic;}
+.lg-source{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--pending); margin-top:-8px; margin-bottom:14px;}
+.lg-chef-note{
+  font-size:13px; background:#FBF5E6; border:1px dashed var(--gold); border-radius:6px;
+  padding:10px 12px; margin-top:10px; color:var(--ink-soft);
+}
+
+.lg-badges{display:flex; flex-wrap:wrap; gap:6px;}
+.lg-badge{
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.02em;
+  padding:4px 9px; border-radius:20px; border:1px solid transparent; white-space:nowrap;
+}
+.lg-badge.contains{background:#F3E1DA; color:var(--rust-dim); border-color:var(--rust);}
+.lg-badge.modifiable{background:#E9EEE4; color:#4B5A3F; border-color:var(--sage);}
+.lg-badge.safe{background:#F2F5EE; color:#7A8570; border-color:#CBD6C0;}
+.lg-badge.pending{background:#EFEAE1; color:var(--pending); border-style:dashed;}
+
+/* The modifiable note is what a staff member actually types into the POS -
+   it needs to read as an instruction, not a caption. Bold, monospace (matches
+   the rest of the site's "this is a code/action" idiom), on its own chip so
+   it can't be mistaken for descriptive text. */
+.lg-pos-note{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-weight:600;
+  font-size:12.5px; letter-spacing:.01em; color:#3F4D35; background:#E9EEE4;
+  border:1px solid var(--sage); border-radius:6px; padding:4px 10px;
+}
+.lg-tn-pos{
+  font-family:'IBM Plex Mono',monospace; font-weight:600; color:#3F4D35;
+}
+
+.lg-dietary-detail{margin-top:14px; display:grid; gap:8px;}
+.lg-dietary-row{display:flex; gap:10px; align-items:flex-start; font-size:13px;}
+.lg-dietary-row .lg-badge{flex-shrink:0; min-width:82px; text-align:center;}
+.lg-dietary-row .txt{color:var(--ink-soft);}
+.lg-dietary-row .txt em{color:var(--pending); font-style:italic;}
+
+.lg-section-title{
+  font-family:'Fraunces',serif; font-size:13px; text-transform:uppercase; letter-spacing:.14em;
+  color:var(--rust); margin:32px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--parchment-2);
+}
+.lg-section-title:first-of-type{margin-top:24px;}
+
+.lg-legend{display:flex; flex-wrap:wrap; gap:14px; margin:18px 0 0; font-size:12px; color:var(--ink-soft);}
+.lg-legend span{display:inline-flex; align-items:center; gap:6px;}
+.lg-dot{width:9px; height:9px; border-radius:50%; display:inline-block;}
+.lg-dot.contains{background:var(--rust);}
+.lg-dot.modifiable{background:var(--sage);}
+.lg-dot.pending{background:var(--pending);}
+
+.lg-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+  background:var(--rust); color:var(--parchment); border:none; padding:11px 20px; border-radius:6px;
+  cursor:pointer; transition:.15s;
+}
+.lg-btn:hover{background:var(--rust-dim);}
+.lg-btn.ghost{background:none; color:var(--ink); border:1px solid var(--ink);}
+.lg-btn.ghost:hover{border-color:var(--rust); color:var(--rust);}
+.lg-btn:disabled{opacity:.4; cursor:not-allowed;}
+
+@media (max-width:560px){
+  .lg-dish-name{font-size:15px;}
+}
+
+#lagotto-dietary-root .lg-diet-picker{display:flex; flex-wrap:wrap; gap:8px; margin:20px 0;}
+#lagotto-dietary-root .lg-summary-row{display:flex; gap:18px; flex-wrap:wrap; margin:18px 0; font-family:'IBM Plex Mono',monospace; font-size:12px;}
+#lagotto-dietary-root .lg-summary-row .n{font-size:20px; font-weight:600; display:block; font-family:'Fraunces',serif;}
+#lagotto-dietary-root .lg-draft-actions{display:flex; gap:10px; margin:16px 0 4px; flex-wrap:wrap;}
+#lagotto-dietary-root .lg-draft-card{border-left:3px solid var(--pending);}
+#lagotto-dietary-root .lg-draft-card.contains{border-left-color:var(--rust);}
+#lagotto-dietary-root .lg-draft-card.modifiable, #lagotto-dietary-root .lg-draft-card.safe{border-left-color:var(--sage);}
+#lagotto-dietary-root .lg-draft-flag{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px; display:block;}
+#lagotto-dietary-root .lg-only-safe-row{display:flex; align-items:center; gap:8px; margin:4px 0 4px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);}
+#lagotto-dietary-root .lg-only-safe-row input{accent-color:var(--rust); width:15px; height:15px;}
+#lagotto-dietary-root table.lg-matrix-table{width:100%; border-collapse:collapse; margin-bottom:6px;}
+#lagotto-dietary-root table.lg-matrix-table td{padding:11px 10px; text-align:left; font-size:14.5px; border-bottom:1px solid var(--parchment-2); transition:.15s;}
+#lagotto-dietary-root tr.lg-cat-row td{font-family:'Fraunces',serif; font-size:12px; text-transform:uppercase; letter-spacing:.12em; color:var(--rust); padding-top:22px; padding-bottom:6px; border-bottom:1px solid var(--parchment-2);}
+#lagotto-dietary-root tr.lg-dish-row.status-modifiable td, #lagotto-dietary-root tr.lg-dish-row.status-safe td{background:#EEF2E8;}
+#lagotto-dietary-root tr.lg-dish-row.status-contains td{opacity:.4;}
+#lagotto-dietary-root tr.lg-note-row td{padding-top:0; padding-bottom:14px; font-size:12.5px; color:var(--ink-soft); border-bottom:1px solid var(--parchment-2);}
+#lagotto-dietary-root tr.lg-note-row.status-modifiable td, #lagotto-dietary-root tr.lg-note-row.status-safe td{background:#EEF2E8;}
+#lagotto-dietary-root tr.lg-note-row.status-contains td{opacity:.4;}
+#lagotto-dietary-root td.dish-name{font-family:'Fraunces',serif; font-weight:600;}
+#lagotto-dietary-root td.price{font-family:'IBM Plex Mono',monospace; color:var(--gold); white-space:nowrap; width:64px;}
+#lagotto-dietary-root td.status-cell{white-space:nowrap; width:120px;}
+</style>
+
+<div class="lg-header">
+  <div class="lg-header-inner">
+    <img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+    <p class="lg-sub">Dietary Matrix</p>
+    <div class="lg-tools-nav">
+      <a href="menu">Menu Reference</a>
+      <a href="dietary" class="active w--current">Dietary Matrix</a>
+      <a href="menu-quiz">Staff Quiz</a>
+    </div>
+  </div>
+</div>
+
+<div class="lg-wrap">
+  <div class="lg-note-banner" id="lg-data-status" style="display: none; border-left-color: var(--sage);"></div>
+  <p style="margin-top:24px; font-size:14px; color:var(--ink-soft);">Select a diet or allergy to see how every current dish is affected, and a draft Chef's Menu adjusted for that guest.</p>
+
+  <div class="lg-diet-picker" id="lg-diet-picker"><button class="lg-chip active" data-key="dairy">Dairy</button><button class="lg-chip" data-key="coeliac">Coeliac</button><button class="lg-chip" data-key="gluten_free">Gluten Free</button><button class="lg-chip" data-key="crustacean">Crustacean</button><button class="lg-chip" data-key="molluscs">Molluscs</button><button class="lg-chip" data-key="sesame">Sesame</button><button class="lg-chip" data-key="peanuts">Peanuts</button><button class="lg-chip" data-key="tree_nuts">Tree Nuts</button><button class="lg-chip" data-key="fructose">Fructose / FODMAP</button><button class="lg-chip" data-key="vegetarian">Vegetarian</button><button class="lg-chip" data-key="vegan">Vegan</button><button class="lg-chip" data-key="pregnant">Pregnancy-safe</button><button class="lg-chip" data-key="onion_garlic">Onion & Garlic</button><button class="lg-chip" data-key="egg">Egg</button></div>
+
+  <div id="lg-diet-results" style="">
+    <div class="lg-summary-row" id="lg-summary">
+      <span><span class="n" style="color:var(--sage)">13</span>can have</span>
+      <span><span class="n" style="color:var(--rust)">11</span>not suitable as served</span>
+      <span><span class="n" style="color:var(--pending)">0</span>ask the kitchen</span></div>
+    <label class="lg-only-safe-row"><input type="checkbox" id="lg-only-safe"> Only show dishes this guest can have</label>
+
+    <div class="lg-section-title">À la carte — by dish</div>
+    <table class="lg-matrix-table"><tbody id="lg-matrix-list"><tr class="lg-cat-row"><td colspan="3">Snacks</td></tr><tr class="lg-dish-row status-safe">
+          <td class="dish-name">Victorian black truffle 3g add-on</td>
+          <td class="price">$15</td>
+          <td class="status-cell"><span class="lg-badge safe">Safe as served</span></td>
+        </tr><tr class="lg-dish-row status-modifiable">
+          <td class="dish-name">1/2 dozen oysters, buttermilk, raspberry mignonette</td>
+          <td class="price">$42</td>
+          <td class="status-cell"><span class="lg-badge modifiable">Modifiable</span></td>
+        </tr>
+        <tr class="lg-note-row status-modifiable"><td colspan="3"><span class="lg-pos-note">No buttermilk</span></td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Sourdough focaccia, whipped vegemite butter</td>
+          <td class="price">$14</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-dish-row status-safe">
+          <td class="dish-name">Shark Bay scallop ceviche, macadamia, wild garlic, trout roe</td>
+          <td class="price">$18ea</td>
+          <td class="status-cell"><span class="lg-badge safe">Safe as served</span></td>
+        </tr><tr class="lg-dish-row status-modifiable">
+          <td class="dish-name">Spring roll tart, bluefin tuna crudo, watermelon, smoked creme fraiche</td>
+          <td class="price">$16ea</td>
+          <td class="status-cell"><span class="lg-badge modifiable">Modifiable</span></td>
+        </tr>
+        <tr class="lg-note-row status-modifiable"><td colspan="3"><span class="lg-pos-note">No crème fraiche</span></td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Brioche, wagyu carpaccio, yuzu, caviar</td>
+          <td class="price">$18ea</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Potato rosti, spanner crab, mussel, fennel, roe</td>
+          <td class="price">$16ea</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-cat-row"><td colspan="3">Entrees</td></tr><tr class="lg-dish-row status-safe">
+          <td class="dish-name">Fremantle confit octopus carpaccio, saffron rouille, frites, espellette</td>
+          <td class="price">$36</td>
+          <td class="status-cell"><span class="lg-badge safe">Safe as served</span></td>
+        </tr><tr class="lg-dish-row status-safe">
+          <td class="dish-name">Bavette tartare, tonnato sauce, puntarelle, bone marrow</td>
+          <td class="price">$36</td>
+          <td class="status-cell"><span class="lg-badge safe">Safe as served</span></td>
+        </tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Stracciatella, fennel jam, rye crumb, mandarin oil</td>
+          <td class="price">$29</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Jerusalem artichokes, hazelnut cream, malt, pecorino, salbush</td>
+          <td class="price">$32</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-cat-row"><td colspan="3">Pasta</td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Conchiglie, tiger prawn, vodka sauce, wood sorrel</td>
+          <td class="price">$45</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Celeriac, comté & porcini lasagne, parmesan foam, black truffle</td>
+          <td class="price">$55</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Tortellini, confit duck leg ragu, parmesan bechamel, saffron oil</td>
+          <td class="price">$42</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-dish-row status-modifiable">
+          <td class="dish-name">Lemon bigoli, Moreton Bay bug, yellow tomato sugo, bottarga, chives</td>
+          <td class="price">$90</td>
+          <td class="status-cell"><span class="lg-badge modifiable">Modifiable</span></td>
+        </tr>
+        <tr class="lg-note-row status-modifiable"><td colspan="3"><span class="lg-pos-note">No butter</span></td></tr><tr class="lg-cat-row"><td colspan="3">Proteins</td></tr><tr class="lg-dish-row status-modifiable">
+          <td class="dish-name">Whole side of Coral Trout 650g, beurre blanc, pippies, silverbeet</td>
+          <td class="price">$200</td>
+          <td class="status-cell"><span class="lg-badge modifiable">Modifiable</span></td>
+        </tr>
+        <tr class="lg-note-row status-modifiable"><td colspan="3"><span class="lg-pos-note">Swap out the beurre blanc — see chef</span></td></tr><tr class="lg-dish-row status-safe">
+          <td class="dish-name">Ryukyu Berkshire 500g pork belly, XO, fermented chilli, citrus</td>
+          <td class="price">$85</td>
+          <td class="status-cell"><span class="lg-badge safe">Safe as served</span></td>
+        </tr><tr class="lg-dish-row status-modifiable">
+          <td class="dish-name">Black Opal wagyu rump, erbette, black garlic ketchup, jus</td>
+          <td class="price">$75</td>
+          <td class="status-cell"><span class="lg-badge modifiable">Modifiable</span></td>
+        </tr>
+        <tr class="lg-note-row status-modifiable"><td colspan="3"><span class="lg-pos-note">No butter on steak</span></td></tr><tr class="lg-dish-row status-modifiable">
+          <td class="dish-name">Robbin's Island grass-fed 300g 9+ wagyu oyster blade, rosemary, jus</td>
+          <td class="price">$125</td>
+          <td class="status-cell"><span class="lg-badge modifiable">Modifiable</span></td>
+        </tr>
+        <tr class="lg-note-row status-modifiable"><td colspan="3"><span class="lg-pos-note">No butter on steak</span></td></tr><tr class="lg-cat-row"><td colspan="3">Sides</td></tr><tr class="lg-dish-row status-safe">
+          <td class="dish-name">Day's Walk Farm leaves, fennel, radish, honey & blood orange</td>
+          <td class="price">$16</td>
+          <td class="status-cell"><span class="lg-badge safe">Safe as served</span></td>
+        </tr><tr class="lg-dish-row status-safe">
+          <td class="dish-name">Mayan twilight potatoes, sage & onion salt, yeast dressing</td>
+          <td class="price">$16</td>
+          <td class="status-cell"><span class="lg-badge safe">Safe as served</span></td>
+        </tr><tr class="lg-cat-row"><td colspan="3">Dessert</td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Strawberry granita, matcha gelato, meringue</td>
+          <td class="price">$16</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Tiramisu, coffee gelato, caramel, hazelnut crunch</td>
+          <td class="price">$20</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr><tr class="lg-dish-row status-contains">
+          <td class="dish-name">Parmesan gelato, cheesecake cream, truffle, caramel, popcorn</td>
+          <td class="price">$25</td>
+          <td class="status-cell"><span class="lg-badge contains">Contains</span></td>
+        </tr>
+        <tr class="lg-note-row status-contains"><td colspan="3">Dairy is integral to this dish as served.</td></tr></tbody></table>
+
+    <div class="lg-section-title">Chef's Menu — draft for this diet</div>
+    <div class="lg-note-banner">
+      Auto-generated from the matrix below. This is a starting point for the kitchen to review,
+      not a finished substitution plan — anything flagged "contains" or "pending" needs a
+      chef decision before it goes to a guest.
+    </div>
+    <div class="lg-draft-actions">
+      <button class="lg-btn" id="lg-copy-draft">Copy draft as text</button>
+      <span id="lg-copy-confirm" style="font-family:&#39;IBM Plex Mono&#39;,monospace; font-size:11px; color:var(--sage); align-self:center; display:none;">Copied — paste into your notes.</span>
+    </div>
+    <div id="lg-chefs-draft"><div class="lg-card draft-card contains" style="border-left:3px solid var(--rust);">
+        <div class="lg-card-body-inner" style="padding:14px 16px;">
+          <span class="lg-draft-flag" style="color:var(--rust);">Course 01 &middot; Contains</span>
+          <div class="lg-dish-name" style="font-size:15px; margin-bottom:4px;">Sourdough focaccia, whipped vegemite butter</div>
+          <p class="lg-tn" style="margin:0;">Needs a kitchen substitution &mdash; dairy is integral to this course as served.</p>
+        </div>
+      </div><div class="lg-card draft-card safe" style="border-left:3px solid var(--sage);">
+        <div class="lg-card-body-inner" style="padding:14px 16px;">
+          <span class="lg-draft-flag" style="color:var(--sage);">Course 02 &middot; Safe as served</span>
+          <div class="lg-dish-name" style="font-size:15px; margin-bottom:4px;">Fremantle confit octopus carpaccio, saffron rouille, frites, espellette</div>
+          <p class="lg-tn" style="margin:0;">No adjustment needed for this course.</p>
+        </div>
+      </div><div class="lg-card draft-card safe" style="border-left:3px solid var(--sage);">
+        <div class="lg-card-body-inner" style="padding:14px 16px;">
+          <span class="lg-draft-flag" style="color:var(--sage);">Course 03 &middot; Safe as served</span>
+          <div class="lg-dish-name" style="font-size:15px; margin-bottom:4px;">Bavette tartare, tonnato sauce, puntarelle, bone marrow</div>
+          <p class="lg-tn" style="margin:0;">No adjustment needed for this course.</p>
+        </div>
+      </div><div class="lg-card draft-card modifiable" style="border-left:3px solid var(--sage);">
+        <div class="lg-card-body-inner" style="padding:14px 16px;">
+          <span class="lg-draft-flag" style="color:var(--sage);">Course 04 &middot; Modifiable</span>
+          <div class="lg-dish-name" style="font-size:15px; margin-bottom:4px;">Black Opal wagyu rump, erbette, black garlic ketchup, jus</div>
+          <p class="lg-tn lg-tn-pos" style="margin:0;">No butter on steak</p>
+        </div>
+      </div><div class="lg-card draft-card safe" style="border-left:3px solid var(--sage);">
+        <div class="lg-card-body-inner" style="padding:14px 16px;">
+          <span class="lg-draft-flag" style="color:var(--sage);">Course 05 &middot; Safe as served</span>
+          <div class="lg-dish-name" style="font-size:15px; margin-bottom:4px;">Day's Walk Farm leaves, fennel, radish, honey & blood orange</div>
+          <p class="lg-tn" style="margin:0;">No adjustment needed for this course.</p>
+        </div>
+      </div><div class="lg-card draft-card safe" style="border-left:3px solid var(--sage);">
+        <div class="lg-card-body-inner" style="padding:14px 16px;">
+          <span class="lg-draft-flag" style="color:var(--sage);">Course 06 &middot; Safe as served</span>
+          <div class="lg-dish-name" style="font-size:15px; margin-bottom:4px;">Mayan twilight potatoes, sage & onion salt, yeast dressing</div>
+          <p class="lg-tn" style="margin:0;">No adjustment needed for this course.</p>
+        </div>
+      </div><div class="lg-card draft-card contains" style="border-left:3px solid var(--rust);">
+        <div class="lg-card-body-inner" style="padding:14px 16px;">
+          <span class="lg-draft-flag" style="color:var(--rust);">Course 07 &middot; Contains</span>
+          <div class="lg-dish-name" style="font-size:15px; margin-bottom:4px;">Tiramisu, coffee gelato, caramel, hazelnut crunch</div>
+          <p class="lg-tn" style="margin:0;">Needs a kitchen substitution &mdash; dairy is integral to this course as served.</p>
+        </div>
+      </div></div>
+  </div>
+
+  <div class="lg-legend">
+    <span><span class="lg-dot contains"></span> Contains — needs a substitution</span>
+    <span><span class="lg-dot modifiable"></span> Modifiable / confirmed safe</span>
+    <span><span class="lg-dot pending"></span> Not yet confirmed — ask the kitchen</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const GIST_URL = "https://gist.githubusercontent.com/davidyuncken-tech/961008059dd9725f75c8fff63fd8c64d/raw/menu_data.json";
+  let DATA = null;
+
+  function showStatus(msg, warn){
+    const el = document.getElementById('lg-data-status');
+    if(!el) return;
+    el.style.display = msg ? 'block' : 'none';
+    el.textContent = msg || '';
+    el.style.borderLeftColor = warn ? 'var(--rust)' : 'var(--sage)';
+  }
+
+  async function loadData(){
+    showStatus('Loading menu data\u2026', false);
+    try{
+      // The ?t= is load-bearing. cache:'no-store' only stops the browser reusing
+      // its own copy - GitHub's CDN still serves a cached response for the same
+      // URL for several minutes, so a publish looks like it did nothing. A unique
+      // URL each load is what actually gets fresh data.
+      const res = await fetch(GIST_URL + '?t=' + Date.now(), {cache:'no-store'});
+      if(!res.ok) throw new Error('Fetch failed: ' + res.status);
+      DATA = await res.json();
+      showStatus(null, false);
+      init();
+    }catch(e){
+      console.error('Lagotto data load failed:', e);
+      showStatus('Couldn\u2019t load the menu data \u2014 check your connection and refresh the page.', true);
+    }
+  }
+
+  function init(){
+  // Archived dishes stay in the data so they can be switched back on
+  // without re-issuing photos or notes. Pages only ever show active ones.
+  // '!== false' so a data file predating the flag still renders.
+  const dishes = DATA.dishes.filter(d => d.active !== false);
+  const byId = Object.fromEntries(dishes.map(d=>[d.id,d]));
+  const picker = document.getElementById('lg-diet-picker');
+  const resultsWrap = document.getElementById('lg-diet-results');
+  const summary = document.getElementById('lg-summary');
+  const matrixList = document.getElementById('lg-matrix-list');
+  const chefsDraft = document.getElementById('lg-chefs-draft');
+
+  picker.innerHTML = DATA.dietary_categories.map(c=>`<button class="lg-chip" data-key="${c.key}">${c.label}</button>`).join('');
+
+  // Staff don't need to see where a dietary note came from - just what it
+  // says. The bracketed citation stays in the Gist for traceability, this
+  // just keeps it off the page.
+  function stripSource(note){
+    return (note || '').replace(/\s*\[source:.*?\]\s*$/i, '').trim();
+  }
+
+  function statusMeta(status){
+    if(status==='contains') return {cls:'contains', label:'Contains'};
+    if(status==='pending') return {cls:'pending', label:'Ask kitchen'};
+    if(status==='safe') return {cls:'safe', label:'Safe as served'};
+    return {cls:'modifiable', label:'Modifiable'};
+  }
+
+  function renderMatrix(key){
+    const label = DATA.dietary_categories.find(c=>c.key===key).label;
+    const counts = {contains:0, modifiable:0, safe:0, pending:0};
+    dishes.forEach(d=>counts[d.dietary[key].status]++);
+
+    summary.innerHTML = `
+      <span><span class="n" style="color:var(--sage)">${counts.modifiable+counts.safe}</span>can have</span>
+      <span><span class="n" style="color:var(--rust)">${counts.contains}</span>not suitable as served</span>
+      <span><span class="n" style="color:var(--pending)">${counts.pending}</span>ask the kitchen</span>`;
+
+    const onlySafe = document.getElementById('lg-only-safe').checked;
+
+    matrixList.innerHTML = DATA.menu_categories.map(cat=>{
+      let inCat = dishes.filter(d=>d.category===cat);
+      if(onlySafe) inCat = inCat.filter(d=>['modifiable','safe'].includes(d.dietary[key].status));
+      if(!inCat.length) return '';
+      const rows = inCat.map(d=>{
+        const info = d.dietary[key];
+        const meta = statusMeta(info.status);
+        const noteText = stripSource(info.note);
+        let noteRow = '';
+        if(meta.cls === 'safe'){
+          // Nothing to check, nothing to do - a caption here is just noise
+          // under a badge that already says everything.
+          noteRow = '';
+        } else if(meta.cls === 'modifiable'){
+          const shown = noteText || 'Can be modified \u2014 ask the kitchen how.';
+          noteRow = `<tr class="lg-note-row status-${meta.cls}"><td colspan="3"><span class="lg-pos-note">${shown}</span></td></tr>`;
+        } else if(meta.cls === 'pending'){
+          noteRow = `<tr class="lg-note-row status-${meta.cls}"><td colspan="3">Not yet reviewed for this diet \u2014 confirm before serving.</td></tr>`;
+        } else { // contains
+          noteRow = `<tr class="lg-note-row status-${meta.cls}"><td colspan="3">${noteText || `${label} is integral to this dish as served.`}</td></tr>`;
+        }
+        return `<tr class="lg-dish-row status-${meta.cls}">
+          <td class="dish-name">${d.name}</td>
+          <td class="price">${d.price}</td>
+          <td class="status-cell"><span class="lg-badge ${meta.cls}">${meta.label}</span></td>
+        </tr>
+        ${noteRow}`;
+      }).join('');
+      return `<tr class="lg-cat-row"><td colspan="3">${cat}</td></tr>${rows}`;
+    }).join('');
+
+    if(onlySafe && matrixList.innerHTML.trim()===''){
+      matrixList.innerHTML = `<tr><td colspan="3" style="padding:20px 10px; color:var(--pending); font-style:italic;">Nothing on the current menu is confirmed safe or modifiable for this diet yet &mdash; check with the kitchen.</td></tr>`;
+    }
+
+    // Chef's menu draft
+    chefsDraft.innerHTML = DATA.chefs_menu.course_order.map((id,i)=>{
+      const d = byId[id];
+      const info = d.dietary[key];
+      const meta = statusMeta(info.status);
+      const noteText = stripSource(info.note);
+      let action;
+      if(info.status==='contains') action = `Needs a kitchen substitution &mdash; ${label.toLowerCase()} is integral to this course as served.`;
+      else if(info.status==='pending') action = `Not yet confirmed for ${label.toLowerCase()} &mdash; check with the kitchen before including as-is.`;
+      else if(info.status==='safe') action = 'No adjustment needed for this course.';
+      else action = noteText || 'Can be modified \u2014 ask the kitchen how.';
+      const actionCls = meta.cls==='modifiable' ? ' lg-tn-pos' : '';
+      return `<div class="lg-card draft-card ${meta.cls}" style="border-left:3px solid var(--${meta.cls==='contains'?'rust':meta.cls==='pending'?'pending':'sage'});">
+        <div class="lg-card-body-inner" style="padding:14px 16px;">
+          <span class="lg-draft-flag" style="color:var(--${meta.cls==='contains'?'rust':meta.cls==='pending'?'pending':'sage'});">Course ${String(i+1).padStart(2,'0')} &middot; ${meta.label}</span>
+          <div class="lg-dish-name" style="font-size:15px; margin-bottom:4px;">${d.name}</div>
+          <p class="lg-tn${actionCls}" style="margin:0;">${action}</p>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  picker.addEventListener('click', e=>{
+    const btn = e.target.closest('.lg-chip'); if(!btn) return;
+    picker.querySelectorAll('.lg-chip').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    resultsWrap.style.display = '';
+    renderMatrix(btn.dataset.key);
+  });
+
+  document.getElementById('lg-only-safe').addEventListener('change', ()=>{
+    const active = picker.querySelector('.lg-chip.active');
+    if(active) renderMatrix(active.dataset.key);
+  });
+
+  document.getElementById('lg-copy-draft').addEventListener('click', ()=>{
+    const active = picker.querySelector('.lg-chip.active');
+    if(!active) return;
+    const label = DATA.dietary_categories.find(c=>c.key===active.dataset.key).label;
+    let text = `LAGOTTO \u2014 Chef's Menu draft for: ${label}\n\n`;
+    DATA.chefs_menu.course_order.forEach((id,i)=>{
+      const d = byId[id];
+      const info = d.dietary[active.dataset.key];
+      const meta = statusMeta(info.status);
+      const action = info.status==='contains'
+        ? `NEEDS SUBSTITUTION \u2014 ${label.toLowerCase()} integral as served.`
+        : info.status==='pending'
+        ? `CONFIRM WITH KITCHEN \u2014 not yet reviewed.`
+        : info.status==='safe'
+        ? 'No adjustment needed.'
+        : (stripSource(info.note) || 'Can be modified \u2014 ask the kitchen how.');
+      text += `${String(i+1).padStart(2,'0')}. ${d.name}\n    [${meta.label}] ${action}\n\n`;
+    });
+    navigator.clipboard.writeText(text).then(()=>{
+      const c = document.getElementById('lg-copy-confirm');
+      c.style.display='inline'; setTimeout(()=>c.style.display='none', 2500);
+    });
+  });
+
+  // default: select first diet
+  picker.querySelector('.lg-chip').click();
+  }
+
+  loadData();
+})();
+</script>
+</div>
+
+</body>
+</html>

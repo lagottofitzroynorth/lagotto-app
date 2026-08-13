@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wine Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-wine-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-wine-180.png">
+<meta name="apple-mobile-web-app-title" content="Wine Quiz">
+<meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+<style>
+#wq,#wq *{box-sizing:border-box;margin:0;padding:0;}
+#wq{font-family:Georgia,serif;max-width:620px;margin:0 auto;padding:2rem 1.25rem;color:#1a1a1a;}
+.wq-screen{display:none !important;}
+.wq-screen.active{display:block !important;}
+#wq .wq-welcome{display:block;margin-bottom:1.5rem;text-align:center;}
+#wq .wq-logo{display:block;font-size:52px;margin-bottom:.75rem;}
+#wq .wq-welcome h1{display:block;font-size:26px;font-weight:400;margin-bottom:.4rem;}
+#wq .wq-welcome .tag{display:block;color:#888;font-size:14px;font-style:italic;}
+#wq .wq-focus{display:block;background:#fff;border:1px solid #e0ddd6;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;}
+#wq .wq-focus h3{display:block;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#999;font-family:sans-serif;margin-bottom:.75rem;}
+#wq .wq-tags{display:flex !important;flex-wrap:wrap;gap:10px;}
+#wq .wq-tag{display:inline-block !important;background:#f5f2eb;border:1.5px solid #d4cfc4;border-radius:20px;padding:8px 16px;font-size:13px;font-family:sans-serif;cursor:pointer;color:#555;width:auto !important;}
+#wq .wq-tag.on{background:#6B3A1F;border-color:#6B3A1F;color:#fff;}
+#wq .wq-start-btn,#wq .wq-next-btn{display:block !important;width:100% !important;padding:14px;background:#6B3A1F;color:#fff;border:none;border-radius:10px;font-size:16px;font-family:Georgia,serif;font-style:italic;cursor:pointer;margin-top:1.25rem;text-align:center;}
+#wq .wq-again{display:inline-block !important;padding:13px 36px;background:#6B3A1F;color:#fff;border:none;border-radius:10px;font-size:16px;font-family:Georgia,serif;font-style:italic;cursor:pointer;}
+#wq .wq-list-link{display:block !important;margin-top:14px;text-align:center;font-size:14px;font-family:sans-serif;color:#8a8a8a;text-decoration:underline;text-underline-offset:3px;}
+#wq .wq-list-link:hover{color:#6B3A1F;}
+#wq .wq-header{display:flex !important;align-items:center;gap:12px;margin-bottom:1.25rem;}
+#wq .wq-pw{flex:1;height:5px;background:#e8e4dc;border-radius:3px;overflow:hidden;}
+#wq .wq-pb{height:100%;background:#6B3A1F;border-radius:3px;transition:width .4s;}
+#wq .wq-ctr{font-size:12px;color:#aaa;font-family:sans-serif;min-width:36px;text-align:right;}
+#wq .wq-streak{display:flex !important;align-items:center;gap:3px;font-size:13px;font-weight:600;color:#c47c00;font-family:sans-serif;}
+#wq .wq-qcard{display:block;background:#fff;border:1px solid #e0ddd6;border-radius:14px;padding:1.5rem;margin-bottom:1rem;}
+#wq .wq-qtype{display:block;font-size:11px;color:#aaa;text-transform:uppercase;letter-spacing:1px;font-family:sans-serif;margin-bottom:8px;}
+#wq .wq-qtext{display:block;font-size:19px;font-weight:400;line-height:1.45;margin-bottom:6px;}
+#wq .wq-qsub{display:block;font-size:16px;color:#555;font-style:italic;line-height:1.4;}
+#wq .wq-opts{display:grid !important;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:0;}
+#wq .wq-opt{display:block !important;width:100% !important;background:#fff;border:1.5px solid #e0ddd6;border-radius:10px;padding:15px 14px;font-size:14px;font-family:sans-serif;color:#1a1a1a;cursor:pointer;text-align:left;line-height:1.4;}
+#wq .wq-opt:hover:not(:disabled){border-color:#6B3A1F;background:#fdf5f0;}
+#wq .wq-opt.correct{border-color:#2d7a45;background:#eaf5ec;color:#1a4a27;}
+#wq .wq-opt.wrong{border-color:#c04a35;background:#fdf0ee;color:#5c1f15;}
+#wq .wq-opt:disabled{cursor:default;}
+#wq .wq-syn{display:none;background:#fff;border:1px solid #e0ddd6;border-radius:14px;overflow:hidden;margin:1rem 0;}
+#wq .wq-syn-top{display:flex !important;padding:1rem 1.25rem;align-items:flex-start;gap:10px;border-bottom:1px solid #f0ece4;}
+#wq .wq-syn-top.correct{background:#eaf5ec;}
+#wq .wq-syn-top.wrong{background:#fdf0ee;}
+#wq .wq-syn-icon{font-size:20px;flex-shrink:0;}
+#wq .wq-syn-vt{display:block;font-size:15px;font-weight:600;font-family:sans-serif;}
+#wq .wq-syn-ans{display:block;font-size:13px;font-family:sans-serif;margin-top:2px;opacity:.8;}
+#wq .wq-syn-body{display:flex !important;flex-direction:column;}
+#wq .wq-syn-img{width:100%;padding:1rem 1.25rem 1.25rem;display:flex !important;align-items:center;justify-content:center;border-top:1px solid #f0ece4;margin-top:0.5rem;}
+#wq .wq-syn-img img{width:100%;max-width:320px;height:420px;object-fit:contain;border-radius:4px;}
+#wq .wq-syn-ph{width:100%;max-width:320px;height:120px;background:#f5f2eb;border-radius:4px;display:flex !important;align-items:center;justify-content:center;color:#ccc;font-size:28px;}
+#wq .wq-syn-txt{width:100%;padding:1.25rem;}
+#wq .wq-syn-name{display:block;font-size:16px;font-weight:400;margin-bottom:2px;}
+#wq .wq-syn-meta{display:block;font-size:12px;color:#999;font-family:sans-serif;margin-bottom:.9rem;}
+#wq .wq-sec{display:block;margin-bottom:.75rem;}
+#wq .wq-sec-lbl{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-family:sans-serif;margin-bottom:4px;}
+#wq .wq-sec-txt{display:block;font-size:13px;font-family:sans-serif;line-height:1.6;color:#333;}
+#wq .wq-notes{display:flex !important;flex-wrap:wrap;gap:6px;margin-top:4px;}
+#wq .wq-note{display:inline-block !important;background:#f5f2eb;border-radius:20px;padding:4px 10px;font-size:12px;font-family:sans-serif;color:#6B3A1F;}
+#wq .wq-next-btn{display:none !important;}
+#wq .wq-next-btn.visible{display:block !important;}
+#wq .wq-res{display:block;text-align:center;padding:2rem 0;}
+#wq .wq-res-score{display:block;font-size:76px;font-weight:400;color:#6B3A1F;line-height:1;}
+#wq .wq-res-label{display:block;font-size:21px;margin:.5rem 0;}
+#wq .wq-res-sub{display:block;color:#888;font-size:14px;font-style:italic;margin-bottom:2rem;}
+#wq .wq-res-stats{display:flex !important;gap:10px;justify-content:center;margin-bottom:2rem;}
+#wq .wq-res-stat{display:block;background:#f5f2eb;border-radius:10px;padding:9px 18px;font-size:13px;font-family:sans-serif;}
+#wq .wq-res-stat span{font-weight:700;color:#6B3A1F;}
+#wq .wq-loading{text-align:center;padding:3rem;font-family:sans-serif;color:#888;font-size:14px;}
+@media(max-width:480px){#wq .wq-opts{grid-template-columns:1fr !important;}}
+</style>
+<div id="wq">
+<div id="wq-welcome" class="wq-screen active">
+  <div class="wq-welcome">
+    <div class="wq-logo">&#127863;</div>
+    <h1>Wine &amp; Cocktail Training</h1>
+    <p class="tag">For the floor. Know what's in the glass.</p>
+  </div>
+  <div class="wq-focus">
+    <h3>Focus areas</h3>
+    <div class="wq-tags">
+      <div class="wq-tag on" data-mode="tasting">Tasting &amp; style</div>
+      <div class="wq-tag on" data-mode="winemaking">Winemaking</div>
+      <div class="wq-tag on" data-mode="region">Region</div>
+      <div class="wq-tag on" data-mode="grape">Grape variety</div>
+      <div class="wq-tag on" data-mode="cocktail">Cocktails</div>
+      <div class="wq-tag" data-mode="btg">By the glass</div>
+    </div>
+  </div>
+  <button class="wq-start-btn" onclick="wqStart()">Start training &#8594;</button>
+  <a href="wine" class="wq-list-link">Browse the full wine list &#8594;</a>
+</div>
+<div id="wq-quiz" class="wq-screen">
+  <div class="wq-header">
+    <div class="wq-pw"><div class="wq-pb" id="wq-bar" style="width:0%"></div></div>
+    <div class="wq-ctr" id="wq-ctr">1/10</div>
+    <div class="wq-streak"><i class="ti ti-flame" style="font-size:14px"></i><span id="wq-s">0</span></div>
+  </div>
+  <div class="wq-qcard">
+    <div class="wq-qtype" id="wq-qtype"></div>
+    <div class="wq-qtext" id="wq-qtext"></div>
+    <div class="wq-qsub" id="wq-qsub"></div>
+  </div>
+  <div class="wq-opts" id="wq-opts"></div>
+  <div class="wq-syn" id="wq-syn"></div>
+  <button class="wq-next-btn" id="wq-next" onclick="wqNext()">Continue &#8594;</button>
+</div>
+<div id="wq-results" class="wq-screen">
+  <div class="wq-res">
+    <div id="wq-re" style="font-size:52px;margin-bottom:1rem;"></div>
+    <div class="wq-res-score" id="wq-rs"></div>
+    <div class="wq-res-label" id="wq-rl"></div>
+    <div class="wq-res-sub" id="wq-rsub"></div>
+    <div class="wq-res-stats">
+      <div class="wq-res-stat">Correct <span id="wq-rp"></span></div>
+      <div class="wq-res-stat">Best streak <span id="wq-rstr"></span></div>
+    </div>
+    <button class="wq-again" onclick="wqReset()">Play again</button>
+    <a href="wine" class="wq-list-link">Study the full wine list &#8594;</a>
+  </div>
+</div>
+</div>
+<script>
+var WINES, COCKTAILS, ALL_NOTES, ALL_CTASTING, REGIONS, STYLES, _origWINES;
+var modes, qs, cur, score, streak, maxStreak, answered;
+
+fetch('https://gist.githubusercontent.com/davidyuncken-tech/cd3af55a9e99108f8a606a09fa0e8025/raw/wine_quiz_data.json')
+  .then(function(r){ return r.json(); })
+  .then(function(data){ wqInit(data); })
+  .catch(function(){ document.getElementById('wq').innerHTML = '<div class="wq-loading">Failed to load quiz data. Please refresh.</div>'; });
+
+function wqInit(data) {
+  // Anything switched off in the Wine Cellar keeps its record in the data but
+  // must not be quizzed on - staff would be learning a bottle that is not on
+  // the floor. Absent "active" means on, so older data still works untouched.
+  WINES = data.wines.filter(function(w){ return w.active !== false; });
+  COCKTAILS = (data.cocktails || []).filter(function(c){ return c.active !== false; });
+  ALL_NOTES = [];
+  WINES.forEach(function(w){ w.tastingNotes.forEach(function(n){ if(ALL_NOTES.indexOf(n) < 0) ALL_NOTES.push(n); }); });
+  ALL_CTASTING = [];
+  COCKTAILS.forEach(function(c){ c.tastingNotes.forEach(function(n){ if(ALL_CTASTING.indexOf(n) < 0) ALL_CTASTING.push(n); }); });
+  // Separate spirits/aperitifs from wines for quiz questions
+  var QUIZ_WINES = WINES.filter(function(w){ return !w.isSpirit; });
+  _origWINES = WINES;
+  WINES = QUIZ_WINES;
+  REGIONS = [];
+  WINES.forEach(function(w){ if(REGIONS.indexOf(w.region) < 0) REGIONS.push(w.region); });
+  STYLES = [];
+  WINES.forEach(function(w){ if(STYLES.indexOf(w.style) < 0) STYLES.push(w.style); });
+  modes = ["tasting","winemaking","region","grape","cocktail"];
+  var btgCount = WINES.filter(function(w){ return w.btg; }).length;
+  console.log("Quiz loaded. BTG wines:", btgCount, "Total wines:", WINES.length);
+  document.querySelectorAll(".wq-tag").forEach(function(t){
+    t.addEventListener("click", function(){
+      var m = t.getAttribute("data-mode");
+      var i = modes.indexOf(m);
+      if(m === "btg"){
+        // BTG is exclusive - toggle it on/off, deselect others when on
+        if(i > -1){
+          if(modes.length > 1){ modes.splice(i,1); t.classList.remove("on"); }
+        } else {
+          modes = ["btg"];
+          document.querySelectorAll(".wq-tag").forEach(function(ot){ ot.classList.remove("on"); });
+          t.classList.add("on");
+        }
+      } else {
+        var btgIdx = modes.indexOf("btg");
+        if(btgIdx > -1){
+          modes.splice(btgIdx,1);
+          document.querySelector(".wq-tag[data-mode='btg']").classList.remove("on");
+        }
+        if(i > -1){ if(modes.length > 1){ modes.splice(i,1); t.classList.remove("on"); } }
+        else { modes.push(m); t.classList.add("on"); }
+      }
+    });
+  });
+}
+
+function sh(a){ return a.slice().sort(function(){ return Math.random() - .5; }); }
+function pk(a,n){ return sh(a).slice(0,n); }
+function rnd(a){ return a[Math.floor(Math.random() * a.length)]; }
+
+function mkTastingQ(){
+  var w = rnd(WINES);
+  var type = rnd(["notes","style"]);
+  if(type === "notes"){
+    var three = sh(w.tastingNotes).slice(0,3).join(", ");
+    var other = ALL_NOTES.filter(function(n){ return w.tastingNotes.indexOf(n) < 0; });
+    return { typeLabel:"Tasting notes", question:"Which THREE notes describe this wine?", subtext:w.name + " -- " + w.grape + " (" + w.region + ")", correct:three, options:sh([three, pk(other,3).join(", "), pk(other,3).join(", "), pk(other,3).join(", ")]), answer:w.name + " shows: " + w.tastingNotes.join(", ") + ".", wine:w, isCocktail:false };
+  } else if(type === "style"){
+    var STYLE_MAP = {
+      "Sparkling": ["Sparkling -- traditional method with fine bubbles and toasty lees","Sparkling -- fresh and fruit-forward, tank method"],
+      "White - Bright, Mineral": ["Bright and mineral white with high natural acidity","Unoaked -- pure fruit expression, stainless steel only"],
+      "White - Medium Weight": ["Medium-weight white with creamy texture from lees ageing","Aged on lees (batonnage) -- round texture, creamy finish"],
+      "White - Full, Textural": ["Full and textural white with waxy, nutty complexity","Extended oak ageing -- structure and secondary flavour"],
+      "Orange": ["Orange wine -- skin-contact with tannin grip and amber colour"],
+      "Rose / Chilled Red": ["Chilled red or rose -- made for the table, not the cellar","Light and refreshing -- serve slightly chilled"],
+      "Red - Light": ["Light-bodied red with silky tannin and fresh red fruit","Light and refreshing -- serve slightly chilled"],
+      "Red - A Little Heavier": ["Medium-bodied red with earthy complexity and firm tannin","Biodynamic farming -- low intervention, indigenous yeasts"],
+      "Red - Medium Weight": ["Medium-bodied red with earthy complexity and firm tannin","Volcanic mineral tension from high-altitude or ash soils"],
+      "Red - Full, Powerful": ["Full-bodied red with powerful structure and long finish","Appassimento -- grapes dried before fermentation, concentrated","Extended oak ageing -- structure and secondary flavour"]
+    };
+    var ALL_DESCS = [
+      "Light-bodied red with silky tannin and fresh red fruit",
+      "Medium-bodied red with earthy complexity and firm tannin",
+      "Full-bodied red with powerful structure and long finish",
+      "Light and refreshing -- serve slightly chilled",
+      "Bright and mineral white with high natural acidity",
+      "Medium-weight white with creamy texture from lees ageing",
+      "Full and textural white with waxy, nutty complexity",
+      "Orange wine -- skin-contact with tannin grip and amber colour",
+      "Sparkling -- traditional method with fine bubbles and toasty lees",
+      "Sparkling -- fresh and fruit-forward, tank method",
+      "Chilled red or rose -- made for the table, not the cellar",
+      "Volcanic mineral tension from high-altitude or ash soils",
+      "Biodynamic farming -- low intervention, indigenous yeasts",
+      "New World expression of an Italian variety",
+      "Extended oak ageing -- structure and secondary flavour",
+      "Unoaked -- pure fruit expression, stainless steel only",
+      "Aged on lees (batonnage) -- round texture, creamy finish",
+      "Appassimento -- grapes dried before fermentation, concentrated"
+    ];
+    var styleKey = w.style.replace(/\s*--\s*/g,"-").replace(/[,\s]+/g," ").trim();
+    var matchingDescs = STYLE_MAP[styleKey] || STYLE_MAP[Object.keys(STYLE_MAP).find(function(k){ return w.style.indexOf(k.split("-")[0].trim()) > -1; })] || ALL_DESCS.slice(0,3);
+    var correct = rnd(matchingDescs);
+    var wrong = pk(ALL_DESCS.filter(function(d){ return matchingDescs.indexOf(d) < 0; }), 3);
+    return { typeLabel:"Style & character", question:"How would you describe " + w.name + " to a guest?", subtext:w.name + " -- " + w.grape + " (" + w.region + ")", correct:correct, options:sh([correct].concat(wrong)), answer:w.name + ": " + w.tastingNotes.slice(0,3).join(", ") + ". " + w.winemaking, wine:w, isCocktail:false };
+  }
+}
+function mkWinemakingQ(){
+  var w = rnd(WINES);
+  var correct = w.winemaking;
+  var others = WINES.filter(function(x){ return x.name !== w.name; });
+  var wrong = pk(others, 3).map(function(x){ return x.winemaking; });
+  return { typeLabel:"Winemaking method", question:"How is " + w.name + " made?", subtext:w.region + " -- " + w.grape, correct:correct, options:sh([correct].concat(wrong)), answer:correct, wine:w, isCocktail:false };
+}
+function mkRegionQ(){
+  var w = rnd(WINES);
+  var opts = sh([w.region].concat(pk(REGIONS.filter(function(r){ return r !== w.region; }), 3)));
+  return { typeLabel:"Region", question:"Where is this wine from?", subtext:w.name, correct:w.region, options:opts, answer:w.name + " is from " + w.region + ".", wine:w, isCocktail:false };
+}
+function mkGrapeQ(){
+  var all = [];
+  WINES.forEach(function(w){ if(all.indexOf(w.grape) < 0) all.push(w.grape); });
+  var w = rnd(WINES);
+  var opts = sh([w.grape].concat(pk(all.filter(function(g){ return g !== w.grape; }), 3)));
+  return { typeLabel:"Grape variety", question:"What grape is this wine made from?", subtext:w.name + " -- " + w.region, correct:w.grape, options:opts, answer:w.name + " is made from " + w.grape + ".", wine:w, isCocktail:false };
+}
+function mkCocktailQ(){
+  var type = rnd(["ingredients","tasting"]);
+  if(type === "ingredients"){
+    var c = rnd(COCKTAILS);
+    var opts = sh([c.ingredients].concat(pk(COCKTAILS.map(function(x){ return x.ingredients; }).filter(function(i){ return i !== c.ingredients; }), 3)));
+    return { typeLabel:"Cocktail ingredients", question:"What is in the " + c.name + "?", subtext:"", correct:c.ingredients, options:opts, answer:"The " + c.name + ": " + c.ingredients + ".", cocktail:c, isCocktail:true };
+  } else {
+    var c = rnd(COCKTAILS);
+    var correct = rnd(c.tastingNotes);
+    var wrong = pk(ALL_CTASTING.filter(function(n){ return c.tastingNotes.indexOf(n) < 0; }), 3);
+    return { typeLabel:"Cocktail character", question:"Which best describes the flavour profile of the " + c.name + "?", subtext:"", correct:correct, options:sh([correct].concat(wrong)), answer:"The " + c.name + ": " + c.tastingNotes.join(", ") + ".", cocktail:c, isCocktail:true };
+  }
+}
+function mkBtgQ(){
+  var BTG_WINES = _origWINES.filter(function(w){ return w.btg && !w.isSpirit; });
+  var BTG_COCKTAILS = COCKTAILS.filter(function(c){ return c.btg; });
+  var item = rnd(BTG_WINES);
+  if(item.isCocktailItem){ return mkBtgQ(); }
+  var w = item;
+  var COR_WINES = BTG_WINES.filter(function(bw){ return bw.tastingNotes && bw.tastingNotes.indexOf("Coravin pour") > -1; });
+  if(COR_WINES.length && Math.random() < 0.15){
+    var cw = rnd(COR_WINES);
+    var opts = sh(["Coravin -- extracts wine through the cork without opening the bottle","Decanted hours in advance for the whole service","Kept in a wine fridge after opening, discarded next day","Served from a half-bottle format only"]);
+    return { typeLabel:"By the glass -- service", question:"How is " + cw.name + " served by the glass?", subtext:cw.name + " -- " + cw.grape + " (" + cw.region + ")", correct:"Coravin -- extracts wine through the cork without opening the bottle", options:opts, answer:cw.name + " is poured via Coravin -- a needle through the cork and inert gas means the bottle never opens, so the rest stays perfectly preserved. This lets us pour bottles by the glass that would otherwise only be sold whole.", wine:cw, isCocktail:false };
+  }
+  var type = rnd(["tasting","region","grape"]);
+  var BTG_NOTES = [];
+  BTG_WINES.forEach(function(bw){ bw.tastingNotes.forEach(function(n){ if(BTG_NOTES.indexOf(n) < 0) BTG_NOTES.push(n); }); });
+  if(type === "tasting"){
+    var three = sh(w.tastingNotes).slice(0,3).join(", ");
+    var other = BTG_NOTES.filter(function(n){ return w.tastingNotes.indexOf(n) < 0; });
+    if(other.length < 9) other = ALL_NOTES.filter(function(n){ return w.tastingNotes.indexOf(n) < 0; });
+    return { typeLabel:"By the glass -- tasting", question:"Which THREE notes describe this glass?", subtext:w.name + " -- " + w.grape + " (" + w.region + ")", correct:three, options:sh([three, pk(other,3).join(", "), pk(other,3).join(", "), pk(other,3).join(", ")]), answer:w.name + " shows: " + w.tastingNotes.join(", ") + ".", wine:w, isCocktail:false };
+  } else if(type === "region"){
+    var opts = sh([w.region].concat(pk(REGIONS.filter(function(r){ return r !== w.region; }), 3)));
+    return { typeLabel:"By the glass -- region", question:"Where is this by-the-glass wine from?", subtext:w.name, correct:w.region, options:opts, answer:w.name + " is from " + w.region + ".", wine:w, isCocktail:false };
+  } else {
+    var allGrapes = [];
+    WINES.forEach(function(ww){ if(allGrapes.indexOf(ww.grape) < 0) allGrapes.push(ww.grape); });
+    var opts = sh([w.grape].concat(pk(allGrapes.filter(function(g){ return g !== w.grape; }), 3)));
+    return { typeLabel:"By the glass -- grape", question:"What grape is this by-the-glass wine?", subtext:w.name + " -- " + w.region, correct:w.grape, options:opts, answer:w.name + " is made from " + w.grape + ".", wine:w, isCocktail:false };
+  }
+}
+
+function mkPartyQ(){
+  var PARTY_WINES = WINES.filter(function(w){ return w.party; });
+  if(!PARTY_WINES.length) return mkRegionQ();
+  var w = rnd(PARTY_WINES);
+  var type = rnd(["region","tasting"]);
+  if(type === "region"){
+    var opts = sh([w.region].concat(pk(REGIONS.filter(function(r){ return r !== w.region; }), 3)));
+    return { typeLabel:"Party bottles", question:"Where is this party bottle from?", subtext:w.name + " (" + (w.partySize||750) + "ml)", correct:w.region, options:opts, answer:w.name + " is from " + w.region + ".", wine:w, isCocktail:false };
+  } else {
+    var three = sh(w.tastingNotes).slice(0,3).join(", ");
+    var other = ALL_NOTES.filter(function(n){ return w.tastingNotes.indexOf(n) < 0; });
+    return { typeLabel:"Party bottles", question:"Which notes describe this party bottle?", subtext:w.name + " (" + (w.partySize||750) + "ml) -- " + w.grape, correct:three, options:sh([three, pk(other,3).join(", "), pk(other,3).join(", "), pk(other,3).join(", ")]), answer:w.name + " shows: " + w.tastingNotes.join(", ") + ".", wine:w, isCocktail:false };
+  }
+}
+var MAKERS = { tasting:[mkTastingQ,mkPartyQ], winemaking:[mkWinemakingQ], region:[mkRegionQ], grape:[mkGrapeQ], cocktail:[mkCocktailQ], btg:[mkBtgQ] };
+
+function buildQs(n){
+  var out = [];
+  for(var i = 0; i < n; i++){ var m = rnd(modes); out.push(rnd(MAKERS[m])()); }
+  return out;
+}
+function showScreen(id){
+  document.querySelectorAll(".wq-screen").forEach(function(s){ s.classList.remove("active"); });
+  document.getElementById(id).classList.add("active");
+}
+function wqStart(){
+  if(!WINES){ alert("Quiz data still loading, please wait a moment."); return; }
+  if(modes.length === 1 && modes[0] === "btg"){
+    var btgWines = WINES.filter(function(w){ return w.btg; });
+    if(btgWines.length === 0){
+      alert("By the glass data not loaded yet. Please refresh the page.");
+      return;
+    }
+  }
+  qs = buildQs(10); cur = 0; score = 0; streak = 0; maxStreak = 0; answered = false;
+  showScreen("wq-quiz"); renderQ();
+}
+window.wqStart = wqStart;
+function renderQ(){
+  var q = qs[cur];
+  document.getElementById("wq-ctr").textContent = (cur+1) + "/10";
+  document.getElementById("wq-bar").style.width = (cur/10*100) + "%";
+  document.getElementById("wq-s").textContent = streak;
+  document.getElementById("wq-qtype").textContent = q.typeLabel;
+  document.getElementById("wq-qtext").textContent = q.question;
+  document.getElementById("wq-qsub").textContent = q.subtext || "";
+  var opts = document.getElementById("wq-opts");
+  opts.innerHTML = "";
+  q.options.forEach(function(opt){
+    var b = document.createElement("button");
+    b.className = "wq-opt"; b.textContent = opt;
+    b.addEventListener("click", function(){ handleAnswer(opt, b, q); });
+    opts.appendChild(b);
+  });
+  document.getElementById("wq-syn").style.display = "none";
+  document.getElementById("wq-syn").innerHTML = "";
+  document.getElementById("wq-next").classList.remove("visible");
+  answered = false;
+}
+function handleAnswer(chosen, btn, q){
+  if(answered) return;
+  answered = true;
+  document.querySelectorAll(".wq-opt").forEach(function(b){ b.disabled = true; });
+  var ok = chosen === q.correct;
+  if(ok){ btn.classList.add("correct"); score++; streak++; if(streak > maxStreak) maxStreak = streak; }
+  else { btn.classList.add("wrong"); streak = 0; document.querySelectorAll(".wq-opt").forEach(function(b){ if(b.textContent === q.correct) b.classList.add("correct"); }); }
+  document.getElementById("wq-s").textContent = streak;
+  showSyn(q, ok);
+  document.getElementById("wq-next").classList.add("visible");
+}
+function showSyn(q, ok){
+  var syn = document.getElementById("wq-syn");
+  syn.style.display = "block";
+  var topCls = ok ? "correct" : "wrong";
+  var icon = ok ? "&#10003;" : "&#10007;";
+  if(q.isCocktail){
+    var c = q.cocktail;
+    syn.innerHTML = '<div class="wq-syn-top ' + topCls + '"><div class="wq-syn-icon">' + icon + '</div><div><div class="wq-syn-vt">' + (ok ? "Correct!" : "Not quite") + '</div><div class="wq-syn-ans">' + q.answer + '</div></div></div><div class="wq-syn-body"><div class="wq-syn-txt"><div class="wq-syn-name">' + c.name + '</div><div class="wq-syn-meta">Cocktail</div><div class="wq-sec"><div class="wq-sec-lbl">Ingredients</div><div class="wq-sec-txt">' + c.ingredients + '</div></div><div class="wq-sec"><div class="wq-sec-lbl">Tasting notes</div><div class="wq-notes">' + c.tastingNotes.map(function(n){ return '<span class="wq-note">' + n + '</span>'; }).join("") + '</div></div></div></div>';
+    return;
+  }
+  var w = q.wine;
+  var imgHtml = w.img ? '<img src="' + w.img + '" alt="' + w.name + '">' : '<div class="wq-syn-ph">&#127863;</div>';
+  var aboutHtml = w.convNote ? '<div class="wq-sec"><div class="wq-sec-lbl">About this wine</div><div class="wq-sec-txt" style="font-style:italic;color:#555;">' + w.convNote + '</div></div>' : '';
+  syn.innerHTML = '<div class="wq-syn-top ' + topCls + '"><div class="wq-syn-icon">' + icon + '</div><div><div class="wq-syn-vt">' + (ok ? "Correct!" : "Not quite") + '</div><div class="wq-syn-ans">' + q.answer + '</div></div></div><div class="wq-syn-body"><div class="wq-syn-txt"><div class="wq-syn-name">' + w.name + '</div><div class="wq-syn-meta">' + w.vintage + ' - ' + w.region + ' - ' + w.grape + '</div>' + aboutHtml + '<div class="wq-sec"><div class="wq-sec-lbl">Tasting notes</div><div class="wq-notes">' + w.tastingNotes.map(function(n){ return '<span class="wq-note">' + n + '</span>'; }).join("") + '</div></div><div class="wq-sec"><div class="wq-sec-lbl">Winemaking</div><div class="wq-sec-txt">' + w.winemaking + '</div></div></div><div class="wq-syn-img">' + imgHtml + '</div></div>';
+}
+function wqNext(){ cur++; if(cur >= qs.length){ showResults(); return; } renderQ(); }
+window.wqNext = wqNext;
+function showResults(){
+  showScreen("wq-results");
+  var pct = Math.round(score/10*100);
+  document.getElementById("wq-rs").textContent = score + "/10";
+  document.getElementById("wq-rp").textContent = pct + "%";
+  document.getElementById("wq-rstr").textContent = maxStreak;
+  document.getElementById("wq-bar").style.width = "100%";
+  var e = "\uD83E\uDD47", l = "Outstanding!", s = "Ready for the floor.";
+  if(pct < 50){ e = "\uD83D\uDCDA"; l = "Keep studying!"; s = "Back to the list -- you've got this."; }
+  else if(pct < 70){ e = "\uD83D\uDC4D"; l = "Good effort!"; s = "Getting there -- keep practising."; }
+  else if(pct < 90){ e = "\uD83C\uDF1F"; l = "Great work!"; s = "Nearly mastered it."; }
+  document.getElementById("wq-re").textContent = e;
+  document.getElementById("wq-rl").textContent = l;
+  document.getElementById("wq-rsub").textContent = s;
+}
+function wqReset(){ showScreen("wq-welcome"); }
+window.wqReset = wqReset;
+</script>
+
+</body>
+</html>

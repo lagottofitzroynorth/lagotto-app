@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wine Cellar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-wine-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-wine-180.png">
+<meta name="apple-mobile-web-app-title" content="Wine Cellar">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script>
+  window.LAGOTTO_WINE_PUBLISH_URL = 'https://script.google.com/macros/s/AKfycbxhIRN2fespa70_MLhXHr5evjTo33f3S4buHYSZxaEBfEJwBW9flgU9k21Rqh9SSxSj-g/exec';
+  window.LAGOTTO_WINE_PUBLISH_SECRET = 'lagotto-wine-9f3k2p8xqz-2026';
+</script>
+</head>
+<body>
+<div id="lagotto-wine-boh-root">
+<style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+#lagotto-wine-boh-root{
+--ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+--rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+--radius:10px;
+background:var(--parchment); color:var(--ink);
+font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
+-webkit-font-smoothing:antialiased;
+}
+#lagotto-wine-boh-root *{box-sizing:border-box;}
+#lagotto-wine-boh-root .lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
+#lagotto-wine-boh-root .lg-header{
+background:var(--ink); color:var(--parchment); padding:34px 20px 26px; margin-bottom:28px;
+position:relative; overflow:hidden;
+}
+#lagotto-wine-boh-root .lg-header-inner{position:relative; max-width:920px; margin:0 auto;}
+#lagotto-wine-boh-root .lg-logo{
+display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%; margin:0;
+filter:brightness(0) invert(1);
+}
+#lagotto-wine-boh-root .lg-sub{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.18em;
+text-transform:uppercase; color:var(--parchment-2); margin:10px 0 0;
+}
+#lagotto-wine-boh-root .lg-tools-nav{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;}
+#lagotto-wine-boh-root .lg-tools-nav a{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em;
+text-transform:uppercase; text-decoration:none; color:var(--parchment);
+border:1px solid rgba(239,231,216,.35); border-radius:999px; padding:7px 15px;
+}
+#lagotto-wine-boh-root .lg-tools-nav a.active{background:var(--rust); border-color:var(--rust);}
+#lagotto-wine-boh-root .lg-bar{
+display:flex; align-items:center; justify-content:space-between; gap:16px;
+flex-wrap:wrap; margin-bottom:16px;
+}
+#lagotto-wine-boh-root .lg-count{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-soft);}
+#lagotto-wine-boh-root .lg-filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+#lagotto-wine-boh-root .lg-chip{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em;
+background:transparent; color:var(--ink); border:1px solid var(--parchment-2);
+border-radius:999px; padding:6px 14px; cursor:pointer;
+}
+#lagotto-wine-boh-root .lg-chip.active{background:var(--ink); color:var(--parchment); border-color:var(--ink);}
+#lagotto-wine-boh-root .lg-tabs{display:flex; gap:8px; margin-bottom:16px;}
+#lagotto-wine-boh-root .lg-tab{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em;
+text-transform:uppercase; background:transparent; color:var(--pending);
+border:none; border-bottom:2px solid transparent; padding:6px 2px; cursor:pointer;
+margin-right:14px;
+}
+#lagotto-wine-boh-root .lg-tab.active{color:var(--ink); border-bottom-color:var(--rust);}
+#lagotto-wine-boh-root .lg-btn{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em;
+text-transform:uppercase; background:var(--rust); color:var(--parchment);
+border:none; border-radius:var(--radius); padding:10px 18px; cursor:pointer;
+}
+#lagotto-wine-boh-root .lg-btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--parchment-2);}
+#lagotto-wine-boh-root .lg-btn[disabled]{opacity:.5; cursor:default;}
+#lagotto-wine-boh-root .lg-row{
+display:flex; align-items:center; gap:14px; padding:12px 0;
+border-bottom:1px solid var(--parchment-2); cursor:pointer;
+}
+#lagotto-wine-boh-root .lg-row.off{opacity:.5;}
+#lagotto-wine-boh-root .lg-thumb{
+width:44px; height:44px; border-radius:6px; object-fit:contain; flex-shrink:0;
+background:var(--parchment-2);
+}
+#lagotto-wine-boh-root .lg-info{flex:1; min-width:0;}
+#lagotto-wine-boh-root .lg-name{font-family:'Fraunces',serif; font-size:15px; font-weight:600;}
+#lagotto-wine-boh-root .lg-meta{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pending); margin-top:2px;}
+#lagotto-wine-boh-root .lg-flag{color:var(--rust);}
+#lagotto-wine-boh-root .lg-toggle{
+width:44px; height:26px; border-radius:13px; background:var(--pending);
+border:none; position:relative; cursor:pointer; flex-shrink:0; padding:0;
+}
+#lagotto-wine-boh-root .lg-toggle.on{background:var(--sage);}
+#lagotto-wine-boh-root .lg-knob{
+position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%;
+background:var(--parchment); transition:left .15s;
+}
+#lagotto-wine-boh-root .lg-toggle.on .lg-knob{left:21px;}
+#lagotto-wine-boh-root .lg-cat{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em;
+text-transform:uppercase; color:var(--rust); margin:26px 0 6px;
+border-bottom:1px solid var(--parchment-2); padding-bottom:6px;
+}
+#lagotto-wine-boh-root .lg-cat.lg-archive{
+color:var(--pending); margin-top:44px; padding-top:22px;
+border-top:2px solid var(--parchment-2); border-bottom-color:transparent;
+}
+#lagotto-wine-boh-root .lg-home{color:var(--rust); text-transform:uppercase; letter-spacing:.04em;}
+#lagotto-wine-boh-root .lg-panel{
+background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius);
+padding:16px; margin-top:22px;
+}
+#lagotto-wine-boh-root .lg-panel h3{font-family:'Fraunces',serif; font-size:16px; margin:0 0 8px;}
+#lagotto-wine-boh-root .lg-panel p{font-size:14px; margin:0 0 12px; color:var(--ink-soft);}
+#lagotto-wine-boh-root .lg-panel textarea{
+width:100%; height:150px; font-family:'IBM Plex Mono',monospace; font-size:11px;
+border:1px solid var(--parchment-2); border-radius:6px; padding:10px; resize:vertical;
+background:var(--parchment); color:var(--ink);
+}
+#lagotto-wine-boh-root .lg-status{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--sage); margin-left:10px;}
+#lagotto-wine-boh-root .lg-note{
+background:#F3EFE4; border-left:3px solid var(--pending); padding:10px 14px;
+border-radius:0 6px 6px 0; font-size:13px; color:var(--ink-soft); margin-bottom:14px;
+}
+#lagotto-wine-boh-root .lg-warn{
+background:#F6E4DE; border-left:3px solid var(--rust); padding:12px 14px;
+border-radius:0 6px 6px 0; font-size:14px; margin-bottom:18px;
+}
+#lagotto-wine-boh-root .lg-warn button{
+font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em;
+text-transform:uppercase; background:var(--rust); color:var(--parchment);
+border:none; border-radius:999px; padding:5px 12px; cursor:pointer; margin-top:8px;
+}
+#lagotto-wine-boh-root .lg-edit{
+background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius);
+padding:16px; margin:0 0 14px 58px;
+}
+#lagotto-wine-boh-root .lg-edit label{
+display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+letter-spacing:.1em; text-transform:uppercase; color:var(--pending); margin:12px 0 4px;
+}
+#lagotto-wine-boh-root .lg-edit label:first-child{margin-top:0;}
+#lagotto-wine-boh-root .lg-edit input,
+#lagotto-wine-boh-root .lg-edit select,
+#lagotto-wine-boh-root .lg-edit textarea{
+width:100%; font-family:'Work Sans',sans-serif; font-size:14px;
+border:1px solid var(--parchment-2); border-radius:6px; padding:8px 10px;
+background:var(--parchment); color:var(--ink);
+}
+#lagotto-wine-boh-root .lg-edit textarea{min-height:70px; resize:vertical;}
+#lagotto-wine-boh-root .lg-edit .lg-two{display:flex; gap:12px;}
+#lagotto-wine-boh-root .lg-edit .lg-two > div{flex:1;}
+#lagotto-wine-boh-root .lg-hint{
+font-family:'Work Sans',sans-serif; font-size:12px; color:var(--pending);
+text-transform:none; letter-spacing:0; margin-top:4px;
+}
+#lagotto-wine-boh-root .lg-drop{
+border:2px dashed var(--parchment-2); border-radius:8px; padding:18px;
+text-align:center; font-size:13px; color:var(--pending); cursor:pointer;
+background:var(--parchment);
+}
+#lagotto-wine-boh-root .lg-drop.over{border-color:var(--rust); color:var(--rust);}
+#lagotto-wine-boh-root .lg-drop img{max-height:110px; border-radius:6px; display:block; margin:0 auto 8px;}
+#lagotto-wine-boh-root .lg-locmap{margin:6px 0 4px; text-align:center; background:var(--parchment); border:1px solid var(--parchment-2); border-radius:8px; padding:12px;}
+#lagotto-wine-boh-root .lg-locmap-svg{height:220px; width:auto; max-width:100%; display:block; margin:0 auto; cursor:crosshair;}
+#lagotto-wine-boh-root .lg-lochint{font-family:'Work Sans',sans-serif; font-size:12px; color:var(--pending); margin-top:8px;}
+#lagotto-wine-boh-root .lg-locok{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--sage); margin-top:8px;}
+#lagotto-wine-boh-root .lg-locwarn{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--rust); margin-top:8px;}
+#lagotto-wine-boh-root .lg-switches{
+display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;
+padding-top:14px; border-top:1px solid var(--parchment-2);
+}
+#lagotto-wine-boh-root .lg-sw{
+font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+text-transform:uppercase; background:var(--parchment); color:var(--pending);
+border:1px solid var(--parchment-2); border-radius:999px; padding:6px 14px; cursor:pointer;
+}
+#lagotto-wine-boh-root .lg-sw.on{background:var(--sage); color:var(--parchment); border-color:var(--sage);}
+#lagotto-wine-boh-root .lg-edit-foot{
+display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:16px;
+}
+#lagotto-wine-boh-root .lg-del{
+background:none; border:1px solid var(--rust); color:var(--rust);
+font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+text-transform:uppercase; border-radius:999px; padding:6px 14px; cursor:pointer;
+}
+#lagotto-wine-boh-root .lg-add{
+background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius);
+padding:16px; margin-bottom:18px;
+}
+#lagotto-wine-boh-root .lg-add label{
+display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+letter-spacing:.1em; text-transform:uppercase; color:var(--pending); margin:0 0 4px;
+}
+#lagotto-wine-boh-root .lg-add input,
+#lagotto-wine-boh-root .lg-add select{
+width:100%; font-family:'Work Sans',sans-serif; font-size:14px;
+border:1px solid var(--parchment-2); border-radius:6px; padding:8px 10px;
+background:var(--parchment); color:var(--ink);
+}
+#lagotto-wine-boh-root .lg-add-row{display:flex; gap:12px; align-items:flex-end;}
+#lagotto-wine-boh-root .lg-add-row > div:first-child{flex:1;}
+#lagotto-wine-boh-root .lg-add-err{color:var(--rust); font-size:13px; margin-top:8px;}
+@media (max-width:560px){
+#lagotto-wine-boh-root .lg-edit{margin-left:0;}
+#lagotto-wine-boh-root .lg-edit .lg-two{display:block;}
+#lagotto-wine-boh-root .lg-add-row{display:block;}
+#lagotto-wine-boh-root .lg-add-row > div{margin-bottom:10px;}
+#lagotto-wine-boh-root .lg-name{font-size:14px;}
+}
+</style>
+
+<div class="lg-header">
+<div class="lg-header-inner">
+<img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+<p class="lg-sub">Wine Cellar &mdash; Back of House</p>
+<div class="lg-tools-nav">
+<a href="wine">Wine List</a>
+<a href="wine-quiz">Wine Quiz</a>
+<a href="dish-library">Dish Library</a>
+<a href="wine-cellar" class="active w--current">Wine Cellar</a>
+</div>
+</div>
+</div>
+
+<div class="lg-wrap">
+
+<div class="lg-bar">
+<div class="lg-count" id="lgw-count">Loading&hellip;</div>
+<div>
+<button class="lg-btn ghost" id="lgw-reset">Reset changes</button>
+<button class="lg-btn ghost" id="lgw-copy">Copy JSON</button>
+<button class="lg-btn" id="lgw-publish">Publish</button>
+<span class="lg-status" id="lgw-status"></span>
+</div>
+</div>
+
+<div class="lg-tabs" id="lgw-tabs">
+<button class="lg-tab active" data-t="wines">Wines &amp; Spirits</button>
+<button class="lg-tab" data-t="cocktails">Cocktails</button>
+</div>
+
+<div style="margin-bottom:14px;">
+<button class="lg-btn" id="lgw-add">+ Add</button>
+</div>
+<div id="lgw-add-panel"></div>
+
+<div class="lg-filters" id="lgw-filters">
+<button class="lg-chip active" data-f="all">All</button>
+<button class="lg-chip" data-f="on">On the list</button>
+<button class="lg-chip" data-f="off">Off / 86'd</button>
+<button class="lg-chip" data-f="btg">By the glass</button>
+<button class="lg-chip" data-f="nophoto">No photo</button>
+<button class="lg-chip" data-f="coravin">Coravin</button>
+</div>
+
+<div id="lgw-list"></div>
+
+<div class="lg-panel">
+<h3>Publishing changes</h3>
+<p>Nothing changes on the wine list or the quiz until you press <strong>Publish</strong>.
+Both pages pick the change up on their next load. If publishing is not set up, or it fails,
+press <strong>Copy JSON</strong> and paste the result into the Gist by hand.</p>
+<textarea id="lgw-out" readonly placeholder="Only needed if publishing fails."></textarea>
+</div>
+
+</div>
+
+<script>!function(){function e(){return window.LAGOTTO_WINE_PUBLISH_URL||"PASTE_YOUR_WINE_PUBLISH_URL_HERE"}function t(){return 0!==e().indexOf("PASTE_")}var i="by-the-glass",n={sparkling:"Sparkling","white-mineral":"White - Bright, Mineral","white-medium":"White - Medium Weight","white-full":"White - Full, Textural",orange:"Orange",rose:"Rose / Chilled Red","red-light":"Red - Light","red-heavier":"Red - A Little Heavier","red-medium":"Red - Medium Weight","red-full":"Red - Full, Powerful"},a=["Sparkling","White","Orange","Rose, Chilled Red","Red"],l=["bone dry","dry","off-dry","medium-sweet","sweet","bitter"],r="Coravin pour",o=null,s="",c=[],d="all",u="wines",g=null,f=!1,v=document.getElementById("lgw-list"),p=document.getElementById("lgw-count"),h=document.getElementById("lgw-status"),m=document.getElementById("lgw-out"),b=document.getElementById("lgw-add-panel");function w(e){return String(null==e?"":e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}function y(e){return!1!==e.active}function k(e){return(e.tastingNotes||[]).indexOf(r)>-1}function x(){return o.sections.filter(function(e){return e.id!==i})}function E(){var e;for(e=0;e<o.sections.length;e++)if(o.sections[e].id===i)return o.sections[e];return null}function S(e){var t,i=x();for(t=0;t<i.length;t++)if(i[t].wines.indexOf(e)>-1)return i[t].id;return null}function C(e){var t;for(t=0;t<o.sections.length;t++)if(o.sections[t].id===e)return o.sections[t].title;return"Uncategorised"}function L(e,t){var i,a=x();for(i=0;i<a.length;i++)a[i].wines=a[i].wines.filter(function(t){return t!==e.name});for(i=0;i<a.length;i++)if(a[i].id===t){a[i].wines.push(e.name);break}n[t]&&(e.style=n[t])}function A(e){var t=String(e||"");return 0===t.indexOf("Sparkling")?"Sparkling":0===t.indexOf("White")?"White":0===t.indexOf("Orange")?"Orange":0===t.indexOf("Rose")?"Rose, Chilled Red":0===t.indexOf("Red")?"Red":"White"}function N(e){var t,i=E();if(!i||!i.subgroups)return null;for(t=0;t<i.subgroups.length;t++)if(i.subgroups[t].wines.indexOf(e)>-1)return i.subgroups[t].label;return null}function T(e){var t=E();t&&(t.wines=t.wines.filter(function(t){return t!==e}),t.subgroups&&t.subgroups.forEach(function(t){t.wines=t.wines.filter(function(t){return t!==e})}))}function O(e,t,i){if(e.btg=!!t,e.isSpirit)T(e.name);else{var n=E();n&&(T(e.name),t&&(n.wines.push(e.name),function(e){var t,i,n=E();for(n.subgroups||(n.subgroups=[]),t=0;t<n.subgroups.length;t++)if(n.subgroups[t].label===e)return n.subgroups[t];var l={label:e,wines:[]},r=a.indexOf(e);for(i=n.subgroups.length,t=0;t<n.subgroups.length;t++)if(a.indexOf(n.subgroups[t].label)>r){i=t;break}return n.subgroups.splice(i,0,l),l}(i||A(e.style)).wines.push(e.name)))}}function P(e,t){return e.map(function(e){return'<option value="'+w(e)+'"'+(e===t?" selected":"")+">"+w(e)+"</option>"}).join("")}var B={"it-region":"Mainland Italy","it-sicily":"Sicily","it-sardinia":"Sardinia",au:"Australia"},I=["it-region","it-sicily","it-sardinia","au"],R={Heathcote:["au","Victoria"],"King Valley":["au","Victoria"],"Alpine Valley":["au","Victoria"],Geelong:["au","Victoria"],Victoria:["au","Victoria"],Melbourne:["au","Victoria"],"McLaren Vale":["au","South Australia"],"Langhorne Creek":["au","South Australia"],Riverland:["au","South Australia"],Piedmont:["it-region","Piemonte"],Turin:["it-region","Piemonte"],Tuscany:["it-region","Toscana"],Lombardy:["it-region","Lombardia"],Veneto:["it-region","Veneto"],Marche:["it-region","Marche"],Campania:["it-region","Campania"],"Emilia Romagna":["it-region","Emilia-Romagna"],Friuli:["it-region","Friuli-Venezia Giulia"],"Friuli-Venezia Giulia":["it-region","Friuli-Venezia Giulia"],Lazio:["it-region","Lazio"],Liguria:["it-region","Liguria"],Umbria:["it-region","Umbria"],Abruzzo:["it-region","Abruzzo"],Calabria:["it-region","Calabria"],Molise:["it-region","Molise"],"Valle d'Aosta":["it-region","Valle d'Aosta/Vall\xe9e d'Aoste"],"Alto Adige":["it-region","Trentino-Alto Adige/S\xfcdtirol"],"Sudtirol-Alto Adige":["it-region","Trentino-Alto Adige/S\xfcdtirol"],Trentino:["it-region","Trentino-Alto Adige/S\xfcdtirol"],"Trentino-Alto Adige":["it-region","Trentino-Alto Adige/S\xfcdtirol"],Sicily:["it-sicily",null],Sardinia:["it-sardinia",null]};function M(){return!(!o||!o.maps)}function z(e){var t=R[e];return{scope:t?t[0]:"",fill:t?t[1]:null,dot:null,caption:"",area:""}}function V(e){return e.loc||z(e.region)}function U(e){return e.loc||(e.loc=z(e.region)),e.loc}function j(e){var t=V(e);if(!M()||!t.scope||!o.maps[t.scope])return'<div class="lg-lochint">No map for this region yet. Pick a map above to place it.</div>';var i,n=o.maps[t.scope],a=n.viewBox,l=n.polys,r="";for(i in l)i!==t.fill&&(r+='<path d="'+l[i]+'" fill="#E3D8C2" stroke="#CBB99A" stroke-width="0.6" stroke-linejoin="round"/>');var s,c,d,u,g=t.fill&&l[t.fill]?'<path d="'+l[t.fill]+'" fill="#A54A2A" stroke="#7A3820" stroke-width="0.6" stroke-linejoin="round"/>':"",f="",v="";if(t.dot){var p=(d=t.dot,u=n.proj,[(d[0]-u.minLon)*u.xscale*u.scale+u.pad,(u.maxLat-d[1])*u.scale+u.pad]),h=p[0].toFixed(1),m=p[1].toFixed(1);f='<circle cx="'+h+'" cy="'+m+'" r="7.5" fill="none" stroke="#A54A2A" stroke-width="0.9" opacity="0.45"/><circle cx="'+h+'" cy="'+m+'" r="3.3" fill="#A54A2A" stroke="#FBF7EF" stroke-width="1.3"/>',t.fill&&l[t.fill]&&(v=function(e,t){var i=e[0],n=e[1],a=!1;return t.forEach(function(e){for(var t=0,l=e.length-1;t<e.length;l=t++){var r=e[t][0],o=e[t][1],s=e[l][0],c=e[l][1];o>n!=c>n&&i<(s-r)*(n-o)/(c-o)+r&&(a=!a)}}),a}(p,(s=l[t.fill],c=[],s.split("Z").forEach(function(e){if(e=e.replace(/M/g," ").trim()){var t,i=e.split(/\s+/).map(Number),n=[];for(t=0;t+1<i.length;t+=2)n.push([i[t],i[t+1]]);n.length>2&&c.push(n)}}),c))?'<div class="lg-locok">Pin sits inside '+w(t.fill)+".</div>":'<div class="lg-locwarn">Pin is outside '+w(t.fill)+" &ndash; check the area, or move the pin.</div>")}else v='<div class="lg-lochint">Click the map to drop the pin where the fruit is grown.</div>';return'<svg viewBox="0 0 '+a[0]+" "+a[1]+'" class="lg-locmap-svg" data-locsvg>'+r+g+f+"</svg>"+v}function H(e,i,n){var a=v.querySelector('[data-edit="'+i+'"] [data-drop]');t()&&f?(a&&(a.textContent="Resizing\u2026"),function(e){return new Promise(function(t,i){var n=new FileReader;n.onerror=i,n.onload=function(){var e=new Image;e.onerror=i,e.onload=function(){var i=e.width,n=e.height,a=Math.min(1,1400/Math.max(i,n));i=Math.round(i*a),n=Math.round(n*a);var l=document.createElement("canvas");l.width=i,l.height=n,l.getContext("2d").drawImage(e,0,0,i,n),t({base64:l.toDataURL("image/jpeg",.9).split(",")[1],mime:"image/jpeg"})},e.src=n.result},n.readAsDataURL(e)})}(n).then(function(t){return a&&(a.textContent="Uploading\u2026"),$({action:"upload",image:t.base64,mime:t.mime,dishId:e.name})}).then(function(t){t&&t.ok&&t.url?(e.img=t.url,D(),h.textContent="Photo uploaded - press Publish to save"):a&&(a.textContent="Upload failed: "+(t&&t.message||"unknown"))}).catch(function(e){a&&(a.textContent="Upload failed - "+(e.message||e))})):a&&(a.textContent="Upload is not available - paste an image URL in the box below instead")}function W(){return s!==JSON.stringify(o)}function q(){h.textContent=W()?"Unpublished changes":""}function _(e){return"on"===d?y(e):"off"===d?!y(e):"btg"===d?!!e.btg:"nophoto"===d?!e.img:"coravin"!==d||k(e)}function F(e,t){var i="w"+o.wines.indexOf(e),n=y(e),r=[];e.glassPrice&&r.push("glass $"+e.glassPrice),e.bottlePrice&&r.push("bottle $"+e.bottlePrice),r.push(e.vintage||"NV");var s="";e.btg&&(s+="BTG \xb7 "),k(e)&&(s+="CORAVIN \xb7 "),e.party&&(s+="PARTY \xb7 ");var c="";if(t){var d=S(e.name);c='<span class="lg-home">'+w(d?C(d):"No section")+"</span> \xb7 "}var u='<div class="lg-row'+(n?"":" off")+'">'+(e.img?'<img class="lg-thumb" src="'+w(e.img)+'" loading="lazy" alt="">':'<div class="lg-thumb"></div>')+'<div class="lg-info"><div class="lg-name">'+w(e.name)+'</div><div class="lg-meta"><span class="lg-flag">'+s+"</span>"+c+w((e.grape||"")+" \xb7 "+(e.region||""))+" \xb7 "+w(r.join(" \xb7 "))+'</div></div><button class="lg-toggle'+(n?" on":"")+'" data-key="'+i+'" role="switch" aria-checked="'+n+'" aria-label="'+(n?"Take off the wine list":"Put back on the wine list")+'"><span class="lg-knob"></span></button></div>';return g===i&&(u+=function(e,t){var i=x().map(function(t){return'<option value="'+w(t.id)+'"'+(S(e.name)===t.id?" selected":"")+">"+t.title+"</option>"}).join(""),n=[];o.wines.forEach(function(e){n.indexOf(e.style)<0&&e.style&&n.push(e.style)}),n.sort(),n.indexOf(e.style)<0&&e.style&&n.unshift(e.style);var r=e.img?'<img src="'+w(e.img)+'" alt="">Drop a new bottle shot, or click to choose':"Drop a bottle shot here, or click to choose",s=!!e.btg,c=N(e.name)||A(e.style);return'<div class="lg-edit" data-edit="'+t+'"><label>Wine name &ndash; this is the key the wine list and quiz match on</label><input data-f="name" data-prev="'+w(e.name)+'" value="'+w(e.name)+'"><div class="lg-two"><div><label>Vintage</label><input data-f="vintage" value="'+w(e.vintage)+'"></div><div><label>Category</label><select data-f="category">'+i+'</select></div></div><div class="lg-two"><div><label>Grape</label><input data-f="grape" value="'+w(e.grape)+'"></div><div><label>Region</label><input data-f="region" value="'+w(e.region)+'"></div></div><div class="lg-two"><div><label>Style</label><select data-f="style">'+P(n,e.style)+'</select></div><div><label>Sweetness</label><select data-f="sweetness">'+P(l.indexOf(e.sweetness)<0&&e.sweetness?[e.sweetness].concat(l):l,e.sweetness)+'</select></div></div><div class="lg-two"><div><label>Colour</label><input data-f="colour" value="'+w(e.colour)+'"></div><div><label>Bottle price</label><input data-f="bottlePrice" inputmode="numeric" value="'+w(e.bottlePrice)+'"></div><div><label>Glass price</label><input data-f="glassPrice" inputmode="numeric" value="'+w(e.glassPrice)+'"></div></div><label>Bottle shot</label><div class="lg-drop" data-drop>'+r+'</div><input type="file" accept="image/*" style="display:none" data-file><input data-f="img" value="'+w(e.img)+'" placeholder="https://..." style="margin-top:8px;"><div class="lg-hint">A stable supplier CDN link is safest. Google image-cache links expire and leave a broken bottle on the floor.</div><label>Tasting notes &ndash; comma separated, these become the pills</label><input data-f="tastingNotes" value="'+w((e.tastingNotes||[]).join(", "))+'"><label>Blurb &ndash; the conversational note staff and guests read</label><textarea data-f="convNote">'+w(e.convNote)+'</textarea><label>Winemaking</label><textarea data-f="winemaking">'+w(e.winemaking)+'</textarea><label>Producer &amp; place</label><textarea data-f="producer">'+w(e.producer)+"</textarea>"+function(e){var t,i,n=V(e);return'<label>Where the fruit is grown &ndash; shades the area, click the map for the exact spot</label><div class="lg-two"><div><select data-loc="scope"><option value=""'+(n.scope?"":" selected")+">Choose map&hellip;</option>"+I.map(function(e){return'<option value="'+e+'"'+(n.scope===e?" selected":"")+">"+B[e]+"</option>"}).join("")+'</select></div><div><select data-loc="fill">'+(t=n.scope,i=n.fill,(M()&&o.maps[t]?'<option value="">Choose area&hellip;</option>'+Object.keys(o.maps[t].polys).sort().map(function(e){return'<option value="'+w(e)+'"'+(e===i?" selected":"")+">"+w(e)+"</option>"}).join(""):'<option value="">Choose area&hellip;</option>')+'</select></div></div><div class="lg-locmap" data-locmap>')+j(e)+'</div><div class="lg-two"><div><label>Map caption</label><input data-loc="caption" value="'+w(n.caption)+'" placeholder="e.g. Catania - Etna"></div><div><label>Area line</label><input data-loc="area" value="'+w(n.area)+'" placeholder="e.g. volcanic north-east slopes"></div></div>'}(e)+'<div class="lg-switches"><button class="lg-sw'+(s?" on":"")+'" data-sw="btg">By the glass</button><button class="lg-sw'+(k(e)?" on":"")+'" data-sw="coravin">Coravin pour</button><button class="lg-sw'+(e.party?" on":"")+'" data-sw="party">Party bottle</button><button class="lg-sw'+(e.isSpirit?" on":"")+'" data-sw="isSpirit">Spirit / aperitif</button></div>'+(s&&!e.isSpirit?'<label>By-the-glass grouping</label><select data-f="subgroup">'+P(a,c)+"</select>":"")+(e.party?'<label>Bottle size in ml</label><input data-f="partySize" inputmode="numeric" value="'+w(null==e.partySize?"":e.partySize)+'">':"")+'<div class="lg-edit-foot"><span style="font-size:12px;color:var(--pending);">Changes save when you press Publish.</span><button class="lg-del" data-del>Delete for good</button></div></div>'}(e,i)),u}function G(e){var t="c"+o.cocktails.indexOf(e),i=y(e),n='<div class="lg-row'+(i?"":" off")+'"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">'+w(e.name)+'</div><div class="lg-meta">'+w("$"+(null==e.price?"?":e.price)+" \xb7 "+(e.ingredients||""))+'</div></div><button class="lg-toggle'+(i?" on":"")+'" data-key="'+t+'" role="switch" aria-checked="'+i+'"><span class="lg-knob"></span></button></div>';return g===t&&(n+=function(e,t){return'<div class="lg-edit" data-edit="'+t+'"><label>Cocktail name</label><input data-f="name" value="'+w(e.name)+'"><div class="lg-two"><div><label>Price</label><input data-f="price" inputmode="numeric" value="'+w(e.price)+'"></div><div><label>Ingredients</label><input data-f="ingredients" value="'+w(e.ingredients)+'"></div></div><label>Tasting notes &ndash; comma separated</label><input data-f="tastingNotes" value="'+w((e.tastingNotes||[]).join(", "))+'"><label>Story</label><textarea data-f="story">'+w(e.story)+'</textarea><div class="lg-switches"><button class="lg-sw'+(e.btg?" on":"")+'" data-sw="btg">In the quiz</button></div><div class="lg-edit-foot"><span style="font-size:12px;color:var(--pending);">Changes save when you press Publish.</span><button class="lg-del" data-del>Delete for good</button></div></div>'}(e,t)),n}function D(){var e=o.wines,t=e.filter(y).length,i=e.filter(function(e){return y(e)&&e.btg&&!e.isSpirit}).length;p.textContent=e.length+" wines \xb7 "+t+" on the list \xb7 "+(e.length-t)+" off \xb7 "+i+" by the glass",q(),v.innerHTML="wines"===u?function(){var e=x().map(function(e){return e.id}),t=o.wines.filter(_).slice().sort(function(t,i){var n=e.indexOf(S(t.name)),a=e.indexOf(S(i.name));return n!==a?(-1===n?99:n)-(-1===a?99:a):o.wines.indexOf(t)-o.wines.indexOf(i)}),i=function(){var e="",t=o.wines.filter(y),i=t.filter(function(e){return e.btg&&!e.isSpirit&&!e.glassPrice});i.length&&(e+='<div class="lg-warn"><strong>'+i.length+" wine"+(i.length>1?"s are":" is")+" set to pour by the glass with no glass price.</strong> The wine list will show a bottle price only. First: "+w(i[0].name)+".</div>");var n=t.filter(function(e){return!e.img&&!e.isSpirit});n.length&&(e+='<div class="lg-note">'+n.length+" wine"+(n.length>1?"s on the list have":" on the list has")+" no bottle shot. The quiz falls back to a glass icon.</div>");var a={},l=[];o.wines.forEach(function(e){var t=e.name.trim().toLowerCase();a[t]&&l.indexOf(e.name)<0&&l.push(e.name),a[t]=!0}),l.length&&(e+='<div class="lg-warn"><strong>Two wines share a name: '+w(l[0])+".</strong> Sections match on the name, so both will point at the same record. Rename one before publishing.</div>");var r=function(){var e=E(),t=[];if(!e)return t;var i={},n={};return e.wines.forEach(function(e){i[e]=!0}),(e.subgroups||[]).forEach(function(e){e.wines.forEach(function(e){n[e]=!0})}),o.wines.forEach(function(e){if(!e.isSpirit){var a=!!e.btg;a===!!i[e.name]&&a===!!n[e.name]||t.push(e)}}),t}();return r.length&&(e+='<div class="lg-warn"><strong>'+r.length+" wine"+(r.length>1?"s are":" is")+" out of step between the by-the-glass switch, the section and the subgroup.</strong> That combination misbehaves quietly in the quiz. First: "+w(r[0].name)+".<br><button data-heal>Fix them all</button></div>"),e}();if(!t.length)return i+='<p style="color:var(--pending);">Nothing matches that filter.</p>';var n=t.filter(y),a=t.filter(function(e){return!y(e)}),l="@";return n.forEach(function(e){var t=S(e.name);t!==l&&(i+='<div class="lg-cat">'+(t?C(t):"Not in any section")+"</div>",l=t),i+=F(e,!1)}),a.length&&(i+='<div class="lg-cat lg-archive">Archive \xb7 off the list ('+a.length+")</div>",a.forEach(function(e){i+=F(e,!0)})),i}():function(){var e="",t=o.cocktails.filter(function(e){return"on"===d?y(e):"off"===d?!y(e):"all"===d||"btg"===d});if(!t.length)return e+='<p style="color:var(--pending);">Nothing matches that filter.</p>';var i=t.filter(y),n=t.filter(function(e){return!y(e)});return i.length&&(e+='<div class="lg-cat">Cocktails</div>',i.forEach(function(t){e+=G(t)})),n.length&&(e+='<div class="lg-cat lg-archive">Archive \xb7 off the list ('+n.length+")</div>",n.forEach(function(t){e+=G(t)})),e}()}function J(e){var t=e.target.closest("[data-edit]");if(!t)return null;var i=t.dataset.edit,n=Number(i.slice(1));return{key:i,rec:("w"===i.charAt(0)?o.wines:o.cocktails)[n]}}function Y(e,t){var i=e.target.closest("[data-edit]"),n=i&&i.querySelector("[data-locmap]");n&&(n.innerHTML=j(t)),q()}function $(t){return fetch(e(),{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(Object.assign({secret:window.LAGOTTO_WINE_PUBLISH_SECRET||""},t))}).then(function(e){return e.text().then(function(t){try{return JSON.parse(t)}catch(n){if(/accounts\.google\.com|signin|Sign in/i.test(t))throw new Error('the web app is asking for a Google sign-in. In Deploy \u2192 Manage deployments, set "Who has access" to Anyone.');if(404===e.status)throw new Error("404 - that deployment no longer exists. Check the URL in the page head matches the current deployment.");if(/Script function not found/i.test(t))throw new Error("the deployed version has no doPost. Deploy \u2192 Manage deployments \u2192 New version.");var i=t.replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim().slice(0,120);throw new Error("HTTP "+e.status+", and the reply was not JSON: "+(i||"(empty)"))}})})}function K(){b.innerHTML=""}function X(){var e=document.getElementById("lgw-add-name").value.trim(),t=document.getElementById("lgw-add-err");if(e){var i=("cocktails"===u?o.cocktails:o.wines).filter(function(t){return t.name.trim().toLowerCase()===e.toLowerCase()})[0];if(i)t.innerHTML='There is already an entry called "'+w(i.name)+'"'+(y(i)?" on the list":", switched off")+". Edit that one instead, or use a different name.";else{if("cocktails"===u)o.cocktails.push({name:e,ingredients:"",price:null,tastingNotes:[],btg:!1,story:"",active:!1}),g="c"+(o.cocktails.length-1);else{var a=document.getElementById("lgw-add-cat").value,l={name:e,region:"",grape:"",style:n[a]||"",vintage:"NV",tastingNotes:[],winemaking:"",producer:"",img:"",btg:!1,convNote:"",bottlePrice:null,glassPrice:null,sweetness:"dry",colour:"",party:!1,active:!1};o.wines.push(l),L(l,a),g="w"+(o.wines.length-1)}K(),d="all";var r=document.querySelectorAll("#lgw-filters .lg-chip");Array.prototype.forEach.call(r,function(e){e.classList.toggle("active","all"===e.dataset.f)}),D();var s=v.querySelector('[data-edit="'+g+'"]');s&&s.scrollIntoView&&s.scrollIntoView({block:"center"}),h.textContent="Added - fill it in, switch it on, then Publish"}}else t.textContent="Give it a name first."}v.addEventListener("input",function(e){var t=e.target.dataset&&e.target.dataset.loc;if("caption"!==t&&"area"!==t){var i=e.target.dataset&&e.target.dataset.f;if(i){var n=J(e);if(n){var a,l,r=n.rec,s=e.target.value;if("name"===i){var c=e.target.dataset.prev;(a=c)!==(l=s)&&o.sections.forEach(function(e){e.wines=e.wines.map(function(e){return e===a?l:e}),e.subgroups&&e.subgroups.forEach(function(e){e.wines=e.wines.map(function(e){return e===a?l:e})})}),r.name=s,e.target.dataset.prev=s;var d=e.target.closest("[data-edit]").previousElementSibling,u=d&&d.querySelector(".lg-name");u&&(u.textContent=s)}else"tastingNotes"===i?r.tastingNotes=s.split(",").map(function(e){return e.trim()}).filter(function(e){return e.length}):r[i]="bottlePrice"===i||"glassPrice"===i||"partySize"===i||"price"===i?function(e){var t=String(null==e?"":e).replace(/[^0-9.]/g,"");if(""===t)return null;var i=Number(t);return isNaN(i)?null:i}(s):s;q()}}}else{var g=J(e);g&&(U(g.rec)[t]=e.target.value,q())}}),v.addEventListener("change",function(e){var t=e.target.dataset&&e.target.dataset.f,i=J(e),n=e.target.dataset&&e.target.dataset.loc;if("scope"===n&&i){var a=U(i.rec);return a.scope=e.target.value,!a.fill||o.maps[a.scope]&&o.maps[a.scope].polys[a.fill]||(a.fill=null),void D()}return"fill"===n&&i?(U(i.rec).fill=e.target.value||null,void Y(e,i.rec)):"category"===t&&i?(L(i.rec,e.target.value),i.rec.btg&&!i.rec.isSpirit&&O(i.rec,!0,A(i.rec.style)),void D()):"style"===t&&i?(i.rec.style=e.target.value,void q()):"subgroup"===t&&i?(O(i.rec,!0,e.target.value),void D()):void(e.target.dataset&&"file"in e.target.dataset&&e.target.files[0]&&i&&H(i.rec,i.key,e.target.files[0]))}),v.addEventListener("dragover",function(e){var t=e.target.closest("[data-drop]");t&&(e.preventDefault(),t.classList.add("over"))}),v.addEventListener("dragleave",function(e){var t=e.target.closest("[data-drop]");t&&t.classList.remove("over")}),v.addEventListener("drop",function(e){var t=e.target.closest("[data-drop]");if(t){e.preventDefault(),t.classList.remove("over");var i=J(e),n=e.dataTransfer.files[0];i&&n&&0===n.type.indexOf("image")&&H(i.rec,i.key,n)}}),v.addEventListener("click",function(e){if(e.target.closest("[data-heal]"))return o.wines.forEach(function(e){e.isSpirit||O(e,!!e.btg,N(e.name)||A(e.style))}),D(),void(h.textContent="By-the-glass data realigned - press Publish to save");if(e.target.closest("[data-drop]"))e.target.closest("[data-edit]").querySelector("[data-file]").click();else{var t,i,n=e.target.closest("[data-locsvg]");if(n){var a=J(e);if(!a)return;var l=U(a.rec);if(!l.scope||!o.maps[l.scope])return;var s=o.maps[l.scope],c=n.viewBox.baseVal,d=n.getBoundingClientRect();if(!d.width||!d.height)return;var u=(e.clientX-d.left)/d.width*c.width,f=(t=(e.clientY-d.top)/d.height*c.height,[(u-(i=s.proj).pad)/(i.xscale*i.scale)+i.minLon,i.maxLat-(t-i.pad)/i.scale]);return l.dot=[Math.round(1e3*f[0])/1e3,Math.round(1e3*f[1])/1e3],void Y(e,a.rec)}var v,p,m,b,w=e.target.closest("[data-sw]");if(w){var x=J(e);if(!x)return;var E=x.rec,S=w.dataset.sw;return"btg"===S?"c"===x.key.charAt(0)?E.btg=!E.btg:O(E,!E.btg,A(E.style)):"coravin"===S?(v=E,p=!k(E),m=(v.tastingNotes||[]).filter(function(e){return e!==r}),p&&m.push(r),v.tastingNotes=m):"isSpirit"===S?(E.isSpirit=!E.isSpirit,O(E,!!E.btg,A(E.style))):E[S]=!E[S],void D()}if(e.target.closest("[data-del]")){var C=J(e);if(!C)return;var L=C.rec;if(!confirm('Delete "'+L.name+'" from the data for good?\n\nTo take it off the list but keep the record and the photo for when it is back in stock, close this and use the toggle instead.'))return;return"w"===C.key.charAt(0)?(b=L.name,o.sections.forEach(function(e){e.wines=e.wines.filter(function(e){return e!==b}),e.subgroups&&e.subgroups.forEach(function(e){e.wines=e.wines.filter(function(e){return e!==b})})}),o.wines=o.wines.filter(function(e){return e!==L})):o.cocktails=o.cocktails.filter(function(e){return e!==L}),g=null,void D()}if(!e.target.closest(".lg-edit")){var T=e.target.closest(".lg-toggle");if(T){var P=("w"===T.dataset.key.charAt(0)?o.wines:o.cocktails)[Number(T.dataset.key.slice(1))];return P.active=!y(P),void D()}var B=e.target.closest(".lg-row");if(B){var I=B.querySelector(".lg-toggle").dataset.key;g=g===I?null:I,D()}}}}),document.getElementById("lgw-filters").addEventListener("click",function(e){var t=e.target.closest(".lg-chip");if(t){var i=document.querySelectorAll("#lgw-filters .lg-chip");Array.prototype.forEach.call(i,function(e){e.classList.remove("active")}),t.classList.add("active"),d=t.dataset.f,D()}}),document.getElementById("lgw-tabs").addEventListener("click",function(e){var t=e.target.closest(".lg-tab");if(t){var i=document.querySelectorAll("#lgw-tabs .lg-tab");Array.prototype.forEach.call(i,function(e){e.classList.remove("active")}),t.classList.add("active"),u=t.dataset.t,g=null,b.innerHTML="",D()}}),document.getElementById("lgw-reset").addEventListener("click",function(){W()&&!confirm("Discard every unpublished change?")||(o=JSON.parse(s),g=null,D(),m.value="")}),document.getElementById("lgw-copy").addEventListener("click",function(){var e=JSON.stringify(o,null,2);m.value=e,navigator.clipboard?navigator.clipboard.writeText(e).then(function(){h.textContent="Copied - paste into the Gist"},function(){h.textContent="Copy from the box below"}):(m.select(),h.textContent="Copy from the box below")}),document.getElementById("lgw-publish").addEventListener("click",function(){var e=this;t()?W()?(e.disabled=!0,h.textContent="Publishing\u2026",$({target:"wine",data:o,knownNames:c}).then(function(t){e.disabled=!1,t.ok?(s=JSON.stringify(o),c=o.wines.map(function(e){return e.name}),D(),h.textContent="Published - live on the wine list and the quiz"):h.textContent="Failed: "+t.message+" - use Copy JSON"}).catch(function(t){e.disabled=!1,h.textContent="Publish failed - "+t.message,console.error("publish failed",t)})):h.textContent="Nothing to publish":h.textContent="Publishing not set up - use Copy JSON"}),document.getElementById("lgw-add").addEventListener("click",function(){b.innerHTML?K():function(){if("cocktails"===u)b.innerHTML='<div class="lg-add"><div><label>Cocktail name</label><input id="lgw-add-name" placeholder="e.g. Pasubio Manhattan"></div><div class="lg-add-err" id="lgw-add-err"></div><div class="lg-edit-foot"><span style="font-size:12px;color:var(--pending);">Starts switched off.</span><span><button class="lg-btn ghost" id="lgw-add-cancel">Cancel</button> <button class="lg-btn" id="lgw-add-create">Create</button></span></div></div>';else{var e=x().map(function(e){return'<option value="'+w(e.id)+'">'+e.title+"</option>"}).join("");b.innerHTML='<div class="lg-add"><div class="lg-add-row"><div><label>Wine name</label><input id="lgw-add-name" placeholder="e.g. Bera Barbera dAsti"></div><div style="width:220px;"><label>Category</label><select id="lgw-add-cat">'+e+'</select></div></div><div class="lg-add-err" id="lgw-add-err"></div><div class="lg-edit-foot"><span style="font-size:12px;color:var(--pending);">Starts switched off, with everything else blank for you to fill in.</span><span><button class="lg-btn ghost" id="lgw-add-cancel">Cancel</button> <button class="lg-btn" id="lgw-add-create">Create</button></span></div></div>'}var t=document.getElementById("lgw-add-name");t.focus(),t.addEventListener("keydown",function(e){"Enter"===e.key&&X()}),document.getElementById("lgw-add-cancel").addEventListener("click",K),document.getElementById("lgw-add-create").addEventListener("click",X)}()}),fetch("https://gist.githubusercontent.com/davidyuncken-tech/cd3af55a9e99108f8a606a09fa0e8025/raw/wine_quiz_data.json?t="+Date.now()).then(function(e){return e.json()}).then(function(e){(o=e).cocktails||(o.cocktails=[]),c=o.wines.map(function(e){return e.name}),s=JSON.stringify(o),D(),function(){if(!t()){var e=document.createElement("div");return e.className="lg-note",e.innerHTML="<strong>Publishing is not set up on this page yet.</strong> Everything else works: edit, then press Copy JSON and paste the result into the Gist. To enable the Publish button, add LAGOTTO_WINE_PUBLISH_URL to the page head.",void v.parentNode.insertBefore(e,v)}$({action:"ping"}).then(function(e){if(f=!(!e||!e.canUpload),e&&!e.ok){var t=document.createElement("div");t.className="lg-warn",t.innerHTML="The publisher rejected this page: "+w(e.message||"unknown")+".",v.parentNode.insertBefore(t,v)}}).catch(function(e){var t=document.createElement("div");t.className="lg-warn",t.innerHTML="<strong>Cannot reach the publisher.</strong> "+w(e.message),v.parentNode.insertBefore(t,v)})}()}).catch(function(){p.textContent="Could not load the wine data - check the Gist is reachable."})}();</script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-food-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-food-180.png">
+<meta name="apple-mobile-web-app-title" content="Menu">
+<meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+<div id="lagotto-menu-root">
+<style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+--ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+--rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+--radius:10px;
+}
+*{box-sizing:border-box;}
+body{
+margin:0; background:var(--parchment); color:var(--ink);
+font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
+-webkit-font-smoothing:antialiased;
+}
+.lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
+.lg-header{
+background:var(--ink); color:var(--parchment); padding:40px 20px 32px;
+position:relative; overflow:hidden;
+}
+.lg-header::before{
+content:''; position:absolute; inset:0; opacity:.35; pointer-events:none;
+background-image:
+radial-gradient(1.5px 1.5px at 10% 20%, var(--gold) 0, transparent 60%),
+radial-gradient(1px 1px at 25% 65%, var(--parchment-2) 0, transparent 60%),
+radial-gradient(2px 2px at 40% 15%, var(--gold) 0, transparent 60%),
+radial-gradient(1px 1px at 60% 80%, var(--parchment-2) 0, transparent 60%),
+radial-gradient(1.5px 1.5px at 78% 35%, var(--gold) 0, transparent 60%),
+radial-gradient(1px 1px at 88% 70%, var(--parchment-2) 0, transparent 60%),
+radial-gradient(1.5px 1.5px at 95% 12%, var(--gold) 0, transparent 60%),
+radial-gradient(1px 1px at 15% 90%, var(--gold) 0, transparent 60%);
+background-size:100% 100%;
+}
+.lg-header-inner{position:relative; max-width:920px; margin:0 auto;}
+.lg-logo{
+display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%;
+margin:0;
+/* The supplied logo is black artwork on transparency, which is invisible on the
+   dark header. brightness(0) flattens it to solid black whatever the source
+   colour, then invert(1) flips that to white, leaving the alpha channel alone.
+   Swap this whole filter out for a plain reversed asset if the brand kit has one. */
+filter:brightness(0) invert(1);
+}
+.lg-sub{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.12em;
+text-transform:uppercase; color:var(--parchment-2); margin:8px 0 0;
+}
+.lg-tools-nav{display:flex; gap:8px; margin-top:24px; flex-wrap:wrap;}
+.lg-tools-nav a{
+font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+color:var(--parchment); text-decoration:none; border:1px solid rgba(239,231,216,.35);
+padding:6px 12px; border-radius:20px; text-transform:uppercase; transition:.15s;
+}
+.lg-tools-nav a:hover, .lg-tools-nav a.active{background:var(--rust); border-color:var(--rust);}
+
+
+
+.lg-note-banner{
+background:var(--parchment-2); border-left:3px solid var(--rust); padding:14px 16px;
+font-size:13.5px; color:var(--ink-soft); margin:24px 0; border-radius:0 6px 6px 0;
+}
+
+.lg-card{
+background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius);
+margin-bottom:10px; overflow:hidden; transition:.15s;
+}
+.lg-card-head{
+display:flex; align-items:center; justify-content:space-between; gap:16px;
+padding:16px 18px; cursor:pointer; user-select:none;
+}
+.lg-card-head:hover{background:var(--parchment);}
+.lg-dish-name{font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; flex:1;}
+.lg-dish-price{font-family:'IBM Plex Mono',monospace; color:var(--gold); font-weight:500; white-space:nowrap;}
+.lg-head-right{display:flex; align-items:center; gap:12px; flex-shrink:0;}
+.lg-thumb{width:46px; height:46px; border-radius:6px; object-fit:cover; display:block; background:var(--parchment-2);}
+.lg-course-idx{
+font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--rust); margin-right:10px;
+}
+.lg-card-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+.lg-card-body-inner{padding:0 18px 18px;}
+.lg-card.open .lg-card-body{max-height:1000px;}
+.lg-tn{font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin:4px 0 14px;}
+.lg-tn.pending{color:var(--pending); font-style:italic;}
+.lg-source{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--pending); margin-top:-8px; margin-bottom:14px;}
+
+.lg-badges{display:flex; flex-wrap:wrap; gap:6px;}
+.lg-badge{
+font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.02em;
+padding:4px 9px; border-radius:20px; border:1px solid transparent; white-space:nowrap;
+}
+.lg-badge.contains{background:#F3E1DA; color:var(--rust-dim); border-color:var(--rust);}
+.lg-badge.modifiable{background:#E9EEE4; color:#4B5A3F; border-color:var(--sage);}
+.lg-badge.safe{background:#E9EEE4; color:#4B5A3F; border-color:var(--sage);}
+.lg-badge.pending{background:#EFEAE1; color:var(--pending); border-style:dashed;}
+
+.lg-dietary-detail{margin-top:14px; display:grid; gap:8px;}
+.lg-dietary-row{display:flex; gap:10px; align-items:flex-start; font-size:13px;}
+.lg-dietary-row .lg-badge{flex-shrink:0; min-width:82px; text-align:center;}
+.lg-dietary-row .txt{color:var(--ink-soft);}
+.lg-dietary-row .txt em{color:var(--pending); font-style:italic;}
+
+.lg-section-title{
+font-family:'Fraunces',serif; font-size:13px; text-transform:uppercase; letter-spacing:.14em;
+color:var(--rust); margin:32px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--parchment-2);
+}
+.lg-section-title:first-of-type{margin-top:24px;}
+
+.lg-legend{display:flex; flex-wrap:wrap; gap:14px; margin:18px 0 0; font-size:12px; color:var(--ink-soft);}
+.lg-legend span{display:inline-flex; align-items:center; gap:6px;}
+.lg-dot{width:9px; height:9px; border-radius:50%; display:inline-block;}
+.lg-dot.contains{background:var(--rust);}
+.lg-dot.modifiable{background:var(--sage);}
+.lg-dot.pending{background:var(--pending);}
+
+.lg-btn{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+background:var(--rust); color:var(--parchment); border:none; padding:11px 20px; border-radius:6px;
+cursor:pointer; transition:.15s;
+}
+.lg-btn:hover{background:var(--rust-dim);}
+.lg-btn.ghost{background:none; color:var(--ink); border:1px solid var(--ink);}
+.lg-btn.ghost:hover{border-color:var(--rust); color:var(--rust);}
+.lg-btn:disabled{opacity:.4; cursor:not-allowed;}
+
+@media (max-width:560px){
+.lg-dish-name{font-size:15px;}
+}
+
+#lagotto-menu-root .lg-guess-flag{color:var(--gold); font-weight:700;}
+#lagotto-menu-root .lg-source-guess{color:var(--gold); opacity:.85;}
+.lg-ipl{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-soft);opacity:.7;margin:12px 0 5px}.lg-ips{display:flex;flex-wrap:wrap;gap:6px}.lg-ip{background:var(--parchment);border-radius:20px;padding:4px 10px;font-size:12px;color:var(--rust)}.lg-di{display:block;max-width:100%;max-height:260px;border-radius:8px;margin:12px 0 2px;object-fit:cover}</style>
+
+<div class="lg-header">
+<div class="lg-header-inner">
+<img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+<p class="lg-sub">Staff Menu Reference</p>
+<div class="lg-tools-nav">
+<a href="menu" class="active w--current">Menu Reference</a>
+<a href="dietary">Dietary Matrix</a>
+<a href="menu-quiz">Staff Quiz</a>
+</div>
+</div>
+</div>
+
+<div class="lg-wrap">
+<div class="lg-note-banner" id="lg-data-status" style="display: none; border-left-color: var(--sage);"></div>
+
+<div id="lg-alacarte-view">
+<div id="lg-dish-list"><div class="lg-section-title">Snacks</div>
+<div class="lg-card" data-id="truffle_addon">
+<div class="lg-card-head">
+<div class="lg-dish-name">Victorian black truffle 3g add-on</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/victorian-black-truffle-3g-add-on.png" loading="lazy" alt=""><div class="lg-dish-price">$15</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Fresh Victorian black truffle, shaved at the table — 3g per serve. Suggested over the stracciatella, bavette tartare and Jerusalem artichokes, both steaks (the Black Opal wagyu rump and the Robbin's Island oyster blade) and the tiramisu. A truffle upgrade on the brioche can also be offered verbally for $7.50. The celeriac lasagne and the parmesan gelato already come with truffle, so no add-on is needed there. Victorian truffle season runs through winter, which is why it's on the menu now.</p>
+
+
+<img class="lg-di" src="assets/img/dishes/victorian-black-truffle-3g-add-on.png" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="oysters">
+<div class="lg-card-head">
+<div class="lg-dish-name">1/2 dozen oysters, buttermilk, raspberry mignonette</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/1-2-dozen-oysters-buttermilk-raspberry-mignonette.png" loading="lazy" alt=""><div class="lg-dish-price">$42</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Buttermilk is emulsified with lemon oil and seasoned with salt. For the mignonette, fresh raspberry is finely chopped and mixed with chardonnay vinegar, lemon oil and shallots.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">buttermilk</span><span class="lg-ip">raspberry mignonette</span></div>
+
+<img class="lg-di" src="assets/img/dishes/1-2-dozen-oysters-buttermilk-raspberry-mignonette.png" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="focaccia">
+<div class="lg-card-head">
+<div class="lg-dish-name">Sourdough focaccia, whipped vegemite butter</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/sourdough-focaccia-whipped-vegemite-butter.png" loading="lazy" alt=""><div class="lg-dish-price">$14</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">The dough uses a small amount of fresh yeast and a four-hour process of stretch, fold and rest before the dimples are pressed in, the dough is lathered in olive oil and rosemary and baked. The slower, more natural sourdough fermentation gives the bread its spring, and potato in the dough retains moisture for a softer, chewier crumb. The butter is browned, strained and smoked, then mixed with vegemite and whipped for service, with caramelised milk solids folded back in for texture.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">whipped vegemite butter</span></div>
+
+<img class="lg-di" src="assets/img/dishes/sourdough-focaccia-whipped-vegemite-butter.png" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="scallop">
+<div class="lg-card-head">
+<div class="lg-dish-name">Shark Bay scallop ceviche, macadamia, wild garlic, trout roe</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/shark-bay-scallop-ceviche-macadamia-wild-garlic-trout-roe.jpg" loading="lazy" alt=""><div class="lg-dish-price">$18ea</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Exceptional scallops from Shark Bay in Western Australia, lightly cured with a little salt and served raw. The macadamia milk is a blend of macadamia and soy milk. Wild garlic is infused into canola oil to make a green oil, and the dish is finished with trout roe.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">macadamia</span><span class="lg-ip">wild garlic</span><span class="lg-ip">trout roe</span></div>
+
+<img class="lg-di" src="assets/img/dishes/shark-bay-scallop-ceviche-macadamia-wild-garlic-trout-roe.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="spring_roll">
+<div class="lg-card-head">
+<div class="lg-dish-name">Spring roll tart, bluefin tuna crudo, watermelon, smoked creme fraiche</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/spring-roll-tart-bluefin-tuna-crudo-watermelon-smoked-creme-.jpg" loading="lazy" alt=""><div class="lg-dish-price">$16ea</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Spring-roll pastry case, lined with smoked crème fraîche, filled with cubed bluefin tuna crudo and watermelon (adds texture and freshness). Both the tuna and watermelon are dressed in a ponzu dressing, finished with finger lime.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">bluefin tuna crudo</span><span class="lg-ip">watermelon</span><span class="lg-ip">smoked creme fraiche</span></div>
+
+<img class="lg-di" src="assets/img/dishes/spring-roll-tart-bluefin-tuna-crudo-watermelon-smoked-creme-.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="brioche_wagyu">
+<div class="lg-card-head">
+<div class="lg-dish-name">Brioche, wagyu carpaccio, yuzu, caviar</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/brioche-wagyu-carpaccio-yuzu-caviar.png" loading="lazy" alt=""><div class="lg-dish-price">$18ea</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Brioche from To Be Frank bakery, cut into small rectangles and toasted. Wagyu carpaccio (Robbin's Island, cut from the cow's thigh) sits on top with avruga caviar. The citrus element is now yuzu.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">wagyu carpaccio</span><span class="lg-ip">yuzu</span><span class="lg-ip">caviar</span></div>
+
+<img class="lg-di" src="assets/img/dishes/brioche-wagyu-carpaccio-yuzu-caviar.png" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="rosti">
+<div class="lg-card-head">
+<div class="lg-dish-name">Potato rosti, spanner crab, mussel, fennel, roe</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/potato-rosti-spanner-crab-mussel-fennel-roe.jpg" loading="lazy" alt=""><div class="lg-dish-price">$16ea</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Grated potato seasoned with salt and pepper, shaped and deep-fried. The rosti is topped with spanner crab dressed in a mussel cream (mussel, lemon oil and canola oil), then flying fish roe, with fennel fronds over the top.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">spanner crab</span><span class="lg-ip">mussel</span><span class="lg-ip">fennel</span><span class="lg-ip">roe</span></div>
+
+<img class="lg-di" src="assets/img/dishes/potato-rosti-spanner-crab-mussel-fennel-roe.jpg" loading="lazy" alt="">
+</div></div>
+</div><div class="lg-section-title">Entrees</div>
+<div class="lg-card" data-id="octopus">
+<div class="lg-card-head">
+<div class="lg-dish-name">Fremantle confit octopus carpaccio, saffron rouille, frites, espellette</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/fremantle-confit-octopus-carpaccio-saffron-rouille-frites-es.jpg" loading="lazy" alt=""><div class="lg-dish-price">$36</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Octopus from Fremantle, WA — confit in oil, sliced into circles, spread on saffron rouille (essentially a mayonnaise with the addition of potato). Finished with crispy frites and espellette (a mild ground chilli typical of the south of France). Suitable for pregnant guests with the saffron rouille served on the side.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">saffron rouille</span><span class="lg-ip">frites</span><span class="lg-ip">espellette</span></div>
+
+<img class="lg-di" src="assets/img/dishes/fremantle-confit-octopus-carpaccio-saffron-rouille-frites-es.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="bavette">
+<div class="lg-card-head">
+<div class="lg-dish-name">Bavette tartare, tonnato sauce, puntarelle, bone marrow</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/bavette-tartare-tonnato-sauce-puntarelle-bone-marrow.jpg" loading="lazy" alt=""><div class="lg-dish-price">$36</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Wagyu bavette — a cut from underneath the cow's stomach, particularly lean, which makes it great for tartare. The beef is diced and dressed in a BBQ dressing, served on top of a tonnato sauce (tuna emulsified with oil, egg and anchovy). Puntarelle, a chicory-like leaf, is served raw on top, and bone marrow is kept frozen so it can be grated over the dish to finish.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">tonnato sauce</span><span class="lg-ip">puntarelle</span><span class="lg-ip">bone marrow</span></div>
+
+<img class="lg-di" src="assets/img/dishes/bavette-tartare-tonnato-sauce-puntarelle-bone-marrow.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="stracciatella">
+<div class="lg-card-head">
+<div class="lg-dish-name">Stracciatella, fennel jam, rye crumb, mandarin oil</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/stracciatella-fennel-jam-rye-crumb-mandarin-oil.jpg" loading="lazy" alt=""><div class="lg-dish-price">$29</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Stracciatella is a soft cow's milk cheese — the soft centre of burrata — made in Australia, so it is pasteurised. The fennel jam is made by heating vinegar and sugar until reduced, then dropping in saffron, shaved fennel and lemon, much the way you'd make a marmalade. Alto mandarin-infused olive oil finishes the plate.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">fennel jam</span><span class="lg-ip">rye crumb</span><span class="lg-ip">mandarin oil</span></div>
+
+<img class="lg-di" src="assets/img/dishes/stracciatella-fennel-jam-rye-crumb-mandarin-oil.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="jerusalem_artichokes">
+<div class="lg-card-head">
+<div class="lg-dish-name">Jerusalem artichokes, hazelnut cream, malt, pecorino, salbush</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/jerusalem-artichokes-hazelnut-cream-malt-pecorino-salbush.jpg" loading="lazy" alt=""><div class="lg-dish-price">$32</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">The artichokes are cut into halves and slow roasted, then served with hazelnut cream, pecorino and saltbush. The hazelnut cream contains shallots but no garlic.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">hazelnut cream</span><span class="lg-ip">malt</span><span class="lg-ip">pecorino</span><span class="lg-ip">salbush</span></div>
+
+<img class="lg-di" src="assets/img/dishes/jerusalem-artichokes-hazelnut-cream-malt-pecorino-salbush.jpg" loading="lazy" alt="">
+</div></div>
+</div><div class="lg-section-title">Pasta</div>
+<div class="lg-card" data-id="squid_ink_paccheri">
+<div class="lg-card-head">
+<div class="lg-dish-name">Conchiglie, tiger prawn, vodka sauce, wood sorrel</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/squid-ink-paccheri-tiger-prawn-shellfish-bisque-wood-sorrel.jpg" loading="lazy" alt=""><div class="lg-dish-price">$45</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Conchiglie means shell in Italian, the pasta is shell shaped so holds the sauce well. Tiger prawns are cooked in the pan, then the  vodka sauce is added (onion, garlic, tomato, roasted prawn shells, cream, vodka). Finished with wood sorrel — a citrus-tasting herb — and a crunchy prawn powder made from roasted, blitzed prawn shell.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">tiger prawn</span><span class="lg-ip">vodka sauce</span><span class="lg-ip">wood sorrel</span></div>
+
+<img class="lg-di" src="assets/img/dishes/squid-ink-paccheri-tiger-prawn-shellfish-bisque-wood-sorrel.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="celeriac_lasagne">
+<div class="lg-card-head">
+<div class="lg-dish-name">Celeriac, comté & porcini lasagne, parmesan foam, black truffle</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/celeriac-comte-porcini-lasagne-parmesan-foam-black-truffle.jpg" loading="lazy" alt=""><div class="lg-dish-price">$55</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Celeriac (a root vegetable, a little like parsnip) is sliced thinly and layered between pasta and a béchamel made with truffle and porcini mushroom, baked, then each portion is grilled on both sides and finished in the oven to order. It sits on a foam made with cream, milk and 24-month parmesan, with black truffle shaved on top (currently Manjimup, WA; sometimes Victorian).</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">comté & porcini lasagne</span><span class="lg-ip">parmesan foam</span><span class="lg-ip">black truffle</span></div>
+
+<img class="lg-di" src="assets/img/dishes/celeriac-comte-porcini-lasagne-parmesan-foam-black-truffle.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="gramigna">
+<div class="lg-card-head">
+<div class="lg-dish-name">Tortellini, confit duck leg ragu, parmesan bechamel, saffron oil</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-dish-price">$42</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Tortellini is a filled pasta, here we fill the pasta with confit duck leg ragu & parmesan bechamel. Then the pasta is served simply in a deep bowl with a duck reduction and then finished with saffron oil. </p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">confit duck leg ragu</span><span class="lg-ip">parmesan bechamel</span><span class="lg-ip">saffron oil</span></div>
+
+<img class="lg-di" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="lemon_bigoli">
+<div class="lg-card-head">
+<div class="lg-dish-name">Lemon bigoli, Moreton Bay bug, yellow tomato sugo, bottarga, chives</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/lemon-bigoli-moreton-bay-bug-yellow-tomato-sugo-bottarga-chi.png" loading="lazy" alt=""><div class="lg-dish-price">$90</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Lemon bigoli is a thicker style of spaghetti with a great al dente texture — lemon is added to the pasta dough itself. Moreton Bay bugs (similar to a lobster, from Moreton Bay in Queensland) are sous vide until only just cooked. The yellow tomato sugo is made with onion, garlic, yellow tomatoes and a touch of honey. Underneath the bigoli sits a bottarga cream — bottarga (dried, cured fish roe) blended with oil — with chives to finish.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">Moreton Bay bug</span><span class="lg-ip">yellow tomato sugo</span><span class="lg-ip">bottarga</span><span class="lg-ip">chives</span></div>
+
+<img class="lg-di" src="assets/img/dishes/lemon-bigoli-moreton-bay-bug-yellow-tomato-sugo-bottarga-chi.png" loading="lazy" alt="">
+</div></div>
+</div><div class="lg-section-title">Proteins</div>
+<div class="lg-card" data-id="fish_of_day">
+<div class="lg-card-head">
+<div class="lg-dish-name">Whole side of Coral Trout 650g, beurre blanc, pippies, silverbeet</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/whole-side-of-coral-trout-650g-beurre-blanc-pippies-silverbe.jpg" loading="lazy" alt=""><div class="lg-dish-price">$200</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">This is the rotating fish slot. The garnish stays broadly consistent whatever the fish: a beurre blanc, pippies and silverbeet (or another green leafy vegetable), all of which can be left off. The fish is usually floured before it goes on the grill, which can also be done without. Currently printed as a whole 650g side of Coral Trout.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">beurre blanc</span><span class="lg-ip">pippies</span><span class="lg-ip">silverbeet</span></div>
+
+<img class="lg-di" src="assets/img/dishes/whole-side-of-coral-trout-650g-beurre-blanc-pippies-silverbe.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="pork_belly">
+<div class="lg-card-head">
+<div class="lg-dish-name">Ryukyu Berkshire 500g pork belly, XO, fermented chilli, citrus</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-500g-pork-belly-xo-fermented-chilli-citrus.jpg" loading="lazy" alt=""><div class="lg-dish-price">$85</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Ryukyu Berkshire pigs are known as the wagyu of the pig world for their amazing marbling — black-furred pigs raised near Byron Bay. The pork is brined for 24 hours, sous vide for two hours, then finished on the grill in service, dressed with the kitchen's XO and a fermented chilli sauce, with citrus alongside.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">XO</span><span class="lg-ip">fermented chilli</span><span class="lg-ip">citrus</span></div>
+
+<img class="lg-di" src="assets/img/dishes/ryukyu-berkshire-500g-pork-belly-xo-fermented-chilli-citrus.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="black_opal_rump">
+<div class="lg-card-head">
+<div class="lg-dish-name">Black Opal wagyu rump, erbette, black garlic ketchup, jus</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/black-opal-wagyu-rump-erbette-black-garlic-ketchup-jus.jpg" loading="lazy" alt=""><div class="lg-dish-price">$75</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Black Opal is a wagyu supplier working out of Tasmania — a cross of 50% Japanese wagyu and 50% Black Angus. The rump comes from the top of the cow's behind and is a fairly lean cut, grilled to order. Erbette is a chard-like leafy green. On the à la carte the steak is dressed with a black garlic ketchup and jus.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">erbette</span><span class="lg-ip">black garlic ketchup</span><span class="lg-ip">jus</span></div>
+
+<img class="lg-di" src="assets/img/dishes/black-opal-wagyu-rump-erbette-black-garlic-ketchup-jus.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="robbins_oyster_blade">
+<div class="lg-card-head">
+<div class="lg-dish-name">Robbin's Island grass-fed 300g 9+ wagyu oyster blade, rosemary, jus</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-dish-price">$125</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Robbin's Island is a small island off the north-west coast of Tasmania — when the tide is in the island is separated from the mainland, and when it goes out it reconnects. It's considered one of the best wagyu projects in the world thanks to that environment. This is the grass-fed oyster blade, 300g, at 9+ marbling — 9+ is the highest wagyu score in Australia. Oyster blade is cut from the shoulder, a well-worked and deeply flavoured muscle rather than a lean prime cut, served with rosemary and jus.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">rosemary</span><span class="lg-ip">jus</span></div>
+
+<img class="lg-di" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt="">
+</div></div>
+</div><div class="lg-section-title">Sides</div>
+<div class="lg-card" data-id="leaves">
+<div class="lg-card-head">
+<div class="lg-dish-name">Day's Walk Farm leaves, fennel, radish, honey & blood orange</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/day-s-walk-farm-leaves-fennel-radish-honey-blood-orange.jpg" loading="lazy" alt=""><div class="lg-dish-price">$16</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn pending">Tasting notes not yet logged for the current version of this dish &mdash; ask the kitchen.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">fennel</span><span class="lg-ip">radish</span><span class="lg-ip">honey & blood orange</span></div>
+
+<img class="lg-di" src="assets/img/dishes/day-s-walk-farm-leaves-fennel-radish-honey-blood-orange.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="potatoes">
+<div class="lg-card-head">
+<div class="lg-dish-name">Mayan twilight potatoes, sage & onion salt, yeast dressing</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/mayan-twilight-potatoes-sage-onion-salt-yeast-dressing.png" loading="lazy" alt=""><div class="lg-dish-price">$16</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn pending">Tasting notes not yet logged for the current version of this dish &mdash; ask the kitchen.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">sage & onion salt</span><span class="lg-ip">yeast dressing</span></div>
+
+<img class="lg-di" src="assets/img/dishes/mayan-twilight-potatoes-sage-onion-salt-yeast-dressing.png" loading="lazy" alt="">
+</div></div>
+</div><div class="lg-section-title">Dessert</div>
+<div class="lg-card" data-id="strawberry_granita">
+<div class="lg-card-head">
+<div class="lg-dish-name">Strawberry granita, matcha gelato, meringue</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/strawberry-granita-matcha-gelato-meringue.jpg" loading="lazy" alt=""><div class="lg-dish-price">$16</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Strawberry puree, sparkling water and glucose are frozen together and then shaved to order. The gelato is a white chocolate base flavoured with matcha. Served with egg white meringue shards dusted with matcha powder.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">matcha gelato</span><span class="lg-ip">meringue</span></div>
+
+<img class="lg-di" src="assets/img/dishes/strawberry-granita-matcha-gelato-meringue.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="tiramisu">
+<div class="lg-card-head">
+<div class="lg-dish-name">Tiramisu, coffee gelato, caramel, hazelnut crunch</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/tiramisu-coffee-gelato-caramel-hazelnut-crunch.png" loading="lazy" alt=""><div class="lg-dish-price">$20</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">Base is a flourless chocolate sponge. A hazelnut crème mousseline — essentially a hazelnut pastry cream, which contains a little flour — is piped onto the sponge. Coffee gelato is made with eggs, cream, sugar and coffee. Caramel is a whey caramel (brown sugar and whey). A mascarpone-and-vanilla foam is siphoned on top to finish.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">coffee gelato</span><span class="lg-ip">caramel</span><span class="lg-ip">hazelnut crunch</span></div>
+
+<img class="lg-di" src="assets/img/dishes/tiramisu-coffee-gelato-caramel-hazelnut-crunch.png" loading="lazy" alt="">
+</div></div>
+</div>
+<div class="lg-card" data-id="parmesan_gelato">
+<div class="lg-card-head">
+<div class="lg-dish-name">Parmesan gelato, cheesecake cream, truffle, caramel, popcorn</div>
+<div class="lg-head-right"><img class="lg-thumb" src="assets/img/dishes/parmesan-gelato-cheesecake-cream-truffle-caramel-popcorn.jpg" loading="lazy" alt=""><div class="lg-dish-price">$25</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+<p class="lg-tn">The gelato is built on a base of buffalo milk and fior di latte with grated 24-month parmesan folded through — no eggs in the gelato itself. The cheesecake is cream cheese, cream, sugar and vanilla bean, baked and then blitzed to a cream. All the whey from the buffalo milk is reduced down and mixed with sugar and bicarb to make the caramel, and the popcorn is caramelised in that same caramel and salted. Served with a biscotti crumb, which can be left off.</p>
+<div class="lg-ipl">On the plate</div><div class="lg-ips"><span class="lg-ip">cheesecake cream</span><span class="lg-ip">truffle</span><span class="lg-ip">caramel</span><span class="lg-ip">popcorn</span></div>
+
+<img class="lg-di" src="assets/img/dishes/parmesan-gelato-cheesecake-cream-truffle-caramel-popcorn.jpg" loading="lazy" alt="">
+</div></div>
+</div>
+</div>
+
+<div class="lg-note-banner" style="margin-top:28px;">
+For allergy or dietary information, use the <a href="dietary" style="color:var(--rust);">Dietary Matrix</a> tool instead.
+</div>
+</div>
+
+<script>
+(function(){
+const GIST_URL = "https://gist.githubusercontent.com/davidyuncken-tech/961008059dd9725f75c8fff63fd8c64d/raw/menu_data.json";
+let DATA = null;
+
+function showStatus(msg, warn){
+const el = document.getElementById('lg-data-status');
+if(!el) return;
+el.style.display = msg ? 'block' : 'none';
+el.textContent = msg || '';
+el.style.borderLeftColor = warn ? 'var(--rust)' : 'var(--sage)';
+}
+
+async function loadData(){
+showStatus('Loading menu data\u2026', false);
+try{
+// The ?t= is load-bearing. cache:'no-store' only stops the browser reusing
+// its own copy - GitHub's CDN still serves a cached response for the same
+// URL for several minutes, so a publish looks like it did nothing. A unique
+// URL each load is what actually gets fresh data.
+const res = await fetch(GIST_URL + '?t=' + Date.now(), {cache:'no-store'});
+if(!res.ok) throw new Error('Fetch failed: ' + res.status);
+DATA = await res.json();
+showStatus(null, false);
+init();
+}catch(e){
+console.error('Lagotto data load failed:', e);
+showStatus('Couldn\u2019t load the menu data \u2014 check your connection and refresh the page.', true);
+}
+}
+
+function init(){
+// Archived dishes stay in the data so they can be switched back on
+// without re-issuing photos or notes. Pages only ever show active ones.
+// '!== false' so a data file predating the flag still renders.
+const dishes = DATA.dishes.filter(d => d.active !== false);
+const byId = Object.fromEntries(dishes.map(d=>[d.id,d]));
+
+function cardHTML(dish, courseIdx){
+let tn;
+if(dish.tasting_notes_status==='complete'){
+tn = `<p class="lg-tn">${dish.tasting_notes}</p>`;
+} else if(dish.tasting_notes_status==='guess'){
+tn = `<p class="lg-tn"><span class="lg-guess-flag">*</span> ${dish.tasting_notes}</p><p class="lg-source lg-source-guess">* Educated guess, not yet confirmed by the kitchen.</p>`;
+} else {
+tn = `<p class="lg-tn pending">Tasting notes not yet logged for the current version of this dish &mdash; ask the kitchen.</p>`;
+}
+const idxHtml = courseIdx ? `<span class="lg-course-idx">${String(courseIdx).padStart(2,'0')}</span>` : '';
+const thumb = dish.image ? `<img class="lg-thumb" src="${dish.image}" loading="lazy" alt="">` : '';
+return `
+<div class="lg-card" data-id="${dish.id}">
+<div class="lg-card-head">
+<div class="lg-dish-name">${idxHtml}${dish.name}</div>
+<div class="lg-head-right">${thumb}<div class="lg-dish-price">${dish.price}</div></div>
+</div>
+<div class="lg-card-body"><div class="lg-card-body-inner">
+${tn}
+${(p=>p.length?`<div class="lg-ipl">On the plate</div><div class="lg-ips">${p.map(x=>`<span class="lg-ip">${x.trim()}</span>`).join('')}</div>`:'')(dish.name.split(',').slice(1))}
+${dish.image?`<img class="lg-di" src="${dish.image}" loading="lazy" alt="">`:''}
+</div></div>
+</div>`;
+}
+
+// À la carte view
+const dishList = document.getElementById('lg-dish-list');
+
+function renderAlaCarte(){
+// Walk the category list, not the dish array. A dish appended out of order -
+// which is what happens when one arrives from the kitchen form - would
+// otherwise open a second SNACKS heading below the desserts.
+let html = '';
+(DATA.menu_categories || []).forEach(cat=>{
+const inCat = dishes.filter(d=>d.category===cat);
+if(!inCat.length) return;
+html += `<div class="lg-section-title">${cat}</div>`;
+inCat.forEach(d=>{ html += cardHTML(d, null); });
+});
+const known = DATA.menu_categories || [];
+const strays = dishes.filter(d=>known.indexOf(d.category)===-1);
+if(strays.length){
+html += `<div class="lg-section-title">Uncategorised</div>`;
+strays.forEach(d=>{ html += cardHTML(d, null); });
+}
+dishList.innerHTML = html;
+}
+
+
+// Expand/collapse
+document.getElementById('lagotto-menu-root').addEventListener('click', e=>{
+const head = e.target.closest('.lg-card-head'); if(!head) return;
+head.closest('.lg-card').classList.toggle('open');
+});
+
+renderAlaCarte();
+}
+
+loadData();
+})();
+</script></div></div>
+</body>
+</html>

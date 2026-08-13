@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Menu Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-food-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-food-180.png">
+<meta name="apple-mobile-web-app-title" content="Menu Quiz">
+<meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+<div id="lagotto-quiz-root">
+<style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+  --rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+  --radius:10px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--parchment); color:var(--ink);
+  font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
+.lg-header{
+  background:var(--ink); color:var(--parchment); padding:40px 20px 32px;
+  position:relative; overflow:hidden;
+}
+.lg-header::before{
+  content:''; position:absolute; inset:0; opacity:.35; pointer-events:none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 10% 20%, var(--gold) 0, transparent 60%),
+    radial-gradient(1px 1px at 25% 65%, var(--parchment-2) 0, transparent 60%),
+    radial-gradient(2px 2px at 40% 15%, var(--gold) 0, transparent 60%),
+    radial-gradient(1px 1px at 60% 80%, var(--parchment-2) 0, transparent 60%),
+    radial-gradient(1.5px 1.5px at 78% 35%, var(--gold) 0, transparent 60%),
+    radial-gradient(1px 1px at 88% 70%, var(--parchment-2) 0, transparent 60%),
+    radial-gradient(1.5px 1.5px at 95% 12%, var(--gold) 0, transparent 60%),
+    radial-gradient(1px 1px at 15% 90%, var(--gold) 0, transparent 60%);
+  background-size:100% 100%;
+}
+.lg-header-inner{position:relative; max-width:920px; margin:0 auto;}
+.lg-logo{
+display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%;
+margin:0;
+/* The supplied logo is black artwork on transparency, which is invisible on the
+   dark header. brightness(0) flattens it to solid black whatever the source
+   colour, then invert(1) flips that to white, leaving the alpha channel alone.
+   Swap this whole filter out for a plain reversed asset if the brand kit has one. */
+filter:brightness(0) invert(1);
+}
+.lg-sub{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--parchment-2); margin:8px 0 0;
+}
+.lg-tools-nav{display:flex; gap:8px; margin-top:24px; flex-wrap:wrap;}
+.lg-tools-nav a{
+  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+  color:var(--parchment); text-decoration:none; border:1px solid rgba(239,231,216,.35);
+  padding:6px 12px; border-radius:20px; text-transform:uppercase; transition:.15s;
+}
+.lg-tools-nav a:hover, .lg-tools-nav a.active{background:var(--rust); border-color:var(--rust);}
+
+.lg-tabs{display:flex; gap:0; margin:28px 0 8px; border-bottom:2px solid var(--parchment-2);}
+.lg-tab{
+  font-family:'Fraunces',serif; font-weight:600; font-size:16px; background:none; border:none;
+  padding:12px 18px 14px; cursor:pointer; color:var(--pending); border-bottom:3px solid transparent;
+  margin-bottom:-2px; transition:.15s;
+}
+.lg-tab.active{color:var(--rust); border-bottom-color:var(--rust);}
+.lg-tab:hover{color:var(--rust-dim);}
+
+.lg-filters{display:flex; gap:8px; flex-wrap:wrap; margin:20px 0;}
+.lg-chip{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.03em;
+  background:var(--parchment); border:1px solid var(--ink); color:var(--ink);
+  padding:7px 14px; border-radius:20px; cursor:pointer; transition:.15s;
+}
+.lg-chip.active{background:var(--ink); color:var(--parchment);}
+.lg-chip:hover{border-color:var(--rust);}
+
+.lg-note-banner{
+  background:var(--parchment-2); border-left:3px solid var(--rust); padding:14px 16px;
+  font-size:13.5px; color:var(--ink-soft); margin:24px 0; border-radius:0 6px 6px 0;
+}
+
+.lg-card{
+  background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius);
+  margin-bottom:10px; overflow:hidden; transition:.15s;
+}
+.lg-card-head{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  padding:16px 18px; cursor:pointer; user-select:none;
+}
+.lg-card-head:hover{background:var(--parchment);}
+.lg-dish-name{font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; flex:1;}
+.lg-dish-price{font-family:'IBM Plex Mono',monospace; color:var(--gold); font-weight:500; white-space:nowrap;}
+.lg-course-idx{
+  font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--rust); margin-right:10px;
+}
+.lg-card-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+.lg-card-body-inner{padding:0 18px 18px;}
+.lg-card.open .lg-card-body{max-height:1000px;}
+.lg-tn{font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin:4px 0 14px;}
+.lg-tn.pending{color:var(--pending); font-style:italic;}
+.lg-source{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--pending); margin-top:-8px; margin-bottom:14px;}
+.lg-chef-note{
+  font-size:13px; background:#FBF5E6; border:1px dashed var(--gold); border-radius:6px;
+  padding:10px 12px; margin-top:10px; color:var(--ink-soft);
+}
+
+.lg-badges{display:flex; flex-wrap:wrap; gap:6px;}
+.lg-badge{
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.02em;
+  padding:4px 9px; border-radius:20px; border:1px solid transparent; white-space:nowrap;
+}
+.lg-badge.contains{background:#F3E1DA; color:var(--rust-dim); border-color:var(--rust);}
+.lg-badge.modifiable{background:#E9EEE4; color:#4B5A3F; border-color:var(--sage);}
+.lg-badge.safe{background:#E9EEE4; color:#4B5A3F; border-color:var(--sage);}
+.lg-badge.pending{background:#EFEAE1; color:var(--pending); border-style:dashed;}
+
+.lg-dietary-detail{margin-top:14px; display:grid; gap:8px;}
+.lg-dietary-row{display:flex; gap:10px; align-items:flex-start; font-size:13px;}
+.lg-dietary-row .lg-badge{flex-shrink:0; min-width:82px; text-align:center;}
+.lg-dietary-row .txt{color:var(--ink-soft);}
+.lg-dietary-row .txt em{color:var(--pending); font-style:italic;}
+
+.lg-section-title{
+  font-family:'Fraunces',serif; font-size:13px; text-transform:uppercase; letter-spacing:.14em;
+  color:var(--rust); margin:32px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--parchment-2);
+}
+.lg-section-title:first-of-type{margin-top:24px;}
+
+.lg-legend{display:flex; flex-wrap:wrap; gap:14px; margin:18px 0 0; font-size:12px; color:var(--ink-soft);}
+.lg-legend span{display:inline-flex; align-items:center; gap:6px;}
+.lg-dot{width:9px; height:9px; border-radius:50%; display:inline-block;}
+.lg-dot.contains{background:var(--rust);}
+.lg-dot.modifiable{background:var(--sage);}
+.lg-dot.pending{background:var(--pending);}
+
+.lg-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+  background:var(--rust); color:var(--parchment); border:none; padding:11px 20px; border-radius:6px;
+  cursor:pointer; transition:.15s;
+}
+.lg-btn:hover{background:var(--rust-dim);}
+.lg-btn.ghost{background:none; color:var(--ink); border:1px solid var(--ink);}
+.lg-btn.ghost:hover{border-color:var(--rust); color:var(--rust);}
+.lg-btn:disabled{opacity:.4; cursor:not-allowed;}
+
+@media (max-width:560px){
+  .lg-dish-name{font-size:15px;}
+}
+
+#lagotto-quiz-root .lg-quiz-stage{max-width:640px; margin:0 auto;}
+#lagotto-quiz-root .lg-progress{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pending); margin:24px 0 6px;}
+#lagotto-quiz-root .lg-progress-bar{height:4px; background:var(--parchment-2); border-radius:4px; overflow:hidden; margin-bottom:24px;}
+#lagotto-quiz-root .lg-progress-fill{height:100%; background:var(--rust); transition:width .25s;}
+#lagotto-quiz-root .lg-question{font-family:'Fraunces',serif; font-size:22px; font-weight:600; margin:0 0 20px; line-height:1.3;}
+#lagotto-quiz-root .lg-options{display:grid; gap:10px;}
+#lagotto-quiz-root .lg-option{
+  text-align:left; background:#fff; border:1.5px solid var(--parchment-2); border-radius:8px;
+  padding:14px 16px; font-family:'Work Sans',sans-serif; font-size:15px; cursor:pointer; transition:.15s;
+}
+#lagotto-quiz-root .lg-option:hover{border-color:var(--rust);}
+#lagotto-quiz-root .lg-option.correct{border-color:var(--sage); background:#E9EEE4;}
+#lagotto-quiz-root .lg-option.wrong{border-color:var(--rust); background:#F3E1DA;}
+#lagotto-quiz-root .lg-option.picked{border-color:var(--ink); background:var(--ink); color:var(--parchment);}
+#lagotto-quiz-root .lg-option.missed{border-color:var(--gold); border-style:dashed; background:#FBF5E6;}
+#lagotto-quiz-root .lg-options.pills{display:flex; flex-wrap:wrap; gap:8px;}
+#lagotto-quiz-root .lg-options.pills .lg-option{padding:9px 15px; border-radius:20px; width:auto; font-size:14px;}
+#lagotto-quiz-root .lg-submit-btn{margin-top:16px;}
+#lagotto-quiz-root .lg-option:disabled{cursor:default;}
+#lagotto-quiz-root .lg-explain{margin-top:18px; padding:14px 16px; background:var(--parchment-2); border-radius:8px; font-size:14px; color:var(--ink-soft); display:none;}
+#lagotto-quiz-root .lg-quiz-footer{display:flex; justify-content:space-between; align-items:center; margin-top:22px;}
+#lagotto-quiz-root .lg-score-pill{font-family:'IBM Plex Mono',monospace; font-size:12px; background:var(--ink); color:var(--parchment); padding:6px 14px; border-radius:20px;}
+#lagotto-quiz-root .lg-start-card, #lagotto-quiz-root .lg-end-card{
+  text-align:center; padding:48px 24px; background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius);
+}
+#lagotto-quiz-root .lg-end-score{font-family:'Fraunces',serif; font-size:52px; font-weight:700; color:var(--rust); margin:10px 0;}
+
+#lagotto-quiz-root .lg-focus-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px;}
+#lagotto-quiz-root .lg-focus-tags{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:0 0 26px;}
+#lagotto-quiz-root .lg-focus-tag{background:var(--parchment); border:1.5px solid var(--parchment-2); border-radius:20px; padding:8px 16px; font-size:13px; cursor:pointer; color:var(--ink-soft); font-family:inherit;}
+#lagotto-quiz-root .lg-focus-tag.on{background:var(--rust); border-color:var(--rust); color:#fff;}
+
+#lagotto-quiz-root .lg-explain{background:transparent; padding:0;}
+#lagotto-quiz-root .lg-syn{background:#fff; border:1px solid var(--parchment-2); border-radius:12px; overflow:hidden; text-align:left;}
+#lagotto-quiz-root .lg-syn-top{display:flex; padding:14px 18px; align-items:flex-start; gap:10px; border-bottom:1px solid var(--parchment-2);}
+#lagotto-quiz-root .lg-syn-top.correct{background:#eef2e9;}
+#lagotto-quiz-root .lg-syn-top.wrong{background:#f7e9e4;}
+#lagotto-quiz-root .lg-syn-icon{font-size:18px; flex-shrink:0; line-height:1.4;}
+#lagotto-quiz-root .lg-syn-vt{font-weight:700; font-size:14px; color:var(--ink);}
+#lagotto-quiz-root .lg-syn-ans{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+#lagotto-quiz-root .lg-syn-txt{padding:18px;}
+#lagotto-quiz-root .lg-syn-name{font-family:'Fraunces',serif; font-size:18px; font-weight:600; color:var(--ink); margin-bottom:2px;}
+#lagotto-quiz-root .lg-syn-meta{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-bottom:14px;}
+#lagotto-quiz-root .lg-sec{margin-bottom:12px;}
+#lagotto-quiz-root .lg-sec-lbl{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--ink-soft); opacity:0.7; margin-bottom:4px;}
+#lagotto-quiz-root .lg-sec-txt{font-size:13px; line-height:1.65; color:var(--ink);}
+#lagotto-quiz-root .lg-guess-tag{font-style:italic; color:var(--ink-soft); font-size:12px;}
+#lagotto-quiz-root .lg-pills{display:flex; flex-wrap:wrap; gap:6px; margin-top:2px;}
+#lagotto-quiz-root .lg-pill{background:var(--parchment); border-radius:20px; padding:4px 10px; font-size:12px; color:var(--rust);}
+#lagotto-quiz-root .lg-syn-img{padding:6px 18px 18px; display:flex; justify-content:center; border-top:1px solid var(--parchment-2); margin-top:6px; padding-top:16px;}
+#lagotto-quiz-root .lg-syn-img img{max-width:100%; max-height:280px; border-radius:8px; object-fit:contain;}
+</style>
+
+<div class="lg-header">
+  <div class="lg-header-inner">
+    <img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+    <p class="lg-sub">Staff Quiz</p>
+    <div class="lg-tools-nav">
+      <a href="menu">Menu Reference</a>
+      <a href="dietary">Dietary Matrix</a>
+      <a href="menu-quiz" class="active w--current">Staff Quiz</a>
+    </div>
+  </div>
+</div>
+
+<div class="lg-wrap">
+  <div class="lg-note-banner" id="lg-data-status" style="display: none; max-width: 640px; margin-left: auto; margin-right: auto; border-left-color: var(--sage);"></div>
+  <div class="lg-quiz-stage">
+    <div id="lg-start" class="lg-start-card">
+      <p style="font-family:&#39;Fraunces&#39;,serif; font-size:22px; font-weight:600; margin:0 0 10px;">Know the menu?</p>
+      <p style="color:var(--ink-soft); font-size:14px; margin:0 0 22px;">12 questions drawn evenly from your chosen focus areas.</p>
+      <p class="lg-focus-label">Focus areas — tap one to focus on it, tap more to add</p>
+      <div class="lg-focus-tags" id="lg-focus-tags">
+        <button class="lg-focus-tag on" data-qtype="missing_ingredient">Ingredients</button>
+        <button class="lg-focus-tag on" data-qtype="tasting">Tasting notes</button>
+        <button class="lg-focus-tag on" data-qtype="chefs">Chef's Menu</button>
+        <button class="lg-focus-tag on" data-qtype="dietary">Dietary</button>
+      </div>
+      <button class="lg-btn" id="lg-start-btn">Start quiz</button>
+    </div>
+
+    <div id="lg-quiz" style="display:none;">
+      <div class="lg-progress"><span id="lg-q-count">Question 1 of 12</span><span id="lg-score-live">Score 0/0</span></div>
+      <div class="lg-progress-bar"><div class="lg-progress-fill" id="lg-progress-fill" style="width: 0%;"></div></div>
+      <p class="lg-question" id="lg-question-text"></p>
+      <div class="lg-options" id="lg-options"></div>
+      <button class="lg-btn lg-submit-btn" id="lg-submit-btn" style="display:none;" disabled>Check answer</button>
+      <div class="lg-explain" id="lg-explain" style="display: none;"></div>
+      <div class="lg-quiz-footer">
+        <span class="lg-score-pill" id="lg-score-pill">Score: 0/0</span>
+        <button class="lg-btn" id="lg-next-btn" style="display: none;">Next question</button>
+      </div>
+    </div>
+
+    <div id="lg-end" class="lg-end-card" style="display:none;">
+      <p style="font-family:&#39;IBM Plex Mono&#39;,monospace; font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--pending);">Final score</p>
+      <p class="lg-end-score" id="lg-end-score">0/12</p>
+      <p id="lg-end-msg" style="color:var(--ink-soft); font-size:14px; margin-bottom:24px;"></p>
+      <button class="lg-btn" id="lg-restart-btn">Try again</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const GIST_URL = "https://gist.githubusercontent.com/davidyuncken-tech/961008059dd9725f75c8fff63fd8c64d/raw/menu_data.json";
+  let DATA = null;
+
+  function showStatus(msg, warn){
+    const el = document.getElementById('lg-data-status');
+    if(!el) return;
+    el.style.display = msg ? 'block' : 'none';
+    el.textContent = msg || '';
+    el.style.borderLeftColor = warn ? 'var(--rust)' : 'var(--sage)';
+  }
+
+  async function loadData(){
+    showStatus('Loading menu data\u2026', false);
+    try{
+      // The ?t= is load-bearing. cache:'no-store' only stops the browser reusing
+      // its own copy - GitHub's CDN still serves a cached response for the same
+      // URL for several minutes, so a publish looks like it did nothing. A unique
+      // URL each load is what actually gets fresh data.
+      const res = await fetch(GIST_URL + '?t=' + Date.now(), {cache:'no-store'});
+      if(!res.ok) throw new Error('Fetch failed: ' + res.status);
+      DATA = await res.json();
+      showStatus(null, false);
+      init();
+    }catch(e){
+      console.error('Lagotto data load failed:', e);
+      showStatus('Couldn\u2019t load the menu data \u2014 check your connection and refresh the page.', true);
+      const startBtn = document.getElementById('lg-start-btn');
+      if(startBtn) startBtn.textContent = 'Couldn\u2019t load data';
+    }
+  }
+
+  function init(){
+  // Archived dishes stay in the data so they can be switched back on
+  // without re-issuing photos or notes. Pages only ever show active ones.
+  // '!== false' so a data file predating the flag still renders.
+  const dishes = DATA.dishes.filter(d => d.active !== false);
+  const byId = Object.fromEntries(dishes.map(d=>[d.id,d]));
+
+  function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+  function pick(arr,n){ return shuffle(arr).slice(0,n); }
+  function uniq(arr){ return [...new Set(arr)]; }
+
+  function buildPool(){
+    const pool = [];
+
+    // Chef's Menu \u2014 which dish in each course category is on the fixed menu
+    const chefsCourseIds = new Set(DATA.chefs_menu.course_order);
+    DATA.chefs_menu.course_order.forEach(id=>{
+      const d = byId[id];
+      const sameCatNotOnChefs = dishes.filter(x=>x.category===d.category && !chefsCourseIds.has(x.id));
+      const distractors = pick(sameCatNotOnChefs.map(x=>x.name), Math.min(3, sameCatNotOnChefs.length));
+      if(distractors.length===0) return;
+      pool.push({
+        type:'chefs', dish:d.id, q:`Which ${d.category.toLowerCase()} dish is on the current Chef's Menu (${DATA.chefs_menu.price})?`,
+        options: shuffle([d.name, ...distractors]), answer: d.name,
+        explain: `${d.name} is the ${d.category.toLowerCase()} course on the current Chef's Menu.`
+      });
+    });
+
+    // Tasting note / provenance ID (confirmed notes and educated guesses)
+    // Masks the dish's own ingredient words wherever they appear in the chosen sentence
+    // (rather than just picking a "low overlap" sentence) so we can use genuinely
+    // informative technique/provenance sentences without giving the answer away.
+    // Splitting on non-alphanumeric chars (not stripping them) keeps hyphenated/possessive
+    // words like "T-bone" matchable via \b boundaries.
+    function ingredientKeywords(d){
+      return [...new Set(d.name.toLowerCase().split(/[^a-z0-9]+/).filter(w=>w.length>3))];
+    }
+    function maskAndCount(sentence, keywords){
+      let result = sentence, count = 0;
+      keywords.forEach(kw=>{
+        const re = new RegExp('\\b'+kw+'\\b','gi');
+        result = result.replace(re, () => { count++; return '____'; });
+      });
+      return {masked: result, count};
+    }
+    dishes.filter(d=>d.tasting_notes_status==='complete'||d.tasting_notes_status==='guess').forEach(d=>{
+      const sentences = d.tasting_notes.split(/(?<=[.!?])\s+/).filter(s=>s.trim().length>25);
+      const keywords = ingredientKeywords(d);
+      const candidates = sentences.map(s=>{
+        const {masked,count} = maskAndCount(s, keywords);
+        return {masked, count, len:s.length};
+      }).filter(c=>c.count>=1 && c.count<=2); // at least 1 mask (else irrelevant), at most 2 (stays readable)
+      candidates.sort((a,b)=> a.count-b.count || b.len-a.len);
+      // Skip dishes where nothing masks cleanly \u2014 better fewer questions than a giveaway or gibberish one.
+      if(!candidates.length) return;
+      const snippet = candidates[0].masked;
+      const distractors = pick(dishes.filter(x=>x.id!==d.id && x.category===d.category).map(x=>x.name), 3);
+      const fallback = distractors.length<3 ? pick(dishes.filter(x=>x.id!==d.id).map(x=>x.name), 3-distractors.length) : [];
+      const guessTag = d.tasting_notes_status==='guess' ? ' (educated guess, not yet confirmed by the kitchen)' : '';
+      pool.push({
+        type:'tasting', dish:d.id, q:`This is from the tasting notes for which dish: "${snippet.trim()}"`,
+        options: shuffle([d.name, ...distractors, ...fallback].slice(0,4)), answer: d.name,
+        explain: `The full note is below${guessTag}.`
+      });
+    });
+
+    // Missing ingredient
+    const allIngredientParts = uniq(dishes.flatMap(d=>d.name.split(',').slice(1).map(p=>p.trim())));
+    dishes.forEach(d=>{
+      const parts = d.name.split(',').map(p=>p.trim());
+      if(parts.length < 3) return; // need at least 2 non-lead parts for a fair question
+      const removableIdx = pick(parts.map((_,i)=>i).slice(1), 2); // up to 2 questions per dish
+      removableIdx.forEach(idx=>{
+        const correct = parts[idx];
+        const distractorPool = allIngredientParts.filter(p=>p!==correct && !parts.includes(p));
+        const distractors = pick(distractorPool, 3);
+        if(distractors.length < 3) return;
+        const blanked = parts.map((p,i)=> i===idx ? '___' : p).join(', ');
+        pool.push({
+          type:'missing_ingredient', dish:d.id, q:`What's the missing ingredient? "${blanked}"`,
+          options: shuffle([correct, ...distractors]), answer: correct,
+          explain: `${correct} is part of "${d.name}".`
+        });
+      });
+    });
+
+    // Pick the ingredients (multi-select) \u2014 header is the dish, pills are a
+    // mix of its real ingredients and menu-wide decoys; staff have to select
+    // every correct one and nothing else. Only for Entrees/Pasta/Proteins/
+    // Dessert, where "dish name, then its components" reliably splits clean;
+    // Snacks and Sides don't have that same clear name+components shape.
+    const PICK_INGREDIENTS_CATEGORIES = new Set(['Entrees','Pasta','Proteins','Dessert']);
+    dishes.filter(d=>PICK_INGREDIENTS_CATEGORIES.has(d.category)).forEach(d=>{
+      const parts = d.name.split(',').map(p=>p.trim());
+      const correctList = parts.slice(1);
+      if(correctList.length < 2) return; // not enough components for a meaningful multi-select
+      const header = d.short_name || parts[0];
+      const distractorPool = allIngredientParts.filter(p=>!correctList.includes(p));
+      const numDistractors = Math.min(12 - correctList.length, distractorPool.length);
+      const distractors = pick(distractorPool, numDistractors);
+      if(distractors.length < numDistractors) return; // not enough menu-wide variety to fill the board
+      pool.push({
+        type:'missing_ingredient', format:'multi_select', dish:d.id,
+        q:`Pick the correct ingredients for the ${header}.`,
+        options: shuffle([...correctList, ...distractors]),
+        answer: correctList,
+        explain: `Correct ingredients: ${correctList.join(', ')}.`
+      });
+    });
+
+    // Dietary questions \u2014 built in two passes. Pass 1 (below) generates the
+    // harder "exact modification" questions for modifiable flags and tracks
+    // which dish/flag pairs it covers. Pass 2 (further down) generates the
+    // remaining yes/no questions, filtering out "contains" answers that are
+    // obvious from the dish's own name and skipping modifiable flags already
+    // covered by the harder pass \u2014 so the same fact isn't asked twice, once
+    // easy and once hard.
+    function dietaryPhrase(key, label){
+      if(key==='vegetarian') return 'is vegetarian';
+      if(key==='vegan') return 'is vegan';
+      if(key==='pregnant') return 'is pregnant';
+      if(key==='fructose') return 'is sensitive to fructose/FODMAP';
+      if(key==='onion_garlic') return 'avoids onion & garlic';
+      if(key==='coeliac') return 'has coeliac disease';
+      if(key==='gluten_free') return 'needs a gluten-free meal';
+      if(key==='crustacean') return 'needs to avoid crustaceans';
+      return `needs to avoid ${label.toLowerCase()}`;
+    }
+    function stripSource(note){
+      return (note || '').replace(/\s*\[source:.*?\]\s*$/i, '').trim();
+    }
+    function isVagueNote(text){
+      // "check with chef" etc carries no quizzable detail on its own
+      return /^(check with (the )?chef|check with (the )?guest|see chef)\.?$/i.test(text);
+    }
+
+    // Dietary modification detail (harder variant) \u2014 for flags that ARE
+    // modifiable, ask exactly what has to change rather than just yes/no.
+    const modsByCategory = {};
+    dishes.forEach(d=>{
+      Object.entries(d.dietary).forEach(([key,info])=>{
+        if(info.status!=='modifiable' || !info.note) return;
+        const text = stripSource(info.note);
+        if(!text || isVagueNote(text)) return;
+        (modsByCategory[key] = modsByCategory[key] || []).push({dish:d.id, text});
+      });
+    });
+    const modDetailDone = new Set(); // `${dishId}|${key}` pairs already asked as the harder variant
+    dishes.forEach(d=>{
+      Object.entries(d.dietary).forEach(([key,info])=>{
+        if(info.status!=='modifiable' || !info.note) return;
+        const correct = stripSource(info.note);
+        if(!correct || isVagueNote(correct)) return;
+        const label = DATA.dietary_categories.find(c=>c.key===key).label;
+        const shortName = d.short_name || d.name.split(',')[0].trim();
+        // Prefer distractors from the same dietary category \u2014 a harder,
+        // same-shape choice \u2014 topping up from other categories if short.
+        const sameCat = uniq((modsByCategory[key]||[]).filter(m=>m.dish!==d.id && m.text!==correct).map(m=>m.text));
+        let distractors = pick(sameCat, 3);
+        if(distractors.length < 3){
+          const otherCat = uniq(Object.entries(modsByCategory)
+            .filter(([k])=>k!==key)
+            .flatMap(([,arr])=>arr)
+            .filter(m=>m.dish!==d.id && m.text!==correct && !distractors.includes(m.text))
+            .map(m=>m.text));
+          distractors = distractors.concat(pick(otherCat, 3 - distractors.length));
+        }
+        if(distractors.length < 3) return;
+        pool.push({
+          type:'dietary', dish:d.id,
+          q:`For a guest who ${dietaryPhrase(key,label)}, what exactly needs to change on "${shortName}"?`,
+          options: shuffle([correct, ...distractors]),
+          answer: correct,
+          explain: correct
+        });
+        modDetailDone.add(d.id + '|' + key);
+      });
+    });
+
+    // Yes/No dietary questions \u2014 kept for "contains" flags (the safety-
+    // critical hard-no facts) and for modifiable flags that didn't get a
+    // harder question above. "Contains" questions are skipped when the dish's
+    // own name already gives the answer away (e.g. "Oysters" + molluscs),
+    // using a curated list of giveaway words per category \u2014 this is what
+    // keeps the remaining questions genuinely testable rather than guessable.
+    const OBVIOUS_HINTS = {
+      vegetarian: ['wagyu','beef','pork','duck','lamb','chicken','veal','tuna','trout','octopus','scallop','oyster','crab','prawn','bug','pancetta','anchovy','fish','mussel','squid','calamari','flounder','bacon','tartare','carpaccio','crudo','bone'],
+      vegan: ['wagyu','beef','pork','duck','lamb','chicken','veal','tuna','trout','octopus','scallop','oyster','crab','prawn','bug','pancetta','anchovy','fish','mussel','squid','calamari','flounder','bacon','tartare','carpaccio','crudo','bone',
+              'cream','butter','cheese','milk','gelato','parmesan','mascarpone','pecorino','stracciatella','buttermilk','whey','egg','honey','ice cream','ice-cream'],
+      dairy: ['cream','butter','cheese','milk','gelato','parmesan','mascarpone','pecorino','stracciatella','buttermilk','whey','bechamel','b\u00e9chamel','ice cream','ice-cream'],
+      coeliac: ['bread','pasta','pastry','flour','crumb','brioche','focaccia','tortellini','conchiglie','bigoli','crepe','biscotti','gnocchi','lasagne','lasagna','spaghetti','ravioli','panko','crouton','tart'],
+      gluten_free: ['bread','pasta','pastry','flour','crumb','brioche','focaccia','tortellini','conchiglie','bigoli','crepe','biscotti','gnocchi','lasagne','lasagna','spaghetti','ravioli','panko','crouton','tart'],
+      crustacean: ['prawn','crab','bug','lobster','shrimp','crayfish'],
+      molluscs: ['oyster','mussel','scallop','clam','squid','octopus','calamari','pippies','pippi','abalone'],
+      sesame: ['sesame','tahini'],
+      peanuts: ['peanut'],
+      tree_nuts: ['hazelnut','macadamia','almond','walnut','pistachio','cashew','pecan','pine nut','pinenut'],
+      onion_garlic: ['onion','garlic'],
+      egg: ['egg','meringue','custard','mayo','aioli']
+      // fructose and pregnant deliberately have no hint list \u2014 they're
+      // essentially never guessable from a dish name alone.
+    };
+    function nameGivesItAway(nameLower, key){
+      const hints = OBVIOUS_HINTS[key];
+      if(!hints) return false;
+      return hints.some(h=>{
+        if(h.includes(' ') || h.includes('-')) return nameLower.includes(h);
+        // word-start match (no trailing \b) so plurals like "oysters" still
+        // match the singular hint "oyster"
+        return new RegExp('\\b'+h,'i').test(nameLower);
+      });
+    }
+    dishes.forEach(d=>{
+      const nameLower = d.name.toLowerCase();
+      Object.entries(d.dietary).forEach(([key,info])=>{
+        if(info.status==='pending') return;
+        if(info.status==='modifiable' && modDetailDone.has(d.id + '|' + key)) return; // already asked, harder version
+        if(info.status==='contains' && nameGivesItAway(nameLower, key)) return; // too obvious from the name
+        const label = DATA.dietary_categories.find(c=>c.key===key).label;
+        const canHave = info.status !== 'contains';
+        const shortName = d.short_name || d.name.split(',')[0].trim();
+        pool.push({
+          type:'dietary', dish:d.id,
+          q:`For a guest who ${dietaryPhrase(key,label)}, can they be served "${shortName}" (as is, or with a simple adjustment)?`,
+          options: ['Yes','No'],
+          answer: canHave ? 'Yes' : 'No',
+          explain: stripSource(info.note) || (canHave ? `No adjustment needed \u2014 safe as served.` : `${label} is integral to this dish as served.`)
+        });
+      });
+    });
+
+    return pool;
+  }
+
+  const FULL_POOL = buildPool();
+  let session = [];
+  let idx = 0, score = 0, answered = false;
+  let selectedIngredients = new Set(); // for multi_select pill questions
+
+  const startCard = document.getElementById('lg-start');
+  const quizCard = document.getElementById('lg-quiz');
+  const endCard = document.getElementById('lg-end');
+  const qText = document.getElementById('lg-question-text');
+  const optionsWrap = document.getElementById('lg-options');
+  const explainBox = document.getElementById('lg-explain');
+  const nextBtn = document.getElementById('lg-next-btn');
+  const submitBtn = document.getElementById('lg-submit-btn');
+  const scorePill = document.getElementById('lg-score-pill');
+  const qCount = document.getElementById('lg-q-count');
+  const scoreLive = document.getElementById('lg-score-live');
+  const progressFill = document.getElementById('lg-progress-fill');
+
+  const FOCUS_TYPES = ['missing_ingredient','tasting','chefs','dietary'];
+  const activeTypes = new Set(FOCUS_TYPES);
+  const focusTags = document.querySelectorAll('#lg-focus-tags .lg-focus-tag');
+  function syncTags(){
+    focusTags.forEach(tag=>{
+      tag.classList.toggle('on', activeTypes.has(tag.getAttribute('data-qtype')));
+    });
+  }
+  focusTags.forEach(tag=>{
+    tag.addEventListener('click', ()=>{
+      const t = tag.getAttribute('data-qtype');
+      if(activeTypes.size === FOCUS_TYPES.length){
+        // everything is on: tapping a tag means "focus on just this one"
+        activeTypes.clear(); activeTypes.add(t);
+      } else if(activeTypes.has(t)){
+        if(activeTypes.size === 1){
+          // tapping the only active tag resets back to everything
+          FOCUS_TYPES.forEach(x=>activeTypes.add(x));
+        } else {
+          activeTypes.delete(t);
+        }
+      } else {
+        activeTypes.add(t);
+      }
+      syncTags();
+    });
+  });
+
+  function drawSession(n){
+    // round-robin across the active focus areas so the mix is even,
+    // spilling over to other active areas if one runs out of questions
+    const types = FOCUS_TYPES.filter(t=>activeTypes.has(t));
+    const byType = {};
+    types.forEach(t=>{
+      if(t === 'missing_ingredient'){
+        // Prefer the harder "pick the ingredients" format over the plain
+        // fill-in-the-blank one. Popped from the end of the array first, so
+        // multi_select questions are drawn until exhausted before this falls
+        // back to the simpler blank-fill kind for variety.
+        const typePool = FULL_POOL.filter(q=>q.type===t);
+        const picks = shuffle(typePool.filter(q=>q.format==='multi_select'));
+        const blanks = shuffle(typePool.filter(q=>q.format!=='multi_select'));
+        byType[t] = blanks.concat(picks);
+      } else {
+        byType[t] = shuffle(FULL_POOL.filter(q=>q.type===t));
+      }
+    });
+    const out = [];
+    let added = true;
+    while(out.length < n && added){
+      added = false;
+      for(const t of types){
+        if(out.length >= n) break;
+        const q = byType[t].pop();
+        if(q){ out.push(q); added = true; }
+      }
+    }
+    return shuffle(out);
+  }
+
+  function startQuiz(){
+    session = drawSession(Math.min(12, FULL_POOL.length));
+    idx = 0; score = 0;
+    startCard.style.display='none'; endCard.style.display='none'; quizCard.style.display='';
+    renderQuestion();
+  }
+
+  function renderQuestion(){
+    answered = false;
+    selectedIngredients = new Set();
+    const item = session[idx];
+    qCount.textContent = `Question ${idx+1} of ${session.length}`;
+    scoreLive.textContent = `Score ${score}/${idx}`;
+    progressFill.style.width = `${(idx/session.length)*100}%`;
+    qText.textContent = item.q;
+    optionsWrap.innerHTML = '';
+    explainBox.style.display='none';
+    nextBtn.style.display='none';
+    scorePill.textContent = `Score: ${score}/${idx}`;
+
+    if(item.format === 'multi_select'){
+      optionsWrap.classList.add('pills');
+      item.options.forEach(opt=>{
+        const btn = document.createElement('button');
+        btn.className = 'lg-option'; btn.textContent = opt;
+        btn.addEventListener('click', ()=>toggleIngredientPill(btn, opt));
+        optionsWrap.appendChild(btn);
+      });
+      submitBtn.style.display = 'inline-block';
+      submitBtn.disabled = true;
+      return;
+    }
+
+    optionsWrap.classList.remove('pills');
+    submitBtn.style.display = 'none';
+    item.options.forEach(opt=>{
+      const btn = document.createElement('button');
+      btn.className = 'lg-option'; btn.textContent = opt;
+      btn.addEventListener('click', ()=>selectAnswer(btn, opt, item));
+      optionsWrap.appendChild(btn);
+    });
+  }
+
+  function toggleIngredientPill(btn, opt){
+    if(answered) return;
+    if(selectedIngredients.has(opt)){
+      selectedIngredients.delete(opt); btn.classList.remove('picked');
+    } else {
+      selectedIngredients.add(opt); btn.classList.add('picked');
+    }
+    submitBtn.disabled = selectedIngredients.size === 0;
+  }
+
+  function esc(s){ const d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
+  function buildSynopsis(item, correct){
+    const d = byId[item.dish];
+    const icon = correct ? '&#10003;' : '&#10007;';
+    const vt = correct ? 'Correct!' : 'Not quite';
+    let out = `<div class="lg-syn"><div class="lg-syn-top ${correct?'correct':'wrong'}">`
+      + `<div class="lg-syn-icon">${icon}</div><div><div class="lg-syn-vt">${vt}</div>`
+      + `<div class="lg-syn-ans">${esc(item.explain)}</div></div></div>`;
+    if(d){
+      const parts = d.name.split(',').map(p=>p.trim());
+      const pills = parts.slice(1);
+      const badge = d.on_chefs_menu ? ' &middot; Chef\u2019s Menu course' : '';
+      const guess = d.tasting_notes_status==='guess'
+        ? ' <span class="lg-guess-tag">(educated guess \u2014 not yet confirmed by the kitchen)</span>' : '';
+      out += `<div class="lg-syn-txt"><div class="lg-syn-name">${esc(parts[0])}</div>`
+        + `<div class="lg-syn-meta">${esc(d.category)} &middot; ${esc(d.price)}${badge}</div>`;
+      if(d.tasting_notes){
+        out += `<div class="lg-sec"><div class="lg-sec-lbl">About this dish</div>`
+          + `<div class="lg-sec-txt">${esc(d.tasting_notes)}${guess}</div></div>`;
+      }
+      if(pills.length){
+        out += `<div class="lg-sec"><div class="lg-sec-lbl">On the plate</div><div class="lg-pills">`
+          + pills.map(p=>`<span class="lg-pill">${esc(p)}</span>`).join('') + `</div></div>`;
+      }
+      if(d.chef_note){
+        out += `<div class="lg-sec"><div class="lg-sec-lbl">Good to know</div>`
+          + `<div class="lg-sec-txt">${esc(d.chef_note)}</div></div>`;
+      }
+      out += `</div>`;
+      if(d.image){
+        out += `<div class="lg-syn-img"><img src="${esc(d.image)}" alt="${esc(parts[0])}" loading="lazy"></div>`;
+      }
+    }
+    out += `</div>`;
+    return out;
+  }
+
+  function selectAnswer(btn, opt, item){
+    if(answered) return;
+    answered = true;
+    const correct = opt === item.answer;
+    if(correct) score++;
+    [...optionsWrap.children].forEach(b=>{
+      b.disabled = true;
+      if(b.textContent === item.answer) b.classList.add('correct');
+      else if(b===btn) b.classList.add('wrong');
+    });
+    explainBox.style.display = 'block';
+    explainBox.innerHTML = buildSynopsis(item, correct);
+    nextBtn.style.display = 'inline-block';
+    scorePill.textContent = `Score: ${score}/${idx+1}`;
+  }
+
+  function submitMultiSelect(item){
+    if(answered || item.format !== 'multi_select') return;
+    answered = true;
+    const correctSet = new Set(item.answer);
+    const isCorrect = selectedIngredients.size === correctSet.size
+      && [...selectedIngredients].every(x=>correctSet.has(x));
+    if(isCorrect) score++;
+    [...optionsWrap.children].forEach(b=>{
+      b.disabled = true;
+      const opt = b.textContent;
+      const wasPicked = selectedIngredients.has(opt);
+      const isRight = correctSet.has(opt);
+      b.classList.remove('picked');
+      if(isRight && wasPicked) b.classList.add('correct');
+      else if(wasPicked) b.classList.add('wrong');
+      else if(isRight) b.classList.add('missed'); // correct, but not picked
+    });
+    submitBtn.style.display = 'none';
+    explainBox.style.display = 'block';
+    explainBox.innerHTML = buildSynopsis(item, isCorrect);
+    nextBtn.style.display = 'inline-block';
+    scorePill.textContent = `Score: ${score}/${idx+1}`;
+  }
+
+  nextBtn.addEventListener('click', ()=>{
+    idx++;
+    if(idx >= session.length){
+      quizCard.style.display='none'; endCard.style.display='';
+      document.getElementById('lg-end-score').textContent = `${score}/${session.length}`;
+      const pct = score/session.length;
+      const msg = pct===1 ? "Perfect run \u2014 you know this menu cold."
+        : pct>=0.75 ? "Strong result. A couple of gaps to shore up."
+        : pct>=0.5 ? "Solid start \u2014 worth another pass through the menu reference."
+        : "Spend some time on the Menu Reference and Dietary Matrix pages, then try again.";
+      document.getElementById('lg-end-msg').textContent = msg;
+    } else {
+      renderQuestion();
+    }
+  });
+
+  submitBtn.addEventListener('click', ()=> submitMultiSelect(session[idx]));
+
+  document.getElementById('lg-start-btn').addEventListener('click', startQuiz);
+  document.getElementById('lg-restart-btn').addEventListener('click', startQuiz);
+  const startBtn = document.getElementById('lg-start-btn');
+  startBtn.disabled = false; startBtn.textContent = 'Start quiz';
+  }
+
+  loadData();
+})();
+</script></div>
+</body>
+</html>

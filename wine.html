@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wine List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-wine-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-wine-180.png">
+<meta name="apple-mobile-web-app-title" content="Wine">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+#wl,#wl *{box-sizing:border-box;margin:0;padding:0;}
+#wl{font-family:Georgia,serif;max-width:700px;margin:0 auto;padding:1.5rem 1rem;color:#1a1a1a;}
+#wl h1{font-size:28px;font-weight:400;text-align:center;margin-bottom:.3rem;}
+.wl-subtitle{display:block;text-align:center;color:#888;font-size:14px;font-style:italic;margin-bottom:2.5rem;}
+.wl-loading{text-align:center;padding:3rem;font-family:sans-serif;color:#aaa;font-size:14px;}
+.wl-section{margin-bottom:0;}
+.wl-section:first-child .wl-sec-title{padding-top:1.5rem !important;}.wl-sec-title{font-size:15px !important;font-weight:600 !important;letter-spacing:2px !important;text-transform:uppercase !important;color:#1a1a1a !important;font-family:sans-serif !important;padding:3.5rem 0 1rem !important;cursor:pointer;display:flex !important;justify-content:space-between !important;align-items:center !important;user-select:none;border-bottom:2px solid #1a1a1a !important;}
+.wl-sec-chev{font-size:18px;color:#ccc;transition:transform .2s;font-style:normal;display:inline-block;}
+.wl-sec-title.open .wl-sec-chev{transform:rotate(90deg);}
+.wl-sec-body{}
+.wl-subhead{font-size:11px !important;font-weight:600 !important;letter-spacing:1.5px !important;text-transform:uppercase !important;color:#8B6914 !important;font-family:sans-serif !important;padding:1.25rem 0 .5rem !important;display:block !important;}
+.wl-section:first-child .wl-subhead:first-of-type{padding-top:.5rem !important;}
+.wl-wine{border-bottom:2px solid #e8e4dc;cursor:pointer;margin-bottom:0;}
+.wl-wine:last-child{border-bottom:none;}
+.wl-row{display:flex !important;justify-content:space-between;align-items:flex-start;padding:1.4rem 0;gap:16px;}
+.wl-row-left{flex:1;min-width:0;}
+.wl-wname{font-size:17px;font-weight:400;color:#1a1a1a;display:block;margin-bottom:4px;}
+.wl-wsub{font-size:12px;color:#999;font-family:sans-serif;display:block;}
+.wl-row-right{text-align:right;flex-shrink:0;display:flex !important;flex-direction:column;align-items:flex-end;gap:6px;}
+.wl-wprice{font-size:12px;color:#6B3A1F;font-family:sans-serif;white-space:nowrap;}
+.wl-row-right-bottom{display:flex !important;align-items:center;gap:8px;}
+.wl-chev{font-size:20px;color:#ccc;transition:transform .2s;line-height:1;display:inline-block;}
+.wl-wine.open .wl-chev{transform:rotate(90deg);}
+.wl-btg{display:inline-block !important;background:#6B3A1F;color:#fff;font-size:10px;font-family:sans-serif;padding:3px 9px;border-radius:10px;letter-spacing:.5px;white-space:nowrap;}
+.wl-detail{display:none;background:#fdf9f4;border-top:2px solid #e8e2d8;border-bottom:3px solid #d4cfc4;padding:2rem 1.25rem 2rem !important;margin-bottom:0;}
+.wl-wine.open .wl-detail{display:block !important;}
+.wl-bottle-map{display:flex !important;flex-wrap:wrap;gap:1.75rem;justify-content:center;align-items:center;padding:0 0 1.75rem;}
+.wl-bottle-wrap{display:flex !important;justify-content:center;}
+.wl-map{text-align:center;}
+.wl-map-svg{height:158px;width:auto;display:block;margin:0 auto;}
+.wl-map-cap{font-size:11px !important;font-family:sans-serif;text-transform:uppercase;letter-spacing:1.2px;color:#A54A2A !important;margin-top:9px !important;display:block !important;}
+.wl-map-area{font-size:12px !important;font-family:sans-serif;color:#999 !important;margin-top:2px !important;display:block !important;}
+.wl-bottle-img{width:200px;max-height:400px;object-fit:contain;border-radius:4px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.12));}
+.wl-no-img{width:200px;height:360px;background:#f0ece4;border-radius:4px;display:flex !important;align-items:center;justify-content:center;color:#ccc;font-size:36px;}
+.wl-dname{font-size:20px !important;font-weight:400;display:block !important;margin-bottom:6px !important;}
+.wl-dmeta{font-size:12px !important;color:#999 !important;font-family:sans-serif;display:block !important;margin-bottom:1.1rem !important;}
+.wl-conv{font-size:15px !important;line-height:1.85 !important;color:#333 !important;margin-top:1.25rem !important;margin-bottom:1.5rem !important;font-style:italic;padding-bottom:1.25rem !important;border-bottom:1px solid #e8e2d8;display:block !important;}
+.wl-tags{display:flex !important;flex-wrap:wrap !important;gap:8px !important;margin-top:1rem !important;margin-bottom:1.5rem !important;}
+.wl-tag{background:#6B3A1F !important;border-radius:20px !important;padding:7px 14px !important;font-size:12px !important;font-family:sans-serif;color:#fff !important;display:inline-block !important;letter-spacing:.3px;}
+.wl-lbl{font-size:10px !important;text-transform:uppercase;letter-spacing:1.5px;color:#aaa !important;font-family:sans-serif;display:block !important;margin-bottom:6px !important;margin-top:1.5rem !important;}
+.wl-wm{font-size:14px !important;font-family:sans-serif;line-height:1.7 !important;color:#444 !important;display:block !important;padding-bottom:1rem !important;}
+@media(max-width:480px){.wl-bottle-img{width:220px;max-height:420px;}}
+</style>
+</head>
+<body>
+<div id="wl">
+  <h1>Wine List</h1>
+  <span class="wl-subtitle">Tap any wine to explore</span>
+  <div id="wl-content"><div class="wl-loading">Loading wine list&hellip;</div></div>
+</div>
+<script>
+var WL_DATA_URL = 'https://gist.githubusercontent.com/davidyuncken-tech/cd3af55a9e99108f8a606a09fa0e8025/raw/wine_quiz_data.json';
+
+fetch(WL_DATA_URL)
+  .then(function(r){ return r.json(); })
+  .then(function(data){ buildList(data); })
+  .catch(function(e){ document.getElementById('wl-content').innerHTML = '<div class="wl-loading">Failed to load. Please refresh.</div>'; });
+
+function buildList(data) {
+  var wineMap = {};
+  data.wines.forEach(function(w){ if(w.active !== false) wineMap[w.name] = w; });
+
+  function buildWineRow(name) {
+    var w = wineMap[name];
+    if(!w) return '';
+    var priceHtml = '';
+    var parts = [];
+    if(w.glassPrice) parts.push('Glass $' + w.glassPrice);
+    if(w.bottlePrice) parts.push('Bottle $' + w.bottlePrice);
+    if(parts.length) priceHtml = '<div class="wl-wprice">' + parts.join(' &nbsp;|&nbsp; ') + '</div>';
+    var btgHtml = '';
+    var imgHtml = w.img ? '<img src="' + w.img + '" alt="' + name + '" class="wl-bottle-img">' : '<div class="wl-no-img">&#127863;</div>';
+    var tagsHtml = (w.tastingNotes || []).map(function(t){ return '<span class="wl-tag">' + t + '</span>'; }).join('');
+    return '<div class="wl-wine" onclick="wlToggle(this)">' +
+      '<div class="wl-row">' +
+        '<div class="wl-row-left">' +
+          '<span class="wl-wname">' + name + '</span>' +
+          '<span class="wl-wsub">' + (w.grape||'') + ' &nbsp;&middot;&nbsp; ' + (w.region||'') + '</span>' +
+        '</div>' +
+        '<div class="wl-row-right">' + priceHtml + '<div class="wl-row-right-bottom">' + btgHtml + '<span class="wl-chev">&#8250;</span></div></div>' +
+      '</div>' +
+      '<div class="wl-detail">' +
+        '<div class="wl-bottle-map"><div class="wl-bottle-wrap">' + imgHtml + '</div>' + wlMap(w, data) + '</div>' +
+        '<span class="wl-dname">' + name + '</span>' +
+        '<span class="wl-dmeta">' + (w.vintage||'') + ' &nbsp;&middot;&nbsp; ' + (w.region||'') + ' &nbsp;&middot;&nbsp; ' + (w.grape||'') + '</span>' +
+        '<div class="wl-conv">' + (w.convNote||'') + '</div>' +
+        '<div style="display:flex !important;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:1.25rem !important;">' +
+        (w.sweetness ? '<div style="display:flex !important;align-items:center;gap:8px;"><span style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#aaa;font-family:sans-serif;">Sweetness</span><span style="background:#1a1a1a;color:#fff;border-radius:20px;padding:5px 14px;font-size:12px;font-family:sans-serif;display:inline-block;">' + w.sweetness + '</span></div>' : '') +
+        (w.colour ? '<div style="display:flex !important;align-items:center;gap:8px;"><span style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#aaa;font-family:sans-serif;">Colour</span><span style="background:#1a1a1a;color:#fff;border-radius:20px;padding:5px 14px;font-size:12px;font-family:sans-serif;display:inline-block;">' + w.colour + '</span></div>' : '') +
+        '</div>' +
+        '<div class="wl-tags">' + tagsHtml + '</div>' +
+        '<span class="wl-lbl">Winemaking</span><span class="wl-wm">' + (w.winemaking||'') + '</span>' +
+        '<span class="wl-lbl">Producer &amp; place</span><span class="wl-wm">' + (w.producer||'') + '</span>' +
+      '</div>' +
+    '</div>';
+  }
+
+  var html = '';
+  data.sections.forEach(function(sec) {
+    var winesHtml = '';
+    if(sec.subgroups && sec.subgroups.length) {
+      sec.subgroups.forEach(function(sg) {
+        var sgWinesHtml = sg.wines.map(buildWineRow).join('');
+        if(sgWinesHtml) winesHtml += '<div class="wl-subhead">' + sg.label + '</div>' + sgWinesHtml;
+      });
+    } else {
+      winesHtml = sec.wines.map(buildWineRow).join('');
+    }
+    if(!winesHtml) return;
+    html += '<div class="wl-section">' +
+      '<div class="wl-sec-title open" onclick="wlTogSec(this)">' + sec.title + '<span class="wl-sec-chev">&#8250;</span></div>' +
+      '<div class="wl-sec-body">' + winesHtml + '</div>' +
+    '</div>';
+  });
+  document.getElementById('wl-content').innerHTML = html || '<div class="wl-loading">No wines are currently on the list.</div>';
+}
+
+function wlProject(dot, pr) {
+  return [ (dot[0] - pr.minLon) * pr.xscale * pr.scale + pr.pad,
+           (pr.maxLat - dot[1]) * pr.scale + pr.pad ];
+}
+function wlMap(w, data) {
+  var loc = w.loc;
+  if(!loc || !data.maps || !data.maps[loc.scope]) return '';
+  var m = data.maps[loc.scope], vb = m.viewBox, polys = m.polys, base = '';
+  for(var name in polys){
+    if(name === loc.fill) continue;
+    base += '<path d="' + polys[name] + '" fill="#E3D8C2" stroke="#CBB99A" stroke-width="0.6" stroke-linejoin="round"/>';
+  }
+  var hi = (loc.fill && polys[loc.fill]) ?
+    '<path d="' + polys[loc.fill] + '" fill="#A54A2A" stroke="#7A3820" stroke-width="0.6" stroke-linejoin="round"/>' : '';
+  var dotHtml = '';
+  if(loc.dot){
+    var p = wlProject(loc.dot, m.proj), x = p[0].toFixed(1), y = p[1].toFixed(1);
+    dotHtml = '<circle cx="' + x + '" cy="' + y + '" r="7.5" fill="none" stroke="#A54A2A" stroke-width="0.9" opacity="0.45"/>' +
+              '<circle cx="' + x + '" cy="' + y + '" r="3.3" fill="#A54A2A" stroke="#fdf9f4" stroke-width="1.3"/>';
+  }
+  var svg = '<svg viewBox="0 0 ' + vb[0] + ' ' + vb[1] + '" class="wl-map-svg" role="img" aria-label="' + (loc.caption || 'location') + '">' + base + hi + dotHtml + '</svg>';
+  return '<div class="wl-map">' + svg +
+    (loc.caption ? '<div class="wl-map-cap">' + loc.caption + '</div>' : '') +
+    (loc.area ? '<div class="wl-map-area">' + loc.area + '</div>' : '') + '</div>';
+}
+function wlToggle(el) { el.classList.toggle('open'); }
+function wlTogSec(el) {
+  el.classList.toggle('open');
+  var b = el.nextElementSibling;
+  b.style.display = b.style.display === 'none' ? '' : 'none';
+}
+</script>
+</body>
+</html>

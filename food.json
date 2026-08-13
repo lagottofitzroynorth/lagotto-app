@@ -1,0 +1,2837 @@
+{
+  "restaurant": "Lagotto",
+  "generated": "2026-07-21",
+  "data_completeness_note": "Built from the 21 July 2026 printed menu and the 21 July 2026 kitchen menu notes, cross-referenced against the 21.07.26 revision of the dietary matrix. Dietary data is sourced programmatically from the matrix spreadsheet's cell colours (red = integral/contains, orange = can be modified), not hand-transcribed. This print is a major changeover: the cone cabbage, crepe suzette, mandarin granita, NZ yellowbelly flounder, 800g pork shoulder and Robbin's Island 500g scotch are all off; Jerusalem artichokes, parmesan gelato and a whole side of Coral Trout are on; the stracciatella has been completely rebuilt (fennel jam, not mushroom XO); and the Robbin's Island steak is now a grass fed 300g 9+ oyster blade at $80. Two dishes are served two different ways depending on the menu — the Black Opal wagyu rump (black garlic ketchup à la carte, miso mustard on the Chef's Menu) and the Day's Walk leaves (blood orange à la carte, mandarin on the Chef's Menu). Anything not directly confirmed is marked 'pending' rather than guessed, and dishes with no current kitchen notes have blank tasting notes rather than notes inherited from the dish they replaced. Venue policy: where the printed menu conflicts with the dietary matrix or kitchen notes, the printed menu is the source of truth. Please review with the kitchen before relying on this for guest-facing allergen decisions.",
+  "menu_categories": [
+    "Snacks",
+    "Entrees",
+    "Pasta",
+    "Proteins",
+    "Sides",
+    "Dessert"
+  ],
+  "dietary_categories": [
+    {
+      "key": "dairy",
+      "label": "Dairy"
+    },
+    {
+      "key": "coeliac",
+      "label": "Coeliac"
+    },
+    {
+      "key": "gluten_free",
+      "label": "Gluten Free"
+    },
+    {
+      "key": "crustacean",
+      "label": "Crustacean"
+    },
+    {
+      "key": "molluscs",
+      "label": "Molluscs"
+    },
+    {
+      "key": "sesame",
+      "label": "Sesame"
+    },
+    {
+      "key": "peanuts",
+      "label": "Peanuts"
+    },
+    {
+      "key": "tree_nuts",
+      "label": "Tree Nuts"
+    },
+    {
+      "key": "fructose",
+      "label": "Fructose / FODMAP"
+    },
+    {
+      "key": "vegetarian",
+      "label": "Vegetarian"
+    },
+    {
+      "key": "vegan",
+      "label": "Vegan"
+    },
+    {
+      "key": "pregnant",
+      "label": "Pregnancy-safe"
+    },
+    {
+      "key": "onion_garlic",
+      "label": "Onion & Garlic"
+    },
+    {
+      "key": "egg",
+      "label": "Egg"
+    }
+  ],
+  "dishes": [
+    {
+      "id": "truffle_addon",
+      "category": "Snacks",
+      "name": "Victorian black truffle 3g add-on",
+      "price": "$15",
+      "image": "assets/img/dishes/victorian-black-truffle-3g-add-on.png",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Fresh Victorian black truffle, shaved at the table — 3g per serve. Suggested over the stracciatella, bavette tartare and Jerusalem artichokes, both steaks (the Black Opal wagyu rump and the Robbin's Island oyster blade) and the tiramisu. A truffle upgrade on the brioche can also be offered verbally for $7.50. The celeriac lasagne and the parmesan gelato already come with truffle, so no add-on is needed there. Victorian truffle season runs through winter, which is why it's on the menu now.",
+      "tasting_notes_source": "Confirmed by the venue, July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "safe",
+          "note": "No fructose / fodmap in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "safe",
+          "note": "Vegan as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "This is a supplement rather than a dish — it still has no row in the 21.07.26 matrix. Ask Liam to add one if the kitchen wants dietary guidance recorded.",
+      "short_name": "Truffle add-on"
+    },
+    {
+      "id": "oysters",
+      "category": "Snacks",
+      "name": "1/2 dozen oysters, buttermilk, raspberry mignonette",
+      "price": "$42",
+      "image": "assets/img/dishes/1-2-dozen-oysters-buttermilk-raspberry-mignonette.png",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Buttermilk is emulsified with lemon oil and seasoned with salt. For the mignonette, fresh raspberry is finely chopped and mixed with chardonnay vinegar, lemon oil and shallots.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "No buttermilk [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "contains",
+          "note": "Molluscs is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "No mignonette [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "contains",
+          "note": "Contains an ingredient not recommended during pregnancy — not suitable as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "No mignonette [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": null,
+      "short_name": "Oysters"
+    },
+    {
+      "id": "focaccia",
+      "category": "Snacks",
+      "name": "Sourdough focaccia, whipped vegemite butter",
+      "price": "$14",
+      "image": "assets/img/dishes/sourdough-focaccia-whipped-vegemite-butter.png",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": true,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "The dough uses a small amount of fresh yeast and a four-hour process of stretch, fold and rest before the dimples are pressed in, the dough is lathered in olive oil and rosemary and baked. The slower, more natural sourdough fermentation gives the bread its spring, and potato in the dough retains moisture for a softer, chewier crumb. The butter is browned, strained and smoked, then mixed with vegemite and whipped for service, with caramelised milk solids folded back in for texture.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Not veganisable — the matrix has held this as a hard 'contains' since mid-July and the kitchen notes confirm browned butter through the vegemite butter. The notes' heading now reads 'vegemite brown butter', matching the menu; the old 'smoked honey butter' heading typo is fixed.",
+      "short_name": "Focaccia"
+    },
+    {
+      "id": "scallop",
+      "category": "Snacks",
+      "name": "Shark Bay scallop ceviche, macadamia, wild garlic, trout roe",
+      "price": "$18ea",
+      "image": "assets/img/dishes/shark-bay-scallop-ceviche-macadamia-wild-garlic-trout-roe.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Exceptional scallops from Shark Bay in Western Australia, lightly cured with a little salt and served raw. The macadamia milk is a blend of macadamia and soy milk. Wild garlic is infused into canola oil to make a green oil, and the dish is finished with trout roe.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "contains",
+          "note": "Molluscs is integral to this dish as served. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "modifiable",
+          "note": "Kefir instead of macadamia milk [source: Dietary matrix, 21 July 2026]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "No wild garlic oil [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "contains",
+          "note": "Contains an ingredient not recommended during pregnancy — not suitable as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "No wild garlic oil [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Kitchen notes confirm the macadamia milk is blended with soy milk — soy isn't a matrix category, but worth knowing for guests with a soy allergy. (The tree-nut swap is kefir, which is dairy — see dietary notes.)",
+      "short_name": "Scallop"
+    },
+    {
+      "id": "spring_roll",
+      "category": "Snacks",
+      "name": "Spring roll tart, bluefin tuna crudo, watermelon, smoked creme fraiche",
+      "price": "$16ea",
+      "image": "assets/img/dishes/spring-roll-tart-bluefin-tuna-crudo-watermelon-smoked-creme-.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Spring-roll pastry case, lined with smoked crème fraîche, filled with cubed bluefin tuna crudo and watermelon (adds texture and freshness). Both the tuna and watermelon are dressed in a ponzu dressing, finished with finger lime.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "No crème fraiche [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Swap out the ponzu [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "contains",
+          "note": "Contains an ingredient not recommended during pregnancy — not suitable as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "Swap out the ponzu [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "The kitchen notes include finger lime in the dish title but the printed menu doesn't — menu wins for the name; finger lime stays in the tasting note as a service detail.",
+      "short_name": "Tuna crudo"
+    },
+    {
+      "id": "brioche_wagyu",
+      "category": "Snacks",
+      "name": "Brioche, wagyu carpaccio, yuzu, caviar",
+      "price": "$18ea",
+      "image": "assets/img/dishes/brioche-wagyu-carpaccio-yuzu-caviar.png",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Brioche from To Be Frank bakery, cut into small rectangles and toasted. Wagyu carpaccio (Robbin's Island, cut from the cow's thigh) sits on top with avruga caviar. The citrus element is now yuzu.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026, except the citrus element — the notes' heading and body both still describe the superseded smoked yuzu.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "contains",
+          "note": "Contains an ingredient not recommended during pregnancy — not suitable as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Onion & Garlic is integral to this dish as served. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        }
+      },
+      "chef_note": "Citrus element changed again this print: smoked yuzu → bergamot. The printed menu spells it 'bergemot'; the dietary matrix spells it 'bergamot' correctly. Printed spelling is kept here under the menu-wins rule — worth fixing at the next print. The kitchen notes have NOT been updated: their heading and body still describe the smoked yuzu, so there is no written description of the bergamot preparation yet. Ask the kitchen. Fructose/FODMAP is integral in the matrix, so there is no citrus-removal workaround.",
+      "short_name": "Wagyu carpaccio"
+    },
+    {
+      "id": "rosti",
+      "category": "Snacks",
+      "name": "Potato rosti, spanner crab, mussel, fennel, roe",
+      "price": "$16ea",
+      "image": "assets/img/dishes/potato-rosti-spanner-crab-mussel-fennel-roe.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Grated potato seasoned with salt and pepper, shaped and deep-fried. The rosti is topped with spanner crab dressed in a mussel cream (mussel, lemon oil and canola oil), then flying fish roe, with fennel fronds over the top.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "contains",
+          "note": "Crustacean is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "molluscs": {
+          "status": "modifiable",
+          "note": "No mussel cream [source: Dietary matrix, 21 July 2026]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "safe",
+          "note": "No fructose / fodmap in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "modifiable",
+          "note": "No roe [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "The roe is now printed in the dish title on the à la carte page, which makes the 'no roe' pregnancy adjustment easier to explain — but the Chef's Menu add-on list on page 2 still prints the old title without the roe. Same dish; flag the inconsistency at the next print. The matrix's blank Fructose/FODMAP and Onion & Garlic cells are now corroborated by the kitchen notes (potato, salt, pepper, crab, mussel cream, roe, fennel — no alliums), so those are genuinely clear rather than missing data. The matrix still marks Coeliac integral while leaving Gluten Free blank — likely the shared fryer; worth confirming with Liam.",
+      "short_name": "Potato rosti"
+    },
+    {
+      "id": "potato_rosti",
+      "category": "Snacks",
+      "name": "Potato rosti, tuna belly crudo, bottarga, soy roe",
+      "price": "$16",
+      "image": null,
+      "active": true,
+      "draft": true,
+      "last_confirmed": "2026-07-31",
+      "confirmed_by": "David",
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Grated potato is cooked and then compressed with slight of garlic in the butter and potato starch and cut into a square shape. The rosti deep fried inthe fryer (not coeliac). Served at room temperature.\n\nThe fatty tuna belly is dressed with salt, lemon oil, lemon zest and fennel pollen.\n\nTopped with Bottarga (cured fish eggs) and roe marinated in soy and chives.",
+      "tasting_notes_source": "Kitchen form, David, 2026-07-31.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: kitchen form, David, 2026-07-31]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: kitchen form, David, 2026-07-31]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: kitchen form, David, 2026-07-31]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: kitchen form, David, 2026-07-31]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: kitchen form, David, 2026-07-31]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: kitchen form, David, 2026-07-31]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: kitchen form, David, 2026-07-31]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: kitchen form, David, 2026-07-31]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: kitchen form, David, 2026-07-31]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: kitchen form, David, 2026-07-31]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: kitchen form, David, 2026-07-31]"
+        },
+        "pregnant": {
+          "status": "contains",
+          "note": "Contains an ingredient not recommended during pregnancy — not suitable as served. [source: kitchen form, David, 2026-07-31]"
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Onion & Garlic is integral to this dish as served. [source: kitchen form, David, 2026-07-31]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: kitchen form, David, 2026-07-31]"
+        }
+      },
+      "chef_note": "Submitted through the kitchen form and not yet reviewed. Confirm the name, price and category against the printed menu before switching on. No photo was supplied.",
+      "short_name": "Potato rosti"
+    },
+    {
+      "id": "kangaroo_tartare_spring_roll_tart",
+      "category": "Snacks",
+      "name": "Kangaroo tartare spring roll tart, horseradish cream, cured yolk, fermented chilli",
+      "price": "$16",
+      "image": null,
+      "active": false,
+      "draft": true,
+      "last_confirmed": "2026-07-31",
+      "confirmed_by": "Dave",
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "The Spring roll pastry is baked into a tart shape.\n\nA layer of horse radish cream is put on the base of the tart (Horseradish, egg white, vinegar, oil).\n\nDiced Kangaroo rump is mixed with fermented chilli paste, chives, shallots\n\nTopped with grated cured yolk.",
+      "tasting_notes_source": "Kitchen form, Dave, 2026-07-31.",
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "pregnant": {
+          "status": "contains",
+          "note": "Contains an ingredient not recommended during pregnancy — not suitable as served. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Onion & Garlic is integral to this dish as served. [source: kitchen form, Dave, 2026-07-31]"
+        },
+        "egg": {
+          "status": "modifiable",
+          "note": "Can be modified — ask the kitchen how. [source: kitchen form, Dave, 2026-07-31]"
+        }
+      },
+      "chef_note": "Submitted through the kitchen form and not yet reviewed. Confirm the name, price and category against the printed menu before switching on. No photo was supplied.",
+      "short_name": "Kangaroo tartare spring roll tart"
+    },
+    {
+      "id": "wagyu_intercostal_skewer",
+      "category": "Snacks",
+      "name": "Wagyu intercostal skewer, black garlic ketchup, pickled daikon",
+      "price": "$18",
+      "image": null,
+      "active": true,
+      "draft": true,
+      "last_confirmed": "2026-08-13",
+      "confirmed_by": "added in the Dish Library",
+      "on_chefs_menu": false,
+      "tasting_notes_status": "pending",
+      "tasting_notes": "Wagyu intercostal (meat taken from right next to the rib of the cow, full of flavour), brined for 12 hours with a mixture of spices such as bay leaves, garlic cloves, black peppercorns, mustard seeds, cloves, chilli flakes, water and salt.  \n\nThey are cooked on the chargrill then glazed with a bbq glaze, made with HP sauce , soy sauce, worcestershire sauce, honey, dijon mustard, garlic, ginger, ground black pepper, chilli flakes. \n\nThe black garlic ketchup is made with miso, black garlic, miso, dijon mustard, honey, soy and grapeseed oil. \n\nDaikon radish is pickled with white wine vinegar, water, sugar, salt, shallots, peppercorns and fennel seeds. ",
+      "tasting_notes_source": null,
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "sesame": {
+          "status": "contains",
+          "note": "Sesame is integral to this dish as served. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "vegetarian": {
+          "status": "pending",
+          "note": null
+        },
+        "vegan": {
+          "status": "pending",
+          "note": null
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Onion & Garlic is integral to this dish as served. [source: edited in the Dish Library, 2026-08-13]"
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "Added by hand and not yet reviewed. Set the price, tasting notes and dietary before switching it on.",
+      "short_name": "Wagyu intercostal skewer"
+    },
+    {
+      "id": "octopus",
+      "category": "Entrees",
+      "name": "Fremantle confit octopus carpaccio, saffron rouille, frites, espellette",
+      "price": "$36",
+      "image": "assets/img/dishes/fremantle-confit-octopus-carpaccio-saffron-rouille-frites-es.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": true,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Octopus from Fremantle, WA — confit in oil, sliced into circles, spread on saffron rouille (essentially a mayonnaise with the addition of potato). Finished with crispy frites and espellette (a mild ground chilli typical of the south of France). Suitable for pregnant guests with the saffron rouille served on the side.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "coeliac": {
+          "status": "modifiable",
+          "note": "No frites [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "contains",
+          "note": "Crustacean is integral to this dish as served. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "No frites [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "modifiable",
+          "note": "Rouille on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "modifiable",
+          "note": "Rouille on side [source: Dietary matrix, 21 July 2026]"
+        }
+      },
+      "chef_note": null,
+      "short_name": "Octopus"
+    },
+    {
+      "id": "bavette",
+      "category": "Entrees",
+      "name": "Bavette tartare, tonnato sauce, puntarelle, bone marrow",
+      "price": "$36",
+      "image": "assets/img/dishes/bavette-tartare-tonnato-sauce-puntarelle-bone-marrow.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Wagyu bavette — a cut from underneath the cow's stomach, particularly lean, which makes it great for tartare. The beef is diced and dressed in a BBQ dressing, served on top of a tonnato sauce (tuna emulsified with oil, egg and anchovy). Puntarelle, a chicory-like leaf, is served raw on top, and bone marrow is kept frozen so it can be grated over the dish to finish.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "contains",
+          "note": "Contains an ingredient not recommended during pregnancy — not suitable as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "No shallots [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Liam fixed the row-slip in the 21.07.26 revision — the nonsensical 'No onions' under Coeliac is gone, so Coeliac is now genuinely blank. Still outstanding: the tonnato contains egg but the matrix's Egg column is blank, so Egg is held at pending — do not tell an egg-allergic guest this dish is safe until Liam confirms.",
+      "short_name": "Bavette tartare"
+    },
+    {
+      "id": "stracciatella",
+      "category": "Entrees",
+      "name": "Stracciatella, fennel jam, rye crumb, mandarin oil",
+      "price": "$29",
+      "image": "assets/img/dishes/stracciatella-fennel-jam-rye-crumb-mandarin-oil.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Stracciatella is a soft cow's milk cheese — the soft centre of burrata — made in Australia, so it is pasteurised. The fennel jam is made by heating vinegar and sugar until reduced, then dropping in saffron, shaved fennel and lemon, much the way you'd make a marmalade. Alto mandarin-infused olive oil finishes the plate.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "modifiable",
+          "note": "Without the rye crumb [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Low fructose — check with the guest [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Completely rebuilt for the July print — the mushroom XO / pickled shimeji / honey version is gone, so any staff knowledge of XO, shimeji or soy sauce in this dish is now out of date. (The pork belly notes no longer cross-reference this dish's XO — that dangling reference is fixed.) Pregnancy is blank in the matrix; the notes do confirm the cheese is pasteurised, which is the usual concern, but confirm with Liam before advising a pregnant guest.",
+      "short_name": "Stracciatella"
+    },
+    {
+      "id": "jerusalem_artichokes",
+      "category": "Entrees",
+      "name": "Jerusalem artichokes, hazelnut cream, malt, pecorino, salbush",
+      "price": "$32",
+      "image": "assets/img/dishes/jerusalem-artichokes-hazelnut-cream-malt-pecorino-salbush.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "The artichokes are cut into halves and slow roasted, then served with hazelnut cream, pecorino and saltbush. The hazelnut cream contains shallots but no garlic.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "modifiable",
+          "note": "No hazelnut cream [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "No hazelnut cream [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "No hazelnut cream [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "New on the July print, taking the cone cabbage's slot. Cannot be made non-dairy — the kitchen is explicit about that. The allium flag is the hazelnut cream's shallots, which Liam added in the 21.07.26 revision. The printed menu still spells the finishing herb 'salbush' while the kitchen notes now spell it 'saltbush' correctly — printed spelling retained here under the menu-wins rule, but it should be fixed at the next print. Vegetarian is blank in the matrix and pecorino is traditionally made with animal rennet, so confirm before telling a vegetarian guest.",
+      "short_name": "Jerusalem artichokes"
+    },
+    {
+      "id": "bavette_tartare",
+      "category": "Entrees",
+      "name": "Bavette tartare, macadamia & taleggio cream, bone marrow, frites",
+      "price": "36",
+      "image": null,
+      "active": true,
+      "draft": true,
+      "last_confirmed": "2026-07-31",
+      "confirmed_by": "added in the Dish Library",
+      "on_chefs_menu": false,
+      "tasting_notes_status": "pending",
+      "tasting_notes": "Wagyu bavette — a cut from underneath the cow's stomach, particularly lean, which makes it great for tartare. The beef is diced and dressed in a BBQ dressing, served on top of a macadamia and taleggio cream (macadamias are soaked in water for a day then blended with milk and taleggio. Potato frites on top with bone marrow kept frozen so it can be grated over the dish to finish.",
+      "tasting_notes_source": null,
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "Without the macadamia and taleggio cream [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "coeliac": {
+          "status": "modifiable",
+          "note": "Without the frites [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "tree_nuts": {
+          "status": "contains",
+          "note": "Tree Nuts is integral to this dish as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "pregnant": {
+          "status": "contains",
+          "note": "Contains an ingredient not recommended during pregnancy — not suitable as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "A little bit of garlic in the BBQ sauce. Check with guest [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        }
+      },
+      "chef_note": "Added by hand and not yet reviewed. Set the price, tasting notes and dietary before switching it on.",
+      "short_name": "Bavette tartare"
+    },
+    {
+      "id": "comt_tart",
+      "category": "Entrees",
+      "name": "Comté tart, onion jam, charred leek, pea tendrils",
+      "price": "$32",
+      "image": null,
+      "active": true,
+      "draft": true,
+      "last_confirmed": "2026-07-31",
+      "confirmed_by": "added in the Dish Library",
+      "on_chefs_menu": false,
+      "tasting_notes_status": "pending",
+      "tasting_notes": "Layered dish:\n1. The base is a parmesan short crust baked (butter, egg, flour, parmesan)\n2. Caramelised onion jam on the base of the tart - merlot vinegar (from Alta amazing Oive oil supplier frin NSW), sugar and shallots.\n3. Comte custard - cream cheese, milk butter Comte, corn flour, eggs, vanilla mascarpone.\n4. Oven baked with grated Comte and then dusted with charred leek (days walk) power.\nAround the plate with brassica flowers and tendrils",
+      "tasting_notes_source": null,
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Onion & Garlic is integral to this dish as served. [source: edited in the Dish Library, 2026-07-31]"
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: edited in the Dish Library, 2026-07-31]"
+        }
+      },
+      "chef_note": "Added by hand and not yet reviewed. Set the price, tasting notes and dietary before switching it on.",
+      "short_name": "Comté tart"
+    },
+    {
+      "id": "squid_ink_paccheri",
+      "category": "Pasta",
+      "name": "Conchiglie, tiger prawn, vodka sauce, wood sorrel",
+      "price": "$45",
+      "image": "assets/img/dishes/conchiglie-tiger-prawn-vodka-sauce-wood-sorrel.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Conchiglie means shell in Italian, the pasta is shell shaped so holds the sauce well. Tiger prawns are cooked in the pan, then the  vodka sauce is added (onion, garlic, tomato, roasted prawn shells, cream, vodka). Finished with wood sorrel — a citrus-tasting herb — and a crunchy prawn powder made from roasted, blitzed prawn shell.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: edited in the Dish Library, 2026-07-24]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "contains",
+          "note": "Crustacean is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "molluscs": {
+          "status": "contains",
+          "note": "Molluscs is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "sesame": {
+          "status": "pending",
+          "note": null
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Onion and garlic are cooked into the shellfish bisque and can't be removed. [source: Confirmed by the venue, July 2026 — supersedes the matrix's modifiable 'Garlic cooked into bisque' marking]"
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "The matrix's Onion & Garlic cell is still orange (modifiable) with the note 'Garlic cooked into bisque' — the venue confirmed in July this should be integral. Not corrected in the 21.07.26 revision either; chase Liam.",
+      "short_name": "Conchiglie"
+    },
+    {
+      "id": "celeriac_lasagne",
+      "category": "Pasta",
+      "name": "Celeriac, comté & porcini lasagne, parmesan foam, black truffle",
+      "price": "$55",
+      "image": "assets/img/dishes/celeriac-comte-porcini-lasagne-parmesan-foam-black-truffle.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Celeriac (a root vegetable, a little like parsnip) is sliced thinly and layered between pasta and a béchamel made with truffle and porcini mushroom, baked, then each portion is grilled on both sides and finished in the oven to order. It sits on a foam made with cream, milk and 24-month parmesan, with black truffle shaved on top (currently Manjimup, WA; sometimes Victorian).",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        }
+      },
+      "chef_note": "The foam is parmesan again on the July print (it was briefly carried as pecorino) — menu and kitchen notes now agree. Truffle and porcini are cooked into the béchamel itself and cannot be removed even if the shaved truffle on top is left off, so no truffle add-on is needed here. Tree Nuts: the matrix still marks this integral, but no nut appears anywhere in the kitchen notes — held at pending rather than either wrong answer. Chase Liam before telling nut-allergy guests anything definitive.",
+      "short_name": "Celeriac lasagne"
+    },
+    {
+      "id": "gramigna",
+      "category": "Pasta",
+      "name": "Tortellini, confit duck leg ragu, parmesan bechamel, saffron oil",
+      "price": "$42",
+      "image": "assets/img/dishes/tortellini-confit-duck-leg-ragu-parmesan-bechamel-saffron-oi.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-24",
+      "confirmed_by": "reviewed in the Dish Library",
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Tortellini is a filled pasta, here we fill the pasta with confit duck leg ragu & parmesan bechamel. Then the pasta is served simply in a deep bowl with a duck reduction and then finished with saffron oil. ",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Garlic (with the sausage ragu) is cooked into the sauce and can't be removed. [source: Confirmed by the venue, July 2026 — supersedes the matrix's modifiable 'Cooked in ragu' marking]"
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Fioretto → broccolini is now consistent everywhere: printed menu, dietary matrix and both the heading and body of the kitchen notes. Closed. The matrix's Onion & Garlic cell is still orange ('Cooked in ragu') — venue confirmed integral; chase Liam.",
+      "short_name": "Tortellini"
+    },
+    {
+      "id": "lemon_bigoli",
+      "category": "Pasta",
+      "name": "Lemon bigoli, Moreton Bay bug, yellow tomato sugo, bottarga, chives",
+      "price": "$90",
+      "image": "assets/img/dishes/lemon-bigoli-moreton-bay-bug-yellow-tomato-sugo-bottarga-chi.png",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Lemon bigoli is a thicker style of spaghetti with a great al dente texture — lemon is added to the pasta dough itself. Moreton Bay bugs (similar to a lobster, from Moreton Bay in Queensland) are sous vide until only just cooked. The yellow tomato sugo is made with onion, garlic, yellow tomatoes and a touch of honey. Underneath the bigoli sits a bottarga cream — bottarga (dried, cured fish roe) blended with oil — with chives to finish.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "No butter [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "contains",
+          "note": "Crustacean is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "molluscs": {
+          "status": "contains",
+          "note": "Molluscs is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "modifiable",
+          "note": "Bottarga on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Onion and garlic are cooked into the yellow tomato sugo and can't be removed — leaving off the chives doesn't make the dish allium-free. [source: Confirmed by the venue, July 2026 — supersedes the matrix's 'No chives']"
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "The matrix still says 'No chives' under Onion & Garlic — stale; the venue confirmed the sugo has onion and garlic cooked in. Also confirm the 'bottarga on side' pregnancy modification still works now that the bottarga is a cream underneath the pasta.",
+      "short_name": "Bigoli"
+    },
+    {
+      "id": "fish_of_day",
+      "category": "Proteins",
+      "name": "Whole side of Coral Trout 650g, beurre blanc, pippies, silverbeet",
+      "price": "$200",
+      "image": "assets/img/dishes/whole-side-of-coral-trout-650g-beurre-blanc-pippies-silverbe.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "This is the rotating fish slot. The garnish stays broadly consistent whatever the fish: a beurre blanc, pippies and silverbeet (or another green leafy vegetable), all of which can be left off. The fish is usually floured before it goes on the grill, which can also be done without. Currently printed as a whole 650g side of Coral Trout.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026. Note this is the kitchen's generic 'Fish of the Day' write-up, not a Coral Trout-specific one — it describes the treatment, not the fish.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "Swap out the beurre blanc — see chef [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "modifiable",
+          "note": "No flour dust when cooking [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "modifiable",
+          "note": "No flour dust when cooking [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "modifiable",
+          "note": "No pippies [source: Dietary matrix, 21 July 2026]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Check with chef [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "Check with chef [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Revised this print: 600g → 650g and $250 → $200. It is still a whole side, not a portion — the format is the thing staff most need to flag to a table. The kitchen has now written a generic rotating-fish note, which confirms beurre blanc (the printed sauce), so the earlier gap is closed; there is still nothing Coral Trout-specific. The matrix row is still titled 'Fish of the day' and still says beurre noisette — menu wins, so the dairy modification is worded for beurre blanc; have Liam re-title the row. When the fish changes, update this dish rather than adding a new one.",
+      "short_name": "Coral Trout"
+    },
+    {
+      "id": "pork_belly",
+      "category": "Proteins",
+      "name": "Ryukyu Berkshire 500g pork belly, XO, fermented chilli, citrus",
+      "price": "$85",
+      "image": "assets/img/dishes/ryukyu-berkshire-500g-pork-belly-xo-fermented-chilli-citrus.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Ryukyu Berkshire pigs are known as the wagyu of the pig world for their amazing marbling — black-furred pigs raised near Byron Bay. The pork is brined for 24 hours, sous vide for two hours, then finished on the grill in service, dressed with the kitchen's XO and a fermented chilli sauce, with citrus alongside.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "modifiable",
+          "note": "XO on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "modifiable",
+          "note": "XO may contain traces [source: Dietary matrix, 21 July 2026]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "XO on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "XO on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Both note errors are fixed this revision — the notes now correctly say the pork belly is brined, and the dangling 'same XO as the stracciatella' cross-reference is gone. Still outstanding: the XO recipe itself is not written down anywhere, so nobody can answer what is in it. Note also that Liam has dropped XO from the matrix row title even though it is still on the printed menu and still drives the sesame-traces and 'XO on side' modifications — those stand.",
+      "short_name": "Pork belly"
+    },
+    {
+      "id": "black_opal_rump",
+      "category": "Proteins",
+      "name": "Black Opal wagyu rump, erbette, black garlic ketchup, jus",
+      "price": "$75",
+      "image": "assets/img/dishes/black-opal-wagyu-rump-erbette-black-garlic-ketchup-jus.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": true,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Black Opal is a wagyu supplier working out of Tasmania — a cross of 50% Japanese wagyu and 50% Black Angus. The rump comes from the top of the cow's behind and is a fairly lean cut, grilled to order. Erbette is a chard-like leafy green. On the à la carte the steak is dressed with a black garlic ketchup and jus.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026 (supplier and cut); garnish from the printed menu.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "No butter on steak [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Black garlic ketchup / jus on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "modifiable",
+          "note": "Cooked Medium + [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "Black garlic ketchup / jus on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "RESOLVED this print: the Chef's Menu now lists the same black garlic ketchup as the à la carte, so the dish is no longer served two different ways, and Liam's matrix has been updated to match (its cells now read 'Back garlic/Jus on side' — a typo for black garlic, worth a quick fix). The 200g weight this dish used to carry is still absent from the print; confirm the portion size. Kitchen notes head this dish 'rump cap' while the menu says 'rump' — menu wins.",
+      "short_name": "Wagyu rump"
+    },
+    {
+      "id": "robbins_oyster_blade",
+      "category": "Proteins",
+      "name": "Robbin's Island grass-fed 300g 9+ wagyu oyster blade, rosemary, jus",
+      "price": "$125",
+      "image": "assets/img/dishes/robbin-s-island-grass-fed-300g-9-wagyu-oyster-blade-rosemary.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Robbin's Island is a small island off the north-west coast of Tasmania — when the tide is in the island is separated from the mainland, and when it goes out it reconnects. It's considered one of the best wagyu projects in the world thanks to that environment. This is the grass-fed oyster blade, 300g, at 9+ marbling — 9+ is the highest wagyu score in Australia. Oyster blade is cut from the shoulder, a well-worked and deeply flavoured muscle rather than a lean prime cut, served with rosemary and jus.",
+      "tasting_notes_source": "Cut, weight, grass fed and 9+ marbling confirmed by the chef direct from the butcher's packaging, 21 July 2026 — supersedes the kitchen notes, whose body text still describes a 500g scotch taken from the rib.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "No butter on steak [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Jus on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "modifiable",
+          "note": "Cooked Medium + [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "Jus on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Repriced this print: $80 → $125, and the cut, weight and grade are now printed on the menu itself, so staff can quote '300g, 9+, grass-fed' freely. The lemon has been dropped from the printed garnish. STILL OUTSTANDING: the kitchen notes' heading is now correct but the body text underneath it still reads 'The scotch is taken from the rib of the animal, just behind the shoulder blades' — wrong cut and wrong primal for an oyster blade, which comes from the shoulder. That paragraph needs rewriting before it trains anyone. NOT on the Chef's Menu — that wagyu course is the Black Opal rump.",
+      "short_name": "Wagyu oyster blade"
+    },
+    {
+      "id": "leaves",
+      "category": "Sides",
+      "name": "Day's Walk Farm leaves, fennel, radish, honey & blood orange",
+      "price": "$16",
+      "image": "assets/img/dishes/day-s-walk-farm-leaves-fennel-radish-honey-blood-orange.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": true,
+      "tasting_notes_status": "pending",
+      "tasting_notes": null,
+      "tasting_notes_source": null,
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "No fennel, different dressing [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "modifiable",
+          "note": "Check if the guest consumes honey [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "SERVED TWO WAYS. The à la carte version is dressed with honey and blood orange; the Chef's Menu version is honey and mandarin. Same base salad, same dietary profile. There are no kitchen notes for this dish in the 21 July pack, so tasting notes are blank rather than carried over from the older mandarin-dressing write-up — worth asking the kitchen for a fresh one now that there are two dressings in play. Liam's matrix row is now titled with the blood orange version, so the matrix and the à la carte page agree; the Chef's Menu mandarin version has no row of its own. Honey is the vegan question on both versions.",
+      "short_name": "Farm leaves"
+    },
+    {
+      "id": "potatoes",
+      "category": "Sides",
+      "name": "Mayan twilight potatoes, sage & onion salt, yeast dressing",
+      "price": "$16",
+      "image": "assets/img/dishes/mayan-twilight-potatoes-sage-onion-salt-yeast-dressing.png",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": true,
+      "tasting_notes_status": "pending",
+      "tasting_notes": null,
+      "tasting_notes_source": null,
+      "dietary": {
+        "dairy": {
+          "status": "safe",
+          "note": "No dairy in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "coeliac": {
+          "status": "modifiable",
+          "note": "Not in fryer [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "No onion salt [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "safe",
+          "note": "Vegan as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "No onion salt [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "safe",
+          "note": "No egg in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        }
+      },
+      "chef_note": "Potato variety changed to Mayan twilight on the July print — the matrix still says 'Gippsland gold' and before that it was Andean sunrise, so menu wins. Preparation is believed unchanged, but there are no kitchen notes for this dish in the 21 July pack, so the previous tasting notes have been cleared rather than reattached to a different potato. Ask the kitchen to confirm the prep and the yeast dressing recipe.",
+      "short_name": "Potatoes"
+    },
+    {
+      "id": "strawberry_granita",
+      "category": "Dessert",
+      "name": "Strawberry granita, matcha gelato, meringue",
+      "price": "$16",
+      "image": "assets/img/dishes/strawberry-granita-matcha-gelato-meringue.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Strawberry puree, sparkling water and glucose are frozen together and then shaved to order. The gelato is a white chocolate base flavoured with matcha. Served with egg white meringue shards dusted with matcha powder.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "safe",
+          "note": "Coeliac-safe as made — no gluten-containing ingredient. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "gluten_free": {
+          "status": "safe",
+          "note": "Gluten free as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "modifiable",
+          "note": "Meringue on side [source: Dietary matrix, 21 July 2026]"
+        }
+      },
+      "chef_note": "New on the July print, replacing the mandarin granita. Unlike the mandarin version this one has no liqueur in it, so the alcohol warning that used to sit on this slot no longer applies. Pregnancy and Vegetarian are blank in the matrix — nothing in the build suggests a problem, but they are held at pending rather than assumed.",
+      "short_name": "Strawberry granita"
+    },
+    {
+      "id": "tiramisu",
+      "category": "Dessert",
+      "name": "Tiramisu, coffee gelato, caramel, hazelnut crunch",
+      "price": "$20",
+      "image": "assets/img/dishes/tiramisu-coffee-gelato-caramel-hazelnut-crunch.png",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": true,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Base is a flourless chocolate sponge. A hazelnut crème mousseline — essentially a hazelnut pastry cream, which contains a little flour — is piped onto the sponge. Coffee gelato is made with eggs, cream, sugar and coffee. Caramel is a whey caramel (brown sugar and whey). A mascarpone-and-vanilla foam is siphoned on top to finish.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026 — the mousseline's flour content is why the dish is only gluten free without the hazelnut cream.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "modifiable",
+          "note": "Hazelnut cream on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "modifiable",
+          "note": "Hazelnut cream on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "contains",
+          "note": "Tree Nuts is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        }
+      },
+      "chef_note": null,
+      "short_name": "Tiramisu"
+    },
+    {
+      "id": "parmesan_gelato",
+      "category": "Dessert",
+      "name": "Parmesan gelato, cheesecake cream, truffle, caramel, popcorn",
+      "price": "$25",
+      "image": "assets/img/dishes/parmesan-gelato-cheesecake-cream-truffle-caramel-popcorn.jpg",
+      "active": true,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "The gelato is built on a base of buffalo milk and fior di latte with grated 24-month parmesan folded through — no eggs in the gelato itself. The cheesecake is cream cheese, cream, sugar and vanilla bean, baked and then blitzed to a cream. All the whey from the buffalo milk is reduced down and mixed with sugar and bicarb to make the caramel, and the popcorn is caramelised in that same caramel and salted. Served with a biscotti crumb, which can be left off.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "modifiable",
+          "note": "Biscotti crumb on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "modifiable",
+          "note": "Biscotti crumb on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "safe",
+          "note": "No crustacean in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "molluscs": {
+          "status": "safe",
+          "note": "No molluscs in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "sesame": {
+          "status": "safe",
+          "note": "No sesame in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "peanuts": {
+          "status": "safe",
+          "note": "No peanuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "tree_nuts": {
+          "status": "safe",
+          "note": "No tree nuts in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Biscotti crumb on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "safe",
+          "note": "Vegetarian as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "safe",
+          "note": "Suitable during pregnancy as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "onion_garlic": {
+          "status": "safe",
+          "note": "No onion & garlic in this dish as made. [source: edited in the Dish Library, 2026-07-27]"
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        }
+      },
+      "chef_note": "New on the July print, replacing the crepe suzette. Already contains truffle — no truffle add-on needed. EGG CONFLICT: the matrix marks Egg integral with no modification, but the kitchen notes say the gelato has no eggs and the cheesecake cream is eggless too, which points at the biscotti crumb as the only egg source — and that crumb is removable. The stricter matrix reading is kept here because it is the safer side of an allergen call, but resolve it with Liam: if the egg is only in the biscotti, this should be modifiable rather than integral.",
+      "short_name": "Parmesan gelato"
+    },
+    {
+      "id": "cone_cabbage",
+      "category": "Entrees",
+      "name": "Cone cabbage, bagna cauda, pecorino, rye crumb",
+      "price": "$32",
+      "image": "assets/img/dishes/cone-cabbage-bagna-cauda-pecorino-rye-crumb.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-14",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Cone cabbage from Day's Walk Farm, sous vide in butter then roasted off in the oven. Bagna cauda is a dressing made with anchovy, garlic and bread, typical of Piedmont. Pecorino is a sheep's milk cheese.",
+      "tasting_notes_source": "Menu Notes – July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "Pecorino on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "modifiable",
+          "note": "No rye crumb, no bagna cauda [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "modifiable",
+          "note": "No rye crumb, no bagna cauda [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "pending",
+          "note": null
+        },
+        "molluscs": {
+          "status": "pending",
+          "note": null
+        },
+        "sesame": {
+          "status": "pending",
+          "note": null
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Bagna cauda and rye crumb on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "modifiable",
+          "note": "No bagna cauda [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "modifiable",
+          "note": "No bagna cauda, no pecorino [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "Bagna cauda on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "The core of the cabbage is not meant to be eaten — normal if a guest leaves it on the plate, not a service fault. Kitchen confirms the dish can be made vegetarian, e.g. served with an alternative such as smoked crème fraîche instead of bagna cauda. Tree Nuts: the matrix marked this integral, but no nut appears in the kitchen notes (bagna cauda here is anchovy, garlic and bread) — likely a matrix error, so it's set to pending (ask the kitchen). Still marked integral in the mid-July matrix revision — have Liam confirm and correct the row.",
+      "short_name": "Cone cabbage"
+    },
+    {
+      "id": "flounder",
+      "category": "Proteins",
+      "name": "NZ yellowbelly flounder, beurre noisette, pippies, silverbeet, capers",
+      "price": "$60",
+      "image": "assets/img/dishes/nz-yellowbelly-flounder-beurre-noisette-pippies-silverbeet-c.png",
+      "active": false,
+      "last_confirmed": "2026-07-14",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "guess",
+      "tasting_notes": "This is the rotating fish-of-the-day slot — currently NZ yellowbelly flounder on the printed menu. The garnish stays consistent whatever the fish: beurre noisette (brown butter) forms the sauce, with pippies cooked through in the butter, wilted silverbeet, and capers for a briny, salty finish. The flounder is trimmed of fins and tail, skin removed, dusted in flour on one side and cooked on the flat grill.",
+      "tasting_notes_source": "Garnish confirmed by the venue (July 2026); flounder handling carried from the earlier flounder notes. The July 2026 kitchen notes don't cover this dish — worth a fresh confirm.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "Swap out the beurre noisette — see chef [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "modifiable",
+          "note": "No flour dust when cooking [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "modifiable",
+          "note": "No flour dust when cooking [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "pending",
+          "note": null
+        },
+        "molluscs": {
+          "status": "modifiable",
+          "note": "No pippies [source: Dietary matrix, 21 July 2026]"
+        },
+        "sesame": {
+          "status": "pending",
+          "note": null
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Check with chef [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "Check with chef [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "Rotating slot: when the fish changes, update this dish's name here (and re-check the matrix row) rather than adding a new dish. Dietary data is carried from the matrix's fish-of-the-day row.",
+      "short_name": "Flounder"
+    },
+    {
+      "id": "pork_shoulder",
+      "category": "Proteins",
+      "name": "Ryukyu Berkshire 800g pork shoulder, honey fermented chilli, citrus",
+      "price": "$85",
+      "image": "assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-14",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Ryukyu Berkshire pigs are known as the wagyu of the pig world for their amazing marbling — black-furred pigs raised near Byron Bay. The pork is brined for 24 hours, sous vide for two hours, then finished on the grill in service, dressed with the kitchen's XO (the same XO as the stracciatella) and a fermented chilli sauce, with citrus alongside.",
+      "tasting_notes_source": "Menu Notes – July 2026. (The notes again list this as a '900g pork leg' — the same recurring typo corrected previously; the printed menu confirms 800g shoulder.)",
+      "dietary": {
+        "dairy": {
+          "status": "pending",
+          "note": null
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "modifiable",
+          "note": "XO on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "pending",
+          "note": null
+        },
+        "molluscs": {
+          "status": "pending",
+          "note": null
+        },
+        "sesame": {
+          "status": "modifiable",
+          "note": "XO may contain traces [source: Dietary matrix, 21 July 2026]"
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "XO on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "XO on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "The printed listing simplifies the garnish to 'honey fermented chilli, citrus'; the kitchen notes describe the full dressing as XO plus fermented chilli sauce, and the matrix agrees XO is present — the XO-related dietary modifications (sesame traces, 'XO on side') therefore stand.",
+      "short_name": "Pork shoulder"
+    },
+    {
+      "id": "tbone",
+      "category": "Proteins",
+      "name": "Robbin's Island 500g 9+ wagyu scotch, jus, rosemary, lemon",
+      "price": "$200",
+      "image": "assets/img/dishes/robbin-s-island-500g-9-wagyu-scotch-jus-rosemary-lemon.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-14",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Robbin's Island is a small island off the north-west coast of Tasmania, where the Hammond family have been breeding Japanese fullblood wagyu for over 20 years — when the tide is in, the island is separated from the mainland; when it goes out, it reconnects. It's considered one of the best wagyu projects in the world thanks to that environment, and 9+ is the highest wagyu score in Australia. The scotch is taken from the rib of the animal, just behind the shoulder blades.",
+      "tasting_notes_source": "Menu Notes – July 2026, supplemented from robbinsislandwagyu.com.au (Hammond family, fullblood wagyu).",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "No butter on steak [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "pending",
+          "note": null
+        },
+        "gluten_free": {
+          "status": "pending",
+          "note": null
+        },
+        "crustacean": {
+          "status": "pending",
+          "note": null
+        },
+        "molluscs": {
+          "status": "pending",
+          "note": null
+        },
+        "sesame": {
+          "status": "pending",
+          "note": null
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "modifiable",
+          "note": "Jus on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "modifiable",
+          "note": "Cooked Medium + [source: Dietary matrix, 21 July 2026]"
+        },
+        "onion_garlic": {
+          "status": "modifiable",
+          "note": "Jus on side [source: Dietary matrix, 21 July 2026]"
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "Replaced the Wanderer Farm T-bone in July 2026; weight/price confirmed as 500g / $200. Correction: this dish is NOT on the Chef's Menu — the previous data incorrectly flagged it as on (the Chef's Menu wagyu course is the Black Opal). Internal id stays 'tbone' for continuity.",
+      "short_name": "Wagyu scotch (Robbin's Island)"
+    },
+    {
+      "id": "mandarin_granita",
+      "category": "Dessert",
+      "name": "Mandarin granita, yuzu curd, lemon verbena gelato",
+      "price": "$16",
+      "image": "assets/img/dishes/mandarin-granita-yuzu-curd-lemon-verbena-gelato.png",
+      "active": false,
+      "last_confirmed": "2026-07-14",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "The granita is made with mandarin juice, sugar and Tommy's Mandarin liqueur. Lemon verbena — an aromatic, lemon-scented herb — delicately flavours the gelato. Underneath the gelato is a yuzu curd, adding a tangy element, and a mandarin caramel finishes the top.",
+      "tasting_notes_source": "Menu Notes – July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "pending",
+          "note": null
+        },
+        "gluten_free": {
+          "status": "pending",
+          "note": null
+        },
+        "crustacean": {
+          "status": "pending",
+          "note": null
+        },
+        "molluscs": {
+          "status": "pending",
+          "note": null
+        },
+        "sesame": {
+          "status": "pending",
+          "note": null
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "pending",
+          "note": null
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "pending",
+          "note": null
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "The granita contains Tommy's Mandarin liqueur and isn't cooked, so the alcohol is present — flag for pregnant guests and alcohol-free requests (the matrix's pregnancy column is still pending for this dish; raise with Liam). Also: the notes call lemon verbena a native Australian herb, but lemon verbena is South American — they may be thinking of lemon myrtle. Confirm which herb is used before staff repeat the provenance story.",
+      "short_name": "Mandarin granita"
+    },
+    {
+      "id": "crepe_suzette",
+      "category": "Dessert",
+      "name": "Crepe suzette, brioche ice-cream, burnt orange caramel, black truffle",
+      "price": "$35",
+      "image": "assets/img/dishes/crepe-suzette-brioche-ice-cream-burnt-orange-caramel-black-t.png",
+      "active": false,
+      "last_confirmed": "2026-07-14",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "A classic French dessert — a thin crepe filled with brioche ice cream and vanilla pastry cream. An orange caramel is poured over the top, torched with a blowtorch, and finished with shaved black truffle.",
+      "tasting_notes_source": "Menu Notes – July 2026; brioche ice cream confirmed by the venue (the notes' 'brie' was a typo).",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "pending",
+          "note": null
+        },
+        "molluscs": {
+          "status": "pending",
+          "note": null
+        },
+        "sesame": {
+          "status": "pending",
+          "note": null
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "pending",
+          "note": null
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "pending",
+          "note": null
+        },
+        "egg": {
+          "status": "contains",
+          "note": "Egg is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        }
+      },
+      "chef_note": "Can be made without the truffle for $20 instead of $35 — kitchen recommends keeping the truffle if the guest has no restriction against it. No truffle add-on needed here — it's already in the dish.",
+      "short_name": "Crepe suzette"
+    },
+    {
+      "id": "squid_ink_paccheri_2",
+      "category": "Pasta",
+      "name": "Squid ink paccheri, tiger prawn, shellfish bisque, wood sorrel",
+      "price": "$45",
+      "image": "assets/img/dishes/squid-ink-paccheri-tiger-prawn-shellfish-bisque-wood-sorrel.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Black paccheri, coloured with squid ink. Tiger prawns are cooked in the pan, then the shellfish bisque is added (onion, garlic, tomato, and roasted prawn shells and heads). Finished with wood sorrel — a citrus-tasting herb — and a crunchy prawn powder made from roasted, blitzed prawn shell.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "modifiable",
+          "note": "No butter [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "contains",
+          "note": "Crustacean is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "molluscs": {
+          "status": "contains",
+          "note": "Molluscs is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "sesame": {
+          "status": "pending",
+          "note": null
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Onion and garlic are cooked into the shellfish bisque and can't be removed. [source: Confirmed by the venue, July 2026 — supersedes the matrix's modifiable 'Garlic cooked into bisque' marking]"
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "The matrix's Onion & Garlic cell is still orange (modifiable) with the note 'Garlic cooked into bisque' — the venue confirmed in July this should be integral. Not corrected in the 21.07.26 revision either; chase Liam. Archived rather than deleted: this dish's original id (squid_ink_paccheri) was edited in place in the Dish Library on 24 July 2026 to become a different dish (now \"Conchiglie, tiger prawn, vodka sauce, wood sorrel\", id squid_ink_paccheri). This record was recreated from the last known-good version so the dish itself isn't lost and the id it used to hold can safely keep referring to what's actually being served.",
+      "short_name": "Paccheri"
+    },
+    {
+      "id": "gramigna_2",
+      "category": "Pasta",
+      "name": "Gramigna, pork sausage, broccolini, chilli, garlic, parmigiano",
+      "price": "$38",
+      "image": "assets/img/dishes/gramigna-pork-sausage-broccolini-chilli-garlic-parmigiano.jpg",
+      "active": false,
+      "last_confirmed": "2026-07-21",
+      "confirmed_by": null,
+      "on_chefs_menu": false,
+      "tasting_notes_status": "complete",
+      "tasting_notes": "Gramigna is a short, curly pasta, similar to macaroni but a bit bigger. Sausage is cooked in the pan with broccolini, garlic and chilli; the sauce is created in the pan with pasta water and parmesan, emulsifying into a silky sauce.",
+      "tasting_notes_source": "Menu Notes – 21 July 2026.",
+      "dietary": {
+        "dairy": {
+          "status": "contains",
+          "note": "Dairy is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "coeliac": {
+          "status": "contains",
+          "note": "Contains gluten — not coeliac-safe as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "gluten_free": {
+          "status": "contains",
+          "note": "Contains gluten — not gluten free as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "crustacean": {
+          "status": "pending",
+          "note": null
+        },
+        "molluscs": {
+          "status": "pending",
+          "note": null
+        },
+        "sesame": {
+          "status": "pending",
+          "note": null
+        },
+        "peanuts": {
+          "status": "pending",
+          "note": null
+        },
+        "tree_nuts": {
+          "status": "pending",
+          "note": null
+        },
+        "fructose": {
+          "status": "contains",
+          "note": "Fructose / FODMAP is integral to this dish as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegetarian": {
+          "status": "contains",
+          "note": "Contains meat, poultry or seafood — not vegetarian as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "vegan": {
+          "status": "contains",
+          "note": "Contains animal products — not vegan as served. [source: Dietary matrix, 21 July 2026]"
+        },
+        "pregnant": {
+          "status": "pending",
+          "note": null
+        },
+        "onion_garlic": {
+          "status": "contains",
+          "note": "Garlic (with the sausage ragu) is cooked into the sauce and can't be removed. [source: Confirmed by the venue, July 2026 — supersedes the matrix's modifiable 'Cooked in ragu' marking]"
+        },
+        "egg": {
+          "status": "pending",
+          "note": null
+        }
+      },
+      "chef_note": "Fioretto → broccolini is now consistent everywhere: printed menu, dietary matrix and both the heading and body of the kitchen notes. Closed. Archived rather than deleted: this dish's original id (gramigna) was edited in place in the Dish Library on 24 July 2026 to become a different dish (now \"Tortellini, confit duck leg ragu, parmesan bechamel, saffron oil\", id gramigna). This record was recreated from the last known-good version so the dish itself isn't lost and the id it used to hold can safely keep referring to what's actually being served.",
+      "short_name": "Gramigna"
+    }
+  ],
+  "chefs_menu": {
+    "name": "Chef's Menu",
+    "price": "$120pp",
+    "eligibility": "Tables of 6 or more",
+    "course_order": [
+      "focaccia",
+      "octopus",
+      "black_opal_rump",
+      "leaves",
+      "potatoes",
+      "tiramisu"
+    ],
+    "add_ons": [
+      "oysters",
+      "scallop",
+      "spring_roll",
+      "brioche_wagyu",
+      "rosti"
+    ],
+    "notes": "The fixed Chef's Menu is 8 courses starting from the focaccia. Oysters, scallop ceviche, spring roll tart, brioche wagyu carpaccio and potato rosti are optional add-ons — available on top of the Chef's Menu at their usual à la carte price, not included in the $120pp. One course is still dressed differently to its à la carte version: the Day's Walk leaves are dressed with honey and mandarin here rather than honey and blood orange. Same salad, same dietary profile. The Black Opal wagyu rump used to differ too (miso mustard here, black garlic ketchup à la carte) but this print lists the ketchup on both, so that split is closed. Note the rosti add-on prints here without the roe that now appears in its à la carte title — same dish. The 'tables of 6 or more' rule is venue policy, not printed on the July menu, so confirm it still applies."
+  }
+}

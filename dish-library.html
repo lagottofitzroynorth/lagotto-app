@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dish Library</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-food-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-food-180.png">
+<meta name="apple-mobile-web-app-title" content="Dish Library">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script>
+window.LAGOTTO_PUBLISH_URL = 'https://script.google.com/macros/s/AKfycbz-gSIdcfO5XJ9yxbWsrFHGhQfHlwB1gvAcqhV7P4rptyQ3kbNjre-5EBc1hXkLAm4H/exec';
+window.LAGOTTO_PUBLISH_SECRET = '-dnMDGNekSyW5-XYV4lk2gLu1--Up2iXh6cM1UMptdM';
+</script>
+</head>
+<body>
+<div id="lagotto-boh-root">
+<style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+--ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+--rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+--radius:10px;
+}
+#lagotto-boh-root *{box-sizing:border-box;}
+#lagotto-boh-root{
+background:var(--parchment); color:var(--ink);
+font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
+-webkit-font-smoothing:antialiased;
+}
+#lagotto-boh-root .lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
+#lagotto-boh-root .lg-header{
+background:var(--ink); color:var(--parchment); padding:34px 20px 26px; margin-bottom:28px;
+position:relative; overflow:hidden;
+}
+#lagotto-boh-root .lg-header-inner{position:relative; max-width:920px; margin:0 auto;}
+#lagotto-boh-root .lg-logo{
+display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%; margin:0;
+filter:brightness(0) invert(1);
+}
+#lagotto-boh-root .lg-sub{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.18em;
+text-transform:uppercase; color:var(--parchment-2); margin:10px 0 0;
+}
+#lagotto-boh-root .lg-tools-nav{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;}
+#lagotto-boh-root .lg-tools-nav a{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em;
+text-transform:uppercase; text-decoration:none; color:var(--parchment);
+border:1px solid rgba(239,231,216,.35); border-radius:999px; padding:7px 15px;
+}
+#lagotto-boh-root .lg-tools-nav a.active{background:var(--rust); border-color:var(--rust);}
+
+#lagotto-boh-root .lg-bar{
+display:flex; align-items:center; justify-content:space-between; gap:16px;
+flex-wrap:wrap; margin-bottom:16px;
+}
+#lagotto-boh-root .lg-count{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-soft);}
+#lagotto-boh-root .lg-filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+#lagotto-boh-root .lg-chip{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em;
+background:transparent; color:var(--ink); border:1px solid var(--parchment-2);
+border-radius:999px; padding:6px 14px; cursor:pointer;
+}
+#lagotto-boh-root .lg-chip.active{background:var(--ink); color:var(--parchment); border-color:var(--ink);}
+#lagotto-boh-root .lg-btn{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em;
+text-transform:uppercase; background:var(--rust); color:var(--parchment);
+border:none; border-radius:var(--radius); padding:10px 18px; cursor:pointer;
+}
+#lagotto-boh-root .lg-btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--parchment-2);}
+
+#lagotto-boh-root .lg-row{
+display:flex; align-items:center; gap:14px; padding:12px 0;
+border-bottom:1px solid var(--parchment-2);
+}
+#lagotto-boh-root .lg-row.off{opacity:.5;}
+#lagotto-boh-root .lg-thumb{
+width:44px; height:44px; border-radius:6px; object-fit:cover; flex-shrink:0;
+background:var(--parchment-2);
+}
+#lagotto-boh-root .lg-info{flex:1; min-width:0;}
+#lagotto-boh-root .lg-name{font-family:'Fraunces',serif; font-size:15px; font-weight:600;}
+#lagotto-boh-root .lg-meta{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pending); margin-top:2px;}
+#lagotto-boh-root .lg-toggle{
+width:44px; height:26px; border-radius:13px; background:var(--pending);
+border:none; position:relative; cursor:pointer; flex-shrink:0; padding:0;
+}
+#lagotto-boh-root .lg-toggle.on{background:var(--sage);}
+#lagotto-boh-root .lg-knob{
+position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%;
+background:var(--parchment); transition:left .15s;
+}
+#lagotto-boh-root .lg-toggle.on .lg-knob{left:21px;}
+#lagotto-boh-root .lg-stale{
+background:#FBF0DC; border:1px dashed var(--gold); border-radius:8px;
+padding:9px 12px; margin:0 0 10px 58px; font-size:13px; color:var(--ink-soft);
+}
+#lagotto-boh-root .lg-cat{
+font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em;
+text-transform:uppercase; color:var(--rust); margin:26px 0 6px;
+border-bottom:1px solid var(--parchment-2); padding-bottom:6px;
+}
+#lagotto-boh-root .lg-panel{
+background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius);
+padding:16px; margin-top:22px;
+}
+#lagotto-boh-root .lg-panel h3{font-family:'Fraunces',serif; font-size:16px; margin:0 0 8px;}
+#lagotto-boh-root .lg-panel p{font-size:14px; margin:0 0 12px; color:var(--ink-soft);}
+#lagotto-boh-root textarea{
+width:100%; height:150px; font-family:'IBM Plex Mono',monospace; font-size:11px;
+border:1px solid var(--parchment-2); border-radius:6px; padding:10px; resize:vertical;
+background:var(--parchment); color:var(--ink);
+}
+#lagotto-boh-root .lg-status{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--sage); margin-left:10px;}
+#lagotto-boh-root .lg-note{
+background:#F3EFE4; border-left:3px solid var(--pending); padding:10px 14px;
+border-radius:0 6px 6px 0; font-size:13px; color:var(--ink-soft); margin-bottom:14px;
+}
+#lagotto-boh-root .lg-warn{
+background:#F6E4DE; border-left:3px solid var(--rust); padding:12px 14px;
+border-radius:0 6px 6px 0; font-size:14px; margin-bottom:18px;
+}
+#lagotto-boh-root .lg-row{cursor:pointer;}
+#lagotto-boh-root .lg-row .lg-toggle{cursor:pointer;}
+#lagotto-boh-root .lg-edit{
+background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius);
+padding:16px; margin:0 0 14px 58px;
+}
+#lagotto-boh-root .lg-edit label{
+display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+letter-spacing:.1em; text-transform:uppercase; color:var(--pending); margin:12px 0 4px;
+}
+#lagotto-boh-root .lg-edit label:first-child{margin-top:0;}
+#lagotto-boh-root .lg-edit-warn{
+background:#F6E4DE; border-left:3px solid var(--rust); border-radius:0 6px 6px 0;
+padding:9px 12px; margin:6px 0 0; font-size:12.5px; line-height:1.5; color:var(--ink-soft);
+}
+#lagotto-boh-root .lg-edit input,
+#lagotto-boh-root .lg-edit select,
+#lagotto-boh-root .lg-edit textarea{
+width:100%; font-family:'Work Sans',sans-serif; font-size:14px;
+border:1px solid var(--parchment-2); border-radius:6px; padding:8px 10px;
+background:var(--parchment); color:var(--ink);
+}
+#lagotto-boh-root .lg-edit textarea{min-height:70px; resize:vertical;}
+#lagotto-boh-root .lg-edit .lg-two{display:flex; gap:12px;}
+#lagotto-boh-root .lg-edit .lg-two > div{flex:1;}
+#lagotto-boh-root .lg-drop{
+border:2px dashed var(--parchment-2); border-radius:8px; padding:18px;
+text-align:center; font-size:13px; color:var(--pending); cursor:pointer;
+background:var(--parchment);
+}
+#lagotto-boh-root .lg-drop.over{border-color:var(--rust); color:var(--rust);}
+#lagotto-boh-root .lg-drop img{max-height:110px; border-radius:6px; display:block; margin:0 auto 8px;}
+#lagotto-boh-root .lg-diet-head{
+display:flex; align-items:center; justify-content:space-between; gap:12px;
+margin:18px 0 6px;
+}
+#lagotto-boh-root .lg-diet-row{
+display:grid; grid-template-columns:150px 1fr; gap:10px; align-items:center;
+padding:5px 0; border-bottom:1px solid rgba(227,216,194,.5);
+}
+#lagotto-boh-root .lg-diet-name{
+font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.04em;
+text-transform:uppercase; color:var(--ink-soft);
+}
+#lagotto-boh-root .lg-seg{display:flex; gap:4px; flex-wrap:wrap;}
+#lagotto-boh-root .lg-seg button{
+font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.04em;
+background:var(--parchment); color:var(--pending); cursor:pointer;
+border:1px solid var(--parchment-2); border-radius:999px; padding:3px 9px;
+}
+#lagotto-boh-root .lg-seg button.on[data-s="contains"]{background:var(--rust); color:var(--parchment); border-color:var(--rust);}
+#lagotto-boh-root .lg-seg button.on[data-s="modifiable"]{background:var(--gold); color:var(--ink); border-color:var(--gold);}
+#lagotto-boh-root .lg-seg button.on[data-s="safe"]{background:var(--sage); color:var(--parchment); border-color:var(--sage);}
+#lagotto-boh-root .lg-seg button.on[data-s="pending"]{background:var(--pending); color:var(--parchment); border-color:var(--pending);}
+#lagotto-boh-root .lg-diet-note{
+grid-column:2; font-size:12px; padding:5px 8px; margin-top:3px;
+border:1px solid var(--parchment-2); border-radius:5px;
+background:var(--parchment); color:var(--ink); width:100%;
+}
+#lagotto-boh-root .lg-confirm{
+font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.05em;
+text-transform:uppercase; background:transparent; color:var(--sage);
+border:1px solid var(--sage); border-radius:999px; padding:5px 12px; cursor:pointer;
+}
+@media (max-width:560px){
+#lagotto-boh-root .lg-diet-row{grid-template-columns:1fr;}
+#lagotto-boh-root .lg-diet-note{grid-column:1;}
+}
+#lagotto-boh-root .lg-add{
+background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius);
+padding:16px; margin-bottom:18px;
+}
+#lagotto-boh-root .lg-add label{
+display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+letter-spacing:.1em; text-transform:uppercase; color:var(--pending); margin:0 0 4px;
+}
+#lagotto-boh-root .lg-add-hint{
+font-size:13px; line-height:1.55; color:var(--ink-soft); margin:0 0 14px;
+}
+#lagotto-boh-root .lg-add-hint em{color:var(--ink); font-style:normal; font-weight:600;}
+#lagotto-boh-root .lg-add input,
+#lagotto-boh-root .lg-add select{
+width:100%; font-family:'Work Sans',sans-serif; font-size:14px;
+border:1px solid var(--parchment-2); border-radius:6px; padding:8px 10px;
+background:var(--parchment); color:var(--ink);
+}
+#lagotto-boh-root .lg-add-row{display:flex; gap:12px; align-items:flex-end;}
+#lagotto-boh-root .lg-add-row > div:first-child{flex:1;}
+#lagotto-boh-root .lg-add-err{color:var(--rust); font-size:13px; margin-top:8px;}
+@media (max-width:560px){
+#lagotto-boh-root .lg-add-row{display:block;}
+#lagotto-boh-root .lg-add-row > div{margin-bottom:10px;}
+}
+#lagotto-boh-root .lg-edit-foot{
+display:flex; justify-content:space-between; align-items:center; margin-top:16px;
+}
+#lagotto-boh-root .lg-del{
+background:none; border:1px solid var(--rust); color:var(--rust);
+font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+text-transform:uppercase; border-radius:999px; padding:6px 14px; cursor:pointer;
+}
+@media (max-width:560px){
+#lagotto-boh-root .lg-edit{margin-left:0;}
+#lagotto-boh-root .lg-edit .lg-two{display:block;}
+}
+@media (max-width:560px){
+#lagotto-boh-root .lg-name{font-size:14px;}
+#lagotto-boh-root .lg-stale{margin-left:0;}
+}
+</style>
+
+<div class="lg-header">
+<div class="lg-header-inner">
+<img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+<p class="lg-sub">Dish Library — Back of House</p>
+<div class="lg-tools-nav">
+<a href="menu">Menu Reference</a>
+<a href="dietary">Dietary Matrix</a>
+<a href="menu-quiz">Staff Quiz</a>
+<a href="dish-library" class="active w--current">Dish Library</a>
+</div>
+</div>
+</div>
+
+<div class="lg-wrap">
+
+<div class="lg-bar">
+<div class="lg-count" id="lg-count">37 dishes · 24 on the menu · 13 archived</div>
+<div>
+<button class="lg-btn ghost" id="lg-reset">Reset changes</button>
+<button class="lg-btn ghost" id="lg-copy">Copy JSON</button>
+<button class="lg-btn" id="lg-publish">Publish</button>
+<span class="lg-status" id="lg-status"></span>
+</div>
+</div>
+
+<div style="margin-bottom:14px;">
+<button class="lg-btn" id="lg-add">+ Add a dish</button>
+</div>
+<div id="lg-add-panel"></div>
+
+<div class="lg-filters" id="lg-filters">
+<button class="lg-chip active" data-f="all">All</button>
+<button class="lg-chip" data-f="on">On menu</button>
+<button class="lg-chip" data-f="off">Archived</button>
+<button class="lg-chip" data-f="draft">New / draft</button>
+<button class="lg-chip" data-f="stale">Needs review</button>
+</div>
+
+<div id="lg-list"><div class="lg-warn"><strong>1 dish is on the menu without a price.</strong> Staff will see "36" on the card.</div><div class="lg-cat">Snacks</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/victorian-black-truffle-3g-add-on.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Victorian black truffle 3g add-on</div><div class="lg-meta">$15 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="truffle_addon" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/1-2-dozen-oysters-buttermilk-raspberry-mignonette.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">1/2 dozen oysters, buttermilk, raspberry mignonette</div><div class="lg-meta">$42 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="oysters" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/sourdough-focaccia-whipped-vegemite-butter.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Sourdough focaccia, whipped vegemite butter</div><div class="lg-meta">$14 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="focaccia" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/shark-bay-scallop-ceviche-macadamia-wild-garlic-trout-roe.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Shark Bay scallop ceviche, macadamia, wild garlic, trout roe</div><div class="lg-meta">$18ea · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="scallop" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/spring-roll-tart-bluefin-tuna-crudo-watermelon-smoked-creme-.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Spring roll tart, bluefin tuna crudo, watermelon, smoked creme fraiche</div><div class="lg-meta">$16ea · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="spring_roll" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/brioche-wagyu-carpaccio-yuzu-caviar.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Brioche, wagyu carpaccio, yuzu, caviar</div><div class="lg-meta">$18ea · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="brioche_wagyu" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/potato-rosti-spanner-crab-mussel-fennel-roe.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Potato rosti, spanner crab, mussel, fennel, roe</div><div class="lg-meta">$16ea · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="rosti" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Potato rosti, tuna belly crudo, bottarga, soy roe</div><div class="lg-meta">NEW FROM KITCHEN · $16 · confirmed 2026-07-31 · by David</div></div><button class="lg-toggle on" data-id="potato_rosti" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Kangaroo tartare spring roll tart, horseradish cream, cured yolk, fermented chilli</div><div class="lg-meta">NEW FROM KITCHEN · $16 · confirmed 2026-07-31 · by Dave</div></div><button class="lg-toggle" data-id="kangaroo_tartare_spring_roll_tart" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Wagyu intercostal skewer, black garlic ketchup, pickled daikon</div><div class="lg-meta">DRAFT · $18 · confirmed 2026-08-13 · added in the Dish Library</div></div><button class="lg-toggle on" data-id="wagyu_intercostal_skewer" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Entrees</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/fremantle-confit-octopus-carpaccio-saffron-rouille-frites-es.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Fremantle confit octopus carpaccio, saffron rouille, frites, espellette</div><div class="lg-meta">$36 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="octopus" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/bavette-tartare-tonnato-sauce-puntarelle-bone-marrow.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Bavette tartare, tonnato sauce, puntarelle, bone marrow</div><div class="lg-meta">$36 · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="bavette" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/stracciatella-fennel-jam-rye-crumb-mandarin-oil.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Stracciatella, fennel jam, rye crumb, mandarin oil</div><div class="lg-meta">$29 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="stracciatella" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/jerusalem-artichokes-hazelnut-cream-malt-pecorino-salbush.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Jerusalem artichokes, hazelnut cream, malt, pecorino, salbush</div><div class="lg-meta">$32 · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="jerusalem_artichokes" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Bavette tartare, macadamia &amp; taleggio cream, bone marrow, frites</div><div class="lg-meta">DRAFT · 36 · confirmed 2026-07-31 · added in the Dish Library</div></div><button class="lg-toggle on" data-id="bavette_tartare" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Comté tart, onion jam, charred leek, pea tendrils</div><div class="lg-meta">DRAFT · $32 · confirmed 2026-07-31 · added in the Dish Library</div></div><button class="lg-toggle on" data-id="comt_tart" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Cone cabbage, bagna cauda, pecorino, rye crumb</div><div class="lg-meta">$32 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="cone_cabbage" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Pasta</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/squid-ink-paccheri-tiger-prawn-shellfish-bisque-wood-sorrel.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Conchiglie, tiger prawn, vodka sauce, wood sorrel</div><div class="lg-meta">$45 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="squid_ink_paccheri" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/celeriac-comte-porcini-lasagne-parmesan-foam-black-truffle.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Celeriac, comté &amp; porcini lasagne, parmesan foam, black truffle</div><div class="lg-meta">$55 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="celeriac_lasagne" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Tortellini, confit duck leg ragu, parmesan bechamel, saffron oil</div><div class="lg-meta">$42 · confirmed 2026-07-24 · reviewed in the Dish Library</div></div><button class="lg-toggle on" data-id="gramigna" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/lemon-bigoli-moreton-bay-bug-yellow-tomato-sugo-bottarga-chi.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Lemon bigoli, Moreton Bay bug, yellow tomato sugo, bottarga, chives</div><div class="lg-meta">$90 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="lemon_bigoli" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/squid-ink-paccheri-tiger-prawn-shellfish-bisque-wood-sorrel.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Squid ink paccheri, tiger prawn, shellfish bisque, wood sorrel</div><div class="lg-meta">$45 · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="squid_ink_paccheri_2" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/gramigna-pork-sausage-broccolini-chilli-garlic-parmigiano.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Gramigna, pork sausage, broccolini, chilli, garlic, parmigiano</div><div class="lg-meta">$38 · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="gramigna_2" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Proteins</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/whole-side-of-coral-trout-650g-beurre-blanc-pippies-silverbe.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Whole side of Coral Trout 650g, beurre blanc, pippies, silverbeet</div><div class="lg-meta">$200 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="fish_of_day" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-500g-pork-belly-xo-fermented-chilli-citrus.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Ryukyu Berkshire 500g pork belly, XO, fermented chilli, citrus</div><div class="lg-meta">$85 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="pork_belly" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/black-opal-wagyu-rump-erbette-black-garlic-ketchup-jus.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Black Opal wagyu rump, erbette, black garlic ketchup, jus</div><div class="lg-meta">$75 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="black_opal_rump" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Robbin's Island grass-fed 300g 9+ wagyu oyster blade, rosemary, jus</div><div class="lg-meta">$125 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="robbins_oyster_blade" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/nz-yellowbelly-flounder-beurre-noisette-pippies-silverbeet-c.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">NZ yellowbelly flounder, beurre noisette, pippies, silverbeet, capers</div><div class="lg-meta">$60 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="flounder" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Ryukyu Berkshire 800g pork shoulder, honey fermented chilli, citrus</div><div class="lg-meta">$85 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="pork_shoulder" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/robbin-s-island-500g-9-wagyu-scotch-jus-rosemary-lemon.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Robbin's Island 500g 9+ wagyu scotch, jus, rosemary, lemon</div><div class="lg-meta">$200 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="tbone" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Sides</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/day-s-walk-farm-leaves-fennel-radish-honey-blood-orange.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Day's Walk Farm leaves, fennel, radish, honey &amp; blood orange</div><div class="lg-meta">$16 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="leaves" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/mayan-twilight-potatoes-sage-onion-salt-yeast-dressing.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Mayan twilight potatoes, sage &amp; onion salt, yeast dressing</div><div class="lg-meta">$16 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="potatoes" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Dessert</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/strawberry-granita-matcha-gelato-meringue.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Strawberry granita, matcha gelato, meringue</div><div class="lg-meta">$16 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="strawberry_granita" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/tiramisu-coffee-gelato-caramel-hazelnut-crunch.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Tiramisu, coffee gelato, caramel, hazelnut crunch</div><div class="lg-meta">$20 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="tiramisu" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/parmesan-gelato-cheesecake-cream-truffle-caramel-popcorn.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Parmesan gelato, cheesecake cream, truffle, caramel, popcorn</div><div class="lg-meta">$25 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="parmesan_gelato" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/mandarin-granita-yuzu-curd-lemon-verbena-gelato.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Mandarin granita, yuzu curd, lemon verbena gelato</div><div class="lg-meta">$16 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="mandarin_granita" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/crepe-suzette-brioche-ice-cream-burnt-orange-caramel-black-t.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Crepe suzette, brioche ice-cream, burnt orange caramel, black truffle</div><div class="lg-meta">$35 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="crepe_suzette" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div></div>
+
+<div class="lg-panel">
+<h3>Publishing changes</h3>
+<p>Toggling changes nothing until you press <strong>Publish</strong>. The staff
+pages pick up the change on their next load. If publishing fails, use
+<strong>Copy JSON</strong> and paste it into the Gist by hand.</p>
+<textarea id="lg-out" readonly="" placeholder="Only needed if publishing fails."></textarea>
+</div>
+
+</div>
+
+<script>
+(function(){
+const GIST = 'https://gist.githubusercontent.com/davidyuncken-tech/961008059dd9725f75c8fff63fd8c64d/raw/menu_data.json';
+// Publishing config.
+//
+// Set this ONCE in Webflow under Page settings > Custom code > Inside head tag.
+// Add a script tag there containing:
+//
+//     window.LAGOTTO_PUBLISH_URL = 'your apps script web app url';
+//     window.LAGOTTO_PUBLISH_SECRET = 'your shared secret';
+//
+// It must be in the HEAD, not before the closing body tag - code placed at the
+// end of the body runs after this embed and would be too late.
+//
+// Keeping it out of this embed means replacing this file never wipes it. These
+// are read at the moment they're used rather than captured on load, so load
+// order can't silently break them.
+function publishUrl(){
+  return window.LAGOTTO_PUBLISH_URL || 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+}
+function publishSecret(){
+  return window.LAGOTTO_PUBLISH_SECRET || 'PASTE_YOUR_SHARED_SECRET_HERE';
+}
+function publishReady(){
+  return publishUrl().indexOf('PASTE_') !== 0;
+}
+const STALE_DAYS = 120;
+// Below this many live Drive photos, it's a note rather than a warning.
+const DRIVE_WARN_AT = 5;
+// The lowest deployment version this page can actually work with - NOT the
+// latest version of the script. Only bump it when doPost gains or changes a
+// capability the page depends on (v4 added the knownIds delete guard, which was
+// the last such change). Diagnostic-only edits must not trigger a warning, or
+// the warning becomes noise and stops being read when it matters.
+const NEEDS_SCRIPT_VERSION = 4;
+
+let DATA = null;
+let original = {};
+let pristine = '';      // full snapshot, so text edits count as changes too
+let loadedIds = [];     // what was in the Gist when this page loaded
+let filter = 'all';
+let openId = null;      // which dish's editor is expanded
+
+const list = document.getElementById('lg-list');
+const countEl = document.getElementById('lg-count');
+const statusEl = document.getElementById('lg-status');
+const outEl = document.getElementById('lg-out');
+
+function daysSince(iso){
+  if(!iso) return null;
+  const then = new Date(iso + 'T00:00:00');
+  if(isNaN(then)) return null;
+  return Math.floor((Date.now() - then) / 86400000);
+}
+
+// Drive is fine for reviewing a submission, but it is not an image host. A dish
+// switched on while still pointing at Drive will show a broken photo on the
+// floor once the endpoint rate-limits.
+function isDrivePhoto(d){
+  return typeof d.image === 'string' && d.image.indexOf('drive.google.com') !== -1;
+}
+
+function isStale(d){
+  const age = daysSince(d.last_confirmed);
+  return age !== null && age > STALE_DAYS;
+}
+
+function matches(d){
+  if(filter === 'on') return d.active !== false;
+  if(filter === 'off') return d.active === false;
+  if(filter === 'draft') return d.draft === true;
+  if(filter === 'stale') return isStale(d);
+  return true;
+}
+
+
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+
+// ---- dietary editing -------------------------------------------------------
+// Five categories name a requirement rather than an ingredient, so "contains"
+// means unsuitable and clear means suitable. Phrasing them like allergens
+// produces nonsense such as "no pregnancy-safe in this dish".
+const REQUIREMENT = {
+  coeliac:     {yes:'Contains gluten \u2014 not coeliac-safe as served.',
+                no:'Coeliac-safe as made \u2014 no gluten-containing ingredient.'},
+  gluten_free: {yes:'Contains gluten \u2014 not gluten free as served.',
+                no:'Gluten free as made.'},
+  vegetarian:  {yes:'Contains meat, poultry or seafood \u2014 not vegetarian as served.',
+                no:'Vegetarian as made.'},
+  vegan:       {yes:'Contains animal products \u2014 not vegan as served.',
+                no:'Vegan as made.'},
+  pregnant:    {yes:'Contains an ingredient not recommended during pregnancy \u2014 not suitable as served.',
+                no:'Suitable during pregnancy as made.'}
+};
+
+const STATES = [
+  ['contains','Contains'], ['modifiable','Can modify'],
+  ['safe','Not present'], ['pending','Ask kitchen']
+];
+
+function dietLabel(key){
+  const c = (DATA.dietary_categories || []).find(x => x.key === key);
+  return c ? c.label : key;
+}
+
+function todayISO(){ return new Date().toISOString().slice(0,10); }
+
+// Every edit made here is stamped, so a flag never keeps the chef's name on a
+// change they didn't make. The dietary page shows these notes to staff.
+function editSource(){ return ' [source: edited in the Dish Library, ' + todayISO() + ']'; }
+
+function splitNote(note){
+  const s = String(note || '');
+  const i = s.indexOf(' [source:');
+  return i === -1 ? {text:s, src:''} : {text:s.slice(0,i), src:s.slice(i)};
+}
+
+function autoNote(key, status){
+  const req = REQUIREMENT[key];
+  if(status === 'contains')
+    return req ? req.yes : dietLabel(key) + ' is integral to this dish as served.';
+  if(status === 'safe')
+    return req ? req.no : 'No ' + dietLabel(key).toLowerCase() + ' in this dish as made.';
+  return '';
+}
+
+function setDietary(dish, key, status){
+  const cell = dish.dietary[key] || (dish.dietary[key] = {status:'pending', note:null});
+  if(status === 'pending'){
+    cell.status = 'pending';
+    cell.note = null;
+  } else if(status === 'modifiable'){
+    const existing = splitNote(cell.note).text;
+    cell.status = 'modifiable';
+    cell.note = (existing || 'Can be modified \u2014 ask the kitchen how.') + editSource();
+  } else {
+    cell.status = status;
+    cell.note = autoNote(key, status) + editSource();
+  }
+}
+
+function dietaryHTML(d){
+  const rows = (DATA.dietary_categories || []).map(function(c){
+    const cell = d.dietary[c.key] || {status:'pending', note:null};
+    const segs = STATES.map(function(s){
+      return '<button data-diet="' + c.key + '" data-s="' + s[0] + '"'
+        + (cell.status === s[0] ? ' class="on"' : '') + '>' + s[1] + '</button>';
+    }).join('');
+    const note = cell.status === 'modifiable'
+      ? '<input class="lg-diet-note" data-dietnote="' + c.key + '" '
+        + 'placeholder="How is it modified? e.g. no buttermilk" value="'
+        + esc(splitNote(cell.note).text) + '">'
+      : '';
+    return '<div class="lg-diet-row"><span class="lg-diet-name">' + esc(c.label)
+      + '</span><span class="lg-seg">' + segs + '</span>' + note + '</div>';
+  }).join('');
+  return '<div class="lg-diet-head">'
+    + '<label style="margin:0;">Dietary</label>'
+    + '<button class="lg-confirm" data-confirm>Mark reviewed today</button></div>'
+    + rows;
+}
+
+function editorHTML(d){
+  const cats = (DATA.menu_categories || []).map(c =>
+    '<option value="' + esc(c) + '"' + (c === d.category ? ' selected' : '') + '>'
+    + esc(c) + '</option>').join('');
+  const preview = d.image
+    ? '<img src="' + esc(d.image) + '" alt="">Drop a new photo, or click to choose'
+    : 'Drop a photo here, or click to choose';
+  return '<div class="lg-edit" data-edit="' + esc(d.id) + '">'
+    + '<label>Dish name — must match the printed menu</label>'
+    + '<input data-f="name" value="' + esc(d.name) + '">'
+    + '<p class="lg-edit-warn">If this is actually a <em>different</em> dish \u2014 a new pasta '
+    +   'shape, protein or preparation \u2014 archive this one with the toggle below and use '
+    +   '&ldquo;+ Add a dish&rdquo; instead of renaming it here. The id underneath every dish is '
+    +   'what the quiz and the Chef&rsquo;s Menu point at; typing a different dish over it leaves '
+    +   'those pointing at the wrong thing instead of updating them, and short_name usually stays '
+    +   'wrong the longest since nothing forces it to be re-checked.</p>'
+    + '<div class="lg-two">'
+    +   '<div><label>Price</label><input data-f="price" value="' + esc(d.price) + '"></div>'
+    +   '<div><label>Category</label><select data-f="category">' + cats + '</select></div>'
+    + '</div>'
+    + '<label>Photo</label>'
+    + '<div class="lg-drop" data-drop>' + preview + '</div>'
+    + '<input type="file" accept="image/*" style="display:none" data-file>'
+    + '<label>Tasting notes</label>'
+    + '<textarea data-f="tasting_notes">' + esc(d.tasting_notes) + '</textarea>'
+    + dietaryHTML(d)
+    + '<label>Note for you — not shown to staff</label>'
+    + '<textarea data-f="chef_note">' + esc(d.chef_note) + '</textarea>'
+    + '<div class="lg-edit-foot">'
+    +   '<span style="font-size:12px;color:var(--pending);">Changes save when you press Publish.</span>'
+    +   '<button class="lg-del" data-del>Delete dish</button>'
+    + '</div>'
+    + '</div>';
+}
+
+/** Phone photos are 5-10MB. Shrink before upload: Apps Script has payload
+ *  limits, and a 4000px image on a 46px thumbnail helps nobody. */
+function shrink(file, maxPx){
+  return new Promise(function(resolve, reject){
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = function(){
+      const img = new Image();
+      img.onerror = reject;
+      img.onload = function(){
+        let {width: w, height: h2} = img;
+        const scale = Math.min(1, maxPx / Math.max(w, h2));
+        w = Math.round(w * scale); h2 = Math.round(h2 * scale);
+        const c = document.createElement('canvas');
+        c.width = w; c.height = h2;
+        c.getContext('2d').drawImage(img, 0, 0, w, h2);
+        const dataUrl = c.toDataURL('image/jpeg', 0.85);
+        resolve({ base64: dataUrl.split(',')[1], mime: 'image/jpeg' });
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function uploadPhoto(dish, file){
+  const drop = list.querySelector('[data-edit="' + dish.id + '"] [data-drop]');
+  if(!publishReady()){
+    if(drop) drop.textContent = 'Photo upload not configured \u2014 add '
+      + 'LAGOTTO_PUBLISH_URL to the page head';
+    return;
+  }
+  if(drop) drop.textContent = 'Resizing\u2026';
+  shrink(file, 1600).then(function(img){
+    if(drop) drop.textContent = 'Uploading to Webflow\u2026';
+    return callPublisher({action: 'upload', image: img.base64,
+                          mime: img.mime, dishId: dish.id});
+  }).then(function(res){
+    if(res && res.ok && res.url){
+      dish.image = res.url;
+      render();
+      statusEl.textContent = 'Photo uploaded \u2014 press Publish to save';
+    } else {
+      if(drop) drop.textContent = 'Upload failed: ' + ((res && res.message) || 'unknown');
+    }
+  }).catch(function(err){
+    if(drop) drop.textContent = 'Upload failed \u2014 ' + (err.message || err);
+  });
+}
+
+function dirty(){
+  return pristine !== JSON.stringify(DATA);
+}
+
+function updateStatus(){
+  statusEl.textContent = dirty() ? 'Unpublished changes' : '';
+}
+
+function render(){
+  const dishes = DATA.dishes;
+  const on = dishes.filter(d => d.active !== false).length;
+  countEl.textContent = dishes.length + ' dishes \u00b7 ' + on + ' on the menu \u00b7 '
+    + (dishes.length - on) + ' archived';
+
+  updateStatus();
+
+  // Sort by menu category so archived and newly submitted dishes sit with
+  // their own kind. Without this they pile up at the end of the array and the
+  // page renders a second SNACKS or ENTREES heading below the desserts, which
+  // reads as "my dish didn't arrive".
+  const order = DATA.menu_categories || [];
+  const shown = dishes.filter(matches).slice().sort(function(a, b){
+    const ra = order.indexOf(a.category), rb = order.indexOf(b.category);
+    if(ra !== rb) return (ra === -1 ? 99 : ra) - (rb === -1 ? 99 : rb);
+    return dishes.indexOf(a) - dishes.indexOf(b);
+  });
+  const staleOn = shown.filter(d => d.active !== false && isStale(d));
+
+  let html = '';
+  const noPrice = shown.filter(d => d.active !== false && !/^\$/.test(d.price || ''));
+  if(noPrice.length){
+    html += '<div class="lg-warn"><strong>' + noPrice.length + ' dish'
+      + (noPrice.length > 1 ? 'es are' : ' is')
+      + ' on the menu without a price.</strong> Staff will see "'
+      + esc(noPrice[0].price || '') + '" on the card.</div>';
+  }
+  const driveOn = shown.filter(d => d.active !== false && isDrivePhoto(d));
+  // Drive photos: rank the risk honestly. Drive only throttles when a page
+  // loads several images at once, so one or two among two dozen is a tidy-up
+  // job, not a fault. Overstating it teaches people to skip the banner, which
+  // then hides the warnings that do matter.
+  if(driveOn.length >= DRIVE_WARN_AT){
+    html += '<div class="lg-warn"><strong>' + driveOn.length
+      + ' dishes on the menu still load their photo from Google Drive.</strong> '
+      + 'That is enough for Drive to start throttling and show broken images. '
+      + 'Open each and re-upload the photo.</div>';
+  } else if(driveOn.length){
+    html += '<div class="lg-note">' + driveOn.length + ' dish'
+      + (driveOn.length > 1 ? 'es load their photos' : ' loads its photo')
+      + ' from Google Drive. Fine at this number \u2014 worth re-uploading when '
+      + 'you next open ' + (driveOn.length > 1 ? 'them' : 'it') + ', since Drive '
+      + 'throttles once several are on a page.</div>';
+  }
+  if(staleOn.length){
+    html += '<div class="lg-warn"><strong>' + staleOn.length + ' dish'
+      + (staleOn.length > 1 ? 'es' : '')
+      + ' on the menu with dietary data older than ' + STALE_DAYS + ' days.</strong> '
+      + 'Have the kitchen re-submit before relying on the flags for an allergy guest.</div>';
+  }
+  if(!shown.length){
+    html += '<p style="color:var(--pending);">Nothing matches that filter.</p>';
+  }
+
+  let lastCat = null;
+  shown.forEach(function(d){
+    if(d.category !== lastCat){
+      html += '<div class="lg-cat">' + d.category + '</div>';
+      lastCat = d.category;
+    }
+    const active = d.active !== false;
+    const age = daysSince(d.last_confirmed);
+    // "by Dave" reads fine; "by added in the Dish Library" doesn't - the
+    // in-house sources are already phrased as sentences.
+    const by = d.confirmed_by
+      ? (/Dish Library/.test(d.confirmed_by) ? d.confirmed_by : 'by ' + d.confirmed_by)
+      : null;
+    const meta = [d.price, d.last_confirmed ? 'confirmed ' + d.last_confirmed : 'no date']
+      .concat(by ? [by] : []).join(' \u00b7 ');
+    html += '<div class="lg-row' + (active ? '' : ' off') + '">'
+      + (d.image ? '<img class="lg-thumb" src="' + d.image + '" loading="lazy" alt="">'
+                 : '<div class="lg-thumb"></div>')
+      + '<div class="lg-info"><div class="lg-name">' + d.name + '</div>'
+      + '<div class="lg-meta">' + (d.draft
+          ? (/Dish Library/.test(d.confirmed_by || '') ? 'DRAFT \u00b7 ' : 'NEW FROM KITCHEN \u00b7 ')
+          : '')
+      + (isDrivePhoto(d) ? 'PHOTO ON DRIVE \u00b7 ' : '') + meta + '</div></div>'
+      + '<button class="lg-toggle' + (active ? ' on' : '') + '" data-id="' + d.id + '" '
+      + 'role="switch" aria-checked="' + active + '" '
+      + 'aria-label="' + (active ? 'Take off the menu' : 'Put on the menu') + '">'
+      + '<span class="lg-knob"></span></button></div>';
+    if(active && isStale(d)){
+      html += '<div class="lg-stale">Dietary last confirmed ' + age
+        + ' days ago. Ask the kitchen to re-submit this dish before service.</div>';
+    }
+    if(openId === d.id) html += editorHTML(d);
+  });
+  list.innerHTML = html;
+}
+
+function dishFromEvent(e){
+  const panel = e.target.closest('[data-edit]');
+  if(panel) return DATA.dishes.find(x => x.id === panel.dataset.edit);
+  return null;
+}
+
+// Typing must not re-render - that would blow away focus mid-word.
+list.addEventListener('input', function(e){
+  const dietKey = e.target.dataset && e.target.dataset.dietnote;
+  if(dietKey){
+    const dish = dishFromEvent(e);
+    if(dish){
+      const cell = dish.dietary[dietKey];
+      cell.note = (e.target.value || 'Can be modified \u2014 ask the kitchen how.')
+        + editSource();
+      updateStatus();
+    }
+    return;
+  }
+  const f = e.target.dataset && e.target.dataset.f;
+  if(!f) return;
+  const d = dishFromEvent(e);
+  if(!d) return;
+  d[f] = e.target.value;
+  if(f === 'name') {
+    const row = list.querySelector('[data-edit="' + d.id + '"]').previousElementSibling;
+    const nameEl = row && row.querySelector('.lg-name');
+    if(nameEl) nameEl.textContent = e.target.value;
+  }
+  updateStatus();
+});
+
+list.addEventListener('change', function(e){
+  if(e.target.dataset && e.target.dataset.f === 'category'){
+    const d = dishFromEvent(e);
+    if(d){ d.category = e.target.value; render(); }
+  }
+  if(e.target.dataset && 'file' in e.target.dataset && e.target.files[0]){
+    const d = dishFromEvent(e);
+    if(d) uploadPhoto(d, e.target.files[0]);
+  }
+});
+
+list.addEventListener('dragover', function(e){
+  const drop = e.target.closest('[data-drop]');
+  if(!drop) return;
+  e.preventDefault();
+  drop.classList.add('over');
+});
+list.addEventListener('dragleave', function(e){
+  const drop = e.target.closest('[data-drop]');
+  if(drop) drop.classList.remove('over');
+});
+list.addEventListener('drop', function(e){
+  const drop = e.target.closest('[data-drop]');
+  if(!drop) return;
+  e.preventDefault();
+  drop.classList.remove('over');
+  const d = dishFromEvent(e);
+  const file = e.dataTransfer.files[0];
+  if(d && file && file.type.indexOf('image') === 0) uploadPhoto(d, file);
+});
+
+list.addEventListener('click', function(e){
+  if(e.target.closest('[data-drop]')){
+    const panel = e.target.closest('[data-edit]');
+    panel.querySelector('[data-file]').click();
+    return;
+  }
+  const seg = e.target.closest('[data-diet]');
+  if(seg){
+    const dish = dishFromEvent(e);
+    if(dish){
+      setDietary(dish, seg.dataset.diet, seg.dataset.s);
+      render();
+    }
+    return;
+  }
+  if(e.target.closest('[data-confirm]')){
+    const dish = dishFromEvent(e);
+    if(dish){
+      // Reviewing is a separate act from editing: this is what resets the
+      // staleness clock, so it has to be deliberate rather than a side effect.
+      dish.last_confirmed = todayISO();
+      dish.confirmed_by = 'reviewed in the Dish Library';
+      render();
+      statusEl.textContent = 'Marked reviewed \u2014 press Publish to save';
+    }
+    return;
+  }
+  if(e.target.closest('[data-del]')){
+    const d = dishFromEvent(e);
+    if(!d) return;
+    if(!confirm('Delete "' + d.name + '" from the library for good?\n\n'
+      + 'To take it off the menu but keep it for later, close this and use the '
+      + 'toggle instead.')) return;
+    DATA.dishes = DATA.dishes.filter(x => x.id !== d.id);
+    const cm = DATA.chefs_menu;
+    cm.course_order = cm.course_order.filter(i => i !== d.id);
+    cm.add_ons = cm.add_ons.filter(i => i !== d.id);
+    openId = null;
+    render();
+    return;
+  }
+  // clicking a row opens its editor; the toggle is handled below
+  if(e.target.closest('.lg-edit')) return;
+  const row = e.target.closest('.lg-row');
+  if(row && !e.target.closest('.lg-toggle')){
+    const id = row.querySelector('.lg-toggle').dataset.id;
+    openId = (openId === id) ? null : id;
+    render();
+    return;
+  }
+  const btn = e.target.closest('.lg-toggle');
+  if(!btn) return;
+  const d = DATA.dishes.find(x => x.id === btn.dataset.id);
+  d.active = !(d.active !== false);
+  if(d.active === false && d.on_chefs_menu){
+    d.on_chefs_menu = false;
+    const cm = DATA.chefs_menu;
+    cm.course_order = cm.course_order.filter(i => i !== d.id);
+    cm.add_ons = cm.add_ons.filter(i => i !== d.id);
+  }
+  render();
+});
+
+document.getElementById('lg-filters').addEventListener('click', function(e){
+  const btn = e.target.closest('.lg-chip');
+  if(!btn) return;
+  document.querySelectorAll('#lg-filters .lg-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filter = btn.dataset.f;
+  render();
+});
+
+document.getElementById('lg-reset').addEventListener('click', function(){
+  if(dirty() && !confirm('Discard every unpublished change?')) return;
+  DATA = JSON.parse(pristine);
+  openId = null;
+  render();
+  outEl.value = '';
+});
+
+document.getElementById('lg-publish').addEventListener('click', function(){
+  const btn = this;
+  if(!publishReady()){
+    statusEl.textContent = 'Publishing not configured \u2014 add '
+      + 'LAGOTTO_PUBLISH_URL to the page head';
+    return;
+  }
+  if(!dirty()){ statusEl.textContent = 'Nothing to publish'; return; }
+  btn.disabled = true;
+  statusEl.textContent = 'Publishing\u2026';
+  callPublisher({data: DATA, knownIds: loadedIds})
+    .then(function(res){
+      btn.disabled = false;
+      if(res.ok){
+        DATA.dishes.forEach(d => { original[d.id] = d.active !== false; });
+        pristine = JSON.stringify(DATA);
+        loadedIds = DATA.dishes.map(d => d.id);
+        render();
+        statusEl.textContent = 'Published \u2014 live on the staff pages';
+      } else {
+        statusEl.textContent = 'Failed: ' + res.message + ' \u2014 use Copy JSON';
+      }
+    })
+    .catch(function(err){
+      btn.disabled = false;
+      statusEl.textContent = 'Publish failed \u2014 ' + err.message;
+      console.error('publish failed', err);
+    });
+});
+
+document.getElementById('lg-copy').addEventListener('click', function(){
+  const text = JSON.stringify(DATA, null, 2);
+  outEl.value = text;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){
+      statusEl.textContent = 'Copied \u2014 paste into the Gist';
+    }, function(){
+      statusEl.textContent = 'Copy from the box below';
+    });
+  } else {
+    outEl.select();
+    statusEl.textContent = 'Copy from the box below';
+  }
+});
+
+
+/**
+ * Talk to the Apps Script web app and turn its many failure modes into one
+ * clear sentence.
+ *
+ * Apps Script doesn't fail cleanly: a wrong access setting returns an HTML
+ * sign-in page, a script error returns an HTML error page, and an archived
+ * deployment returns a 404 page. All of them break r.json() and used to
+ * surface as the same unhelpful "couldn't reach the publisher".
+ */
+function callPublisher(payload){
+  return fetch(publishUrl(), {
+    method: 'POST',
+    headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify(Object.assign({secret: publishSecret()}, payload))
+  }).then(function(r){
+    return r.text().then(function(body){
+      try {
+        return JSON.parse(body);
+      } catch (err) {
+        if(/accounts\.google\.com|signin|Sign in/i.test(body)){
+          throw new Error('the web app is asking for a Google sign-in. In '
+            + 'Deploy \u2192 Manage deployments, set "Who has access" to Anyone.');
+        }
+        if(r.status === 404){
+          throw new Error('404 \u2014 that deployment no longer exists. Check the '
+            + 'URL in the page head matches the current deployment.');
+        }
+        if(/Script function not found/i.test(body)){
+          throw new Error('the deployed version has no doPost. Deploy \u2192 '
+            + 'Manage deployments \u2192 New version.');
+        }
+        const snippet = body.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120);
+        throw new Error('HTTP ' + r.status + ', and the reply was not JSON: '
+          + (snippet || '(empty)'));
+      }
+    });
+  });
+}
+
+
+// ---- adding a dish by hand -------------------------------------------------
+// Produces exactly the shape a form submission produces, so everything
+// downstream - the staff pages, the quiz, a later resubmission from the form -
+// treats the two identically. Like a submission it arrives switched off, so
+// nothing reaches the floor without being turned on deliberately.
+function slugifyName(name){
+  return String(name).split(/[,(]/)[0].toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 40) || 'dish';
+}
+
+function freeId(base){
+  const taken = {};
+  DATA.dishes.forEach(d => { taken[d.id] = true; });
+  if(!taken[base]) return base;
+  let n = 2;
+  while(taken[base + '_' + n]) n++;
+  return base + '_' + n;
+}
+
+function blankDietary(){
+  const out = {};
+  (DATA.dietary_categories || []).forEach(c => {
+    out[c.key] = {status: 'pending', note: null};
+  });
+  return out;
+}
+
+function insertInCategoryOrder(dish){
+  const order = DATA.menu_categories || [];
+  const rank = order.indexOf(dish.category);
+  if(rank === -1){ DATA.dishes.push(dish); return; }
+  let at = -1;
+  for(let i = 0; i < DATA.dishes.length; i++){
+    const r = order.indexOf(DATA.dishes[i].category);
+    if(r !== -1 && r > rank){ at = i; break; }
+  }
+  if(at === -1) DATA.dishes.push(dish);
+  else DATA.dishes.splice(at, 0, dish);
+}
+
+const addPanel = document.getElementById('lg-add-panel');
+
+function showAddPanel(){
+  const cats = (DATA.menu_categories || []).map(c =>
+    '<option value="' + esc(c) + '">' + esc(c) + '</option>').join('');
+  addPanel.innerHTML = '<div class="lg-add">'
+    + '<p class="lg-add-hint">Use this for anything that\u2019s genuinely a different dish \u2014 '
+    +   'a new pasta shape, a new protein, a new preparation. If it\u2019s the <em>same</em> dish '
+    +   'with a tweak (a garnish swap, a price change), open that dish below and edit it instead. '
+    +   'If a dish is being replaced outright, archive the old one with its toggle rather than '
+    +   'typing the new dish over it \u2014 its id is what the quiz and the Chef\u2019s Menu '
+    +   'reference, and overwriting it breaks those instead of updating them.</p>'
+    + '<div class="lg-add-row">'
+    +   '<div><label>Dish name \u2014 as it will print</label>'
+    +     '<input id="lg-add-name" placeholder="e.g. Charred leek, hazelnut, aged parmesan"></div>'
+    +   '<div style="width:180px;"><label>Category</label>'
+    +     '<select id="lg-add-cat">' + cats + '</select></div>'
+    + '</div>'
+    + '<div class="lg-add-err" id="lg-add-err"></div>'
+    + '<div class="lg-edit-foot">'
+    +   '<span style="font-size:12px;color:var(--pending);">Starts switched off, with '
+    +     'every dietary flag set to ask the kitchen.</span>'
+    +   '<span><button class="lg-btn ghost" id="lg-add-cancel">Cancel</button> '
+    +     '<button class="lg-btn" id="lg-add-create">Create</button></span>'
+    + '</div></div>';
+  const nameEl = document.getElementById('lg-add-name');
+  nameEl.focus();
+  nameEl.addEventListener('keydown', e => { if(e.key === 'Enter') createDish(); });
+  document.getElementById('lg-add-cancel').addEventListener('click', hideAddPanel);
+  document.getElementById('lg-add-create').addEventListener('click', createDish);
+}
+
+function hideAddPanel(){ addPanel.innerHTML = ''; }
+
+function createDish(){
+  const name = document.getElementById('lg-add-name').value.trim();
+  const cat = document.getElementById('lg-add-cat').value;
+  const err = document.getElementById('lg-add-err');
+  if(!name){ err.textContent = 'Give it a name first.'; return; }
+  const clash = DATA.dishes.find(d => d.name.trim().toLowerCase() === name.toLowerCase());
+  if(clash){
+    err.innerHTML = 'There is already a dish called "' + esc(clash.name) + '"'
+      + (clash.active === false ? ' in the archive' : ' on the menu')
+      + '. Edit that one instead, or use a different name.';
+    return;
+  }
+  const dish = {
+    id: freeId(slugifyName(name)),
+    category: cat,
+    name: name,
+    price: 'TBC',
+    image: null,
+    active: false,
+    draft: true,
+    last_confirmed: todayISO(),
+    confirmed_by: 'added in the Dish Library',
+    on_chefs_menu: false,
+    tasting_notes_status: 'pending',
+    tasting_notes: null,
+    tasting_notes_source: null,
+    dietary: blankDietary(),
+    chef_note: 'Added by hand and not yet reviewed. Set the price, tasting notes '
+      + 'and dietary before switching it on.',
+    short_name: name.split(',')[0].trim()
+  };
+  insertInCategoryOrder(dish);
+  hideAddPanel();
+  openId = dish.id;
+  render();
+  const row = list.querySelector('[data-edit="' + dish.id + '"]');
+  if(row && row.scrollIntoView) row.scrollIntoView({block: 'center'});
+  statusEl.textContent = 'Dish added \u2014 press Publish when you\'re done';
+}
+
+document.getElementById('lg-add').addEventListener('click', function(){
+  if(addPanel.innerHTML) hideAddPanel(); else showAddPanel();
+});
+
+function checkPublisher(){
+  if(!publishReady()) return;
+  callPublisher({action: 'ping'})
+    .then(function(res){
+      const msgs = [];
+      if(!res.ok){
+        msgs.push('The publisher rejected this page: ' + (res.message || 'unknown') + '.');
+      } else if(!res.version || res.version < NEEDS_SCRIPT_VERSION){
+        msgs.push('<strong>The Apps Script web app is too old for this page'
+          + (res.version ? ' (v' + res.version + ', needs v' + NEEDS_SCRIPT_VERSION + ' or later)' : '')
+          + '.</strong> In the script editor: Deploy \u2192 Manage deployments '
+          + '\u2192 edit \u2192 Version: New version \u2192 Deploy. Editing the '
+          + 'script alone does not update a deployed web app.');
+      } else if(!res.canUpload){
+        msgs.push('<strong>Photo upload is unavailable.</strong> Set '
+          + 'WEBFLOW_TOKEN and WEBFLOW_SITE_ID in the Apps Script properties.');
+      }
+      if(msgs.length){
+        const el = document.createElement('div');
+        el.className = 'lg-warn';
+        el.innerHTML = msgs.join('<br>');
+        list.parentNode.insertBefore(el, list);
+      }
+    })
+    .catch(function(err){
+      const el = document.createElement('div');
+      el.className = 'lg-warn';
+      el.innerHTML = '<strong>Can\'t reach the publisher.</strong> ' + err.message;
+      list.parentNode.insertBefore(el, list);
+    });
+}
+
+fetch(GIST + '?t=' + Date.now())
+  .then(r => r.json())
+  .then(function(json){
+    DATA = json;
+    DATA.dishes.forEach(d => { original[d.id] = d.active !== false; });
+    loadedIds = DATA.dishes.map(d => d.id);
+    pristine = JSON.stringify(DATA);
+    render();
+    checkPublisher();
+  })
+  .catch(function(){
+    countEl.textContent = "Couldn't load the dish data \u2014 check the Gist is reachable.";
+  });
+})();
+</script>
+</div>
+
+</body>
+</html>
