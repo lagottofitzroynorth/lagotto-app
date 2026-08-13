@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Staff Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-default.jpg">
+<meta name="apple-mobile-web-app-title" content="Lagotto Staff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+--ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+--rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+--radius:10px;
+}
+html,body{margin:0; padding:0;}
+*{box-sizing:border-box;}
+body{
+background:var(--parchment); color:var(--ink);
+font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
+-webkit-font-smoothing:antialiased;
+}
+.sh-header{background:var(--ink); color:var(--parchment); padding:40px 20px 32px;}
+.sh-header-inner{max-width:720px; margin:0 auto;}
+.sh-logo{height:38px; display:block; margin-bottom:14px; filter:brightness(0) invert(1);}
+.sh-sub{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--parchment); opacity:.8; margin:0;}
+
+.sh-wrap{max-width:720px; margin:0 auto; padding:0 20px 64px;}
+
+.sh-group-title{
+font-family:'Fraunces',serif; font-size:13px; text-transform:uppercase; letter-spacing:.14em;
+color:var(--rust); margin:36px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--parchment-2);
+}
+.sh-group-title:first-of-type{margin-top:28px;}
+
+.sh-links{display:grid; gap:10px;}
+.sh-card{
+display:flex; align-items:center; justify-content:space-between; gap:16px;
+background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius);
+padding:16px 18px; text-decoration:none; color:var(--ink); transition:.15s;
+}
+.sh-card:hover{background:var(--parchment); border-color:var(--rust);}
+.sh-card-name{font-family:'Fraunces',serif; font-weight:600; font-size:16px;}
+.sh-card-desc{font-size:13px; color:var(--pending); margin-top:2px;}
+.sh-chev{font-size:20px; color:#ccc; flex-shrink:0;}
+
+@media (max-width:560px){
+.sh-card-name{font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<div class="sh-header">
+<div class="sh-header-inner">
+<img class="sh-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+<p class="sh-sub">Staff Home</p>
+</div>
+</div>
+
+<div class="sh-wrap">
+
+<div class="sh-group-title">Wine &amp; Bar</div>
+<div class="sh-links">
+<a class="sh-card" href="wine">
+<div><div class="sh-card-name">Wine List</div><div class="sh-card-desc">Full list with tasting notes, regions and prices</div></div>
+<span class="sh-chev">&#8250;</span>
+</a>
+<a class="sh-card" href="wine-quiz">
+<div><div class="sh-card-name">Wine Quiz</div><div class="sh-card-desc">Test yourself before service</div></div>
+<span class="sh-chev">&#8250;</span>
+</a>
+<a class="sh-card" href="cocktails">
+<div><div class="sh-card-name">Cocktail Reference</div><div class="sh-card-desc">Ingredients, method, glass and garnish for every cocktail</div></div>
+<span class="sh-chev">&#8250;</span>
+</a>
+</div>
+
+<div class="sh-group-title">Food</div>
+<div class="sh-links">
+<a class="sh-card" href="menu">
+<div><div class="sh-card-name">Menu Reference</div><div class="sh-card-desc">Every dish with tasting notes and prices</div></div>
+<span class="sh-chev">&#8250;</span>
+</a>
+<a class="sh-card" href="dietary">
+<div><div class="sh-card-name">Dietary Matrix</div><div class="sh-card-desc">Check any dish against a guest's dietary needs</div></div>
+<span class="sh-chev">&#8250;</span>
+</a>
+<a class="sh-card" href="menu-quiz">
+<div><div class="sh-card-name">Staff Quiz</div><div class="sh-card-desc">Test yourself before service</div></div>
+<span class="sh-chev">&#8250;</span>
+</a>
+</div>
+
+</div>
+
+</body>
+</html>
