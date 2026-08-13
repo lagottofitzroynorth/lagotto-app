@@ -1,0 +1,8 @@
+# Old Webflow slugs -> new Cloudflare slugs, so existing printed QR
+# codes / table cards at the restaurant keep working after cutover.
+/wine-list /wine 301
+/lagotto-wine-boh /wine-cellar 301
+/lagotto-menu /menu 301
+/lagotto-dietary /dietary 301
+/lagotto-quiz /menu-quiz 301
+/lagotto-boh /dish-library 301
