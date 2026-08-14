@@ -3,10 +3,22 @@
   "generated": "2026-08-13",
   "source_note": "Transcribed from Cocktail Specs.pdf",
   "sections": [
-    { "id": "lagotto", "name": "Lagotto Cocktails" },
-    { "id": "non-alcoholic", "name": "Lagotto Non-Alcoholic" },
-    { "id": "classic", "name": "Classic Cocktails" },
-    { "id": "retired", "name": "Retired Cocktails" }
+    {
+      "id": "lagotto",
+      "name": "Lagotto Cocktails"
+    },
+    {
+      "id": "non-alcoholic",
+      "name": "Lagotto Non-Alcoholic"
+    },
+    {
+      "id": "classic",
+      "name": "Classic Cocktails"
+    },
+    {
+      "id": "retired",
+      "name": "Retired Cocktails"
+    }
   ],
   "cocktails": [
     {
@@ -18,11 +30,44 @@
       "method": "All stirred down with ice until ice cold, poured straight into nick & norah.",
       "garnish": "",
       "variants": [
-        { "name": "Dry", "ingredients": ["2 ½ oz Martini batch"], "garnish": "Lemon twist" },
-        { "name": "Dirty", "ingredients": ["2 oz Martini batch", "½ oz Olive brine"], "garnish": "Olive" },
-        { "name": "Filthy", "ingredients": ["1 ¾ oz Martini batch", "¾ oz Olive brine"], "garnish": "Olive" },
-        { "name": "Gibson", "ingredients": ["2 ½ oz Martini batch"], "garnish": "Pickled onion" },
-        { "name": "Vodka", "ingredients": ["2 oz Ketel 1 Vodka", "½ oz Dolin dry vermouth"], "garnish": "" }
+        {
+          "name": "Dry",
+          "ingredients": [
+            "2 ½ oz Martini batch"
+          ],
+          "garnish": "Lemon twist"
+        },
+        {
+          "name": "Dirty",
+          "ingredients": [
+            "2 oz Martini batch",
+            "½ oz Olive brine"
+          ],
+          "garnish": "Olive"
+        },
+        {
+          "name": "Filthy",
+          "ingredients": [
+            "1 ¾ oz Martini batch",
+            "¾ oz Olive brine"
+          ],
+          "garnish": "Olive"
+        },
+        {
+          "name": "Gibson",
+          "ingredients": [
+            "2 ½ oz Martini batch"
+          ],
+          "garnish": "Pickled onion"
+        },
+        {
+          "name": "Vodka",
+          "ingredients": [
+            "2 oz Ketel 1 Vodka",
+            "½ oz Dolin dry vermouth"
+          ],
+          "garnish": ""
+        }
       ],
       "active": true,
       "image": ""
@@ -435,9 +480,18 @@
       "method": "Build all ingredients into small tin, shake with ice, double strain into Nick & Norah glass, garnish with lime wedge.",
       "garnish": "Lime wedge",
       "variants": [
-        { "name": "Southside", "note": "Add mint" },
-        { "name": "Eastside", "note": "Add mint and cucumber" },
-        { "name": "Daiquiri", "note": "Use white rum instead of gin" }
+        {
+          "name": "Southside",
+          "note": "Add mint"
+        },
+        {
+          "name": "Eastside",
+          "note": "Add mint and cucumber"
+        },
+        {
+          "name": "Daiquiri",
+          "note": "Use white rum instead of gin"
+        }
       ],
       "active": true,
       "image": ""
@@ -526,7 +580,7 @@
       "method": "Pour all ingredients apart from pet nat into tin, shake hard with ice, double strain into flute, top up with pet nat.",
       "garnish": "",
       "variants": [],
-      "active": false,
+      "active": true,
       "image": ""
     },
     {
