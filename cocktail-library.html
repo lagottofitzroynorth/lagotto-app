@@ -319,7 +319,7 @@ function render(){
   const shown = cocktails.filter(matches).slice().sort(function(a, b){
     const ra = order.indexOf(a.section), rb = order.indexOf(b.section);
     if(ra !== rb) return (ra === -1 ? 99 : ra) - (rb === -1 ? 99 : rb);
-    return cocktails.indexOf(a) - cocktails.indexOf(b);
+    return a.name.localeCompare(b.name);
   });
 
   let html = '';

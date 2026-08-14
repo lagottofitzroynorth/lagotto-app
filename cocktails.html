@@ -152,6 +152,7 @@ function render(){
   CK_DATA.sections.forEach(function(s){
     var items = bySection[s.id];
     if (!items || !items.length) return;
+    items = items.slice().sort(function(a, b){ return a.name.localeCompare(b.name); });
     listHtml += '<div class="ck-section-title">' + esc(s.name) + '</div>';
     listHtml += items.map(cardHtml).join('');
   });
