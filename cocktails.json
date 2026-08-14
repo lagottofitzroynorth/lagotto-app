@@ -566,6 +566,44 @@
       "image": ""
     },
     {
+      "id": "bicycle-thief",
+      "section": "classic",
+      "name": "Bicycle Thief",
+      "glass": "Collins glass",
+      "ingredients": [
+        "1 oz Gin",
+        "1 oz Campari",
+        "1 ½ oz Fresh grapefruit juice (ruby red)",
+        "½ oz Fresh lemon juice",
+        "½ oz Simple syrup",
+        "Top with club soda"
+      ],
+      "method": "Shake all ingredients except club soda with ice for 10-15 seconds until well chilled. Strain into a Collins glass over fresh ice. Top with club soda.",
+      "garnish": "Orange or grapefruit slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "sidecar",
+      "section": "classic",
+      "name": "Sidecar",
+      "glass": "Coupe (sugar rim)",
+      "ingredients": [
+        "45 ml Cognac",
+        "15 ml Triple sec liqueur (40% alc./vol.)",
+        "22.5 ml Fresh lemon juice",
+        "5 ml Rich simple syrup (2:1 sugar to water)",
+        "5 ml Chilled water (omit if using wet ice)",
+        "2 drop Saline solution (20g sea salt to 80g water) - optional"
+      ],
+      "method": "Pre-chill a coupe glass. Rim with sugar (moisten the outside edge with orange juice, dip into sugar). Shake all ingredients with ice, fine strain into the chilled glass.",
+      "garnish": "Express a lemon zest twist over the cocktail and use as garnish.",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
       "id": "mr-meletti",
       "section": "retired",
       "name": "Mr Meletti",
