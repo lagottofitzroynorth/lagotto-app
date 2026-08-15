@@ -37,13 +37,13 @@ const ROOT = path.join(__dirname, '..');
 
 const TARGETS = {
   food: {
-    gistUrl: 'https://gist.githubusercontent.com/davidyuncken-tech/961008059dd9725f75c8fff63fd8c64d/raw/menu_data.json',
+    gistUrl: 'https://gist.githubusercontent.com/lagottofitzroynorth/269584319e28a9726c00649104e0f273/raw/menu_data.json',
     pageFile: 'dish-library.html',
     urlVar: 'LAGOTTO_PUBLISH_URL',
     secretVar: 'LAGOTTO_PUBLISH_SECRET',
   },
   wine: {
-    gistUrl: 'https://gist.githubusercontent.com/davidyuncken-tech/cd3af55a9e99108f8a606a09fa0e8025/raw/wine_quiz_data.json',
+    gistUrl: 'https://gist.githubusercontent.com/lagottofitzroynorth/50df275f829876f48a4e4016ec27ec87/raw/wine_quiz_data.json',
     pageFile: 'wine-cellar.html',
     urlVar: 'LAGOTTO_WINE_PUBLISH_URL',
     secretVar: 'LAGOTTO_WINE_PUBLISH_SECRET',

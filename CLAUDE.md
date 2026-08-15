@@ -17,9 +17,9 @@ at runtime, and editing them has zero effect on any live page. The actual source
 for wine and food is two **GitHub Gists**, fetched live by every relevant page:
 
 - Wine + cocktails (combined): `wine-cellar.html` / `wine.html` / `wine-quiz.html` fetch
-  `https://gist.githubusercontent.com/davidyuncken-tech/cd3af55a9e99108f8a606a09fa0e8025/raw/wine_quiz_data.json`
+  `https://gist.githubusercontent.com/lagottofitzroynorth/50df275f829876f48a4e4016ec27ec87/raw/wine_quiz_data.json`
 - Food: `dish-library.html` / `menu.html` / `dietary.html` / `menu-quiz.html` fetch
-  `https://gist.githubusercontent.com/davidyuncken-tech/961008059dd9725f75c8fff63fd8c64d/raw/menu_data.json`
+  `https://gist.githubusercontent.com/lagottofitzroynorth/269584319e28a9726c00649104e0f273/raw/menu_data.json`
 
 Publishing (from the BOH tool's Publish button, or `scripts/publish.mjs`) POSTs the full
 updated dataset to a Google Apps Script web app, which writes it back to the Gist. The
