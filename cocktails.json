@@ -59,7 +59,7 @@
     },
     {
       "id": "lucas-espresso-martini",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Luca's Espresso Martini (House)",
       "glass": "Nick & Norah",
       "ingredients": [
@@ -71,12 +71,12 @@
       "method": "Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah, garnish with 2 x coffee beans.",
       "garnish": "2 x coffee beans",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
       "id": "martini",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Martini",
       "glass": "Nick & Norah",
       "ingredients": [],
@@ -122,12 +122,12 @@
           "garnish": ""
         }
       ],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
       "id": "negroni-mora",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Negroni Mora",
       "glass": "Rocks glass",
       "ingredients": [
@@ -138,7 +138,7 @@
       "method": "Pour pre-batch into mixing glass, muddle with 1 x blackberry, double strain into rocks glass, add ice, garnish with blackberry.",
       "garnish": "Blackberry",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
@@ -169,6 +169,39 @@
       ],
       "method": "Pour all ingredients except angostura into tin, dry shake, then add ice and wet shake, double strain into nick & norah, garnish with angostura line.",
       "garnish": "Angostura bitters line",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "sicilian-martini",
+      "section": "lagotto",
+      "name": "Sicilian Martini",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "Beefeater gin",
+        "Amara blood orange amaro",
+        "Mandarin oil"
+      ],
+      "method": "New on the printed list (Aug 2026) -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
+      "garnish": "",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "negroni-lampone",
+      "section": "lagotto",
+      "name": "Negroni Lampone",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "Beefeater gin",
+        "Plymouth sloe gin",
+        "Campari",
+        "Raspberry"
+      ],
+      "method": "New on the printed list (Aug 2026), replacing Negroni Mora's blackberry with raspberry -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
+      "garnish": "",
       "variants": [],
       "active": true,
       "image": ""
@@ -255,7 +288,7 @@
     },
     {
       "id": "yuzu-collins",
-      "section": "non-alcoholic",
+      "section": "retired",
       "name": "Yuzu Collins",
       "glass": "Collins glass",
       "ingredients": [
@@ -266,7 +299,7 @@
       "method": "Build all ingredients into collins glass, garnish with rosemary sprig, lemon wedge and straw.",
       "garnish": "Rosemary sprig & lemon wedge",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
