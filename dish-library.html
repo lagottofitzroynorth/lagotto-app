@@ -100,10 +100,6 @@ position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%
 background:var(--parchment); transition:left .15s;
 }
 #lagotto-boh-root .lg-toggle.on .lg-knob{left:21px;}
-#lagotto-boh-root .lg-stale{
-background:#FBF0DC; border:1px dashed var(--gold); border-radius:8px;
-padding:9px 12px; margin:0 0 10px 58px; font-size:13px; color:var(--ink-soft);
-}
 #lagotto-boh-root .lg-cat{
 font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em;
 text-transform:uppercase; color:var(--rust); margin:26px 0 6px;
@@ -188,11 +184,6 @@ grid-column:2; font-size:12px; padding:5px 8px; margin-top:3px;
 border:1px solid var(--parchment-2); border-radius:5px;
 background:var(--parchment); color:var(--ink); width:100%;
 }
-#lagotto-boh-root .lg-confirm{
-font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.05em;
-text-transform:uppercase; background:transparent; color:var(--sage);
-border:1px solid var(--sage); border-radius:999px; padding:5px 12px; cursor:pointer;
-}
 @media (max-width:560px){
 #lagotto-boh-root .lg-diet-row{grid-template-columns:1fr;}
 #lagotto-boh-root .lg-diet-note{grid-column:1;}
@@ -236,7 +227,6 @@ text-transform:uppercase; border-radius:999px; padding:6px 14px; cursor:pointer;
 }
 @media (max-width:560px){
 #lagotto-boh-root .lg-name{font-size:14px;}
-#lagotto-boh-root .lg-stale{margin-left:0;}
 }
 </style>
 
@@ -286,7 +276,6 @@ text-transform:uppercase; border-radius:999px; padding:6px 14px; cursor:pointer;
 <button class="lg-chip" data-f="on">On menu</button>
 <button class="lg-chip" data-f="off">Archived</button>
 <button class="lg-chip" data-f="draft">New / draft</button>
-<button class="lg-chip" data-f="stale">Needs review</button>
 </div>
 
 <div id="lg-list"><div class="lg-warn"><strong>1 dish is on the menu without a price.</strong> Staff will see "36" on the card.</div><div class="lg-cat">Snacks</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/victorian-black-truffle-3g-add-on.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Victorian black truffle 3g add-on</div><div class="lg-meta">$15 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="truffle_addon" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/1-2-dozen-oysters-buttermilk-raspberry-mignonette.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">1/2 dozen oysters, buttermilk, raspberry mignonette</div><div class="lg-meta">$42 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="oysters" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/sourdough-focaccia-whipped-vegemite-butter.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Sourdough focaccia, whipped vegemite butter</div><div class="lg-meta">$14 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="focaccia" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/shark-bay-scallop-ceviche-macadamia-wild-garlic-trout-roe.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Shark Bay scallop ceviche, macadamia, wild garlic, trout roe</div><div class="lg-meta">$18ea · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="scallop" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/spring-roll-tart-bluefin-tuna-crudo-watermelon-smoked-creme-.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Spring roll tart, bluefin tuna crudo, watermelon, smoked creme fraiche</div><div class="lg-meta">$16ea · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="spring_roll" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/brioche-wagyu-carpaccio-yuzu-caviar.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Brioche, wagyu carpaccio, yuzu, caviar</div><div class="lg-meta">$18ea · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="brioche_wagyu" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/potato-rosti-spanner-crab-mussel-fennel-roe.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Potato rosti, spanner crab, mussel, fennel, roe</div><div class="lg-meta">$16ea · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="rosti" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Potato rosti, tuna belly crudo, bottarga, soy roe</div><div class="lg-meta">NEW FROM KITCHEN · $16 · confirmed 2026-07-31 · by David</div></div><button class="lg-toggle on" data-id="potato_rosti" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Kangaroo tartare spring roll tart, horseradish cream, cured yolk, fermented chilli</div><div class="lg-meta">NEW FROM KITCHEN · $16 · confirmed 2026-07-31 · by Dave</div></div><button class="lg-toggle" data-id="kangaroo_tartare_spring_roll_tart" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Wagyu intercostal skewer, black garlic ketchup, pickled daikon</div><div class="lg-meta">DRAFT · $18 · confirmed 2026-08-13 · added in the Dish Library</div></div><button class="lg-toggle on" data-id="wagyu_intercostal_skewer" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Entrees</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/fremantle-confit-octopus-carpaccio-saffron-rouille-frites-es.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Fremantle confit octopus carpaccio, saffron rouille, frites, espellette</div><div class="lg-meta">$36 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="octopus" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/bavette-tartare-tonnato-sauce-puntarelle-bone-marrow.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Bavette tartare, tonnato sauce, puntarelle, bone marrow</div><div class="lg-meta">$36 · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="bavette" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/stracciatella-fennel-jam-rye-crumb-mandarin-oil.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Stracciatella, fennel jam, rye crumb, mandarin oil</div><div class="lg-meta">$29 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="stracciatella" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/jerusalem-artichokes-hazelnut-cream-malt-pecorino-salbush.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Jerusalem artichokes, hazelnut cream, malt, pecorino, salbush</div><div class="lg-meta">$32 · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="jerusalem_artichokes" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Bavette tartare, macadamia &amp; taleggio cream, bone marrow, frites</div><div class="lg-meta">DRAFT · 36 · confirmed 2026-07-31 · added in the Dish Library</div></div><button class="lg-toggle on" data-id="bavette_tartare" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><div class="lg-thumb"></div><div class="lg-info"><div class="lg-name">Comté tart, onion jam, charred leek, pea tendrils</div><div class="lg-meta">DRAFT · $32 · confirmed 2026-07-31 · added in the Dish Library</div></div><button class="lg-toggle on" data-id="comt_tart" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Cone cabbage, bagna cauda, pecorino, rye crumb</div><div class="lg-meta">$32 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="cone_cabbage" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Pasta</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/squid-ink-paccheri-tiger-prawn-shellfish-bisque-wood-sorrel.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Conchiglie, tiger prawn, vodka sauce, wood sorrel</div><div class="lg-meta">$45 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="squid_ink_paccheri" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/celeriac-comte-porcini-lasagne-parmesan-foam-black-truffle.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Celeriac, comté &amp; porcini lasagne, parmesan foam, black truffle</div><div class="lg-meta">$55 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="celeriac_lasagne" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Tortellini, confit duck leg ragu, parmesan bechamel, saffron oil</div><div class="lg-meta">$42 · confirmed 2026-07-24 · reviewed in the Dish Library</div></div><button class="lg-toggle on" data-id="gramigna" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/lemon-bigoli-moreton-bay-bug-yellow-tomato-sugo-bottarga-chi.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Lemon bigoli, Moreton Bay bug, yellow tomato sugo, bottarga, chives</div><div class="lg-meta">$90 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="lemon_bigoli" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/squid-ink-paccheri-tiger-prawn-shellfish-bisque-wood-sorrel.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Squid ink paccheri, tiger prawn, shellfish bisque, wood sorrel</div><div class="lg-meta">$45 · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="squid_ink_paccheri_2" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/gramigna-pork-sausage-broccolini-chilli-garlic-parmigiano.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Gramigna, pork sausage, broccolini, chilli, garlic, parmigiano</div><div class="lg-meta">$38 · confirmed 2026-07-21</div></div><button class="lg-toggle" data-id="gramigna_2" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Proteins</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/whole-side-of-coral-trout-650g-beurre-blanc-pippies-silverbe.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Whole side of Coral Trout 650g, beurre blanc, pippies, silverbeet</div><div class="lg-meta">$200 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="fish_of_day" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-500g-pork-belly-xo-fermented-chilli-citrus.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Ryukyu Berkshire 500g pork belly, XO, fermented chilli, citrus</div><div class="lg-meta">$85 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="pork_belly" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/black-opal-wagyu-rump-erbette-black-garlic-ketchup-jus.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Black Opal wagyu rump, erbette, black garlic ketchup, jus</div><div class="lg-meta">$75 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="black_opal_rump" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Robbin's Island grass-fed 300g 9+ wagyu oyster blade, rosemary, jus</div><div class="lg-meta">$125 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="robbins_oyster_blade" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/nz-yellowbelly-flounder-beurre-noisette-pippies-silverbeet-c.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">NZ yellowbelly flounder, beurre noisette, pippies, silverbeet, capers</div><div class="lg-meta">$60 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="flounder" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/ryukyu-berkshire-800g-pork-shoulder-honey-fermented-chilli-c.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Ryukyu Berkshire 800g pork shoulder, honey fermented chilli, citrus</div><div class="lg-meta">$85 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="pork_shoulder" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/robbin-s-island-500g-9-wagyu-scotch-jus-rosemary-lemon.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Robbin's Island 500g 9+ wagyu scotch, jus, rosemary, lemon</div><div class="lg-meta">$200 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="tbone" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Sides</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/day-s-walk-farm-leaves-fennel-radish-honey-blood-orange.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Day's Walk Farm leaves, fennel, radish, honey &amp; blood orange</div><div class="lg-meta">$16 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="leaves" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/mayan-twilight-potatoes-sage-onion-salt-yeast-dressing.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Mayan twilight potatoes, sage &amp; onion salt, yeast dressing</div><div class="lg-meta">$16 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="potatoes" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-cat">Dessert</div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/strawberry-granita-matcha-gelato-meringue.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Strawberry granita, matcha gelato, meringue</div><div class="lg-meta">$16 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="strawberry_granita" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/tiramisu-coffee-gelato-caramel-hazelnut-crunch.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Tiramisu, coffee gelato, caramel, hazelnut crunch</div><div class="lg-meta">$20 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="tiramisu" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row"><img class="lg-thumb" src="assets/img/dishes/parmesan-gelato-cheesecake-cream-truffle-caramel-popcorn.jpg" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Parmesan gelato, cheesecake cream, truffle, caramel, popcorn</div><div class="lg-meta">$25 · confirmed 2026-07-21</div></div><button class="lg-toggle on" data-id="parmesan_gelato" role="switch" aria-checked="true" aria-label="Take off the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/mandarin-granita-yuzu-curd-lemon-verbena-gelato.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Mandarin granita, yuzu curd, lemon verbena gelato</div><div class="lg-meta">$16 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="mandarin_granita" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div><div class="lg-row off"><img class="lg-thumb" src="assets/img/dishes/crepe-suzette-brioche-ice-cream-burnt-orange-caramel-black-t.png" loading="lazy" alt=""><div class="lg-info"><div class="lg-name">Crepe suzette, brioche ice-cream, burnt orange caramel, black truffle</div><div class="lg-meta">$35 · confirmed 2026-07-14</div></div><button class="lg-toggle" data-id="crepe_suzette" role="switch" aria-checked="false" aria-label="Put on the menu"><span class="lg-knob"></span></button></div></div>
@@ -327,7 +316,6 @@ function publishSecret(){
 function publishReady(){
   return publishUrl().indexOf('PASTE_') !== 0;
 }
-const STALE_DAYS = 120;
 // Below this many live Drive photos, it's a note rather than a warning.
 const DRIVE_WARN_AT = 5;
 // The lowest deployment version this page can actually work with - NOT the
@@ -349,13 +337,6 @@ const countEl = document.getElementById('lg-count');
 const statusEl = document.getElementById('lg-status');
 const outEl = document.getElementById('lg-out');
 
-function daysSince(iso){
-  if(!iso) return null;
-  const then = new Date(iso + 'T00:00:00');
-  if(isNaN(then)) return null;
-  return Math.floor((Date.now() - then) / 86400000);
-}
-
 // Drive is fine for reviewing a submission, but it is not an image host. A dish
 // switched on while still pointing at Drive will show a broken photo on the
 // floor once the endpoint rate-limits.
@@ -363,16 +344,10 @@ function isDrivePhoto(d){
   return typeof d.image === 'string' && d.image.indexOf('drive.google.com') !== -1;
 }
 
-function isStale(d){
-  const age = daysSince(d.last_confirmed);
-  return age !== null && age > STALE_DAYS;
-}
-
 function matches(d){
   if(filter === 'on') return d.active !== false;
   if(filter === 'off') return d.active === false;
   if(filter === 'draft') return d.draft === true;
-  if(filter === 'stale') return isStale(d);
   return true;
 }
 
@@ -462,8 +437,7 @@ function dietaryHTML(d){
       + '</span><span class="lg-seg">' + segs + '</span>' + note + '</div>';
   }).join('');
   return '<div class="lg-diet-head">'
-    + '<label style="margin:0;">Dietary</label>'
-    + '<button class="lg-confirm" data-confirm>Mark reviewed today</button></div>'
+    + '<label style="margin:0;">Dietary</label></div>'
     + rows;
 }
 
@@ -578,8 +552,6 @@ function render(){
     if(ra !== rb) return (ra === -1 ? 99 : ra) - (rb === -1 ? 99 : rb);
     return dishes.indexOf(a) - dishes.indexOf(b);
   });
-  const staleOn = shown.filter(d => d.active !== false && isStale(d));
-
   let html = '';
   const noPrice = shown.filter(d => d.active !== false && !/^\$/.test(d.price || ''));
   if(noPrice.length){
@@ -605,12 +577,6 @@ function render(){
       + 'you next open ' + (driveOn.length > 1 ? 'them' : 'it') + ', since Drive '
       + 'throttles once several are on a page.</div>';
   }
-  if(staleOn.length){
-    html += '<div class="lg-warn"><strong>' + staleOn.length + ' dish'
-      + (staleOn.length > 1 ? 'es' : '')
-      + ' on the menu with dietary data older than ' + STALE_DAYS + ' days.</strong> '
-      + 'Have the kitchen re-submit before relying on the flags for an allergy guest.</div>';
-  }
   if(!shown.length){
     html += '<p style="color:var(--pending);">Nothing matches that filter.</p>';
   }
@@ -622,7 +588,6 @@ function render(){
       lastCat = d.category;
     }
     const active = d.active !== false;
-    const age = daysSince(d.last_confirmed);
     // "by Dave" reads fine; "by added in the Dish Library" doesn't - the
     // in-house sources are already phrased as sentences.
     const by = d.confirmed_by
@@ -642,10 +607,6 @@ function render(){
       + 'role="switch" aria-checked="' + active + '" '
       + 'aria-label="' + (active ? 'Take off the menu' : 'Put on the menu') + '">'
       + '<span class="lg-knob"></span></button></div>';
-    if(active && isStale(d)){
-      html += '<div class="lg-stale">Dietary last confirmed ' + age
-        + ' days ago. Ask the kitchen to re-submit this dish before service.</div>';
-    }
     if(openId === d.id) html += editorHTML(d);
   });
   list.innerHTML = html;
@@ -726,18 +687,6 @@ list.addEventListener('click', function(e){
     if(dish){
       setDietary(dish, seg.dataset.diet, seg.dataset.s);
       render();
-    }
-    return;
-  }
-  if(e.target.closest('[data-confirm]')){
-    const dish = dishFromEvent(e);
-    if(dish){
-      // Reviewing is a separate act from editing: this is what resets the
-      // staleness clock, so it has to be deliberate rather than a side effect.
-      dish.last_confirmed = todayISO();
-      dish.confirmed_by = 'reviewed in the Dish Library';
-      render();
-      statusEl.textContent = 'Marked reviewed \u2014 press Publish to save';
     }
     return;
   }
