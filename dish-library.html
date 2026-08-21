@@ -105,6 +105,10 @@ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em;
 text-transform:uppercase; color:var(--rust); margin:26px 0 6px;
 border-bottom:1px solid var(--parchment-2); padding-bottom:6px;
 }
+#lagotto-boh-root .lg-cat.lg-archive{
+color:var(--pending); margin-top:44px; padding-top:22px;
+border-top:2px solid var(--parchment-2); border-bottom-color:transparent;
+}
 #lagotto-boh-root .lg-panel{
 background:#FBF7EF; border:1px solid var(--parchment-2); border-radius:var(--radius);
 padding:16px; margin-top:22px;
@@ -534,6 +538,31 @@ function updateStatus(){
   statusEl.textContent = dirty() ? 'Unpublished changes' : '';
 }
 
+function dishRowHTML(d){
+  const active = d.active !== false;
+  // "by Dave" reads fine; "by added in the Dish Library" doesn't - the
+  // in-house sources are already phrased as sentences.
+  const by = d.confirmed_by
+    ? (/Dish Library/.test(d.confirmed_by) ? d.confirmed_by : 'by ' + d.confirmed_by)
+    : null;
+  const meta = [d.price, d.last_confirmed ? 'confirmed ' + d.last_confirmed : 'no date']
+    .concat(by ? [by] : []).join(' · ');
+  let html = '<div class="lg-row' + (active ? '' : ' off') + '">'
+    + (d.image ? '<img class="lg-thumb" src="' + d.image + '" loading="lazy" alt="">'
+               : '<div class="lg-thumb"></div>')
+    + '<div class="lg-info"><div class="lg-name">' + d.name + '</div>'
+    + '<div class="lg-meta">' + (d.draft
+        ? (/Dish Library/.test(d.confirmed_by || '') ? 'DRAFT · ' : 'NEW FROM KITCHEN · ')
+        : '')
+    + (isDrivePhoto(d) ? 'PHOTO ON DRIVE · ' : '') + meta + '</div></div>'
+    + '<button class="lg-toggle' + (active ? ' on' : '') + '" data-id="' + d.id + '" '
+    + 'role="switch" aria-checked="' + active + '" '
+    + 'aria-label="' + (active ? 'Take off the menu' : 'Put on the menu') + '">'
+    + '<span class="lg-knob"></span></button></div>';
+  if(openId === d.id) html += editorHTML(d);
+  return html;
+}
+
 function render(){
   const dishes = DATA.dishes;
   const on = dishes.filter(d => d.active !== false).length;
@@ -542,10 +571,11 @@ function render(){
 
   updateStatus();
 
-  // Sort by menu category so archived and newly submitted dishes sit with
-  // their own kind. Without this they pile up at the end of the array and the
-  // page renders a second SNACKS or ENTREES heading below the desserts, which
-  // reads as "my dish didn't arrive".
+  // Sort by menu category so newly submitted dishes sit with their own kind.
+  // Without this they pile up at the end of the array and the page renders a
+  // second SNACKS or ENTREES heading below the desserts, which reads as "my
+  // dish didn't arrive". (Archived dishes get pulled out of this order
+  // entirely below — see onMenu/archived.)
   const order = DATA.menu_categories || [];
   const shown = dishes.filter(matches).slice().sort(function(a, b){
     const ra = order.indexOf(a.category), rb = order.indexOf(b.category);
@@ -581,34 +611,30 @@ function render(){
     html += '<p style="color:var(--pending);">Nothing matches that filter.</p>';
   }
 
+  // Active dishes stay grouped by menu category; archived ones drop out of
+  // that flow entirely and collect in one flat block at the bottom, same
+  // pattern as the Archive section in Wine Cellar. Otherwise an "off" dish
+  // just sits mixed in with live ones under its old category heading, which
+  // reads as still-on-the-menu at a glance.
+  const onMenu = shown.filter(d => d.active !== false);
+  const archived = shown.filter(d => d.active === false)
+    .slice().sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+
   let lastCat = null;
-  shown.forEach(function(d){
+  onMenu.forEach(function(d){
     if(d.category !== lastCat){
       html += '<div class="lg-cat">' + d.category + '</div>';
       lastCat = d.category;
     }
-    const active = d.active !== false;
-    // "by Dave" reads fine; "by added in the Dish Library" doesn't - the
-    // in-house sources are already phrased as sentences.
-    const by = d.confirmed_by
-      ? (/Dish Library/.test(d.confirmed_by) ? d.confirmed_by : 'by ' + d.confirmed_by)
-      : null;
-    const meta = [d.price, d.last_confirmed ? 'confirmed ' + d.last_confirmed : 'no date']
-      .concat(by ? [by] : []).join(' \u00b7 ');
-    html += '<div class="lg-row' + (active ? '' : ' off') + '">'
-      + (d.image ? '<img class="lg-thumb" src="' + d.image + '" loading="lazy" alt="">'
-                 : '<div class="lg-thumb"></div>')
-      + '<div class="lg-info"><div class="lg-name">' + d.name + '</div>'
-      + '<div class="lg-meta">' + (d.draft
-          ? (/Dish Library/.test(d.confirmed_by || '') ? 'DRAFT \u00b7 ' : 'NEW FROM KITCHEN \u00b7 ')
-          : '')
-      + (isDrivePhoto(d) ? 'PHOTO ON DRIVE \u00b7 ' : '') + meta + '</div></div>'
-      + '<button class="lg-toggle' + (active ? ' on' : '') + '" data-id="' + d.id + '" '
-      + 'role="switch" aria-checked="' + active + '" '
-      + 'aria-label="' + (active ? 'Take off the menu' : 'Put on the menu') + '">'
-      + '<span class="lg-knob"></span></button></div>';
-    if(openId === d.id) html += editorHTML(d);
+    html += dishRowHTML(d);
   });
+
+  if(archived.length){
+    html += '<div class="lg-cat lg-archive">Archive \u00b7 off the menu ('
+      + archived.length + ')</div>';
+    archived.forEach(function(d){ html += dishRowHTML(d); });
+  }
+
   list.innerHTML = html;
 }
 

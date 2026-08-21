@@ -71,8 +71,38 @@ Build a plain-language change list — new items, price moves, dropped items, wo
 changes — cross-referenced against **all relevant targets** (Gist/cocktails.json, and
 Website). Explicitly call out if Website is already behind the App from a prior
 update. For new wines, include a one-line note on what was verified and against
-which sources. Show the diff and **wait for explicit confirmation** before publishing
-anything.
+which sources.
+
+### Before treating any item as brand new, check it against the archive
+
+A "new" item in the PDF is sometimes actually an archived (`active: false`) dish or
+wine coming back with a minor tweak — a garnish or side swapped, format resized —
+not a genuinely new item. Confusing the two in either direction is a real cost:
+treating a revival as new creates a duplicate id and throws away the existing
+photo, tasting notes and dietary history, generating make-work that already existed;
+treating a genuine revival as identical risks silently carrying over dietary/allergen
+data that no longer matches the changed recipe (this is exactly the recurring
+"recipe changed, matrix hasn't caught up" pattern the kitchen-needs report tracks).
+
+So: for every item that doesn't match an existing *active* item, compare it against
+the archive in the same category — same core protein/component, overlapping
+secondary ingredients, roughly the same format. If something plausible turns up,
+**ask the user directly, one concrete question per candidate** — don't decide either
+way yourself. Frame it concretely, e.g.: "The PDF has 'Queensland coral trout,
+saffron bearnaise, goolwa pippies, silverbeet' ($65) — the archive has 'Whole side of
+Coral Trout 650g, beurre blanc, pippies, silverbeet' ($200). Same protein and two of
+the same sides, but a different format and price. Is this that dish coming back
+reformatted, or a separate new one?" (This exact pair exists in the live data as of
+2026-08-21 and was never asked about — worth resolving next time either is touched.)
+
+- **If it's a revival**: `"update"` the *existing* id (never mint a new one) — flip
+  `active` back to `true`, update the changed fields, and explicitly re-verify (not
+  copy forward) the dietary matrix and tasting notes against the new description,
+  even though the id and history carry over.
+- **If it's genuinely new**: proceed as a normal `"add"` with a fresh id, full schema,
+  per the rule below.
+
+Show the diff and **wait for explicit confirmation** before publishing anything.
 
 ## 5. Publish once confirmed
 
