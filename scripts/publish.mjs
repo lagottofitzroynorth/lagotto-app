@@ -26,6 +26,16 @@
  * "add" for wine does a best-effort section placement (pushes the name into
  * that section's top-level wines list). It does not handle by-the-glass
  * subgroup placement or map pins — finish those in Wine Cellar by hand.
+ *
+ * Food "add" only needs the fields shown above — every other field the Dish
+ * Library expects (tasting_notes_status, dietary, chef_note, short_name, etc.,
+ * see createDish() in dish-library.html) is defaulted the same way the "+ Add
+ * a dish" button in the Dish Library does. This matters: a dish pushed to the
+ * Gist without a `dietary` object crashes dish-library.html's edit panel
+ * (dietaryHTML() reads dish.dietary[key] unconditionally) — the dish shows up
+ * in the list but silently can't be opened or edited. Two dishes shipped that
+ * way in the 2026-08-20 update before this defaulting existed; don't
+ * reintroduce it by constructing `item` by hand elsewhere.
  */
 
 import { readFileSync } from 'node:fs';
@@ -66,6 +76,35 @@ async function fetchJson(url) {
   return res.json();
 }
 
+function blankDietary(data) {
+  const out = {};
+  for (const c of data.dietary_categories || []) out[c.key] = { status: 'pending', note: null };
+  return out;
+}
+
+// Mirrors createDish() in dish-library.html so a dish added via this script
+// is exactly as complete as one added through the "+ Add a dish" button.
+// Fields the caller supplies win; everything else gets the same "not yet
+// reviewed" defaults the Dish Library itself would use.
+function fillDishDefaults(item, data) {
+  const today = new Date().toISOString().slice(0, 10);
+  return {
+    active: false,
+    draft: true,
+    last_confirmed: today,
+    confirmed_by: 'added via publish.mjs',
+    on_chefs_menu: false,
+    tasting_notes_status: 'pending',
+    tasting_notes: null,
+    tasting_notes_source: null,
+    dietary: blankDietary(data),
+    chef_note: 'Added by hand and not yet reviewed. Set the price, tasting notes '
+      + 'and dietary before switching it on.',
+    short_name: (item.name || '').split(',')[0].trim(),
+    ...item,
+  };
+}
+
 function applyFoodPatch(data, ops) {
   const diff = [];
   for (const op of ops) {
@@ -80,8 +119,9 @@ function applyFoodPatch(data, ops) {
       if (data.dishes.some(d => d.id === op.item.id)) {
         throw new Error(`food add: dish id "${op.item.id}" already exists`);
       }
-      data.dishes.push(op.item);
-      diff.push({ id: op.item.id, name: op.item.name, before: null, after: 'ADDED' });
+      const dish = fillDishDefaults(op.item, data);
+      data.dishes.push(dish);
+      diff.push({ id: dish.id, name: dish.name, before: null, after: 'ADDED' });
     } else {
       throw new Error(`unknown food op: ${op.op}`);
     }
