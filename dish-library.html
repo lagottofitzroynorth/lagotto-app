@@ -299,18 +299,9 @@ pages pick up the change on their next load. If publishing fails, use
 const GIST = 'https://gist.githubusercontent.com/lagottofitzroynorth/269584319e28a9726c00649104e0f273/raw/menu_data.json';
 // Publishing config.
 //
-// Set this ONCE in Webflow under Page settings > Custom code > Inside head tag.
-// Add a script tag there containing:
-//
-//     window.LAGOTTO_PUBLISH_URL = 'your apps script web app url';
-//     window.LAGOTTO_PUBLISH_SECRET = 'your shared secret';
-//
-// It must be in the HEAD, not before the closing body tag - code placed at the
-// end of the body runs after this embed and would be too late.
-//
-// Keeping it out of this embed means replacing this file never wipes it. These
-// are read at the moment they're used rather than captured on load, so load
-// order can't silently break them.
+// window.LAGOTTO_PUBLISH_URL / LAGOTTO_PUBLISH_SECRET are set directly in this
+// file's <head> (see top of file). Read at the moment they're used rather than
+// captured on load, so load order can't silently break them.
 function publishUrl(){
   return window.LAGOTTO_PUBLISH_URL || 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
 }
@@ -514,7 +505,7 @@ function uploadPhoto(dish, file){
   }
   if(drop) drop.textContent = 'Resizing\u2026';
   shrink(file, 1600).then(function(img){
-    if(drop) drop.textContent = 'Uploading to Webflow\u2026';
+    if(drop) drop.textContent = 'Uploading\u2026';
     return callPublisher({action: 'upload', image: img.base64,
                           mime: img.mime, dishId: dish.id});
   }).then(function(res){
@@ -988,7 +979,7 @@ function checkPublisher(){
           + 'script alone does not update a deployed web app.');
       } else if(!res.canUpload){
         msgs.push('<strong>Photo upload is unavailable.</strong> Set '
-          + 'WEBFLOW_TOKEN and WEBFLOW_SITE_ID in the Apps Script properties.');
+          + 'GITHUB_TOKEN and REPO in the Apps Script properties.');
       }
       if(msgs.length){
         const el = document.createElement('div');
