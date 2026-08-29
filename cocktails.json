@@ -23,7 +23,7 @@
   "cocktails": [
     {
       "id": "bello-cello",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Bello Cello",
       "glass": "Rocks glass",
       "ingredients": [
@@ -34,10 +34,10 @@
         "2 Dash hot sauce",
         "2 oz Bello Cello pre-batch"
       ],
-      "method": "Muddle all ingredients in small tin, hard shake with ice, dump contents of tin into rocks glass. Garnish with large diagonal slice of cucumber, salt and pepper.",
+      "method": "Retired Aug 2026 -- dropped from the printed cocktail list, replaced by Blood Orange Americano and Los Amargos.",
       "garnish": "Large diagonal slice of cucumber, salt and pepper",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
@@ -158,7 +158,7 @@
     },
     {
       "id": "tommy-dibaldo-sour",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Tommy Dibaldo Sour",
       "glass": "Nick & Norah",
       "ingredients": [
@@ -167,15 +167,15 @@
         "¾ oz Simple syrup",
         "1 oz Egg white"
       ],
-      "method": "Pour all ingredients except angostura into tin, dry shake, then add ice and wet shake, double strain into nick & norah, garnish with angostura line.",
+      "method": "Retired Aug 2026 -- dropped from the printed cocktail list, replaced by Blood Orange Americano and Los Amargos. Recipe kept here: pour all ingredients except angostura into tin, dry shake, then add ice and wet shake, double strain into nick & norah, garnish with angostura line.",
       "garnish": "Angostura bitters line",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
       "id": "sicilian-martini",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Sicilian Martini",
       "glass": "Nick & Norah",
       "ingredients": [
@@ -183,10 +183,10 @@
         "Amara blood orange amaro",
         "Mandarin oil"
       ],
-      "method": "New on the printed list (Aug 2026) -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
+      "method": "Retired Aug 2026 -- replaced by Capri Martini in this slot on the new wine/drinks list.",
       "garnish": "",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
@@ -207,8 +207,56 @@
       "image": ""
     },
     {
+      "id": "capri-martini",
+      "section": "lagotto",
+      "name": "Capri Martini",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "Malfy limone",
+        "Lemon thyme vermouth"
+      ],
+      "method": "New on the printed list (Aug 2026), replacing Sicilian Martini in this slot -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
+      "garnish": "",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "blood-orange-americano",
+      "section": "lagotto",
+      "name": "Blood Orange Americano",
+      "glass": "Collins glass",
+      "ingredients": [
+        "Vermouth rosso",
+        "Okar amaro",
+        "Blood orange soda"
+      ],
+      "method": "New on the printed list (Aug 2026) -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
+      "garnish": "",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "los-amargos",
+      "section": "lagotto",
+      "name": "Los Amargos",
+      "glass": "Nick & Norah",
+      "ingredients": [
+        "Tequila resposado",
+        "Amaro nonino",
+        "Cardamaro",
+        "Lemon"
+      ],
+      "method": "New on the printed list (Aug 2026) -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
+      "garnish": "",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
       "id": "bergamot-basil-gimlet",
-      "section": "non-alcoholic",
+      "section": "retired",
       "name": "Bergamot & Basil Gimlet",
       "glass": "Nick & Norah",
       "ingredients": [
@@ -217,10 +265,10 @@
         "¾ oz Lemon juice",
         "4 x Basil leaves"
       ],
-      "method": "Shake all ingredients apart from basil oil, double strain into nick & norah glass. Garnish with 2 x drops of basil oil.",
+      "method": "Retired Aug 2026 -- dropped from the printed non-alcoholic list, replaced by the returning Yuzu Collins. Recipe kept here: shake all ingredients apart from basil oil, double strain into nick & norah glass. Garnish with 2 x drops of basil oil.",
       "garnish": "2 x drops basil oil",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
@@ -288,7 +336,7 @@
     },
     {
       "id": "yuzu-collins",
-      "section": "retired",
+      "section": "non-alcoholic",
       "name": "Yuzu Collins",
       "glass": "Collins glass",
       "ingredients": [
@@ -296,10 +344,10 @@
         "½ oz Simple syrup",
         "Top with Strangelove yuzu soda"
       ],
-      "method": "Build all ingredients into collins glass, garnish with rosemary sprig, lemon wedge and straw.",
+      "method": "Revived Aug 2026 -- back on the printed non-alcoholic list, replacing Bergamot & Basil Gimlet. Build all ingredients into collins glass, garnish with rosemary sprig, lemon wedge and straw.",
       "garnish": "Rosemary sprig & lemon wedge",
       "variants": [],
-      "active": false,
+      "active": true,
       "image": ""
     },
     {
