@@ -18,6 +18,8 @@
  *   food, matched by dish id:
  *     {"op":"update","id":"tiramisu","fields":{"price":"$24"}}
  *     {"op":"add","item":{"id":"...", "category":"Entrees", "name":"...", "price":"$36", "image":"", "active":true}}
+ *     {"op":"chefs_menu_swap","from":"old_dish_id","to":"new_dish_id"}
+ *     {"op":"chefs_menu_update","fields":{"notes":"..."}}
  *   wine, matched by wine/cocktail name:
  *     {"op":"update","kind":"wine","name":"2024 Carousal","fields":{"bottlePrice":72}}
  *     {"op":"add","kind":"wine","section":"red-medium","item":{"name":"...", ...}}
@@ -36,6 +38,25 @@
  * in the list but silently can't be opened or edited. Two dishes shipped that
  * way in the 2026-08-20 update before this defaulting existed; don't
  * reintroduce it by constructing `item` by hand elsewhere.
+ *
+ * A dish "update" that flips `active` to false is auto-cleaned the same way
+ * the Dish Library's own archive toggle does it: if the dish had
+ * `on_chefs_menu: true`, that flag is cleared and its id is stripped from
+ * `chefs_menu.course_order`/`add_ons`. Without this, an archived dish stays
+ * silently wired into the Chef's Menu draft on /dietary and the id becomes
+ * dangling, which throws in dietary.html's renderMatrix() and freezes that
+ * page's Chef's Menu section on stale content for every diet category. (This
+ * shipped live once already — chefs_menu.course_order kept pointing at
+ * black_opal_rump for weeks after it was archived and replaced by
+ * matriarch_wagyu_striploin.) This auto-clean only fires on the active:false
+ * transition itself — it won't retroactively fix a dish that's already
+ * broken this way; check `on_chefs_menu` on any dish already `active:false`
+ * in the live data before assuming it's clean.
+ *
+ * If a *replacement* dish should take over that same Chef's Menu slot, that's
+ * a judgment call this script won't make on its own — confirm it with the
+ * user, then use `chefs_menu_swap` to move `course_order`/`add_ons` and the
+ * `on_chefs_menu` flags across in one step.
  */
 
 import { readFileSync } from 'node:fs';
@@ -113,8 +134,16 @@ function applyFoodPatch(data, ops) {
       if (!dish) throw new Error(`food update: no dish with id "${op.id}"`);
       const before = {};
       for (const k of Object.keys(op.fields)) before[k] = dish[k];
+      const wasActive = dish.active !== false;
       Object.assign(dish, op.fields);
       diff.push({ id: op.id, name: dish.name, before, after: op.fields });
+      if (wasActive && dish.active === false && dish.on_chefs_menu) {
+        dish.on_chefs_menu = false;
+        const cm = data.chefs_menu;
+        cm.course_order = cm.course_order.filter(i => i !== dish.id);
+        cm.add_ons = cm.add_ons.filter(i => i !== dish.id);
+        diff.push({ id: dish.id, name: dish.name, before: 'on_chefs_menu: true', after: 'removed from chefs_menu — dish archived' });
+      }
     } else if (op.op === 'add') {
       if (data.dishes.some(d => d.id === op.item.id)) {
         throw new Error(`food add: dish id "${op.item.id}" already exists`);
@@ -122,6 +151,26 @@ function applyFoodPatch(data, ops) {
       const dish = fillDishDefaults(op.item, data);
       data.dishes.push(dish);
       diff.push({ id: dish.id, name: dish.name, before: null, after: 'ADDED' });
+    } else if (op.op === 'chefs_menu_swap') {
+      const cm = data.chefs_menu;
+      const fromDish = data.dishes.find(d => d.id === op.from);
+      const toDish = data.dishes.find(d => d.id === op.to);
+      if (!toDish) throw new Error(`chefs_menu_swap: no dish with id "${op.to}"`);
+      let moved = false;
+      for (const list of ['course_order', 'add_ons']) {
+        const i = cm[list].indexOf(op.from);
+        if (i !== -1) { cm[list][i] = op.to; moved = true; }
+      }
+      if (!moved) throw new Error(`chefs_menu_swap: "${op.from}" not found in course_order or add_ons`);
+      if (fromDish) fromDish.on_chefs_menu = false;
+      toDish.on_chefs_menu = true;
+      diff.push({ id: op.to, name: toDish.name, before: `chefs_menu slot held by ${op.from}`, after: 'now on chefs_menu in its place' });
+    } else if (op.op === 'chefs_menu_update') {
+      const cm = data.chefs_menu;
+      const before = {};
+      for (const k of Object.keys(op.fields)) before[k] = cm[k];
+      Object.assign(cm, op.fields);
+      diff.push({ id: 'chefs_menu', name: "Chef's Menu", before, after: op.fields });
     } else {
       throw new Error(`unknown food op: ${op.op}`);
     }

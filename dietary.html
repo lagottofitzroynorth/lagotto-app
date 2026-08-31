@@ -448,10 +448,16 @@ filter:brightness(0) invert(1);
     return (note || '').replace(/\s*\[source:.*?\]\s*$/i, '').trim();
   }
 
-  function statusMeta(status){
-    if(status==='contains') return {cls:'contains', label:'Contains'};
+  // These five name a requirement rather than an ingredient, so "contains"
+  // reads as nonsense ("Contains" on a Vegan row looks like it means the dish
+  // IS vegan). Label them by suitability instead.
+  const REQUIREMENT_KEYS = new Set(['coeliac','gluten_free','vegetarian','vegan','pregnant']);
+
+  function statusMeta(status, key){
+    const isRequirement = REQUIREMENT_KEYS.has(key);
+    if(status==='contains') return {cls:'contains', label: isRequirement ? 'Not suitable' : 'Contains'};
     if(status==='pending') return {cls:'pending', label:'Ask kitchen'};
-    if(status==='safe') return {cls:'safe', label:'Safe as served'};
+    if(status==='safe') return {cls:'safe', label: isRequirement ? 'Suitable' : 'Safe as served'};
     return {cls:'modifiable', label:'Modifiable'};
   }
 
@@ -473,7 +479,7 @@ filter:brightness(0) invert(1);
       if(!inCat.length) return '';
       const rows = inCat.map(d=>{
         const info = d.dietary[key];
-        const meta = statusMeta(info.status);
+        const meta = statusMeta(info.status, key);
         const noteText = stripSource(info.note);
         let noteRow = '';
         if(meta.cls === 'safe'){
@@ -506,10 +512,12 @@ filter:brightness(0) invert(1);
     chefsDraft.innerHTML = DATA.chefs_menu.course_order.map((id,i)=>{
       const d = byId[id];
       const info = d.dietary[key];
-      const meta = statusMeta(info.status);
+      const meta = statusMeta(info.status, key);
       const noteText = stripSource(info.note);
       let action;
-      if(info.status==='contains') action = `Needs a kitchen substitution &mdash; ${label.toLowerCase()} is integral to this course as served.`;
+      if(info.status==='contains') action = noteText || (REQUIREMENT_KEYS.has(key)
+        ? `Not suitable as served &mdash; needs a kitchen substitution.`
+        : `Needs a kitchen substitution &mdash; ${label.toLowerCase()} is integral to this course as served.`);
       else if(info.status==='pending') action = `Not yet confirmed for ${label.toLowerCase()} &mdash; check with the kitchen before including as-is.`;
       else if(info.status==='safe') action = 'No adjustment needed for this course.';
       else action = noteText || 'Can be modified \u2014 ask the kitchen how.';

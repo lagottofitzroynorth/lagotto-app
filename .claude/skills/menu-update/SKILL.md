@@ -102,6 +102,32 @@ reformatted, or a separate new one?" (This exact pair exists in the live data as
 - **If it's genuinely new**: proceed as a normal `"add"` with a fresh id, full schema,
   per the rule below.
 
+### Check the Chef's Menu before archiving or dropping anything
+
+Any dish being archived or removed may be sitting in `chefs_menu.course_order` or
+`add_ons`, or carry `on_chefs_menu: true` — check the live data for this on every dish
+you're about to archive, not just ones that look Chef's-Menu-shaped. `publish.mjs`'s
+food `"update"` op now auto-clears `on_chefs_menu` and strips the id from
+`course_order`/`add_ons` the moment a patch flips a dish to `active:false` (mirroring
+the same cleanup `dish-library.html`'s archive toggle has always done) — so a plain
+archive is safe by default. But if a *new* dish is taking over that same slot (a menu
+reprint swapping one steak/protein for another at the same price point is the common
+case), that's a judgment call the script won't make for you: ask the user whether the
+Chef's Menu should follow the swap, and if so include a `chefs_menu_swap` op
+(`{"op":"chefs_menu_swap","from":"old_id","to":"new_id"}`) in the same patch. Also
+re-read `chefs_menu.notes` for stale references to the dish being dropped (e.g. a note
+naming its specific dressing/plating difference) and fix those with a
+`chefs_menu_update` op in the same pass — don't leave the Chef's Menu copy pointing at
+a dish nobody can order.
+
+This exact gap shipped live once already: a menu print swapped the Chef's Menu protein
+from Black Opal wagyu rump to Matriarch wagyu striploin, but nothing updated
+`chefs_menu.course_order`, so it kept pointing at the archived rump's id. That dangling
+id crashes `dietary.html`'s `renderMatrix()` (`byId[id]` is undefined for an archived
+dish), which silently freezes the Chef's Menu draft section on stale content for every
+diet category on that page — worth a quick sanity check of `/dietary`'s Chef's Menu
+section after any publish that touches an on-chefs-menu dish.
+
 Show the diff and **wait for explicit confirmation** before publishing anything.
 
 ## 5. Publish once confirmed

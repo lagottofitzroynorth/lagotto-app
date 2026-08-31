@@ -375,6 +375,15 @@ const STATES = [
   ['safe','Not present'], ['pending','Ask kitchen']
 ];
 
+// REQUIREMENT categories ask "is this dish suitable for X" rather than
+// "does this dish contain X" — reuse the same contains/modifiable/safe/pending
+// states but with labels that answer the actual question, so "Not suitable"
+// replaces the nonsensical "Contains [vegetarian]".
+const REQUIREMENT_STATES = [
+  ['contains','Not suitable'], ['modifiable','Can modify'],
+  ['safe','Suitable'], ['pending','Ask kitchen']
+];
+
 function dietLabel(key){
   const c = (DATA.dietary_categories || []).find(x => x.key === key);
   return c ? c.label : key;
@@ -419,7 +428,8 @@ function setDietary(dish, key, status){
 function dietaryHTML(d){
   const rows = (DATA.dietary_categories || []).map(function(c){
     const cell = d.dietary[c.key] || {status:'pending', note:null};
-    const segs = STATES.map(function(s){
+    const states = REQUIREMENT[c.key] ? REQUIREMENT_STATES : STATES;
+    const segs = states.map(function(s){
       return '<button data-diet="' + c.key + '" data-s="' + s[0] + '"'
         + (cell.status === s[0] ? ' class="on"' : '') + '>' + s[1] + '</button>';
     }).join('');
