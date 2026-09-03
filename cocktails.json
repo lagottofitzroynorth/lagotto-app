@@ -1,7 +1,7 @@
 {
   "restaurant": "Lagotto",
-  "generated": "2026-08-13",
-  "source_note": "Transcribed from Cocktail Specs.pdf",
+  "generated": "2026-09-03",
+  "source_note": "Transcribed from Cocktail Specs.pdf; updated 2026-09-03 from photographed spec sheet (filled in Negroni Lampone/Capri Martini/Blood Orange Americano/Los Amargos pre-batch specs, revived Martini/Luca's Espresso Martini, fixed Fig Spritz lime juice).",
   "sections": [
     {
       "id": "lagotto",
@@ -47,7 +47,7 @@
       "glass": "Large wine glass",
       "ingredients": [
         "1 ½ oz Fig liqueur",
-        "½ oz Lemon juice",
+        "½ oz Lime juice",
         "1 oz Soda",
         "3 oz Prosecco"
       ],
@@ -59,7 +59,7 @@
     },
     {
       "id": "lucas-espresso-martini",
-      "section": "retired",
+      "section": "lagotto",
       "name": "Luca's Espresso Martini (House)",
       "glass": "Nick & Norah",
       "ingredients": [
@@ -71,12 +71,12 @@
       "method": "Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah, garnish with 2 x coffee beans.",
       "garnish": "2 x coffee beans",
       "variants": [],
-      "active": false,
+      "active": true,
       "image": ""
     },
     {
       "id": "martini",
-      "section": "retired",
+      "section": "lagotto",
       "name": "Martini",
       "glass": "Nick & Norah",
       "ingredients": [],
@@ -86,14 +86,24 @@
         {
           "name": "Dry",
           "ingredients": [
-            "2 ½ oz Martini batch"
+            "2 oz MGC gin or Ketel 1 vodka",
+            "½ oz Dry vermouth"
+          ],
+          "garnish": "Lemon twist"
+        },
+        {
+          "name": "Wet",
+          "ingredients": [
+            "1 ¾ oz MGC gin or Ketel 1 vodka",
+            "¾ oz Dry vermouth"
           ],
           "garnish": "Lemon twist"
         },
         {
           "name": "Dirty",
           "ingredients": [
-            "2 oz Martini batch",
+            "1 ¾ oz MGC gin or Ketel 1 vodka",
+            "¼ oz Dry vermouth",
             "½ oz Olive brine"
           ],
           "garnish": "Olive"
@@ -101,7 +111,8 @@
         {
           "name": "Filthy",
           "ingredients": [
-            "1 ¾ oz Martini batch",
+            "1 ½ oz MGC gin or Ketel 1 vodka",
+            "¼ oz Dry vermouth",
             "¾ oz Olive brine"
           ],
           "garnish": "Olive"
@@ -109,20 +120,13 @@
         {
           "name": "Gibson",
           "ingredients": [
-            "2 ½ oz Martini batch"
+            "2 oz MGC gin or Ketel 1 vodka",
+            "½ oz Dry vermouth"
           ],
           "garnish": "Pickled onion"
-        },
-        {
-          "name": "Vodka",
-          "ingredients": [
-            "2 oz Ketel 1 Vodka",
-            "½ oz Dolin dry vermouth"
-          ],
-          "garnish": ""
         }
       ],
-      "active": false,
+      "active": true,
       "image": ""
     },
     {
@@ -195,13 +199,12 @@
       "name": "Negroni Lampone",
       "glass": "Rocks glass",
       "ingredients": [
-        "Beefeater gin",
-        "Plymouth sloe gin",
-        "Campari",
-        "Raspberry"
+        "2.5 oz Negroni Lampone pre-batch",
+        "1 x Raspberry to muddle",
+        "1 x Raspberry to garnish"
       ],
-      "method": "New on the printed list (Aug 2026), replacing Negroni Mora's blackberry with raspberry -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
-      "garnish": "",
+      "method": "Pour pre-batch into mixing glass, muddle with 1 x raspberry, double strain into rocks glass, add ice, garnish with raspberry.",
+      "garnish": "Raspberry",
       "variants": [],
       "active": true,
       "image": ""
@@ -212,11 +215,10 @@
       "name": "Capri Martini",
       "glass": "Nick & Norah",
       "ingredients": [
-        "Malfy limone",
-        "Lemon thyme vermouth"
+        "2 ½ oz Capri martini pre-batch"
       ],
-      "method": "New on the printed list (Aug 2026), replacing Sicilian Martini in this slot -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
-      "garnish": "",
+      "method": "Stirred down with ice until ice cold, poured straight into nick & norah. Garnish with lemon zest.",
+      "garnish": "Lemon zest",
       "variants": [],
       "active": true,
       "image": ""
@@ -227,12 +229,11 @@
       "name": "Blood Orange Americano",
       "glass": "Collins glass",
       "ingredients": [
-        "Vermouth rosso",
-        "Okar amaro",
-        "Blood orange soda"
+        "3 oz Blood orange americano pre-batch",
+        "Top up with San Pel blood orange soda"
       ],
-      "method": "New on the printed list (Aug 2026) -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
-      "garnish": "",
+      "method": "Add pre-batch to collins glass, add ice, top with blood orange soda. Garnish with orange slice.",
+      "garnish": "Orange slice",
       "variants": [],
       "active": true,
       "image": ""
@@ -243,12 +244,10 @@
       "name": "Los Amargos",
       "glass": "Nick & Norah",
       "ingredients": [
-        "Tequila resposado",
-        "Amaro nonino",
-        "Cardamaro",
-        "Lemon"
+        "3 oz Los Amargos pre-batch",
+        "Bar spoon of Luxardo cherry liqueur"
       ],
-      "method": "New on the printed list (Aug 2026) -- full bar spec (oz measurements, method) not yet documented. Confirm with the bar team and finish in Wine Cellar.",
+      "method": "Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah. No garnish.",
       "garnish": "",
       "variants": [],
       "active": true,
