@@ -56,6 +56,7 @@ html,body{margin:0; padding:0;}
 .ck-card-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
 .ck-card.open .ck-card-body{max-height:2000px;}
 .ck-card-body-inner{padding:0 18px 20px;}
+.ck-photo{display:block; max-width:100%; max-height:320px; border-radius:8px; margin:2px 0 4px; object-fit:cover;}
 
 .ck-label{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:var(--pending); margin:14px 0 6px;}
 .ck-label:first-child{margin-top:2px;}
@@ -114,13 +115,14 @@ function cardHtml(c){
   }).join('');
 
   return '<div class="ck-card" data-id="' + esc(c.id) + '">' +
-    '<div class="ck-card-head" onclick="this.parentNode.classList.toggle(\'open\')">' +
+    '<div class="ck-card-head" onclick="ckToggle(this)">' +
       (c.image ? '<img class="ck-thumb" src="' + esc(c.image) + '" loading="lazy" alt="">' : '') +
       '<div class="ck-name">' + esc(c.name) + '</div>' +
       '<div class="ck-glass">' + esc(c.glass || '') + '</div>' +
       '<span class="ck-chev">&#8250;</span>' +
     '</div>' +
     '<div class="ck-card-body"><div class="ck-card-body-inner">' +
+      (c.image ? '<img class="ck-photo" data-src="' + esc(c.image) + '" alt="">' : '') +
       (ingredientsHtml ? '<div class="ck-label">Ingredients</div><ul class="ck-ingredients">' + ingredientsHtml + '</ul>' : '') +
       '<div class="ck-label">Method</div><p class="ck-method">' + esc(c.method) + '</p>' +
       (c.garnish ? '<div class="ck-label">Garnish</div><p class="ck-garnish">' + esc(c.garnish) + '</p>' : '') +
@@ -167,6 +169,16 @@ function render(){
 }
 
 function setFilter(id){ CK_FILTER = id; render(); }
+
+function ckToggle(head){
+  var card = head.parentNode;
+  card.classList.toggle('open');
+  var photo = card.querySelector('.ck-photo[data-src]');
+  if (photo) {
+    photo.src = photo.getAttribute('data-src');
+    photo.removeAttribute('data-src');
+  }
+}
 </script>
 </body>
 </html>
