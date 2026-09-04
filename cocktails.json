@@ -174,8 +174,8 @@
       "method": "Retired Aug 2026 -- dropped from the printed cocktail list, replaced by Blood Orange Americano and Los Amargos. Recipe kept here: pour all ingredients except angostura into tin, dry shake, then add ice and wet shake, double strain into nick & norah, garnish with angostura line.",
       "garnish": "Angostura bitters line",
       "variants": [],
-      "active": false,
-      "image": ""
+      "active": true,
+      "image": "https://staff.lagotto-fitzroynorth.com.au/assets/img/cocktails/tommy-dibaldo-sour-1788503640640.jpg"
     },
     {
       "id": "sicilian-martini",
