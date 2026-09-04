@@ -28,7 +28,7 @@ body{
 }
 .lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
 .lg-header{
-  background:var(--ink); color:var(--parchment); padding:40px 20px 32px;
+  background:var(--ink); color:var(--parchment); padding:40px 0 32px;
   position:relative; overflow:hidden;
 }
 .lg-header::before{
@@ -44,7 +44,7 @@ body{
     radial-gradient(1px 1px at 15% 90%, var(--gold) 0, transparent 60%);
   background-size:100% 100%;
 }
-.lg-header-inner{position:relative; max-width:920px; margin:0 auto;}
+.lg-header-inner{position:relative; max-width:920px; margin:0 auto; padding:0 20px;}
 .lg-logo{
 display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%;
 margin:0;
@@ -212,7 +212,7 @@ filter:brightness(0) invert(1);
 
 <div class="lg-header">
   <div class="lg-header-inner">
-    <img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+    <a href="/" aria-label="Staff Home"><img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto"></a>
     <p class="lg-sub">Menu Quiz</p>
     <div class="lg-tools-nav">
       <a href="menu">Menu Reference</a>

@@ -21,8 +21,15 @@ html,body{margin:0; padding:0;}
   padding-bottom:64px;
 }
 .ck-header{background:var(--ink); color:var(--parchment); padding:40px 20px 32px;}
-.ck-header-inner{max-width:920px; margin:0 auto; padding:0 20px;}
+.ck-header-inner{max-width:920px; margin:0 auto; padding:0 20px; position:relative;}
 .ck-logo{height:38px; display:block; margin-bottom:14px; filter:brightness(0) invert(1);}
+.ck-mgmt{
+  position:absolute; top:0; right:20px; width:28px; height:28px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--parchment); opacity:.22; transition:opacity .15s;
+}
+.ck-mgmt:hover{opacity:.7;}
+.ck-mgmt svg{width:14px; height:14px;}
 .ck-sub{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--parchment); opacity:.8; margin:0;}
 .ck-wrap{max-width:920px; margin:0 auto; padding:0 20px;}
 
@@ -79,7 +86,10 @@ html,body{margin:0; padding:0;}
 <div id="ck">
   <div class="ck-header">
     <div class="ck-header-inner">
-      <img class="ck-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+      <a class="ck-mgmt" href="cocktail-library" aria-label="Edit cocktails">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      </a>
+      <a href="/" aria-label="Staff Home"><img class="ck-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto"></a>
       <p class="ck-sub">Staff Cocktail Reference</p>
     </div>
   </div>
