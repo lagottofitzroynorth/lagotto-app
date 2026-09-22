@@ -1,7 +1,7 @@
 {
   "restaurant": "Lagotto",
   "generated": "2026-09-03",
-  "source_note": "Transcribed from Cocktail Specs.pdf; updated 2026-09-03 from photographed spec sheet (filled in Negroni Lampone/Capri Martini/Blood Orange Americano/Los Amargos pre-batch specs, revived Martini/Luca's Espresso Martini, fixed Fig Spritz lime juice).",
+  "source_note": "Transcribed from Cocktail Specs.pdf; updated 2026-09-22 from new wine/beverage list PDF -- retired Fig Spritz, Luca's Espresso Martini, Martini and Los Amargos from the printed Lagotto Cocktails section (kept under Retired for reference); added Cardamaro Spritz and Tommy Verde as new printed cocktails with specs pending from Liam.",
   "sections": [
     {
       "id": "lagotto",
@@ -42,7 +42,7 @@
     },
     {
       "id": "fig-spritz",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Fig Spritz",
       "glass": "Large wine glass",
       "ingredients": [
@@ -51,15 +51,15 @@
         "1 oz Soda",
         "3 oz Prosecco"
       ],
-      "method": "Pour all ingredients into large wine glass, fill with ice, garnish with lime wedge and straw.",
+      "method": "Retired 2026-09-22 -- dropped from the printed cocktail list, replaced by Cardamaro Spritz and Tommy Verde. Original recipe: Pour all ingredients into large wine glass, fill with ice, garnish with lime wedge and straw.",
       "garnish": "Fig slice or lemon wedge",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": "https://staff.lagotto-fitzroynorth.com.au/assets/img/cocktails/fig-spritz-1788437267623.jpg"
     },
     {
       "id": "lucas-espresso-martini",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Luca's Espresso Martini (House)",
       "glass": "Nick & Norah",
       "ingredients": [
@@ -68,19 +68,19 @@
         "½ oz Alpino amaro",
         "½ oz Simple syrup"
       ],
-      "method": "Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah, garnish with 2 x coffee beans.",
+      "method": "Retired 2026-09-22 -- dropped from the printed cocktail list, replaced by Cardamaro Spritz and Tommy Verde. Original recipe: Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah, garnish with 2 x coffee beans.",
       "garnish": "2 x coffee beans",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": "https://staff.lagotto-fitzroynorth.com.au/assets/img/cocktails/lucas-espresso-martini-1788437316200.jpg"
     },
     {
       "id": "martini",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Martini",
       "glass": "Nick & Norah",
       "ingredients": [],
-      "method": "All stirred down with ice until ice cold, poured straight into nick & norah.",
+      "method": "Retired 2026-09-22 -- dropped from the printed cocktail list, replaced by Cardamaro Spritz and Tommy Verde. Original recipe: All stirred down with ice until ice cold, poured straight into nick & norah.",
       "garnish": "",
       "variants": [
         {
@@ -126,7 +126,7 @@
           "garnish": "Pickled onion"
         }
       ],
-      "active": true,
+      "active": false,
       "image": "https://staff.lagotto-fitzroynorth.com.au/assets/img/cocktails/martini-1788438767757.jpg"
     },
     {
@@ -240,17 +240,17 @@
     },
     {
       "id": "los-amargos",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Los Amargos",
       "glass": "Nick & Norah",
       "ingredients": [
         "3 oz Los Amargos pre-batch",
         "Bar spoon of Luxardo cherry liqueur"
       ],
-      "method": "Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah. No garnish.",
+      "method": "Retired 2026-09-22 -- dropped from the printed cocktail list, replaced by Cardamaro Spritz and Tommy Verde. Original recipe: Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah. No garnish.",
       "garnish": "",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": "https://staff.lagotto-fitzroynorth.com.au/assets/img/cocktails/los-amargos-1788437285919.jpg"
     },
     {
@@ -825,6 +825,41 @@
       "garnish": "Lemon slice",
       "variants": [],
       "active": false,
+      "image": ""
+    },
+    {
+      "id": "cardamaro-spritz",
+      "section": "lagotto",
+      "name": "Cardamaro Spritz",
+      "glass": "",
+      "ingredients": [
+        "Cardamaro amaro (pending exact measure)",
+        "Prosecco (pending exact measure)",
+        "Soda (pending exact measure)",
+        "Orange (garnish/ingredient, pending confirmation)"
+      ],
+      "method": "Pending -- full bar spec from Liam. Printed menu description: \"Cardamaro amaro, prosecco, soda, orange.\"",
+      "garnish": "",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "tommy-verde",
+      "section": "lagotto",
+      "name": "Tommy Verde",
+      "glass": "",
+      "ingredients": [
+        "Tequila blanco (pending exact measure)",
+        "Tommy's kiwi (pending exact measure)",
+        "Green tabasco (pending exact measure)",
+        "Lime (pending exact measure)",
+        "Agave (pending exact measure)"
+      ],
+      "method": "Pending -- full bar spec from Liam. Printed menu description: \"Tequila blanco, tommy's kiwi, green tobasco, lime, agave.\"",
+      "garnish": "",
+      "variants": [],
+      "active": true,
       "image": ""
     }
   ]
