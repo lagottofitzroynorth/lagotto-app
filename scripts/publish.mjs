@@ -110,6 +110,7 @@ function blankDietary(data) {
 function fillDishDefaults(item, data) {
   const today = new Date().toISOString().slice(0, 10);
   return {
+    image: null,
     active: false,
     draft: true,
     last_confirmed: today,
