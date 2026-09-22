@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-beer-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-beer-180.png">
+<meta name="apple-mobile-web-app-title" content="Beer">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+html,body{margin:0; padding:0;}
+#br,#br *{box-sizing:border-box;}
+#br{
+  --ink:#211D1A; --ink-soft:#2B2622; --parchment:#EFE7D8; --parchment-2:#E3D8C2;
+  --rust:#A54A2A; --rust-dim:#7A3820; --gold:#C9A227; --sage:#6B7A5E; --pending:#8A8074;
+  --radius:10px;
+  font-family:'Georgia',serif; color:var(--ink); background:var(--parchment);
+  padding-bottom:64px;
+}
+.br-header{background:var(--ink); color:var(--parchment); padding:40px 20px 32px;}
+.br-header-inner{max-width:920px; margin:0 auto; padding:0 20px;}
+.br-logo{height:38px; display:block; margin-bottom:14px; filter:brightness(0) invert(1);}
+.br-sub{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--parchment); opacity:.8; margin:0;}
+.br-wrap{max-width:920px; margin:0 auto; padding:0 20px;}
+
+.br-search{
+  width:100%; font-family:'IBM Plex Mono',monospace; font-size:13px; padding:11px 14px;
+  border:1px solid var(--parchment-2); border-radius:8px; background:#fff; margin:28px 0 20px;
+}
+
+.br-card{background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius); margin-bottom:10px; overflow:hidden;}
+.br-card-head{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 18px; cursor:pointer; user-select:none;}
+.br-card-head:hover{background:var(--parchment);}
+.br-name{font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; flex:1;}
+.br-meta{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pending); white-space:nowrap;}
+.br-chev{font-size:18px; color:#ccc; transition:transform .2s; flex-shrink:0;}
+.br-card.open .br-chev{transform:rotate(90deg);}
+.br-card-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+.br-card.open .br-card-body{max-height:600px;}
+.br-card-body-inner{padding:0 18px 20px;}
+
+.br-label{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:var(--pending); margin:14px 0 6px;}
+.br-label:first-child{margin-top:2px;}
+.br-notes{list-style:none; margin:0; padding:0; font-size:14.5px; line-height:1.7; color:var(--ink-soft);}
+.br-region{font-size:14px; color:var(--rust-dim); margin:0;}
+.br-pending-flag{font-size:12px; color:var(--pending); font-style:italic; margin-top:10px;}
+
+.br-loading{text-align:center; padding:3rem; font-family:sans-serif; color:var(--pending); font-size:14px;}
+.br-empty{text-align:center; padding:2rem; color:var(--pending); font-size:14px; font-family:sans-serif;}
+
+@media (max-width:560px){
+  .br-name{font-size:15px;}
+}
+</style>
+</head>
+<body>
+<div id="br">
+  <div class="br-header">
+    <div class="br-header-inner">
+      <img class="br-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+      <p class="br-sub">Staff Beer Reference</p>
+    </div>
+  </div>
+  <div class="br-wrap">
+    <div id="br-content"><div class="br-loading">Loading beers&hellip;</div></div>
+  </div>
+</div>
+<script>
+var BR_DATA_URL = 'beer.json';
+var BR_DATA = null;
+var BR_QUERY = '';
+
+fetch(BR_DATA_URL)
+  .then(function(r){ return r.json(); })
+  .then(function(data){ BR_DATA = data; render(); })
+  .catch(function(e){ document.getElementById('br-content').innerHTML = '<div class="br-loading">Failed to load. Please refresh.</div>'; });
+
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; });
+}
+
+function cardHtml(b){
+  var notesHtml = (b.tastingNotes || []).map(function(n){ return '<li>' + esc(n) + '</li>'; }).join('');
+  var pendingFlag = b.tasting_notes_status && b.tasting_notes_status !== 'complete'
+    ? '<div class="br-pending-flag">Tasting notes: ' + esc(b.tasting_notes_status) + '</div>' : '';
+  return '<div class="br-card" data-id="' + esc(b.id) + '">' +
+    '<div class="br-card-head" onclick="this.parentNode.classList.toggle(\'open\')">' +
+      '<div class="br-name">' + esc(b.name) + '</div>' +
+      '<div class="br-meta">' + esc(b.abv || '') + ' &middot; $' + esc(b.price) + '</div>' +
+      '<span class="br-chev">&#8250;</span>' +
+    '</div>' +
+    '<div class="br-card-body"><div class="br-card-body-inner">' +
+      '<p class="br-region">' + esc(b.style || '') + (b.style && b.region ? ' &mdash; ' : '') + esc(b.region || '') + '</p>' +
+      (notesHtml ? '<div class="br-label">Tasting Notes</div><ul class="br-notes">' + notesHtml + '</ul>' : '') +
+      pendingFlag +
+    '</div></div>' +
+  '</div>';
+}
+
+function render(){
+  if (!BR_DATA) return;
+  var q = BR_QUERY.trim().toLowerCase();
+  var beers = (BR_DATA.beers || []).filter(function(b){
+    if (!b.active) return false;
+    if (q && b.name.toLowerCase().indexOf(q) === -1) return false;
+    return true;
+  }).sort(function(a, b){ return a.name.localeCompare(b.name); });
+
+  var searchHtml = '<input class="br-search" id="br-search-input" type="text" placeholder="Search beer…" value="' + esc(BR_QUERY) + '">';
+  var listHtml = beers.map(cardHtml).join('');
+  if (!listHtml) listHtml = '<div class="br-empty">No beers match.</div>';
+
+  document.getElementById('br-content').innerHTML = searchHtml + listHtml;
+  document.getElementById('br-search-input').addEventListener('input', function(e){ BR_QUERY = e.target.value; render(); });
+  document.getElementById('br-search-input').focus();
+  document.getElementById('br-search-input').selectionStart = document.getElementById('br-search-input').selectionEnd = BR_QUERY.length;
+}
+</script>
+</body>
+</html>

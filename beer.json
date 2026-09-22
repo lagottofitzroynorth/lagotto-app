@@ -1,0 +1,79 @@
+{
+  "restaurant": "Lagotto",
+  "generated": "2026-09-22",
+  "source_note": "Transcribed from the 2026-09-22 wine/beverage list PDF. Tasting notes researched from brewery/retailer sources, not yet reviewed by the venue -- see tasting_notes_status.",
+  "beers": [
+    {
+      "id": "peroni-red",
+      "name": "Peroni Red",
+      "abv": "4.7%",
+      "region": "Lazio, Italy",
+      "style": "Lager",
+      "price": 12,
+      "tastingNotes": ["pale golden", "fresh cereal aroma", "light florals", "subtle citrus", "smooth, balanced bittersweet finish"],
+      "tasting_notes_status": "researched, pending venue review",
+      "img": "",
+      "active": true
+    },
+    {
+      "id": "stingray-draught",
+      "name": "Stingray Draught",
+      "abv": "4.5%",
+      "region": "Abbotsford, VIC",
+      "style": "Lager",
+      "price": 12,
+      "tastingNotes": ["crisp and clean", "substantial bitterness", "soft biscuit malt", "lean, dry finish"],
+      "tasting_notes_status": "researched, pending venue review",
+      "img": "",
+      "active": true
+    },
+    {
+      "id": "balter-xpa",
+      "name": "Balter XPA",
+      "abv": "5%",
+      "region": "Currumbin, QLD",
+      "style": "XPA",
+      "price": 14,
+      "tastingNotes": ["vibrant deep gold", "tropical and floral hops", "citrus and wheat", "soft bitterness building to a dry finish"],
+      "tasting_notes_status": "researched, pending venue review",
+      "img": "",
+      "active": true
+    },
+    {
+      "id": "bodriggy-speccy-juice",
+      "name": "Bodriggy Speccy Juice",
+      "abv": "3.5%",
+      "region": "Abbotsford, VIC",
+      "style": "Session IPA",
+      "price": 13,
+      "tastingNotes": ["hazy pale yellow", "pineapple, guava, orange, cantaloupe", "mandarin and citrus palate", "silky, sessionable mouthfeel"],
+      "tasting_notes_status": "researched, pending venue review",
+      "img": "",
+      "active": true
+    },
+    {
+      "id": "yullis-brews-amanda-mandarin-ipa",
+      "name": "Yulli's Brews Amanda Mandarin IPA",
+      "abv": "6.7%",
+      "region": "Byron Bay, NSW",
+      "style": "IPA",
+      "price": 12,
+      "tastingNotes": ["cold-pressed mandarin and orange peel", "assertive mandarin-peel bitterness", "dry, aromatic finish"],
+      "tasting_notes_status": "researched, pending venue review",
+      "img": "",
+      "active": true
+    },
+    {
+      "id": "heaps-normal-quiet-xpa",
+      "name": "Heaps Normal Quiet XPA",
+      "abv": "<0.5%",
+      "region": "Marrickville, NSW",
+      "style": "Non-alcoholic XPA",
+      "price": 12,
+      "tastingNotes": ["hazy gold", "mango, pineapple, lemon aroma", "soft malt with juicy tropical hops", "clean, gently dry finish"],
+      "tasting_notes_status": "researched, pending venue review",
+      "img": "",
+      "active": true
+    }
+  ]
+}
