@@ -32,10 +32,10 @@ font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
 }
 #lagotto-boh-root .lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
 #lagotto-boh-root .lg-header{
-background:var(--ink); color:var(--parchment); padding:34px 20px 26px; margin-bottom:28px;
+background:var(--ink); color:var(--parchment); padding:34px 0 26px; margin-bottom:28px;
 position:relative; overflow:hidden;
 }
-#lagotto-boh-root .lg-header-inner{position:relative; max-width:920px; margin:0 auto;}
+#lagotto-boh-root .lg-header-inner{position:relative; max-width:920px; margin:0 auto; padding:0 20px;}
 #lagotto-boh-root .lg-logo{
 display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%; margin:0;
 filter:brightness(0) invert(1);
@@ -236,7 +236,7 @@ text-transform:uppercase; border-radius:999px; padding:6px 14px; cursor:pointer;
 
 <div class="lg-header">
 <div class="lg-header-inner">
-<img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+<a href="/" aria-label="Staff Home"><img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto"></a>
 <p class="lg-sub">Dish Library — Back of House</p>
 <div class="lg-tools-nav">
 <div class="lg-nav-row">

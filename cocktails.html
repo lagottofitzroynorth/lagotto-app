@@ -21,8 +21,15 @@ html,body{margin:0; padding:0;}
   padding-bottom:64px;
 }
 .ck-header{background:var(--ink); color:var(--parchment); padding:40px 20px 32px;}
-.ck-header-inner{max-width:920px; margin:0 auto; padding:0 20px;}
+.ck-header-inner{max-width:920px; margin:0 auto; padding:0 20px; position:relative;}
 .ck-logo{height:38px; display:block; margin-bottom:14px; filter:brightness(0) invert(1);}
+.ck-mgmt{
+  position:absolute; top:0; right:20px; width:28px; height:28px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--parchment); opacity:.22; transition:opacity .15s;
+}
+.ck-mgmt:hover{opacity:.7;}
+.ck-mgmt svg{width:14px; height:14px;}
 .ck-sub{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--parchment); opacity:.8; margin:0;}
 .ck-wrap{max-width:920px; margin:0 auto; padding:0 20px;}
 
@@ -48,6 +55,7 @@ html,body{margin:0; padding:0;}
 .ck-card{background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius); margin-bottom:10px; overflow:hidden;}
 .ck-card-head{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 18px; cursor:pointer; user-select:none;}
 .ck-card-head:hover{background:var(--parchment);}
+.ck-thumb{width:44px; height:44px; border-radius:6px; object-fit:cover; flex-shrink:0; background:var(--parchment-2);}
 .ck-name{font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; flex:1;}
 .ck-glass{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pending); white-space:nowrap;}
 .ck-chev{font-size:18px; color:#ccc; transition:transform .2s; flex-shrink:0;}
@@ -55,6 +63,7 @@ html,body{margin:0; padding:0;}
 .ck-card-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
 .ck-card.open .ck-card-body{max-height:2000px;}
 .ck-card-body-inner{padding:0 18px 20px;}
+.ck-photo{display:block; max-width:100%; max-height:320px; border-radius:8px; margin:2px 0 4px; object-fit:cover;}
 
 .ck-label{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:var(--pending); margin:14px 0 6px;}
 .ck-label:first-child{margin-top:2px;}
@@ -77,7 +86,10 @@ html,body{margin:0; padding:0;}
 <div id="ck">
   <div class="ck-header">
     <div class="ck-header-inner">
-      <img class="ck-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+      <a class="ck-mgmt" href="cocktail-library" aria-label="Edit cocktails">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      </a>
+      <a href="/" aria-label="Staff Home"><img class="ck-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto"></a>
       <p class="ck-sub">Staff Cocktail Reference</p>
     </div>
   </div>
@@ -113,12 +125,14 @@ function cardHtml(c){
   }).join('');
 
   return '<div class="ck-card" data-id="' + esc(c.id) + '">' +
-    '<div class="ck-card-head" onclick="this.parentNode.classList.toggle(\'open\')">' +
+    '<div class="ck-card-head" onclick="ckToggle(this)">' +
+      (c.image ? '<img class="ck-thumb" src="' + esc(c.image) + '" loading="lazy" alt="">' : '') +
       '<div class="ck-name">' + esc(c.name) + '</div>' +
       '<div class="ck-glass">' + esc(c.glass || '') + '</div>' +
       '<span class="ck-chev">&#8250;</span>' +
     '</div>' +
     '<div class="ck-card-body"><div class="ck-card-body-inner">' +
+      (c.image ? '<img class="ck-photo" data-src="' + esc(c.image) + '" alt="">' : '') +
       (ingredientsHtml ? '<div class="ck-label">Ingredients</div><ul class="ck-ingredients">' + ingredientsHtml + '</ul>' : '') +
       '<div class="ck-label">Method</div><p class="ck-method">' + esc(c.method) + '</p>' +
       (c.garnish ? '<div class="ck-label">Garnish</div><p class="ck-garnish">' + esc(c.garnish) + '</p>' : '') +
@@ -165,6 +179,16 @@ function render(){
 }
 
 function setFilter(id){ CK_FILTER = id; render(); }
+
+function ckToggle(head){
+  var card = head.parentNode;
+  card.classList.toggle('open');
+  var photo = card.querySelector('.ck-photo[data-src]');
+  if (photo) {
+    photo.src = photo.getAttribute('data-src');
+    photo.removeAttribute('data-src');
+  }
+}
 </script>
 </body>
 </html>

@@ -31,8 +31,8 @@ font-family:'Work Sans',sans-serif; font-size:16px; line-height:1.5;
 -webkit-font-smoothing:antialiased;
 }
 #ckl-root .lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
-#ckl-root .lg-header{background:var(--ink); color:var(--parchment); padding:34px 20px 26px; margin-bottom:28px;}
-#ckl-root .lg-header-inner{max-width:920px; margin:0 auto;}
+#ckl-root .lg-header{background:var(--ink); color:var(--parchment); padding:34px 0 26px; margin-bottom:28px;}
+#ckl-root .lg-header-inner{position:relative; max-width:920px; margin:0 auto; padding:0 20px;}
 #ckl-root .lg-logo{display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%; margin:0; filter:brightness(0) invert(1);}
 #ckl-root .lg-sub{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--parchment-2); margin:10px 0 0;}
 #ckl-root .lg-tools-nav{display:flex; flex-direction:column; gap:10px; margin-top:18px;}
@@ -108,7 +108,7 @@ width:100%; font-family:'Work Sans',sans-serif; font-size:14px; border:1px solid
 
 <div class="lg-header">
 <div class="lg-header-inner">
-<img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+<a href="/" aria-label="Staff Home"><img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto"></a>
 <p class="lg-sub">Cocktail Library — Back of House</p>
 <div class="lg-tools-nav">
 <div class="lg-nav-row">

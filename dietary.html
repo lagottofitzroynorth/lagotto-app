@@ -28,7 +28,7 @@ body{
 }
 .lg-wrap{max-width:920px; margin:0 auto; padding:0 20px 64px;}
 .lg-header{
-  background:var(--ink); color:var(--parchment); padding:40px 20px 32px;
+  background:var(--ink); color:var(--parchment); padding:40px 0 32px;
   position:relative; overflow:hidden;
 }
 .lg-header::before{
@@ -44,7 +44,14 @@ body{
     radial-gradient(1px 1px at 15% 90%, var(--gold) 0, transparent 60%);
   background-size:100% 100%;
 }
-.lg-header-inner{position:relative; max-width:920px; margin:0 auto;}
+.lg-header-inner{position:relative; max-width:920px; margin:0 auto; padding:0 20px;}
+.lg-mgmt{
+position:absolute; top:0; right:20px; width:28px; height:28px;
+display:flex; align-items:center; justify-content:center;
+color:var(--parchment); opacity:.22; transition:opacity .15s;
+}
+.lg-mgmt:hover{opacity:.7;}
+.lg-mgmt svg{width:14px; height:14px;}
 .lg-logo{
 display:block; height:clamp(34px,5.2vw,52px); width:auto; max-width:100%;
 margin:0;
@@ -195,7 +202,10 @@ filter:brightness(0) invert(1);
 
 <div class="lg-header">
   <div class="lg-header-inner">
-    <img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto">
+    <a class="lg-mgmt" href="dish-library" aria-label="Edit dishes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    </a>
+    <a href="/" aria-label="Staff Home"><img class="lg-logo" src="assets/img/icons/lagotto-logo.png" alt="Lagotto"></a>
     <p class="lg-sub">Dietary Matrix</p>
     <div class="lg-tools-nav">
       <a href="menu">Menu Reference</a>
