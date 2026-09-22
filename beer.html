@@ -34,6 +34,7 @@ html,body{margin:0; padding:0;}
 .br-card{background:#fff; border:1px solid var(--parchment-2); border-radius:var(--radius); margin-bottom:10px; overflow:hidden;}
 .br-card-head{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 18px; cursor:pointer; user-select:none;}
 .br-card-head:hover{background:var(--parchment);}
+.br-thumb{width:36px; height:36px; object-fit:contain; border-radius:6px; background:var(--parchment); flex-shrink:0;}
 .br-name{font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; flex:1;}
 .br-meta{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pending); white-space:nowrap;}
 .br-chev{font-size:18px; color:#ccc; transition:transform .2s; flex-shrink:0;}
@@ -86,8 +87,10 @@ function cardHtml(b){
   var notesHtml = (b.tastingNotes || []).map(function(n){ return '<li>' + esc(n) + '</li>'; }).join('');
   var pendingFlag = b.tasting_notes_status && b.tasting_notes_status !== 'complete'
     ? '<div class="br-pending-flag">Tasting notes: ' + esc(b.tasting_notes_status) + '</div>' : '';
+  var thumb = b.img ? '<img class="br-thumb" src="' + esc(b.img) + '" alt="">' : '';
   return '<div class="br-card" data-id="' + esc(b.id) + '">' +
     '<div class="br-card-head" onclick="this.parentNode.classList.toggle(\'open\')">' +
+      thumb +
       '<div class="br-name">' + esc(b.name) + '</div>' +
       '<div class="br-meta">' + esc(b.abv || '') + ' &middot; $' + esc(b.price) + '</div>' +
       '<span class="br-chev">&#8250;</span>' +

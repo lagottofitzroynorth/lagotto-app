@@ -12,7 +12,7 @@
       "price": 12,
       "tastingNotes": ["pale golden", "fresh cereal aroma", "light florals", "subtle citrus", "smooth, balanced bittersweet finish"],
       "tasting_notes_status": "researched, pending venue review",
-      "img": "",
+      "img": "assets/img/beer/peroni-red.png",
       "active": true
     },
     {
@@ -24,7 +24,7 @@
       "price": 12,
       "tastingNotes": ["crisp and clean", "substantial bitterness", "soft biscuit malt", "lean, dry finish"],
       "tasting_notes_status": "researched, pending venue review",
-      "img": "",
+      "img": "assets/img/beer/stingray-draught.png",
       "active": true
     },
     {
@@ -36,7 +36,7 @@
       "price": 14,
       "tastingNotes": ["vibrant deep gold", "tropical and floral hops", "citrus and wheat", "soft bitterness building to a dry finish"],
       "tasting_notes_status": "researched, pending venue review",
-      "img": "",
+      "img": "assets/img/beer/balter-xpa.jpg",
       "active": true
     },
     {
@@ -48,7 +48,7 @@
       "price": 13,
       "tastingNotes": ["hazy pale yellow", "pineapple, guava, orange, cantaloupe", "mandarin and citrus palate", "silky, sessionable mouthfeel"],
       "tasting_notes_status": "researched, pending venue review",
-      "img": "",
+      "img": "assets/img/beer/bodriggy-speccy-juice.png",
       "active": true
     },
     {
@@ -60,7 +60,7 @@
       "price": 12,
       "tastingNotes": ["cold-pressed mandarin and orange peel", "assertive mandarin-peel bitterness", "dry, aromatic finish"],
       "tasting_notes_status": "researched, pending venue review",
-      "img": "",
+      "img": "assets/img/beer/yullis-amanda-mandarin-ipa.png",
       "active": true
     },
     {
@@ -72,7 +72,7 @@
       "price": 12,
       "tastingNotes": ["hazy gold", "mango, pineapple, lemon aroma", "soft malt with juicy tropical hops", "clean, gently dry finish"],
       "tasting_notes_status": "researched, pending venue review",
-      "img": "",
+      "img": "assets/img/beer/heaps-normal-quiet-xpa.png",
       "active": true
     }
   ]
