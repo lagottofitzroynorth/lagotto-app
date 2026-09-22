@@ -34,14 +34,15 @@ nothing here has been guessed or silently filled in.
 
 ## Missing photos (active items)
 
-- Villa Migliarina Chianti Superiore *(new)*
 - Peroni Red, Stingray Draught, Balter XPA, Bodriggy Speccy Juice, Yulli's Brews Amanda
   Mandarin IPA, Heaps Normal Quiet XPA *(new — first six beers ever tracked, so this is
   six-for-six; worth asking whether photos are wanted for these at all before chasing
   them down)*
 
-No other active wine lost or lacks a photo — the 108 wines reactivated this update all
-already carried their existing photos from before they were archived.
+Villa Migliarina Chianti Superiore's photo was supplied 2026-09-22 and is now live.
+
+No other active wine lacks a photo — the 108 wines reactivated this update all already
+carried their existing photos from before they were archived.
 
 ## Cocktails still needing a full bar spec
 
@@ -54,11 +55,28 @@ already carried their existing photos from before they were archived.
   printed Lagotto Cocktails section, replaced by Cardamaro Spritz and Tommy Verde.
   Original recipes preserved in the Retired section in case a regular asks for one.
 
+## Resolved 2026-09-22 (research follow-up)
+
+- **Amaro tasting notes** — 36 of the ~38 amaro/spirit entries that had an empty
+  `tastingNotes[]` array (the long-standing gap noted in the 2026-08-29 report) now have
+  real tasting notes, researched per-product from producer sites, retailer tech sheets
+  and spirits-review sources (Distiller, Diffords Guide, Vinepair, Punch, etc). Not
+  house-tasted/confirmed — worth a spot-check next time bar staff pour a few, but grounded
+  in real sources rather than inferred from the grape/region alone.
+- **Two could not be corroborated and were deliberately left alone:**
+  - **Saison Blackcurrant Leaf Vin Amaro** — Saison Aperitifs' actual current range
+    (Artichoke, Marigold, Radicchio, Rhubarb, White Flowers) turned up nowhere with a
+    "Blackcurrant Leaf" release. Worth checking whether this is a discontinued/one-off
+    batch, a mislabel of another flavour, or a custom order — as-is I don't have a real
+    source to write tasting notes from.
+  - **Tilus Amaro al Tartufo 1978** — only generic "truffle amaro" category information
+    turned up, nothing specific to this bottle/vintage. Its `convNote` already on file
+    may be accurate but wasn't independently verified.
+- **Villa Migliarina Chianti Superiore's photo** — supplied by David and uploaded via the
+  Wine Cellar photo pipeline; no longer missing.
+
 ## Not flagged (checked, no issue)
 
-- Amaro list (~36 items) still has no structured tasting-notes array — this is the same
-  long-standing, pre-existing gap noted in the 2026-08-29 report, not something new from
-  this update.
 - The 108-wine reactivation (nearly the entire wine list had been sitting
   `active: false` in the Gist since the 2026-08-31 update, apparently unintentionally)
   was verified item-by-item against the printed PDF before publishing — every
