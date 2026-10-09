@@ -1,7 +1,7 @@
 {
   "restaurant": "Lagotto",
-  "generated": "2026-09-03",
-  "source_note": "Transcribed from Cocktail Specs.pdf; updated 2026-09-22 from new wine/beverage list PDF -- retired Fig Spritz, Luca's Espresso Martini, Martini and Los Amargos from the printed Lagotto Cocktails section (kept under Retired for reference); added Cardamaro Spritz and Tommy Verde as new printed cocktails with specs pending from Liam.",
+  "generated": "2026-10-09",
+  "source_note": "Transcribed from Cocktail Specs.pdf; updated 2026-09-22 from new wine/beverage list PDF -- retired Fig Spritz, Luca's Espresso Martini, Martini and Los Amargos from the printed Lagotto Cocktails section (kept under Retired for reference); added Cardamaro Spritz and Tommy Verde as new printed cocktails with specs pending from Liam. Updated 2026-10-09 from Cocktail_Specs_Updated.pdf -- added House Negroni (replaces Negroni Lampone, now retired); filled full specs for Cardamaro Spritz and Tommy Verde; Capri Martini garnish now 2 drops lemon oil; Amaretto/Whiskey Sour now 2 oz spirit, no simple; Los Amargos full recipe.",
   "sections": [
     {
       "id": "lagotto",
@@ -194,8 +194,22 @@
       "image": ""
     },
     {
-      "id": "negroni-lampone",
+      "id": "house-negroni",
       "section": "lagotto",
+      "name": "House Negroni",
+      "glass": "Rocks glass",
+      "ingredients": [
+        "3 oz House Negroni pre-batch"
+      ],
+      "method": "Pour 3 oz of house negroni into rocks glass, stir with ice, garnish with orange slice.",
+      "garnish": "Orange slice",
+      "variants": [],
+      "active": true,
+      "image": ""
+    },
+    {
+      "id": "negroni-lampone",
+      "section": "retired",
       "name": "Negroni Lampone",
       "glass": "Rocks glass",
       "ingredients": [
@@ -203,10 +217,10 @@
         "1 x Raspberry to muddle",
         "1 x Raspberry to garnish"
       ],
-      "method": "Pour pre-batch into mixing glass, muddle with 1 x raspberry, double strain into rocks glass, add ice, garnish with raspberry.",
+      "method": "Retired 2026-10-09 -- replaced by House Negroni on the printed cocktail list. Original recipe: Pour pre-batch into mixing glass, muddle with 1 x raspberry, double strain into rocks glass, add ice, garnish with raspberry.",
       "garnish": "Raspberry",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": "https://staff.lagotto-fitzroynorth.com.au/assets/img/cocktails/negroni-lampone-1788437363742.jpg"
     },
     {
@@ -217,8 +231,8 @@
       "ingredients": [
         "2 ½ oz Capri martini pre-batch"
       ],
-      "method": "Stirred down with ice until ice cold, poured straight into nick & norah. Garnish with lemon zest.",
-      "garnish": "Lemon zest",
+      "method": "Stirred down with ice until ice cold, poured straight into nick & norah. Garnish with 2 drops of lemon oil.",
+      "garnish": "2 drops of lemon oil",
       "variants": [],
       "active": true,
       "image": "https://staff.lagotto-fitzroynorth.com.au/assets/img/cocktails/capri-martini-1788437245484.jpg"
@@ -244,10 +258,13 @@
       "name": "Los Amargos",
       "glass": "Nick & Norah",
       "ingredients": [
-        "3 oz Los Amargos pre-batch",
-        "Bar spoon of Luxardo cherry liqueur"
+        "1 ½ oz Reposado tequila",
+        "¾ oz Amaro Nonino",
+        "¾ oz Cardamaro",
+        "Bar spoon Luxardo cherry liqueur",
+        "¾ oz Lemon juice"
       ],
-      "method": "Retired 2026-09-22 -- dropped from the printed cocktail list, replaced by Cardamaro Spritz and Tommy Verde. Original recipe: Pour all ingredients into cocktail shaker, shake vigorously, double strain into nick & norah. No garnish.",
+      "method": "Retired 2026-09-22 -- dropped from the printed cocktail list. Recipe (per Oct 2026 spec sheet): pour all ingredients into tin, shake vigorously, double strain into nick & norah. No garnish.",
       "garnish": "",
       "variants": [],
       "active": false,
@@ -356,8 +373,7 @@
       "glass": "Nick & Norah",
       "ingredients": [
         "1 oz Lemon",
-        "1 ½ oz Amaretto/whiskey",
-        "½ oz Simple",
+        "2 oz Amaretto/whiskey",
         "½ oz Egg white"
       ],
       "method": "Build ingredients in small tin, put egg white in large tin. Dry shake, then add ice, shake with ice. Double strain into Nick & Norah glass. Garnish with angostura stripe.",
@@ -831,15 +847,14 @@
       "id": "cardamaro-spritz",
       "section": "lagotto",
       "name": "Cardamaro Spritz",
-      "glass": "",
+      "glass": "Large wine glass",
       "ingredients": [
-        "Cardamaro amaro (pending exact measure)",
-        "Prosecco (pending exact measure)",
-        "Soda (pending exact measure)",
-        "Orange (garnish/ingredient, pending confirmation)"
+        "2 oz Cardamaro",
+        "1 oz Soda",
+        "3 oz Prosecco"
       ],
-      "method": "Pending -- full bar spec from Liam. Printed menu description: \"Cardamaro amaro, prosecco, soda, orange.\"",
-      "garnish": "",
+      "method": "Build all ingredients into large wine glass, garnish with orange slice.",
+      "garnish": "Orange slice",
       "variants": [],
       "active": true,
       "image": ""
@@ -848,16 +863,15 @@
       "id": "tommy-verde",
       "section": "lagotto",
       "name": "Tommy Verde",
-      "glass": "",
+      "glass": "Rocks glass",
       "ingredients": [
-        "Tequila blanco (pending exact measure)",
-        "Tommy's kiwi (pending exact measure)",
-        "Green tabasco (pending exact measure)",
-        "Lime (pending exact measure)",
-        "Agave (pending exact measure)"
+        "2 oz Tommy Verde pre-batch",
+        "¾ oz Lime juice",
+        "½ oz Agave",
+        "2 x Lime wedge"
       ],
-      "method": "Pending -- full bar spec from Liam. Printed menu description: \"Tequila blanco, tommy's kiwi, green tobasco, lime, agave.\"",
-      "garnish": "",
+      "method": "Pour all ingredients into tin, muddle lime, shake then double strain into rocks glass, add ice, garnish with lime wedge.",
+      "garnish": "Lime wedge",
       "variants": [],
       "active": true,
       "image": ""
