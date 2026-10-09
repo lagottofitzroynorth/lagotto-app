@@ -24,6 +24,14 @@
  *     {"op":"update","kind":"wine","name":"2024 Carousal","fields":{"bottlePrice":72}}
  *     {"op":"add","kind":"wine","section":"red-medium","item":{"name":"...", ...}}
  *     {"op":"update","kind":"cocktail","name":"Bello Cello","fields":{"price":27}}
+ *     {"op":"section_update","id":"by-the-glass","subgroups":[{"label":"White","wines":["..."]}]}
+ *
+ * "section_update" replaces a section's subgroups wholesale (and rebuilds its
+ * top-level wines list from them), or its wines list if given "wines"
+ * instead. This is how the by-the-glass list on wine.html is changed: that
+ * page renders by-the-glass from the section's subgroups, not from each
+ * wine's `btg` flag, so flipping `btg` alone leaves the list unchanged.
+ * Every name must match an existing wine exactly.
  *
  * "add" for wine does a best-effort section placement (pushes the name into
  * that section's top-level wines list). It does not handle by-the-glass
@@ -182,6 +190,19 @@ function applyFoodPatch(data, ops) {
 function applyWinePatch(data, ops) {
   const diff = [];
   for (const op of ops) {
+    if (op.op === 'section_update') {
+      const section = data.sections.find(s => s.id === op.id);
+      if (!section) throw new Error(`section_update: no section "${op.id}"`);
+      const names = op.subgroups ? op.subgroups.flatMap(sg => sg.wines) : op.wines;
+      const missing = names.filter(n => !data.wines.some(w => w.name === n));
+      if (missing.length) throw new Error(`section_update: no wine named ${missing.map(n => `"${n}"`).join(', ')}`);
+      const before = (section.subgroups || []).map(sg => `${sg.label}: ${sg.wines.join(', ')}`).join(' / ') || section.wines.join(', ');
+      if (op.subgroups) section.subgroups = op.subgroups;
+      section.wines = names;
+      const after = (section.subgroups || []).map(sg => `${sg.label}: ${sg.wines.join(', ')}`).join(' / ') || section.wines.join(', ');
+      diff.push({ name: `section ${op.id}`, kind: 'section', before: { layout: before }, after: { layout: after } });
+      continue;
+    }
     const list = op.kind === 'cocktail' ? data.cocktails : data.wines;
     if (op.op === 'update') {
       const rec = list.find(w => w.name === op.name);
