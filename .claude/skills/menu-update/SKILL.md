@@ -141,10 +141,25 @@ Show the diff and **wait for explicit confirmation** before publishing anything.
   `App/cocktails.json` directly, then POST `{secret, data}` to
   `window.LAGOTTO_COCKTAIL_PUBLISH_URL` / `_SECRET` (read live from
   `cocktail-library.html`'s `<head>`), same pattern `publish.mjs` uses for food/wine.
-- **New items**: kebab-case `id`, leave `image`/`img` empty until a real photo exists,
-  mark tasting-note and dietary fields `"pending"` rather than guessing — this matches
-  existing venue convention (see the food Gist's `data_completeness_note` and the
-  per-dish `chef_note` fields already in the data).
+- **New items**: kebab-case `id`, leave dish `image` empty until the kitchen supplies a
+  real photo, mark tasting-note and dietary fields `"pending"` rather than guessing —
+  this matches existing venue convention (see the food Gist's `data_completeness_note`
+  and the per-dish `chef_note` fields already in the data). New *wines* are different:
+  source a bottle shot for each one as part of the update (next bullet).
+- **Bottle shots for new wines** — David wants these done as part of every wine-list
+  update, not left for the bar. For each new wine, find an image of that exact
+  label/cuvée (any vintage with the same label design is fine): producer's own site
+  first, then the Australian importer, then a reputable retailer (Sometimes Always,
+  Mr West, Blackhearts & Sparrows, Prince Wine Store...). Clean bottle on a white or
+  transparent background, ~600px+ tall, never a Google image-cache or thumbnail URL.
+  Confirm each candidate with `curl -I` (200, image content-type, size) before showing
+  it. Show David the list (wine, source page, size, any label doubt) and **wait for his
+  OK before downloading anything**. Then save each to
+  `App/assets/img/wine/<kebab-name>.<ext>`, set the wine's `img` to
+  `https://staff.lagotto-fitzroynorth.com.au/assets/img/wine/<kebab-name>.<ext>`, publish
+  that via a wine `"update"` patch, and commit + push the image files (the `img` URL
+  only resolves once Cloudflare has deployed them). Precedent: the Stefani Supera II,
+  Gelato Bianco, L'Ambre and Manni Nossing bottle commits.
 - **New dishes must carry the FULL schema, always** — `id`, `category`, `name`,
   `price`, `image`, `active`, `draft`, `last_confirmed`, `confirmed_by`,
   `on_chefs_menu`, `tasting_notes_status`, `tasting_notes`, `tasting_notes_source`,
@@ -189,3 +204,12 @@ item across food, wine and cocktails:
 
 Only report items still open after this update's publish step. Match the existing
 doc's format: grouped by priority, item name in bold, one line explaining the flag.
+Open with a short "What changed" section (new / off / reworded / price moves, food and
+bar) so the doc doubles as the change summary for Liam and the kitchen.
+
+Save it as `App/kitchen_needs_<YYYY-MM-DD>.md` and also export a PDF next to it
+(`kitchen_needs_<YYYY-MM-DD>.pdf`) — that's the version that gets sent around. No
+pandoc on this machine: convert the markdown to a simple styled HTML page with a small
+Node script, then print it with headless Chrome
+(`chrome.exe --headless=new --no-pdf-header-footer --print-to-pdf=<out.pdf> file:///<page.html>`).
+Read the PDF back to check it before sending it to David.
