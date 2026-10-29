@@ -1,7 +1,7 @@
 {
   "restaurant": "Lagotto",
-  "generated": "2026-10-09",
-  "source_note": "Transcribed from Cocktail Specs.pdf; updated 2026-09-22 from new wine/beverage list PDF -- retired Fig Spritz, Luca's Espresso Martini, Martini and Los Amargos from the printed Lagotto Cocktails section (kept under Retired for reference); added Cardamaro Spritz and Tommy Verde as new printed cocktails with specs pending from Liam. Updated 2026-10-09 from Cocktail_Specs_Updated.pdf -- added House Negroni (replaces Negroni Lampone, now retired); filled full specs for Cardamaro Spritz and Tommy Verde; Capri Martini garnish now 2 drops lemon oil; Amaretto/Whiskey Sour now 2 oz spirit, no simple; Los Amargos full recipe.",
+  "generated": "2026-10-29",
+  "source_note": "Transcribed from Cocktail Specs.pdf; updated 2026-09-22 from new wine/beverage list PDF -- retired Fig Spritz, Luca's Espresso Martini, Martini and Los Amargos from the printed Lagotto Cocktails section (kept under Retired for reference); added Cardamaro Spritz and Tommy Verde as new printed cocktails with specs pending from Liam. Updated 2026-10-09 from Cocktail_Specs_Updated.pdf -- added House Negroni (replaces Negroni Lampone, now retired); filled full specs for Cardamaro Spritz and Tommy Verde; Capri Martini garnish now 2 drops lemon oil; Amaretto/Whiskey Sour now 2 oz spirit, no simple; Los Amargos full recipe. Updated 2026-10-29 from new wine/beverage list PDF -- Fig Spritz back on the printed list ($25, out of Retired); Cardamaro Spritz retired.",
   "sections": [
     {
       "id": "lagotto",
@@ -42,7 +42,7 @@
     },
     {
       "id": "fig-spritz",
-      "section": "retired",
+      "section": "lagotto",
       "name": "Fig Spritz",
       "glass": "Large wine glass",
       "ingredients": [
@@ -51,7 +51,7 @@
         "1 oz Soda",
         "3 oz Prosecco"
       ],
-      "method": "Retired 2026-09-22 -- dropped from the printed cocktail list, replaced by Cardamaro Spritz and Tommy Verde. Original recipe: Pour all ingredients into large wine glass, fill with ice, garnish with lime wedge and straw.",
+      "method": "Pour all ingredients into large wine glass, fill with ice, garnish with lime wedge and straw.",
       "garnish": "Fig slice or lemon wedge",
       "variants": [],
       "active": true,
@@ -845,7 +845,7 @@
     },
     {
       "id": "cardamaro-spritz",
-      "section": "lagotto",
+      "section": "retired",
       "name": "Cardamaro Spritz",
       "glass": "Large wine glass",
       "ingredients": [
@@ -853,10 +853,10 @@
         "1 oz Soda",
         "3 oz Prosecco"
       ],
-      "method": "Build all ingredients into large wine glass, garnish with orange slice.",
+      "method": "Retired 2026-10-29 -- dropped from the printed cocktail list, Fig Spritz back in its place. Original recipe: Build all ingredients into large wine glass, garnish with orange slice.",
       "garnish": "Orange slice",
       "variants": [],
-      "active": true,
+      "active": false,
       "image": ""
     },
     {
